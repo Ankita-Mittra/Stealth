@@ -16,22 +16,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         return true
     }
 
+    
+    // MARK: Methods
+
+    func navigateToRightScreen(){
+        // Check whether user is logged in or not
+            let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+                if (userDefault.value(forKey: USER_DEFAULT_userID_Key)) != nil{
+                                        
+                    let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                    navController.pushViewController(loginVcObj, animated: true)
+                    
+                }else{
+                    // Go to SignUP screen
+        
+//                    let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+//                    navController.pushViewController(loginVcObj, animated: true)
+                    let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                    navController.pushViewController(signUpVcObj, animated: true)
+                    
+                }
+            }
+    
     // MARK: UISceneSession Lifecycle
 
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
+//    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+//        // Called when a new scene session is being created.
+//        // Use this method to select a configuration to create the new scene with.
+//        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+//    }
+//
+//    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+//        // Called when the user discards a scene session.
+//        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+//        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+//    }
 
     // MARK: - Core Data stack
 

@@ -19,9 +19,9 @@ let appDelegate = UIApplication.shared.delegate as!(AppDelegate)
 let userDefault = UserDefaults.standard
 
 // User default Keys
-let USER_DEFAULT_firstName_Key = "firstName"
-let USER_DEFAULT_lastName_Key = "lastName"
-let USER_DEFAULT_displayName_Key = "displayName"
+let USER_DEFAULT_username_Key = "userdefault_username"
+let USER_DEFAULT_walletAddress_Key = "userdefault_walletAddress"
+let USER_DEFAULT_userID_Key = "userdefault_userID"
 
 
 
