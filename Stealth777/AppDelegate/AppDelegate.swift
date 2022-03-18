@@ -17,36 +17,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        self.navigateToRightScreen()
         return true
     }
-
     
     // MARK: Methods
 
     func navigateToRightScreen(){
-        // Check whether user is logged in or not
-            let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
-                if (userDefault.value(forKey: USER_DEFAULT_userID_Key)) != nil{
-                                        
-                    let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-                    navController.pushViewController(loginVcObj, animated: true)
-                    
-                }else{
-                    // Go to SignUP screen
-        
+    // Check whether user is logged in or not
+        let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    
+            if (userDefault.value(forKey: USER_DEFAULT_userID_Key)) != nil{
+                let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                navController.pushViewController(loginVcObj, animated: true)
+            }else{
+                // Go to SignUP screen
 //                    let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
 //                    navController.pushViewController(loginVcObj, animated: true)
-                    let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-                    navController.pushViewController(signUpVcObj, animated: true)
-                    
-                }
+                let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.main.rawValue, bundle: nil)
+                let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.initial.rawValue) as! InitialViewController
+                navController.pushViewController(signUpVcObj, animated: true)
+
+//                let storyBoard = UIStoryboard.init(name: enumStoryBoard.login.rawValue, bundle: nil)
+//                let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
+//
+//                let objLocationSearch = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.login.rawValue) as? LoginViewController
+//                navController.navigationController?.pushViewController(objLocationSearch!, animated: true)
             }
+        }
     
     // MARK: UISceneSession Lifecycle
 

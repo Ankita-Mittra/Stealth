@@ -20,12 +20,21 @@ class UILabelFontSize: UILabel {
     // Change Font size of Label according to Screen size
     fileprivate func changeSize() {
         let currentSize = self.font.pointSize
-        if (UIScreen.main.bounds.height < iPhone_8Plus_Height){
-            self.font = self.font.withSize(currentSize-fontSizeForSmallDevices)
+//        if (UIScreen.main.bounds.height < iPhone_8Plus_Height){
+//            self.font = self.font.withSize(currentSize-fontSizeForSmallDevices)
+//        }
+//        if (UIScreen.main.bounds.height > iPhone_X_Height){
+//            self.font = self.font.withSize(currentSize+fontSizeForLargeDevices)
+//        }
+        
+        if (UIScreen.main.bounds.height > iPhone_6_Height) && (UIScreen.main.bounds.height < iPhone_11Pro_MAX_Height){
+            self.font = self.font.withSize(currentSize-fontSizeDifferenceForMediumDevices)
         }
-        if (UIScreen.main.bounds.height > iPhone_X_Height){
-            self.font = self.font.withSize(currentSize+fontSizeForLargeDevices)
+        if (UIScreen.main.bounds.height < iPhone_6_Height){
+            self.font = self.font.withSize(currentSize-fontSizeDifferenceForSmallDevices)
         }
+
+ 
     }
     
 

@@ -40,6 +40,9 @@ class CommonFxns: NSObject {
 //      vcArray.append(homeVc)
 //      (appDelegate.window?.rootViewController as! UINavigationController).setViewControllers(vcArray, animated: false)
     }
+    
+    
+    
 }
 
 

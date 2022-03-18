@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Private Mode Tab Bar View Controller-->
+        <scene sceneID="ouZ-FX-Sp0">
+            <objects>
+                <tabBarController storyboardIdentifier="PrivateModeTabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FSx-kE-L9R" customClass="PrivateModeTabBarViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wn5-Ei-dja">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="SecondaryThemeColor"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="0hX-0e-VpQ" kind="relationship" relationship="viewControllers" id="NLk-hd-L7p"/>
+                        <segue destination="S5b-0B-xTr" kind="relationship" relationship="viewControllers" id="X2m-9g-Gm7"/>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="viewControllers" id="SI2-X9-HFg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rGM-Ik-x0C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-914" y="-278"/>
+        </scene>
+        <!--Wallet-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="WalletDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="WalletDetailsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Wallet" image="tab-walletIcon" id="sBA-R5-FuI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3" y="252"/>
+        </scene>
+        <!--HomeViewController-->
+        <scene sceneID="kh4-sx-cwl">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="HomeViewController" storyboardName="HomeStoryboard" referencedIdentifier="HomeViewController" id="0hX-0e-VpQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ADa-lB-5Jf"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gv5-MK-l6D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4" y="-1041"/>
+        </scene>
+        <!--ContactsViewController-->
+        <scene sceneID="KNE-Ap-qkV">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ContactsViewController" storyboardName="ContactsStoryboard" referencedIdentifier="ContactsViewController" id="S5b-0B-xTr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="o5K-mP-FQk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MBH-pJ-5xh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3" y="-397"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tab-walletIcon" width="18" height="18"/>
+        <namedColor name="SecondaryThemeColor">
+            <color red="0.0" green="0.73333333333333328" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -9,6 +9,11 @@ import UIKit
 
 class PrivateChatSenderTableViewCell: UITableViewCell {
 
+    static let identifier = "PrivateChatSenderTableViewCell"
+    static func nib() -> UINib{
+        return UINib(nibName: "PrivateChatSenderTableViewCell", bundle: nil)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

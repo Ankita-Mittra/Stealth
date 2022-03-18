@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="ContactsListTableViewCell" customModule="Stealth777" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="439" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="439" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="privateAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="yqT-ja-2tx" customClass="UIImageViewCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="1" y="11" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="TbR-GT-qbr"/>
+                            <constraint firstAttribute="width" secondItem="yqT-ja-2tx" secondAttribute="height" multiplier="1:1" id="erA-wI-Xj2"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="round" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guq-ef-M9C" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="58" y="27" width="62" height="16.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDl-fq-q9y">
+                        <rect key="frame" x="0.0" y="0.0" width="439" height="1"/>
+                        <color key="backgroundColor" name="SeperatorColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="2lb-hY-rk6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="SeperatorColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="garyForwardIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DRB-jV-bmn">
+                        <rect key="frame" x="430" y="28.5" width="8" height="13"/>
+                    </imageView>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ShL-z1-jmY">
+                        <rect key="frame" x="395" y="18.5" width="43" height="33"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="blueTickCheckbox"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ShL-z1-jmY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8wr-zh-riR"/>
+                    <constraint firstItem="guq-ef-M9C" firstAttribute="leading" secondItem="yqT-ja-2tx" secondAttribute="trailing" constant="9" id="Aki-02-YxT"/>
+                    <constraint firstAttribute="trailing" secondItem="ShL-z1-jmY" secondAttribute="trailing" constant="1" id="FIX-i7-Nvg"/>
+                    <constraint firstItem="guq-ef-M9C" firstAttribute="centerY" secondItem="yqT-ja-2tx" secondAttribute="centerY" id="H3s-l1-jby"/>
+                    <constraint firstItem="yqT-ja-2tx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NHC-nb-K35"/>
+                    <constraint firstAttribute="trailing" secondItem="uDl-fq-q9y" secondAttribute="trailing" id="P12-cV-nz2"/>
+                    <constraint firstItem="uDl-fq-q9y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ufx-fY-zrb"/>
+                    <constraint firstItem="uDl-fq-q9y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Uof-XW-uxU"/>
+                    <constraint firstItem="yqT-ja-2tx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="dYk-we-rUO"/>
+                    <constraint firstAttribute="trailing" secondItem="DRB-jV-bmn" secondAttribute="trailing" constant="1" id="ezM-WI-Z6q"/>
+                    <constraint firstItem="DRB-jV-bmn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jvc-cx-sxN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="forwardIconImgView" destination="DRB-jV-bmn" id="dqS-24-WKD"/>
+                <outlet property="selectUserBtn" destination="ShL-z1-jmY" id="Ca7-wx-l9l"/>
+                <outlet property="userImgView" destination="yqT-ja-2tx" id="baV-B3-oqD"/>
+                <outlet property="usernameLbl" destination="guq-ef-M9C" id="5CQ-NT-bPh"/>
+            </connections>
+            <point key="canvasLocation" x="223.91304347826087" y="129.91071428571428"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="guq-ef-M9C">
+            <size key="intrinsicContentSize" width="62.5" height="16.5"/>
+        </designable>
+        <designable name="yqT-ja-2tx">
+            <size key="intrinsicContentSize" width="124" height="124"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="blueTickCheckbox" width="19" height="19"/>
+        <image name="garyForwardIcon" width="8" height="13"/>
+        <image name="privateAvatar" width="124" height="124"/>
+        <namedColor name="SeperatorColor">
+            <color red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

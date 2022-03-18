@@ -36,6 +36,8 @@ let appVersion = 1.8
 let iPhone_8Plus_Height:CGFloat = 736
 let iPhone_X_Height:CGFloat = 812
 let iPhone_6_Height:CGFloat = 667
+let iPhone_13Pro_MAX_Height:CGFloat = 926
+let iPhone_11Pro_MAX_Height:CGFloat = 896
 
 // Numbers
 let zero = 0
@@ -45,8 +47,10 @@ let five = 5
 
 // Fonts increment/decrement
 
-let fontSizeForLargeDevices:CGFloat = 2
-let fontSizeForSmallDevices:CGFloat = 2
+//let fontSizeForLargeDevices:CGFloat = 2
+//let fontSizeForSmallDevices:CGFloat = 2
+let fontSizeDifferenceForSmallDevices:CGFloat = 4
+let fontSizeDifferenceForMediumDevices:CGFloat = 2
 
 // MARK: Colors
 

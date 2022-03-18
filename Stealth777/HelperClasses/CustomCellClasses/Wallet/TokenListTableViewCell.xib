@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="79" id="KGk-i7-Jjw" customClass="TokenListTableViewCell" customModule="Stealth777" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="435" height="79"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="435" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0W-tq-Azq">
+                        <rect key="frame" x="413" y="30" width="22" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="YwP-EU-Hvy"/>
+                        </constraints>
+                        <color key="tintColor" name="SecondaryThemeColor"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="blueTickCheckbox"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzu-GA-E72">
+                        <rect key="frame" x="0.0" y="0.0" width="435" height="1"/>
+                        <color key="backgroundColor" name="SeperatorColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="mCb-WG-RsR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="SeperatorColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4I-X6-Ec5" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="58" y="31.5" width="80" height="16.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="iPN-2O-Ayb" customClass="UIImageViewCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="1" y="15.5" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="iPN-2O-Ayb" secondAttribute="height" multiplier="1:1" id="2Vu-Dq-gev"/>
+                            <constraint firstAttribute="height" constant="48" id="g0D-s6-kIf"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="round" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="xzu-GA-E72" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5tS-cH-Lkb"/>
+                    <constraint firstItem="G4I-X6-Ec5" firstAttribute="centerY" secondItem="iPN-2O-Ayb" secondAttribute="centerY" id="F3X-S3-WOz"/>
+                    <constraint firstItem="K0W-tq-Azq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ikr-sH-zUw"/>
+                    <constraint firstAttribute="trailing" secondItem="xzu-GA-E72" secondAttribute="trailing" id="Q0e-Os-2eU"/>
+                    <constraint firstItem="G4I-X6-Ec5" firstAttribute="leading" secondItem="iPN-2O-Ayb" secondAttribute="trailing" constant="9" id="XAU-Sh-qkz"/>
+                    <constraint firstAttribute="trailing" secondItem="K0W-tq-Azq" secondAttribute="trailing" id="XtO-VH-zxa"/>
+                    <constraint firstItem="iPN-2O-Ayb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="qYh-pb-GfR"/>
+                    <constraint firstItem="iPN-2O-Ayb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="u6n-VX-GfX"/>
+                    <constraint firstItem="xzu-GA-E72" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zJm-ax-tpb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="cellSelectedBtn" destination="K0W-tq-Azq" id="bhk-CI-CbG"/>
+                <outlet property="titleImgView" destination="iPN-2O-Ayb" id="UqD-JP-bbj"/>
+                <outlet property="titleLbl" destination="G4I-X6-Ec5" id="Ow4-nu-1OR"/>
+            </connections>
+            <point key="canvasLocation" x="44" y="8"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="G4I-X6-Ec5">
+            <size key="intrinsicContentSize" width="80" height="16.5"/>
+        </designable>
+        <designable name="iPN-2O-Ayb">
+            <size key="intrinsicContentSize" width="124" height="124"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="blueTickCheckbox" width="19" height="19"/>
+        <image name="defaultAvatar" width="124" height="124"/>
+        <namedColor name="SecondaryThemeColor">
+            <color red="0.0" green="0.73299998044967651" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SeperatorColor">
+            <color red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

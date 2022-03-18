@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notifications View Controller-->
+        <scene sceneID="w1j-IR-5di">
+            <objects>
+                <viewController storyboardIdentifier="NotificationsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VYU-ND-ADx" customClass="NotificationsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GgC-Fr-nnp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="H1e-l9-Gj6">
+                                <rect key="frame" x="30" y="74" width="354" height="788"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="VYU-ND-ADx" id="3H9-Rd-9ae"/>
+                                    <outlet property="delegate" destination="VYU-ND-ADx" id="bf6-Oa-gaf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wFa-7F-N6G"/>
+                        <color key="backgroundColor" name="ViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="H1e-l9-Gj6" firstAttribute="leading" secondItem="wFa-7F-N6G" secondAttribute="leading" constant="30" id="abd-c2-kMB"/>
+                            <constraint firstItem="wFa-7F-N6G" firstAttribute="bottom" secondItem="H1e-l9-Gj6" secondAttribute="bottom" id="n5p-bb-GqB"/>
+                            <constraint firstItem="wFa-7F-N6G" firstAttribute="trailing" secondItem="H1e-l9-Gj6" secondAttribute="trailing" constant="30" id="tp4-3O-osj"/>
+                            <constraint firstItem="H1e-l9-Gj6" firstAttribute="top" secondItem="wFa-7F-N6G" secondAttribute="top" constant="30" id="v22-kW-T1D"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="notificationsTableView" destination="H1e-l9-Gj6" id="erQ-51-2Vu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l4W-eA-6dn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="263" y="32"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="ViewBackgroundColor">
+            <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

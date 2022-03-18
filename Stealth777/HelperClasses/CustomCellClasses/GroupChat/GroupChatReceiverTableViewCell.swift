@@ -9,6 +9,12 @@ import UIKit
 
 class GroupChatReceiverTableViewCell: UITableViewCell {
 
+
+    static let identifier = "PrivateChatReceiverTableViewCell"
+    static func nib() -> UINib{
+        return UINib(nibName: "PrivateChatReceiverTableViewCell", bundle: nil)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +25,6 @@ class GroupChatReceiverTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     
 }

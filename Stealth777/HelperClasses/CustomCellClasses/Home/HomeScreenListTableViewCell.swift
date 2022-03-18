@@ -9,6 +9,18 @@ import UIKit
 
 class HomeScreenListTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var userMessageLbl: UILabel!
+    @IBOutlet weak var messageTimeLbl: UILabel!
+
+
+    static let identifier = "HomeScreenListTableViewCell"
+//        var delegate: exploreTopicTableViewCellProtocol!
+    static func nib() -> UINib{
+        return UINib(nibName: "HomeScreenListTableViewCell", bundle: nil)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
