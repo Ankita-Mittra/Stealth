@@ -15,24 +15,24 @@ class PrivateModeTabBarViewController: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Chats")
-        self.setSearchBarOnNavigationBar()
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Chats")
-        self.setSearchBarOnNavigationBar()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        
+//        self.navigationItem.setHidesBackButton(true, animated: false)
+//        self.navigationItem.largeTitleDisplayMode = .always
+//        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Chats")
+//        self.setSearchBarOnNavigationBar()
+//        
+//    }
+//    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//
+//        self.navigationItem.setHidesBackButton(true, animated: false)
+//        self.navigationItem.largeTitleDisplayMode = .always
+//        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Chats")
+//        self.setSearchBarOnNavigationBar()
+//    }
 
 //    override func willMove(toParent parent: UIViewController?) {
 //        navigationController?.navigationBar.prefersLargeTitles = true

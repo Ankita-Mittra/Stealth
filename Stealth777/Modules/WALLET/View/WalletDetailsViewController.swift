@@ -20,31 +20,51 @@ class WalletDetailsViewController: BaseViewController {
         // Initial Setup
         self.initialUISetup()
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//
+//        self.tabBarController?.tabBar.isHidden = false
+//        self.navigationController?.setToolbarHidden(true, animated: true)
+//    }
+//
+//
+//    override func viewDidAppear(_ animated: Bool) {
+//
+//        let play = UIBarButtonItem(image: UIImage(named: "moreIcon"), style: .plain, target: self, action: #selector(moreButtonAction))
+//        self.navigationItem.setRightBarButtonItems([play], animated: true)
+//
+//        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Wallet")
+//        self.navigationItem.largeTitleDisplayMode = .always
+//        self.navigationController?.navigationBar.sizeToFit()
+//
+//    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: false)
 
         self.setNavigationBar()
     }
-        
+
     override func viewDidAppear(_ animated: Bool) {
         self.setNavigationBar()
     }
-    
+
     func setNavigationBar(){
-        
+
         self.title = "Wallet"
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setToolbarHidden(true, animated: true)
 
         let play = UIBarButtonItem(image: UIImage(named: "moreIcon"), style: .plain, target: self, action: #selector(moreButtonAction))
         self.navigationItem.setRightBarButtonItems([play], animated: true)
-        
+
         self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Wallet")
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.sizeToFit()
     }
+
     
     override func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)

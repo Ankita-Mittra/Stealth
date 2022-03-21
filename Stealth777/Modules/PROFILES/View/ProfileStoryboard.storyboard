@@ -399,7 +399,7 @@
         <!--Wallet-->
         <scene sceneID="dj9-a0-JpA">
             <objects>
-                <viewController storyboardIdentifier="OtherUserProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cEY-AO-yNb" customClass="OtherUserProfileViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="cEY-AO-yNb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDk-Na-vsp">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

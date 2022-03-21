@@ -1,0 +1,21 @@
+//
+//  Localizable.strings
+//  Stealth777
+//
+//  Created by Fareed Alzoorani on 21/03/2022.
+//
+
+
+
+// MARK: - Strings
+
+// ************** Login and Sign up ******************
+
+"login" = "LOGIN";
+"sign_up" = "Sign Up";
+"sign_up_ques" = "Don't have an account? ";
+"login_email" = "Email";
+"password" = "Password";
+"forgot_password" = "Forgot Password";
+"request" = "Request";
+"did_you_forget_pwd" = "Did you forget your password?";

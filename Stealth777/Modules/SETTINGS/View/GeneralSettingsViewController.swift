@@ -7,23 +7,53 @@
 
 import UIKit
 
+
+struct AppLanguages {
+
+    let languageName: String
+    let languageCode: String
+
+}
+
 class GeneralSettingsViewController: BaseViewController {
+
     
     // MARK: - Properties & Delegates
 
     @IBOutlet weak var settingsListTableView: UITableView!
+    @IBOutlet weak var pickerView: UIPickerView!
 
+    @IBOutlet weak var pickerBgView: UIView!
+    var selectedLanguage = Int()
     let settingsListTitleArr = ["Notifications", "Dark Theme", "Language"]
-//    let settingsListTitleImgArr = ["privateAvatar","settings-account","settings-generalSettings", "settings-about", "settings-privacyPolicy", "settings-about", "settings-logout"]
+    
+    let appLanguages: [AppLanguages] = [
+        AppLanguages(languageName: enumLanguages.englishLanguage.rawValue, languageCode: enumLanguageCodes.englishLanguage.rawValue),
+        AppLanguages(languageName: enumLanguages.arabicLanguage.rawValue, languageCode: enumLanguageCodes.arabicLanguage.rawValue),
+        AppLanguages(languageName: enumLanguages.dutch.rawValue, languageCode: enumLanguageCodes.dutch.rawValue),
+        AppLanguages(languageName: enumLanguages.simplifiedChinese.rawValue, languageCode: enumLanguageCodes.simplifiedChinese.rawValue),
+        AppLanguages(languageName: enumLanguages.french.rawValue, languageCode: enumLanguageCodes.french.rawValue)
+    ]
+
     // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Initial Setup
         self.initialSetup()
-    
+
     }
     
+    @IBAction func cancelBtnAction(_ sender: Any) {
+        self.pickerBgView.isHidden = true
+    }
+    
+    @IBAction func doneBtnAction(_ sender: Any) {
+        self.pickerBgView.isHidden = true
+        print("selectedLanguageCode.....", selectedLanguage)
+        CommonFxns.switchLanguageAtHomeScreen(selectedLanguageCode: self.appLanguages[selectedLanguage].languageCode)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -35,17 +65,19 @@ class GeneralSettingsViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
 
         self.navigationItem.largeTitleDisplayMode = .never
-        self.setSmallHeaderAndHideLargeHeader(header: "General Settings")
+//        self.setSmallHeaderAndHideLargeHeader(header: "General Settings")
     }
     
     // MARK: - Methods
 
     func initialSetup(){
+        self.pickerView.dataSource = self
+         self.pickerView.delegate = self
         self.settingsListTableView.register(SettingsOptionsTableViewCell.nib(), forCellReuseIdentifier: SettingsOptionsTableViewCell.identifier)
+        
+        self.pickerView.reloadAllComponents()
 
     }
-    
-
 }
 
 
@@ -91,12 +123,36 @@ extension GeneralSettingsViewController: UITableViewDelegate, UITableViewDataSou
             let storyBoard = UIStoryboard.init(name: enumStoryBoard.notifications.rawValue, bundle: nil)
             let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.notifications.rawValue) as? NotificationsViewController
             self.navigationController?.pushViewController(otherController!, animated: true)
+        case 2:
+            
+            self.pickerBgView.isHidden = false
+
         default:
             break
         }
 
     }
 
+
 }
 
+extension GeneralSettingsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.appLanguages.count
+    }
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        pickerView.tag = row
+        return self.appLanguages[row].languageName
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.selectedLanguage = pickerView.tag
+    }
+
+}

@@ -75,7 +75,6 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    
     func goToNotificationsScreen(){
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.notifications.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.notifications.rawValue) as? NotificationsViewController
@@ -91,6 +90,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     func createNewContact(){
         
     }
+    
 //    override func viewWillDisappear(_ animated: Bool) {
 //       super.viewWillDisappear(animated)
 //       navigationController?.navigationBar.prefersLargeTitles = false
@@ -289,8 +289,6 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func goToSelectedPrivateChatScreen(){
-
-        print("Private Chat........")
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.privateChat.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateChat.rawValue) as? PrivateChatViewController
         

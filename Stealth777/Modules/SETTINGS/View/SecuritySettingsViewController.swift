@@ -15,22 +15,20 @@ class SecuritySettingsViewController: BaseViewController {
 
     let settingsListTitleArr = ["Update Password" ,"Allow Face ID Login", "Reveal Secret Key"]
 //    let settingsListTitleImgArr = ["privateAvatar","settings-account","settings-generalSettings", "settings-about", "settings-privacyPolicy", "settings-about", "settings-logout"]
+    
     // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.initialSetup()
-    
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
         self.tabBarController?.tabBar.isHidden = true
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
 
@@ -42,12 +40,9 @@ class SecuritySettingsViewController: BaseViewController {
 
     func initialSetup(){
         self.settingsListTableView.register(SettingsOptionsTableViewCell.nib(), forCellReuseIdentifier: SettingsOptionsTableViewCell.identifier)
-
     }
-    
 
 }
-
 
 extension SecuritySettingsViewController: UITableViewDelegate, UITableViewDataSource {
 

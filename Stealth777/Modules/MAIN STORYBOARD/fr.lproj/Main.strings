@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "   Create Wallet"; ObjectID = "J5r-GA-uJv"; */
+"J5r-GA-uJv.normalTitle" = "   Create Wallet";
+
+/* Class = "UILabel"; text = "Stealth 777"; ObjectID = "K3e-my-Be9"; */
+"K3e-my-Be9.text" = "Stealth 777";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "Ttt-9b-Lrr"; */
+"Ttt-9b-Lrr.title" = "Back";
+
+/* Class = "UINavigationItem"; title = "Import Wallet"; ObjectID = "Wzg-M1-snS"; */
+"Wzg-M1-snS.title" = "Import Wallet";
+
+/* Class = "UIButton"; normalTitle = "   Import Wallet"; ObjectID = "oYA-Pi-s6U"; */
+"oYA-Pi-s6U.normalTitle" = "   Import Wallet";
+
+/* Class = "UIButton"; configuration.title = "Terms & Conditions"; ObjectID = "xQJ-zj-BaR"; */
+"xQJ-zj-BaR.configuration.title" = "Terms & Conditions";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "xQJ-zj-BaR"; */
+"xQJ-zj-BaR.normalTitle" = "Button";

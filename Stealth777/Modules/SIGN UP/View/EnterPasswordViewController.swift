@@ -38,8 +38,7 @@ class EnterPasswordViewController: BaseViewController {
 
     override func willMove(toParent parent: UIViewController?) {
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

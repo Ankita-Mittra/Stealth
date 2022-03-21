@@ -23,6 +23,8 @@ class GroupChatViewController: BaseViewController {
         self.initialUISetup()
     }
     
+    
+    
     // MARK: - Methods
 
     func initialUISetup(){
@@ -72,6 +74,15 @@ extension GroupChatViewController: UITableViewDelegate, UITableViewDataSource {
             return chatCell
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("didSelectRowAt...")
+           let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
+           let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupDetails.rawValue) as? GroupDetailsViewController
+           self.navigationController?.pushViewController(otherController!, animated: true)
+    }
+
 
 }
 

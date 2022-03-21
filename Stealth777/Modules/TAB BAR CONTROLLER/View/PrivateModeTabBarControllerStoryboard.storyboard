@@ -17,32 +17,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Private Mode Tab Bar View Controller-->
-        <scene sceneID="ouZ-FX-Sp0">
-            <objects>
-                <tabBarController storyboardIdentifier="PrivateModeTabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FSx-kE-L9R" customClass="PrivateModeTabBarViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="cSW-UT-Wz9"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wn5-Ei-dja">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" name="tabBarBgColor"/>
-                        <color key="tintColor" name="SecondaryThemeColor"/>
-                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" name="SecondaryThemeColor"/>
-                        <tabBarAppearance key="standardAppearance"/>
-                        <tabBarAppearance key="scrollEdgeAppearance"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="9kM-7a-pAS" kind="relationship" relationship="viewControllers" id="FPE-bb-DQT"/>
-                        <segue destination="hEx-Ib-aPG" kind="relationship" relationship="viewControllers" id="teU-Re-61h"/>
-                        <segue destination="FMZ-aA-6gN" kind="relationship" relationship="viewControllers" id="1Nm-xC-kwx"/>
-                        <segue destination="SZp-Us-xn9" kind="relationship" relationship="viewControllers" id="ozm-Ss-KL9"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rGM-Ik-x0C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1740" y="-303"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="2db-8L-ML4">
             <objects>
@@ -63,7 +37,7 @@
             </objects>
             <point key="canvasLocation" x="-132" y="-680"/>
         </scene>
-        <!--Chat-->
+        <!--Chats-->
         <scene sceneID="5Ii-ho-QZj">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ipS-vk-zIT" customClass="HomeViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
@@ -216,7 +190,7 @@
                             <constraint firstAttribute="bottom" secondItem="KFX-gv-3bO" secondAttribute="bottom" id="zqJ-Lc-Ind"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chat" image="tab-chatsIcon" id="VzM-Ep-seE"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="tab-chatsIcon" id="VzM-Ep-seE"/>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="csb-Uz-lXb"/>
                     <connections>
                         <outlet property="allChatsTableview" destination="KFX-gv-3bO" id="45c-nc-a2Y"/>
@@ -535,6 +509,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNj-hL-3kk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="659" y="827"/>
+        </scene>
+        <!--Private Mode Tab Bar View Controller-->
+        <scene sceneID="ZK8-cq-0YR">
+            <objects>
+                <tabBarController storyboardIdentifier="PrivateModeTabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gNf-mj-rSK" customClass="PrivateModeTabBarViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4eh-ts-7BD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="tabBarBgColor"/>
+                        <color key="tintColor" name="SecondaryThemeColor"/>
+                        <color key="barTintColor" name="SecondaryThemeColor"/>
+                        <color key="selectedImageTintColor" name="SecondaryThemeColor"/>
+                        <tabBarAppearance key="standardAppearance"/>
+                        <tabBarAppearance key="scrollEdgeAppearance"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9kM-7a-pAS" kind="relationship" relationship="viewControllers" id="MsJ-3x-Ukf"/>
+                        <segue destination="hEx-Ib-aPG" kind="relationship" relationship="viewControllers" id="LDz-9Y-eHr"/>
+                        <segue destination="FMZ-aA-6gN" kind="relationship" relationship="viewControllers" id="EF3-eC-WyA"/>
+                        <segue destination="SZp-Us-xn9" kind="relationship" relationship="viewControllers" id="cIg-Hh-4gf"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="djN-Pg-A9X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1423" y="-266"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eNU-o9-CfQ">
