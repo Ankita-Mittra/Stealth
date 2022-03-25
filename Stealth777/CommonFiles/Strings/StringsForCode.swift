@@ -60,7 +60,9 @@ enum enumViewControllerIdentifier: String {
     case allContactsList = "AllContactsListViewController"
     case searchUsers = "SearchUsersViewController"
     case privateChatUserProfile = "PrivateChatUserProfileViewController"
+    case createGroup = "CreateGroupViewController"
 
+    case userInfo = "UserInfoViewController"
 
 }
 
@@ -82,6 +84,7 @@ enum enumStoryBoard:String {
     case calls = "CallsStoryboard"
     case profile = "ProfileStoryboard"
 
+//    case  = "ProfileStoryboard"
 
 }
 

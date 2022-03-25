@@ -82,10 +82,15 @@ class EnterPasswordViewController: BaseViewController {
 //        let objLocationSearch = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateModeTabBar .rawValue) as? PrivateModeTabBarViewController
 //                    self.navigationController?.pushViewController(objLocationSearch!, animated: true)
         
-        let navController:UINavigationController = (appDelegate.window?.rootViewController as? UINavigationController)!
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.privateTabBarController.rawValue, bundle: nil)
-        let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateModeTabBar .rawValue) as! PrivateModeTabBarViewController
-        navController.pushViewController(loginVcObj, animated: true)
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.createWallet.rawValue, bundle: nil)
+        let objLocationSearch = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.createWallet .rawValue) as? CreateWalletViewController
+                    self.navigationController?.pushViewController(objLocationSearch!, animated: true)
+        
+        
+//        let navController:UINavigationController = (appDelegate.window?.rootViewController as? UINavigationController)!
+//        let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.privateTabBarController.rawValue, bundle: nil)
+//        let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateModeTabBar .rawValue) as! PrivateModeTabBarViewController
+//        navController.pushViewController(loginVcObj, animated: true)
     }
     
     @IBAction func backBtnAction(_ sender: Any) {

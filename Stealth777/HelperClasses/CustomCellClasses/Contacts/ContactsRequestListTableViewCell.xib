@@ -39,6 +39,7 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendRequest" translatesAutoresizingMaskIntoConstraints="NO" id="cse-f9-vCp" customClass="UIImageViewCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="19" y="23" width="22" height="22"/>
+                                <color key="tintColor" name="chatMsgColor"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend Requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2k-wT-EX5" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="60" y="24" width="122" height="20"/>
@@ -48,9 +49,10 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightGrayForwardIcon" translatesAutoresizingMaskIntoConstraints="NO" id="jSN-uz-qzD">
                                 <rect key="frame" x="398.5" y="26.5" width="8.5" height="15"/>
+                                <color key="tintColor" name="lightForwardIconTintColor"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="whiteLabelColor"/>
+                        <color key="backgroundColor" name="CustomViewBgColor"/>
                         <constraints>
                             <constraint firstItem="cse-f9-vCp" firstAttribute="centerX" secondItem="4Nj-0f-NwB" secondAttribute="centerX" id="FWL-E3-D9W"/>
                             <constraint firstItem="W2k-wT-EX5" firstAttribute="centerY" secondItem="Jzo-jf-tok" secondAttribute="centerY" id="Ha7-Er-FV3"/>
@@ -95,14 +97,20 @@
     <resources>
         <image name="friendRequest" width="22" height="22"/>
         <image name="lightGrayForwardIcon" width="8.5" height="14.5"/>
+        <namedColor name="CustomViewBgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="chatMsgColor">
+            <color red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="imageBgColor">
             <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="lightForwardIconTintColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="subHeadingColor">
             <color red="0.43529411764705883" green="0.43529411764705883" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="whiteLabelColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

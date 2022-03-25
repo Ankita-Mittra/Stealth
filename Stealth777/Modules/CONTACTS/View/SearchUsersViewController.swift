@@ -18,59 +18,53 @@ class SearchUsersViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Initial Setup
         self.initialUISetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.setNavigationBarHidden(false, animated: false)
 
-        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.setToolbarHidden(true, animated: true)
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        self.setSmallHeaderAndHideLargeHeader(header: "Search Friends")
 
         self.navigationItem.largeTitleDisplayMode = .never
-
-//        self.navigationItem.titleView = setTitle(title: "Username", subtitle: "status")
-        
-//        self.navigationController?.navigationBar.backItem?.title = "Back"
-        self.setSmallHeaderAndHideLargeHeader(header: "Search")
-
     }
-    
     
     
     // MARK: - Methods
 
     func initialUISetup(){
-        self.searchedUsersListTableView.register(ContactsListTableViewCell.nib(), forCellReuseIdentifier: ContactsListTableViewCell.identifier)
+        self.searchedUsersListTableView.register(GroupRequestsTableViewCell.nib(), forCellReuseIdentifier: GroupRequestsTableViewCell.identifier)
     }
-
 
 }
 
 
 extension SearchUsersViewController: UITableViewDelegate, UITableViewDataSource {
 
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
-}
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 68
     }
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = UITableViewCell()
-    
-    guard  let userCell = self.searchedUsersListTableView.dequeueReusableCell(withIdentifier: ContactsListTableViewCell.identifier , for: indexPath) as? ContactsListTableViewCell else {
-        return cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        guard  let userCell = self.searchedUsersListTableView.dequeueReusableCell(withIdentifier: GroupRequestsTableViewCell.identifier , for: indexPath) as? GroupRequestsTableViewCell else {
+            return cell
+        }
+        userCell.sendRequest.isHidden = false
+        
+        return userCell
     }
-    
-    return userCell
-}
 
 }
 

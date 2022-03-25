@@ -25,14 +25,12 @@ class ContactsViewController: BaseViewController {
         self.initialUISetup()
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
 
@@ -55,10 +53,8 @@ class ContactsViewController: BaseViewController {
 //    }
 //
     @objc func addTapped(){
-        print("Add tapped")
-        
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
-        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.allGroups.rawValue) as? AllGroupsViewController
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.searchUsers.rawValue) as? SearchUsersViewController
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
 //
@@ -90,8 +86,6 @@ class ContactsViewController: BaseViewController {
         self.contactsListTableView.rowHeight = UITableView.automaticDimension
         self.contactsListTableView.estimatedRowHeight = 100
     }
-    
-    
 
 }
 
@@ -152,9 +146,8 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.backgroundColor = UIColor.systemGray4
         let label = UILabel()
         label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
-        label.textColor = UIColor.lightGray
+        label.textColor = UIColor(named: "subHeadingColor")
         label.font = .systemFont(ofSize: 16)
-        label.textColor = .darkGray
         headerView.addSubview(label)
         
         if section == 0{
@@ -198,13 +191,16 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0{
-            let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
-            let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.requests.rawValue) as? RequestsViewController
-            self.navigationController?.pushViewController(otherController!, animated: true)
-        }else{
-            let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
-            let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.allGroups.rawValue) as? AllGroupsViewController
-            self.navigationController?.pushViewController(otherController!, animated: true)
+            
+            if indexPath.row == 0{
+                let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
+                let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.requests.rawValue) as? RequestsViewController
+                self.navigationController?.pushViewController(otherController!, animated: true)
+            }else{
+                let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
+                let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.allGroups.rawValue) as? AllGroupsViewController
+                self.navigationController?.pushViewController(otherController!, animated: true)
+            }
         }
     }
 

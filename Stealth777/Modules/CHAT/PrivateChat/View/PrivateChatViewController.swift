@@ -43,9 +43,7 @@ class PrivateChatViewController: BaseViewController {
         self.setSmallHeaderAndHideLargeHeader(header: "private chat")
 
     }
-    
 
-    
     
 //    override func viewWillDisappear(_ animated: Bool) {
 //        super.viewWillDisappear(animated)

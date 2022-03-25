@@ -24,27 +24,28 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HE6-U7-7nU" customClass="UIViewCustomClass" customModule="Stealth777" customModuleProvider="target">
-                        <rect key="frame" x="8" y="5" width="346.5" height="103"/>
+                        <rect key="frame" x="8" y="5" width="323" height="103"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grayTailIcon" translatesAutoresizingMaskIntoConstraints="NO" id="VWu-LF-Vt6">
                                 <rect key="frame" x="-5" y="83" width="18" height="20.5"/>
+                                <color key="tintColor" name="chatBubbleColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20.5" id="6py-xc-8gF"/>
                                     <constraint firstAttribute="width" constant="18" id="bcR-FW-y7M"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="That's a lovely spot! You made a fantastic decision. I'm really excited to go on vacation!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHE-oB-j20" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="13" y="6" width="320.5" height="79"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                <color key="textColor" name="subHeadingColor"/>
+                                <rect key="frame" x="13" y="6" width="297" height="79"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <color key="textColor" name="chatMsgColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yst-kE-IrV">
-                                <rect key="frame" x="299" y="87" width="34.5" height="10"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yst-kE-IrV" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="263" y="87" width="47" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="e7H-T6-iYg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="8"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                                 <color key="textColor" name="chatTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -67,6 +68,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="HE6-U7-7nU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="TAy-57-PVN"/>
                     <constraint firstAttribute="bottom" secondItem="HE6-U7-7nU" secondAttribute="bottom" constant="5" id="bym-IP-xVO"/>
@@ -75,12 +77,21 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="msgBodyLbl" destination="bHE-oB-j20" id="keC-lc-UJm"/>
+                <outlet property="msgTailImgView" destination="VWu-LF-Vt6" id="EsZ-Rt-ZXp"/>
+                <outlet property="msgTimelbl" destination="yst-kE-IrV" id="Ucy-fK-ati"/>
+            </connections>
             <point key="canvasLocation" x="205.07246376811597" y="100.11160714285714"/>
         </tableViewCell>
     </objects>
     <designables>
         <designable name="bHE-oB-j20">
-            <size key="intrinsicContentSize" width="538" height="16.5"/>
+            <size key="intrinsicContentSize" width="576.5" height="18"/>
+        </designable>
+        <designable name="yst-kE-IrV">
+            <size key="intrinsicContentSize" width="47" height="13"/>
         </designable>
     </designables>
     <resources>
@@ -88,11 +99,11 @@
         <namedColor name="chatBubbleColor">
             <color red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="chatTextColor">
+        <namedColor name="chatMsgColor">
             <color red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="subHeadingColor">
-            <color red="0.43529411764705883" green="0.43529411764705883" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="chatTextColor">
+            <color red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

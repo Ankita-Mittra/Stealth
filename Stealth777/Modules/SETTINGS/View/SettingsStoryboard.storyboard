@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -19,7 +19,7 @@
         <scene sceneID="Bs3-SZ-yhK">
             <objects>
                 <viewController storyboardIdentifier="GeneralSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="W80-d8-bE8" customClass="GeneralSettingsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Wec-63-RQE">
+                    <view key="view" contentMode="scaleToFill" id="Wec-63-RQE" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -34,15 +34,9 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UW8-gZ-N98">
                                 <rect key="frame" x="0.0" y="634" width="414" height="262"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytF-0w-u2a">
-                                        <rect key="frame" x="0.0" y="46" width="414" height="216"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="W80-d8-bE8" id="auf-te-4sA"/>
-                                        </connections>
-                                    </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2U-PY-zUt" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="361" y="5" width="33" height="29"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                        <rect key="frame" x="356" y="5" width="38" height="31"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Done">
                                             <color key="titleColor" name="SecondaryThemeColor"/>
@@ -52,11 +46,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddV-1L-gbm" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="5" width="43" height="40"/>
+                                        <rect key="frame" x="20" y="5" width="50" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="KcN-7O-SNr"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" name="subHeadingColor"/>
@@ -74,6 +68,12 @@
                                         <color key="textColor" name="SeperatorColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytF-0w-u2a">
+                                        <rect key="frame" x="0.0" y="46" width="414" height="216"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="W80-d8-bE8" id="auf-te-4sA"/>
+                                        </connections>
+                                    </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -102,6 +102,14 @@
                             <constraint firstItem="yxd-hA-5Rx" firstAttribute="trailing" secondItem="7OF-62-eGJ" secondAttribute="trailing" constant="30" id="kqM-I6-ElN"/>
                             <constraint firstItem="7OF-62-eGJ" firstAttribute="top" secondItem="yxd-hA-5Rx" secondAttribute="top" constant="30" id="tRc-TR-YQs"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="pickerBgView" destination="UW8-gZ-N98" id="sfr-04-xtZ"/>
@@ -117,7 +125,7 @@
         <scene sceneID="OIy-dm-azo">
             <objects>
                 <viewController storyboardIdentifier="AccountSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4f5-M9-CLS" customClass="AccountSettingsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="51j-P4-82i">
+                    <view key="view" contentMode="scaleToFill" id="51j-P4-82i" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -138,6 +146,14 @@
                             <constraint firstItem="Tc6-nK-hOs" firstAttribute="top" secondItem="sfy-CI-gGb" secondAttribute="top" constant="30" id="gZX-Pq-RHG"/>
                             <constraint firstItem="sfy-CI-gGb" firstAttribute="bottom" secondItem="Tc6-nK-hOs" secondAttribute="bottom" id="sol-6j-9Id"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="settingsListTableView" destination="Tc6-nK-hOs" id="4Nm-kI-sbT"/>
@@ -151,7 +167,7 @@
         <scene sceneID="dbK-Ac-DZx">
             <objects>
                 <viewController storyboardIdentifier="SecuritySettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sRf-Nl-1iO" customClass="SecuritySettingsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qhn-HC-JZ2">
+                    <view key="view" contentMode="scaleToFill" id="qhn-HC-JZ2" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -172,6 +188,14 @@
                             <constraint firstItem="hPK-3R-EhS" firstAttribute="top" secondItem="qDU-9p-GLM" secondAttribute="top" constant="30" id="Jzo-I2-FNV"/>
                             <constraint firstItem="hPK-3R-EhS" firstAttribute="leading" secondItem="qDU-9p-GLM" secondAttribute="leading" constant="30" id="mbU-jC-XMK"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="settingsListTableView" destination="hPK-3R-EhS" id="v0Y-PG-gLK"/>
@@ -184,7 +208,10 @@
     </scenes>
     <designables>
         <designable name="ddV-1L-gbm">
-            <size key="intrinsicContentSize" width="43" height="29"/>
+            <size key="intrinsicContentSize" width="50" height="31"/>
+        </designable>
+        <designable name="e2U-PY-zUt">
+            <size key="intrinsicContentSize" width="38" height="31"/>
         </designable>
     </designables>
     <resources>
@@ -199,6 +226,9 @@
         </namedColor>
         <namedColor name="subHeadingColor">
             <color red="0.43529411764705883" green="0.43529411764705883" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBgGradientColor">
+            <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

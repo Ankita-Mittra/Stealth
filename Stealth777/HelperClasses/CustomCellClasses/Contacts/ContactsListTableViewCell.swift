@@ -14,7 +14,8 @@ class ContactsListTableViewCell: UITableViewCell {
     @IBOutlet weak var forwardIconImgView: UIImageView!
     @IBOutlet weak var usernameLbl: UILabelCustomClass!
     @IBOutlet weak var selectUserBtn: UIButton!
-    
+    @IBOutlet weak var userStatusLbl: UILabel!
+
     static let identifier = "ContactsListTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "ContactsListTableViewCell", bundle: nil)

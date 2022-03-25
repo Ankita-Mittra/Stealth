@@ -13,21 +13,8 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        navigationController?.navigationBar.isTranslucent = true
-        
-//        navigationController?.navigationBar.backgroundColor = UIColor(displayP3Red: 243, green: 243, blue: 243, alpha: 1)
-        
-//        navigationController?.navigationBar.barTintColor = .
-        
-        
-        //        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.orange]
-        //        navigationController?.navigationItem.leftBarButtonItem?.tintColor = .orange
-        //
-        //
-        
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.prefersLargeTitles = false
-            
     }
     
 

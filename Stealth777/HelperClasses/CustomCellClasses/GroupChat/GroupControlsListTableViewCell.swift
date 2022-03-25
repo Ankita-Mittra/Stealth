@@ -1,18 +1,19 @@
 //
-//  GroupChatReceiverTableViewCell.swift
+//  GroupControlsListTableViewCell.swift
 //  Stealth777
 //
-//  Created by Fareed Alzoorani on 04/03/2022.
+//  Created by Fareed Alzoorani on 25/03/2022.
 //
 
 import UIKit
 
-class GroupChatReceiverTableViewCell: UITableViewCell {
+class GroupControlsListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleBtn: UIButton!
 
-    static let identifier = "PrivateChatReceiverTableViewCell"
+    static let identifier = "GroupControlsListTableViewCell"
     static func nib() -> UINib{
-        return UINib(nibName: "PrivateChatReceiverTableViewCell", bundle: nil)
+        return UINib(nibName: "GroupControlsListTableViewCell", bundle: nil)
     }
     
     override func awakeFromNib() {
@@ -25,6 +26,5 @@ class GroupChatReceiverTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
     
 }

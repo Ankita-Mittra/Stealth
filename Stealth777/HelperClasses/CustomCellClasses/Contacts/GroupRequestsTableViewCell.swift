@@ -10,6 +10,8 @@ import UIKit
 class GroupRequestsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var sendMessage: UIButton!
+    @IBOutlet weak var sendRequest: UIButton!
+
     @IBOutlet weak var handleRequestView: UIView!
     @IBOutlet weak var acceptLbl: UILabel!
     @IBOutlet weak var rejectLbl: UILabel!

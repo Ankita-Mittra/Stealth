@@ -18,6 +18,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         self.navigateToRightScreen()
+
+        let enabledMode = userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) as? String
+        
+        switch enabledMode {
+        case "light":
+            appDelegate.window?.overrideUserInterfaceStyle = .light
+            userDefault.set("light" , forKey: USER_DEFAULT_isDarkMode_Key)
+        default:
+            appDelegate.window?.overrideUserInterfaceStyle = .dark
+            userDefault.set("dark" , forKey: USER_DEFAULT_isDarkMode_Key)
+        }
+//
+//        if userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) == nil{
+//
+//        }
+//        if let isDarkModeEnabled = userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key){
+//            userDefault.set(true , forKey: USER_DEFAULT_isDarkMode_Key)
+//
+//            appDelegate.window?.overrideUserInterfaceStyle = .dark
+//        }else{
+//            userDefault.set(true , forKey: USER_DEFAULT_isDarkMode_Key)
+//
+//            appDelegate.window?.overrideUserInterfaceStyle = .dark
+//        }
+//
         return true
     }
     

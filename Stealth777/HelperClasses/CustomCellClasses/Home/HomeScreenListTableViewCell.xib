@@ -27,10 +27,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMI-lH-GOy">
-                        <rect key="frame" x="0.0" y="0.0" width="451" height="1"/>
+                        <rect key="frame" x="0.0" y="85.5" width="451" height="0.5"/>
                         <color key="backgroundColor" name="SeperatorColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="G0O-ME-AQy"/>
+                            <constraint firstAttribute="height" constant="0.5" id="G0O-ME-AQy"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -46,35 +46,36 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="round" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9M-W6-2Px">
-                        <rect key="frame" x="58" y="22" width="62" height="16.5"/>
-                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9M-W6-2Px" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="58" y="22" width="71.5" height="19"/>
+                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                        <color key="textColor" name="blackLabelColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, How are you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0i2-KX-PHd">
-                        <rect key="frame" x="58" y="46" width="83.5" height="14"/>
-                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, How are you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0i2-KX-PHd" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="58" y="48.5" width="97" height="16.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                         <color key="textColor" name="subHeadingColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:13 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psl-d3-IQp">
-                        <rect key="frame" x="381" y="21.5" width="51" height="14"/>
-                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:13 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psl-d3-IQp" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="376.5" y="21" width="55.5" height="15.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                         <color key="textColor" name="dateTimetextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="garyForwardIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Lwr-6b-SDo">
                         <rect key="frame" x="442" y="22" width="8" height="13"/>
+                        <color key="tintColor" name="darkSubHeadingColor"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xi8-an-2oD" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                        <rect key="frame" x="432" y="43.5" width="18" height="18"/>
+                        <rect key="frame" x="432" y="44.5" width="18" height="18"/>
                         <color key="backgroundColor" name="SecondaryThemeColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="HE2-ad-vEa"/>
                             <constraint firstAttribute="width" secondItem="xi8-an-2oD" secondAttribute="height" multiplier="1:1" id="Ifw-0Z-nK0"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
+                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -88,15 +89,17 @@
                 <constraints>
                     <constraint firstItem="S9M-W6-2Px" firstAttribute="leading" secondItem="Weq-aO-6AT" secondAttribute="trailing" constant="9" id="2B4-eP-eRX"/>
                     <constraint firstItem="Lwr-6b-SDo" firstAttribute="leading" secondItem="Psl-d3-IQp" secondAttribute="trailing" constant="10" id="AHc-bG-sdP"/>
+                    <constraint firstItem="zMI-lH-GOy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Aa4-PN-hT4"/>
+                    <constraint firstAttribute="trailing" secondItem="zMI-lH-GOy" secondAttribute="trailing" id="DKe-Ri-e1N"/>
                     <constraint firstItem="Weq-aO-6AT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EtU-DF-qhf"/>
                     <constraint firstAttribute="trailing" secondItem="zMI-lH-GOy" secondAttribute="trailing" id="F6B-uq-c30"/>
                     <constraint firstItem="Lwr-6b-SDo" firstAttribute="top" secondItem="S9M-W6-2Px" secondAttribute="top" id="J3N-ri-KNk"/>
                     <constraint firstItem="S9M-W6-2Px" firstAttribute="top" secondItem="Weq-aO-6AT" secondAttribute="top" constant="3" id="Lzc-74-Xrv"/>
                     <constraint firstAttribute="trailing" secondItem="Lwr-6b-SDo" secondAttribute="trailing" constant="1" id="W1S-8b-nPt"/>
                     <constraint firstItem="0i2-KX-PHd" firstAttribute="leading" secondItem="S9M-W6-2Px" secondAttribute="leading" id="ZYS-cZ-tbb"/>
+                    <constraint firstAttribute="bottom" secondItem="zMI-lH-GOy" secondAttribute="bottom" id="mY4-Lj-hTt"/>
                     <constraint firstItem="zMI-lH-GOy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mf9-01-KP0"/>
                     <constraint firstItem="xi8-an-2oD" firstAttribute="top" secondItem="Psl-d3-IQp" secondAttribute="bottom" constant="8" id="ngy-IV-Ybi"/>
-                    <constraint firstItem="zMI-lH-GOy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tBU-In-KbL"/>
                     <constraint firstItem="xi8-an-2oD" firstAttribute="trailing" secondItem="Lwr-6b-SDo" secondAttribute="trailing" id="tct-OO-9m0"/>
                     <constraint firstItem="Weq-aO-6AT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="vAk-b7-9SK"/>
                     <constraint firstItem="Psl-d3-IQp" firstAttribute="centerY" secondItem="Lwr-6b-SDo" secondAttribute="centerY" id="wQ0-tI-gra"/>
@@ -105,15 +108,32 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="chatUserImgView" destination="Weq-aO-6AT" id="FBs-1K-pHh"/>
+                <outlet property="chatUsernameLbl" destination="S9M-W6-2Px" id="R6i-i0-ca5"/>
+                <outlet property="forwardImgView" destination="Lwr-6b-SDo" id="i8z-jk-nYH"/>
+                <outlet property="messageTimeLbl" destination="Psl-d3-IQp" id="LjG-o0-QMp"/>
+                <outlet property="unreadMessageCountLbl" destination="xi8-an-2oD" id="nd4-dK-02q"/>
+                <outlet property="userMessageLbl" destination="0i2-KX-PHd" id="LkU-BE-xsb"/>
+            </connections>
             <point key="canvasLocation" x="232.60869565217394" y="168.08035714285714"/>
         </tableViewCell>
     </objects>
     <designables>
+        <designable name="0i2-KX-PHd">
+            <size key="intrinsicContentSize" width="97" height="16.5"/>
+        </designable>
+        <designable name="Psl-d3-IQp">
+            <size key="intrinsicContentSize" width="55.5" height="15.5"/>
+        </designable>
+        <designable name="S9M-W6-2Px">
+            <size key="intrinsicContentSize" width="71.5" height="19"/>
+        </designable>
         <designable name="Weq-aO-6AT">
             <size key="intrinsicContentSize" width="124" height="124"/>
         </designable>
         <designable name="xi8-an-2oD">
-            <size key="intrinsicContentSize" width="6" height="12"/>
+            <size key="intrinsicContentSize" width="6.5" height="13"/>
         </designable>
     </designables>
     <resources>
@@ -124,6 +144,12 @@
         </namedColor>
         <namedColor name="SeperatorColor">
             <color red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="blackLabelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="darkSubHeadingColor">
+            <color red="0.25490196078431371" green="0.25098039215686274" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="dateTimetextColor">
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

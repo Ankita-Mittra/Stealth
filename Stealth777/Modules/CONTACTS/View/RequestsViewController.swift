@@ -7,12 +7,12 @@
 
 import UIKit
 
-class RequestsViewController: UIViewController {
+class RequestsViewController: BaseViewController {
 
     // MARK: - Properties & Delegates
 
     @IBOutlet weak var requestsListTableView: UITableView!
-
+    @IBOutlet weak var segmentedBar: UISegmentedControl!
     
     // MARK: - View life cycle
     
@@ -24,16 +24,39 @@ class RequestsViewController: UIViewController {
         self.initialUISetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.setToolbarHidden(true, animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.setSmallHeaderAndHideLargeHeader(header: "Requests")
+
+        self.navigationItem.largeTitleDisplayMode = .never
+    }
+    
     // MARK: - Methods
 
     func initialUISetup(){
-        title = "Requests"
         self.requestsListTableView.register(GroupRequestsTableViewCell.nib(), forCellReuseIdentifier: GroupRequestsTableViewCell.identifier)
+        
+        segmentedBar.setTitle("Friend Requests", forSegmentAt: 0)
+        segmentedBar.setTitle("Group Requests", forSegmentAt: 1)
+    }
+    
+    @IBAction func segmentedBarAction(_ sender: UISegmentedControl) {
+        
+//        switch sender.selectedSegmentIndex {
+//        case 0:
+//        default:
+//        }
+        
     }
 
+    
 }
-
-
 
 extension RequestsViewController: UITableViewDelegate, UITableViewDataSource {
 

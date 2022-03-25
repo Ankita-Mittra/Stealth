@@ -14,10 +14,34 @@
       "filename" : "chevron.left@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
+    },
+    {
+      "filename" : "chevron.left-1.png",
+      "idiom" : "universal",
+      "locale" : "ar",
+      "scale" : "1x",
+      "unassigned" : true
+    },
+    {
+      "filename" : "chevron.left@2x-1.png",
+      "idiom" : "universal",
+      "locale" : "ar",
+      "scale" : "2x",
+      "unassigned" : true
+    },
+    {
+      "filename" : "chevron.left@3x-1.png",
+      "idiom" : "universal",
+      "locale" : "ar",
+      "scale" : "3x",
+      "unassigned" : true
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
   }
 }

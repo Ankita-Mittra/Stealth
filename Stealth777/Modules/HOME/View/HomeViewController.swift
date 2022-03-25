@@ -9,13 +9,10 @@ import UIKit
 
 class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
     // MARK: - Properties & Delegates
 
     @IBOutlet weak var allChatsTableview: UITableView!
     @IBOutlet weak var topMenuView: UIView!
-
-    // 78
 
     // MARK: - View life cycle
 
@@ -88,9 +85,16 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func createNewContact(){
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.searchUsers.rawValue) as? SearchUsersViewController
+        self.navigationController?.pushViewController(otherController!, animated: true)
         
+//        let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
+//        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.allContactsList.rawValue) as? AllContactsListViewController
+//        otherController?.isCreateGroup = false
+//        self.navigationController?.pushViewController(otherController!, animated: true)
     }
-    
+        
 //    override func viewWillDisappear(_ animated: Bool) {
 //       super.viewWillDisappear(animated)
 //       navigationController?.navigationBar.prefersLargeTitles = false
@@ -128,7 +132,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.allContactsList.rawValue) as? AllContactsListViewController
-        
+        otherController?.isCreateGroup = false
         self.navigationController?.pushViewController(otherController!, animated: true)
 
     }

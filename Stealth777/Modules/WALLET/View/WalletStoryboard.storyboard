@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -22,7 +21,7 @@
         <scene sceneID="ERd-ph-OhS">
             <objects>
                 <viewController storyboardIdentifier="SendFundsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pJ5-x3-euZ" customClass="SendFundsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="D9H-bz-rAM">
+                    <view key="view" contentMode="scaleToFill" id="D9H-bz-rAM" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -37,8 +36,8 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxd-HY-Z5f" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="65" y="20.666666666666657" width="73" height="19"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <rect key="frame" x="65" y="20" width="76.666666666666686" height="20"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <color key="textColor" name="textFieldColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -49,7 +48,7 @@
                                         <rect key="frame" x="24" y="19" width="22" height="22"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="CustomViewBgColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="STt-iN-DuF" secondAttribute="trailing" constant="22" id="2qA-vM-YjK"/>
                                     <constraint firstItem="Xk3-gv-HPy" firstAttribute="centerY" secondItem="zBS-XH-s4m" secondAttribute="centerY" id="3ry-bG-d3c"/>
@@ -78,10 +77,10 @@
                                 <rect key="frame" x="90" y="216" width="308" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KrQ-sc-ySW" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="120.33333333333333" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="textFieldColor"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -126,10 +125,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p60-Wq-89J" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="113.33333333333333" y="486.66666666666669" width="201.33333333333337" height="54.666666666666686"/>
                                 <color key="backgroundColor" name="PrimaryThemeColor"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Next">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                    <color key="titleColor" name="whiteLabelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -169,6 +168,14 @@
                             <constraint firstItem="c8b-gH-5lq" firstAttribute="leading" secondItem="wgm-kF-Ock" secondAttribute="leading" id="fd6-T8-fIm"/>
                             <constraint firstItem="Z8c-a1-aeT" firstAttribute="height" secondItem="OTA-9h-iTV" secondAttribute="height" id="lmv-Jb-dK9"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXd-VK-8Ga" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -179,7 +186,7 @@
         <scene sceneID="2Kl-ch-QTp">
             <objects>
                 <viewController storyboardIdentifier="TransferAmountViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vft-Ep-Kep" customClass="TransferAmountViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ls9-Bj-uuh">
+                    <view key="view" contentMode="scaleToFill" id="Ls9-Bj-uuh" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -197,8 +204,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9b5-zC-HFx" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="65" y="20.666666666666657" width="80.666666666666686" height="19"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <rect key="frame" x="65" y="20" width="85.666666666666686" height="20"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <color key="textColor" name="textFieldColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -206,7 +213,7 @@
                                         <rect key="frame" x="337.66666666666669" y="22.666666666666657" width="8.3333333333333144" height="14.666666666666664"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="CustomViewBgColor"/>
                                 <constraints>
                                     <constraint firstItem="9b5-zC-HFx" firstAttribute="centerY" secondItem="EG6-LL-crE" secondAttribute="centerY" id="1yL-uS-v5s"/>
                                     <constraint firstItem="EG6-LL-crE" firstAttribute="leading" secondItem="3UU-Ya-etg" secondAttribute="leading" constant="15" id="8KO-J8-zYB"/>
@@ -227,10 +234,10 @@
                                 <rect key="frame" x="30" y="216" width="368" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hHW-Pu-qEA" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="textFieldColor"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -249,8 +256,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEG-Wg-d9U" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="306" y="14.666666666666657" width="62" height="31"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <rect key="frame" x="298" y="14" width="70" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="RrA-zS-S0Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Use Max">
                                             <color key="titleColor" name="SecondaryThemeColor"/>
@@ -259,6 +269,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="cEG-Wg-d9U" firstAttribute="leading" secondItem="hHW-Pu-qEA" secondAttribute="trailing" constant="10" id="5hW-as-CnN"/>
                                     <constraint firstAttribute="bottom" secondItem="d3C-X0-1ny" secondAttribute="bottom" id="618-n5-vzH"/>
                                     <constraint firstItem="hHW-Pu-qEA" firstAttribute="leading" secondItem="fLP-zp-jj0" secondAttribute="leading" id="ed5-W0-upY"/>
                                     <constraint firstItem="cEG-Wg-d9U" firstAttribute="centerY" secondItem="fLP-zp-jj0" secondAttribute="centerY" id="i9P-LX-R5w"/>
@@ -272,10 +283,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhC-SY-XgV" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="113.33333333333333" y="486.66666666666669" width="201.33333333333337" height="54.666666666666686"/>
                                 <color key="backgroundColor" name="PrimaryThemeColor"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Next">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                    <color key="titleColor" name="whiteLabelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -311,6 +322,14 @@
                             <constraint firstItem="3UU-Ya-etg" firstAttribute="top" secondItem="3d6-eA-bIe" secondAttribute="top" constant="65" id="vBt-Ai-ufI"/>
                             <constraint firstItem="3d6-eA-bIe" firstAttribute="trailing" secondItem="3UU-Ya-etg" secondAttribute="trailing" constant="30" id="yBR-xd-pJG"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kKC-Es-A19" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -321,7 +340,7 @@
         <scene sceneID="tvV-Di-OS3">
             <objects>
                 <viewController storyboardIdentifier="SendingAmountViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4yA-lf-DyQ" customClass="SendingAmountViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="p1R-7F-miw">
+                    <view key="view" contentMode="scaleToFill" id="p1R-7F-miw" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -336,8 +355,8 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7d-ef-KfY" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="65" y="20.666666666666657" width="73" height="19"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <rect key="frame" x="65" y="20" width="76.666666666666686" height="20"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <color key="textColor" name="textFieldColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -348,7 +367,7 @@
                                         <rect key="frame" x="24" y="19" width="22" height="22"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="CustomViewBgColor"/>
                                 <constraints>
                                     <constraint firstItem="2Pq-wi-hNR" firstAttribute="centerX" secondItem="hUv-hB-gUh" secondAttribute="centerX" id="2wT-Kz-iQQ"/>
                                     <constraint firstAttribute="bottom" secondItem="hUv-hB-gUh" secondAttribute="bottom" constant="10" id="65m-D6-Eso"/>
@@ -377,10 +396,10 @@
                                 <rect key="frame" x="90" y="216" width="308" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PWa-Em-s9g" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="120.33333333333333" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="265" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="textFieldColor"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -399,7 +418,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeb-tF-vDL" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="279" y="15" width="28" height="30"/>
+                                        <rect key="frame" x="275" y="15" width="32" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="jnL-pi-Bsi"/>
+                                        </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="QRIcon"/>
                                     </button>
@@ -409,6 +431,7 @@
                                     <constraint firstAttribute="trailing" secondItem="TRo-2F-Phb" secondAttribute="trailing" id="99Y-fb-Z4s"/>
                                     <constraint firstItem="qeb-tF-vDL" firstAttribute="centerY" secondItem="Dbm-fM-AUh" secondAttribute="centerY" id="G6u-G1-xAz"/>
                                     <constraint firstItem="TRo-2F-Phb" firstAttribute="leading" secondItem="Dbm-fM-AUh" secondAttribute="leading" id="MZZ-eU-nx6"/>
+                                    <constraint firstItem="qeb-tF-vDL" firstAttribute="leading" secondItem="PWa-Em-s9g" secondAttribute="trailing" constant="10" id="NSo-iC-JX7"/>
                                     <constraint firstAttribute="bottom" secondItem="PWa-Em-s9g" secondAttribute="bottom" id="mEf-Sd-kjf"/>
                                     <constraint firstAttribute="bottom" secondItem="TRo-2F-Phb" secondAttribute="bottom" id="nKJ-7O-kSo"/>
                                     <constraint firstItem="PWa-Em-s9g" firstAttribute="leading" secondItem="Dbm-fM-AUh" secondAttribute="leading" id="xR5-ZU-ykc"/>
@@ -425,10 +448,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYp-0q-Wgk" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="113.33333333333333" y="562" width="201.33333333333337" height="54.666666666666629"/>
                                 <color key="backgroundColor" name="PrimaryThemeColor"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Next">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                    <color key="titleColor" name="whiteLabelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -436,12 +459,6 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                         <color key="value" name="encyptionNoteBgColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="0.0" height="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -462,8 +479,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Snb-5c-W9f" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="65" y="20.666666666666686" width="80.666666666666686" height="19"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <rect key="frame" x="65" y="20" width="85.666666666666686" height="20"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <color key="textColor" name="textFieldColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -471,7 +488,7 @@
                                         <rect key="frame" x="337.66666666666669" y="22.666666666666686" width="8.3333333333333144" height="14.666666666666664"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="CustomViewBgColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Hbb-X2-0TB" secondAttribute="trailing" constant="22" id="60L-sS-suB"/>
                                     <constraint firstItem="Snb-5c-W9f" firstAttribute="leading" secondItem="SfV-qE-ciY" secondAttribute="trailing" constant="10" id="Ams-yB-B9N"/>
@@ -488,26 +505,26 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transferring Amount :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8Y-J8-QdG" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="30" y="406" width="135.33333333333334" height="16.666666666666686"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <rect key="frame" x="30" y="406" width="145" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                 <color key="textColor" name="darkSubHeadingColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gas Fee :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajI-qC-kYb" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="30.000000000000004" y="427.66666666666669" width="57.333333333333343" height="16.666666666666686"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <rect key="frame" x="30.000000000000004" y="427.66666666666669" width="61.333333333333343" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                 <color key="textColor" name="darkSubHeadingColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1099.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9d-yO-2F1" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="354" y="406" width="44" height="16.666666666666686"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                <rect key="frame" x="351" y="406" width="47" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                 <color key="textColor" name="darkSubHeadingColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2J2-bj-1jQ" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="378" y="427.66666666666669" width="20" height="16.666666666666686"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                <rect key="frame" x="376.66666666666669" y="427.66666666666669" width="21.333333333333314" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                 <color key="textColor" name="darkSubHeadingColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -522,14 +539,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gas Fee : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJf-LW-HV8" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="29.999999999999996" y="485.33333333333331" width="60.666666666666657" height="16.666666666666686"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <rect key="frame" x="30" y="485.33333333333331" width="65" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                 <color key="textColor" name="darkSubHeadingColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMv-o0-4w6" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="378" y="485.33333333333331" width="20" height="16.666666666666686"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                <rect key="frame" x="376.66666666666669" y="485.33333333333331" width="21.333333333333314" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                 <color key="textColor" name="darkSubHeadingColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -572,6 +589,14 @@
                             <constraint firstItem="Dbm-fM-AUh" firstAttribute="leading" secondItem="pdV-R7-iN4" secondAttribute="leading" id="yZl-6G-yMB"/>
                             <constraint firstItem="zTo-Vj-1p2" firstAttribute="trailing" secondItem="pdV-R7-iN4" secondAttribute="trailing" id="zR6-kd-VtE"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4G-uQ-4XW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -582,17 +607,17 @@
         <scene sceneID="xOh-5J-ngO">
             <objects>
                 <viewController storyboardIdentifier="WalletListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y5n-Lf-bWs" customClass="WalletListViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lLP-ve-LVg">
+                    <view key="view" contentMode="scaleToFill" id="lLP-ve-LVg" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huo-1g-v2e" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="113.33333333333333" y="365.33333333333331" width="201.33333333333337" height="51.666666666666686"/>
                                 <color key="backgroundColor" name="SecondaryThemeColor"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title=" Create New Wallet " image="createWalletIcon">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                    <color key="titleColor" name="whiteLabelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -611,10 +636,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhL-yE-FXO" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="113.33333333333333" y="437" width="201.33333333333337" height="52"/>
                                 <color key="backgroundColor" name="PrimaryThemeColor"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="    Import Wallet" image="importWalletIcon">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                    <color key="titleColor" name="whiteLabelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -622,12 +647,6 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                         <color key="value" name="encyptionNoteBgColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="0.0" height="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -651,6 +670,14 @@
                             <constraint firstItem="bhL-yE-FXO" firstAttribute="centerY" secondItem="lLP-ve-LVg" secondAttribute="centerY" id="pOU-qf-iZC"/>
                             <constraint firstItem="bhL-yE-FXO" firstAttribute="height" secondItem="huo-1g-v2e" secondAttribute="height" id="xMx-RE-KbE"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="walletListTableView" destination="uU1-qK-8qC" id="4j9-X7-WT1"/>
@@ -664,7 +691,7 @@
         <scene sceneID="fIO-zh-lzJ">
             <objects>
                 <viewController storyboardIdentifier="ImportNewWalletViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BXI-DE-1u5" customClass="ImportNewWalletViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uZo-ML-dLc">
+                    <view key="view" contentMode="scaleToFill" id="uZo-ML-dLc" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -691,7 +718,7 @@
                                         <rect key="frame" x="337.66666666666669" y="22.666666666666657" width="8.3333333333333144" height="14.666666666666664"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="CustomViewBgColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="ZRM-4R-Sxt" secondAttribute="bottom" constant="10" id="0r5-Ud-zvR"/>
                                     <constraint firstAttribute="height" constant="60" id="Yfm-Hf-Jvr"/>
@@ -712,10 +739,10 @@
                                 <rect key="frame" x="30" y="216" width="368" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-UZ-gGF" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="298" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="textFieldColor"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -734,8 +761,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Go-l5-Ns7" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="306" y="14.666666666666657" width="62" height="31"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <rect key="frame" x="298" y="14" width="70" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="PEf-ST-x5w"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Use Max">
                                             <color key="titleColor" name="SecondaryThemeColor"/>
@@ -748,6 +778,7 @@
                                     <constraint firstItem="6vX-GS-Llz" firstAttribute="leading" secondItem="l0g-jX-Hud" secondAttribute="leading" id="IH3-VG-4Nl"/>
                                     <constraint firstItem="lcc-UZ-gGF" firstAttribute="leading" secondItem="l0g-jX-Hud" secondAttribute="leading" id="IWy-fe-xgj"/>
                                     <constraint firstItem="2Go-l5-Ns7" firstAttribute="centerY" secondItem="l0g-jX-Hud" secondAttribute="centerY" id="aCl-eR-Pcr"/>
+                                    <constraint firstItem="2Go-l5-Ns7" firstAttribute="leading" secondItem="lcc-UZ-gGF" secondAttribute="trailing" id="hxJ-i8-OAQ"/>
                                     <constraint firstAttribute="bottom" secondItem="lcc-UZ-gGF" secondAttribute="bottom" id="m1T-dK-Tj4"/>
                                     <constraint firstAttribute="trailing" secondItem="6vX-GS-Llz" secondAttribute="trailing" id="ofX-73-s5A"/>
                                     <constraint firstAttribute="trailing" secondItem="2Go-l5-Ns7" secondAttribute="trailing" id="qRe-eY-rjO"/>
@@ -757,10 +788,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0y-Ue-ohY" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="113.33333333333333" y="486.66666666666669" width="201.33333333333337" height="54.666666666666686"/>
                                 <color key="backgroundColor" name="PrimaryThemeColor"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Next">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                    <color key="titleColor" name="whiteLabelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -768,12 +799,6 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                         <color key="value" name="encyptionNoteBgColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="0.0" height="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
@@ -793,6 +818,14 @@
                             <constraint firstItem="s0y-Ue-ohY" firstAttribute="width" secondItem="uZo-ML-dLc" secondAttribute="width" multiplier="0.47" id="YnU-p2-tlP"/>
                             <constraint firstItem="l0g-jX-Hud" firstAttribute="height" secondItem="2Yv-qU-DHZ" secondAttribute="height" id="q29-Rd-QNB"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hvi-XL-O0z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -803,7 +836,7 @@
         <scene sceneID="UCU-LO-VzI">
             <objects>
                 <viewController storyboardIdentifier="TransactionsHistoryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0wQ-o2-ibb" customClass="TransactionsHistoryViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ve3-8G-dpr">
+                    <view key="view" contentMode="scaleToFill" id="Ve3-8G-dpr" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -832,6 +865,14 @@
                             <constraint firstItem="IrN-XK-JMb" firstAttribute="top" secondItem="BXI-pl-Noy" secondAttribute="bottom" constant="40" id="x3R-3I-X75"/>
                             <constraint firstItem="WCg-B5-YGy" firstAttribute="bottom" secondItem="IrN-XK-JMb" secondAttribute="bottom" id="zWl-8t-0ca"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="transactionsListTableView" destination="IrN-XK-JMb" id="SVt-Ny-TYH"/>
@@ -845,7 +886,7 @@
         <scene sceneID="5Dm-9r-sgP">
             <objects>
                 <viewController storyboardIdentifier="ImportTokenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gAb-wc-evV" customClass="ImportTokenViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cGt-fh-LTu">
+                    <view key="view" contentMode="scaleToFill" id="cGt-fh-LTu" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -856,7 +897,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HzH-oR-rLI" customClass="UIViewCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="30" y="98" width="368" height="107"/>
+                                <rect key="frame" x="30" y="98" width="368" height="112"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tokenInfoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="n9Y-Wm-WmU">
                                         <rect key="frame" x="16" y="18" width="20" height="20"/>
@@ -865,19 +906,12 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGI-Tq-np2" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="44" y="16" width="308" height="75"/>
+                                        <rect key="frame" x="44" y="16" width="308" height="80"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="Anyone can create a token, including  creating fake versions of existing tokens. Learn more about ">
+                                            <fragment content="Anyone can create a token, including  creating fake versions of existing tokens. Learn more about scams and security risk.">
                                                 <attributes>
                                                     <color key="NSColor" red="0.25490196078431371" green="0.25098039215686274" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="16" name="Roboto-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="scams and security risk.">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.25490196078431371" green="0.25098039215686274" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="16" name="Roboto-Medium"/>
+                                                    <font key="NSFont" size="17" name="Roboto-Medium"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -901,13 +935,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vzf-cp-jfu">
-                                <rect key="frame" x="30" y="265" width="368" height="60"/>
+                                <rect key="frame" x="30" y="270" width="368" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iqe-AW-vUK" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="368" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="textFieldColor"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -939,13 +973,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaV-QO-esk">
-                                <rect key="frame" x="30" y="355" width="368" height="60"/>
+                                <rect key="frame" x="30" y="360" width="368" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zJ-4S-bha" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="368" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="textFieldColor"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -977,13 +1011,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dzs-GY-jNe">
-                                <rect key="frame" x="30" y="445" width="368" height="60"/>
+                                <rect key="frame" x="30" y="450" width="368" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token of Precision" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KuI-DZ-aRU" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="368" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="textFieldColor"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -1015,12 +1049,12 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsL-dE-8cw" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="113.33333333333333" y="565" width="201.33333333333337" height="54.666666666666629"/>
+                                <rect key="frame" x="113.33333333333333" y="570" width="201.33333333333337" height="54.666666666666629"/>
                                 <color key="backgroundColor" name="PrimaryThemeColor"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Import">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                    <color key="titleColor" name="whiteLabelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1028,12 +1062,6 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                         <color key="value" name="encyptionNoteBgColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="0.0" height="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1064,6 +1092,14 @@
                             <constraint firstItem="TaV-QO-esk" firstAttribute="trailing" secondItem="Vzf-cp-jfu" secondAttribute="trailing" id="xxq-Z4-ycg"/>
                             <constraint firstItem="hsL-dE-8cw" firstAttribute="height" secondItem="cGt-fh-LTu" secondAttribute="height" multiplier="0.0590353" id="yRS-2V-PTi"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dT7-4M-25e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1074,7 +1110,7 @@
         <scene sceneID="h6T-0j-SmK">
             <objects>
                 <viewController storyboardIdentifier="ReceiveAmountViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yib-AZ-TRm" customClass="ReceiveAmountViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Gpz-xa-HVy">
+                    <view key="view" contentMode="scaleToFill" id="Gpz-xa-HVy" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1084,7 +1120,7 @@
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="04innx8394j9dj38ddm93jxjx">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                    <color key="titleColor" name="whiteLabelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1136,6 +1172,14 @@
                             <constraint firstItem="Smi-NQ-bs9" firstAttribute="width" secondItem="Gpz-xa-HVy" secondAttribute="width" multiplier="0.63785" id="mvD-W8-iu2"/>
                             <constraint firstItem="pLt-8O-X0d" firstAttribute="top" secondItem="Smi-NQ-bs9" secondAttribute="bottom" constant="20" id="uAx-gW-4IB"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9x-4z-DUx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1148,16 +1192,16 @@
             <size key="intrinsicContentSize" width="80.666666666666671" height="19"/>
         </designable>
         <designable name="2Go-l5-Ns7">
-            <size key="intrinsicContentSize" width="62" height="31"/>
+            <size key="intrinsicContentSize" width="66" height="32"/>
         </designable>
         <designable name="2J2-bj-1jQ">
-            <size key="intrinsicContentSize" width="20" height="16.666666666666668"/>
+            <size key="intrinsicContentSize" width="21.333333333333332" height="17.666666666666668"/>
         </designable>
         <designable name="4zJ-4S-bha">
-            <size key="intrinsicContentSize" width="106" height="20.666666666666668"/>
+            <size key="intrinsicContentSize" width="112.66666666666667" height="21.666666666666668"/>
         </designable>
         <designable name="9b5-zC-HFx">
-            <size key="intrinsicContentSize" width="80.666666666666671" height="19"/>
+            <size key="intrinsicContentSize" width="85.666666666666671" height="20"/>
         </designable>
         <designable name="AWl-jy-RRK">
             <size key="intrinsicContentSize" width="37.333333333333336" height="19"/>
@@ -1166,7 +1210,7 @@
             <size key="intrinsicContentSize" width="88.666666666666671" height="19"/>
         </designable>
         <designable name="C8Y-J8-QdG">
-            <size key="intrinsicContentSize" width="135.33333333333334" height="16.666666666666668"/>
+            <size key="intrinsicContentSize" width="145" height="17.666666666666668"/>
         </designable>
         <designable name="EG6-LL-crE">
             <size key="intrinsicContentSize" width="124" height="124"/>
@@ -1178,19 +1222,19 @@
             <size key="intrinsicContentSize" width="88.666666666666671" height="19"/>
         </designable>
         <designable name="KhC-SY-XgV">
-            <size key="intrinsicContentSize" width="34" height="31"/>
+            <size key="intrinsicContentSize" width="36" height="32"/>
         </designable>
         <designable name="KrQ-sc-ySW">
-            <size key="intrinsicContentSize" width="120.33333333333333" height="20.666666666666668"/>
+            <size key="intrinsicContentSize" width="128" height="21.666666666666668"/>
         </designable>
         <designable name="KuI-DZ-aRU">
-            <size key="intrinsicContentSize" width="132" height="20.666666666666668"/>
+            <size key="intrinsicContentSize" width="140.33333333333334" height="21.666666666666668"/>
         </designable>
         <designable name="NJf-LW-HV8">
-            <size key="intrinsicContentSize" width="60.666666666666664" height="16.666666666666668"/>
+            <size key="intrinsicContentSize" width="65" height="17.666666666666668"/>
         </designable>
         <designable name="PWa-Em-s9g">
-            <size key="intrinsicContentSize" width="120.33333333333333" height="20.666666666666668"/>
+            <size key="intrinsicContentSize" width="128" height="21.666666666666668"/>
         </designable>
         <designable name="SfV-qE-ciY">
             <size key="intrinsicContentSize" width="124" height="124"/>
@@ -1199,10 +1243,10 @@
             <size key="intrinsicContentSize" width="176" height="29"/>
         </designable>
         <designable name="Snb-5c-W9f">
-            <size key="intrinsicContentSize" width="80.666666666666671" height="19"/>
+            <size key="intrinsicContentSize" width="85.666666666666671" height="20"/>
         </designable>
         <designable name="W7d-ef-KfY">
-            <size key="intrinsicContentSize" width="72.333333333333329" height="19"/>
+            <size key="intrinsicContentSize" width="76.666666666666671" height="20"/>
         </designable>
         <designable name="XVi-Ki-SLc">
             <size key="intrinsicContentSize" width="18" height="19"/>
@@ -1211,61 +1255,61 @@
             <size key="intrinsicContentSize" width="124" height="124"/>
         </designable>
         <designable name="ajI-qC-kYb">
-            <size key="intrinsicContentSize" width="57.333333333333336" height="16.666666666666668"/>
+            <size key="intrinsicContentSize" width="61.333333333333336" height="17.666666666666668"/>
         </designable>
         <designable name="bhL-yE-FXO">
-            <size key="intrinsicContentSize" width="131.66666666666666" height="20"/>
+            <size key="intrinsicContentSize" width="138.66666666666666" height="20"/>
         </designable>
         <designable name="c8b-gH-5lq">
             <size key="intrinsicContentSize" width="18" height="19"/>
         </designable>
         <designable name="cEG-Wg-d9U">
-            <size key="intrinsicContentSize" width="62" height="31"/>
+            <size key="intrinsicContentSize" width="66" height="32"/>
         </designable>
         <designable name="ci1-8Z-IUv">
             <size key="intrinsicContentSize" width="174" height="19"/>
         </designable>
         <designable name="fMv-o0-4w6">
-            <size key="intrinsicContentSize" width="20" height="16.666666666666668"/>
+            <size key="intrinsicContentSize" width="21.333333333333332" height="17.666666666666668"/>
         </designable>
         <designable name="hHW-Pu-qEA">
-            <size key="intrinsicContentSize" width="56.666666666666664" height="20.666666666666668"/>
+            <size key="intrinsicContentSize" width="60" height="21.666666666666668"/>
         </designable>
         <designable name="hsL-dE-8cw">
-            <size key="intrinsicContentSize" width="48" height="31"/>
+            <size key="intrinsicContentSize" width="51" height="32"/>
         </designable>
         <designable name="huo-1g-v2e">
-            <size key="intrinsicContentSize" width="166" height="26"/>
+            <size key="intrinsicContentSize" width="175" height="26"/>
         </designable>
         <designable name="iqe-AW-vUK">
-            <size key="intrinsicContentSize" width="106" height="20.666666666666668"/>
+            <size key="intrinsicContentSize" width="112.66666666666667" height="21.666666666666668"/>
         </designable>
         <designable name="jYp-0q-Wgk">
-            <size key="intrinsicContentSize" width="34" height="31"/>
+            <size key="intrinsicContentSize" width="36" height="32"/>
         </designable>
         <designable name="lcc-UZ-gGF">
-            <size key="intrinsicContentSize" width="56.666666666666664" height="20.666666666666668"/>
+            <size key="intrinsicContentSize" width="60" height="21.666666666666668"/>
         </designable>
         <designable name="p60-Wq-89J">
-            <size key="intrinsicContentSize" width="34" height="31"/>
+            <size key="intrinsicContentSize" width="36" height="32"/>
         </designable>
         <designable name="pxd-HY-Z5f">
-            <size key="intrinsicContentSize" width="72.333333333333329" height="19"/>
+            <size key="intrinsicContentSize" width="76.666666666666671" height="20"/>
         </designable>
         <designable name="qeb-tF-vDL">
             <size key="intrinsicContentSize" width="28" height="30"/>
         </designable>
         <designable name="s0y-Ue-ohY">
-            <size key="intrinsicContentSize" width="34" height="31"/>
+            <size key="intrinsicContentSize" width="36" height="32"/>
         </designable>
         <designable name="v9d-yO-2F1">
-            <size key="intrinsicContentSize" width="44" height="16.666666666666668"/>
+            <size key="intrinsicContentSize" width="47" height="17.666666666666668"/>
         </designable>
         <designable name="wgm-kF-Ock">
             <size key="intrinsicContentSize" width="37.333333333333336" height="19"/>
         </designable>
         <designable name="zGI-Tq-np2">
-            <size key="intrinsicContentSize" width="359.33333333333331" height="56.333333333333336"/>
+            <size key="intrinsicContentSize" width="383.33333333333331" height="60"/>
         </designable>
     </designables>
     <resources>
@@ -1278,6 +1322,9 @@
         <image name="lightGrayForwardIcon" width="8.3333330154418945" height="14.666666984558105"/>
         <image name="privateAvatar" width="124" height="124"/>
         <image name="tokenInfoIcon" width="20" height="20"/>
+        <namedColor name="CustomViewBgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="PrimaryThemeColor">
             <color red="0.0" green="0.3529999852180481" blue="0.62000000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1285,7 +1332,7 @@
             <color red="0.0" green="0.73299998044967651" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SeperatorColor">
-            <color red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ViewBackgroundColor">
             <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1308,8 +1355,11 @@
         <namedColor name="textFieldPlaceholderColor">
             <color red="0.66399997472763062" green="0.66399997472763062" blue="0.66399997472763062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="viewBgGradientColor">
+            <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="whiteLabelColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K29-1l-MT8">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -13,24 +13,27 @@
         <array key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
         </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Import Wallet-->
         <scene sceneID="8UP-WN-gfa">
             <objects>
                 <viewController storyboardIdentifier="ImportWalletViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="K29-1l-MT8" customClass="ImportWalletViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JJ1-hc-x6X">
+                    <view key="view" contentMode="scaleToFill" id="JJ1-hc-x6X" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMx-5C-Oow">
-                                <rect key="frame" x="30" y="183" width="354" height="45"/>
+                                <rect key="frame" x="30" y="181.5" width="354" height="45"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Wallet Phrase" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yfj-PJ-hF4" customClass="UITextViewCustomClass" customModule="Stealth777" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="2" width="354" height="42.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="subHeadingColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
@@ -64,7 +67,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sU-cw-Fs4">
-                                <rect key="frame" x="30" y="268" width="354" height="44.5"/>
+                                <rect key="frame" x="30" y="266.5" width="354" height="44.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2C-1l-Pp8">
                                         <rect key="frame" x="0.0" y="44" width="354" height="0.5"/>
@@ -80,11 +83,14 @@
                                         <rect key="frame" x="0.0" y="2" width="321" height="42"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="subHeadingColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                 <color key="value" name="subHeadingColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -115,12 +121,12 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uX1-k1-AuQ" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="109.5" y="444.5" width="195" height="53"/>
+                                <rect key="frame" x="109.5" y="517" width="195" height="53"/>
                                 <color key="backgroundColor" name="PrimaryThemeColor"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Submit">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                    <color key="titleColor" name="whiteLabelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -136,11 +142,11 @@
                         <color key="backgroundColor" name="ViewBackgroundColor"/>
                         <color key="tintColor" name="SecondaryThemeColor"/>
                         <constraints>
-                            <constraint firstItem="uX1-k1-AuQ" firstAttribute="centerY" secondItem="dat-xM-PLG" secondAttribute="centerY" multiplier="1.04" id="52G-Fk-dds"/>
+                            <constraint firstItem="uX1-k1-AuQ" firstAttribute="centerY" secondItem="dat-xM-PLG" secondAttribute="centerY" multiplier="1.2" id="52G-Fk-dds"/>
                             <constraint firstItem="2sU-cw-Fs4" firstAttribute="trailing" secondItem="uMx-5C-Oow" secondAttribute="trailing" id="8X2-oh-ugf"/>
                             <constraint firstItem="2sU-cw-Fs4" firstAttribute="top" secondItem="uMx-5C-Oow" secondAttribute="bottom" constant="40" id="JWf-D4-q9A"/>
                             <constraint firstItem="2sU-cw-Fs4" firstAttribute="leading" secondItem="uMx-5C-Oow" secondAttribute="leading" id="JZI-xe-DfD"/>
-                            <constraint firstItem="uMx-5C-Oow" firstAttribute="top" secondItem="dat-xM-PLG" secondAttribute="top" constant="139" id="KUe-V6-s1X"/>
+                            <constraint firstItem="uMx-5C-Oow" firstAttribute="centerY" secondItem="dat-xM-PLG" secondAttribute="centerY" multiplier="0.45" id="RVT-md-e1S"/>
                             <constraint firstItem="uX1-k1-AuQ" firstAttribute="centerX" secondItem="JJ1-hc-x6X" secondAttribute="centerX" id="dxG-aL-L1h"/>
                             <constraint firstItem="dat-xM-PLG" firstAttribute="trailing" secondItem="uMx-5C-Oow" secondAttribute="trailing" constant="30" id="gNV-eY-6eM"/>
                             <constraint firstItem="2sU-cw-Fs4" firstAttribute="height" secondItem="uMx-5C-Oow" secondAttribute="height" id="iQi-1G-p9r"/>
@@ -150,6 +156,14 @@
                             <constraint firstItem="uX1-k1-AuQ" firstAttribute="height" secondItem="JJ1-hc-x6X" secondAttribute="height" multiplier="0.059" id="xq0-GX-YMm"/>
                             <constraint firstItem="uMx-5C-Oow" firstAttribute="centerX" secondItem="JJ1-hc-x6X" secondAttribute="centerX" id="zeG-M2-04b"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Import Wallet" leftItemsSupplementBackButton="YES" id="0ad-gb-sLc">
                         <barButtonItem key="backBarButtonItem" title="Back" id="44a-5l-KBi"/>
@@ -162,10 +176,10 @@
     </scenes>
     <designables>
         <designable name="uX1-k1-AuQ">
-            <size key="intrinsicContentSize" width="51" height="31"/>
+            <size key="intrinsicContentSize" width="55" height="32"/>
         </designable>
         <designable name="yaD-Tv-Ns2">
-            <size key="intrinsicContentSize" width="77.5" height="22"/>
+            <size key="intrinsicContentSize" width="75.5" height="20"/>
         </designable>
     </designables>
     <resources>
@@ -182,11 +196,14 @@
         <namedColor name="subHeadingColor">
             <color red="0.43529411764705883" green="0.43529411764705883" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="viewBgGradientColor">
+            <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="whiteLabelColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

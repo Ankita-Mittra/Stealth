@@ -7,11 +7,12 @@
 
 import UIKit
 
-class AllGroupsViewController: UIViewController {
+class AllGroupsViewController: BaseViewController {
 
     // MARK: - Properties & Delegates
 
     @IBOutlet weak var groupsListTableView: UITableView!
+    @IBOutlet weak var segmentedBar: UISegmentedControl!
 
     // MARK: - View life cycle
     
@@ -21,16 +22,40 @@ class AllGroupsViewController: UIViewController {
 
         // Initial Setup
         self.initialUISetup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
 
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.setToolbarHidden(true, animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.setSmallHeaderAndHideLargeHeader(header: "Group")
+        self.navigationItem.largeTitleDisplayMode = .never
+        
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        self.navigationItem.setRightBarButton(add, animated: true)
     }
     
     // MARK: - Methods
 
     func initialUISetup(){
-        title = "Chat"
         self.groupsListTableView.register(ContactsListTableViewCell.nib(), forCellReuseIdentifier: ContactsListTableViewCell.identifier)
+        
+        segmentedBar.setTitle("Owner", forSegmentAt: 0)
+        segmentedBar.setTitle("Admin", forSegmentAt: 1)
+        segmentedBar.setTitle("Member", forSegmentAt: 2)
     }
 
+    @objc func addTapped(){
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.allContactsList.rawValue) as? AllContactsListViewController
+        otherController?.isCreateGroup = true
+        self.navigationController?.pushViewController(otherController!, animated: true)
+    }
+    
 }
 
 

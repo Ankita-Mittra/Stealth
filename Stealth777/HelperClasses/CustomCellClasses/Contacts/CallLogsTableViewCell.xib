@@ -27,18 +27,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZv-b0-1eL">
-                        <rect key="frame" x="0.0" y="0.0" width="463" height="1"/>
+                        <rect key="frame" x="0.0" y="89.5" width="463" height="0.5"/>
                         <color key="backgroundColor" name="SeperatorColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="R5D-Z4-rpA"/>
+                            <constraint firstAttribute="height" constant="0.5" id="R5D-Z4-rpA"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="SeperatorColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5al-ON-u0E" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                        <rect key="frame" x="58" y="25" width="67.5" height="16.5"/>
-                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                        <rect key="frame" x="58" y="25" width="77" height="19"/>
+                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -53,21 +53,21 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Missed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKA-Tl-a0t" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                        <rect key="frame" x="78" y="46.5" width="39" height="14"/>
-                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                        <rect key="frame" x="78" y="49" width="45.5" height="16.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                         <color key="textColor" name="subHeadingColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="missedCallIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ylT-I4-O04">
-                        <rect key="frame" x="58" y="46.5" width="14" height="14"/>
+                        <rect key="frame" x="58" y="50.5" width="14" height="14"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ylT-I4-O04" secondAttribute="height" multiplier="1:1" id="8d9-SD-U9f"/>
                             <constraint firstAttribute="width" constant="14" id="Vrz-u9-vnq"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yesterday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMZ-qc-tzc" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                        <rect key="frame" x="410.5" y="46.5" width="51.5" height="14"/>
-                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                        <rect key="frame" x="406" y="49.5" width="56" height="15.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                         <color key="textColor" name="subHeadingColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -84,7 +84,7 @@
                     <constraint firstItem="BKA-Tl-a0t" firstAttribute="top" secondItem="5al-ON-u0E" secondAttribute="bottom" constant="5" id="Usa-fi-TXq"/>
                     <constraint firstItem="ylT-I4-O04" firstAttribute="leading" secondItem="5al-ON-u0E" secondAttribute="leading" id="aVo-uR-tLz"/>
                     <constraint firstItem="uZv-b0-1eL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bLa-sw-VAg"/>
-                    <constraint firstItem="uZv-b0-1eL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fJq-cV-1qC"/>
+                    <constraint firstAttribute="bottom" secondItem="uZv-b0-1eL" secondAttribute="bottom" id="fCU-UB-l8N"/>
                     <constraint firstItem="SWr-O9-7wp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="m6n-oh-gT0"/>
                     <constraint firstItem="5al-ON-u0E" firstAttribute="top" secondItem="SWr-O9-7wp" secondAttribute="top" constant="4" id="o0Q-tT-eyK"/>
                 </constraints>
@@ -96,23 +96,23 @@
     </objects>
     <designables>
         <designable name="5al-ON-u0E">
-            <size key="intrinsicContentSize" width="67.5" height="16.5"/>
+            <size key="intrinsicContentSize" width="77" height="19"/>
         </designable>
         <designable name="BKA-Tl-a0t">
-            <size key="intrinsicContentSize" width="39" height="14.5"/>
+            <size key="intrinsicContentSize" width="45.5" height="16.5"/>
         </designable>
         <designable name="SWr-O9-7wp">
             <size key="intrinsicContentSize" width="124" height="124"/>
         </designable>
         <designable name="YMZ-qc-tzc">
-            <size key="intrinsicContentSize" width="51.5" height="14.5"/>
+            <size key="intrinsicContentSize" width="56" height="15.5"/>
         </designable>
     </designables>
     <resources>
         <image name="missedCallIcon" width="16.5" height="16"/>
         <image name="privateAvatar" width="124" height="124"/>
         <namedColor name="SeperatorColor">
-            <color red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="subHeadingColor">
             <color red="0.43529411764705883" green="0.43529411764705883" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

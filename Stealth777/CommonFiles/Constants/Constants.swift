@@ -22,6 +22,7 @@ let userDefault = UserDefaults.standard
 let USER_DEFAULT_username_Key = "userdefault_username"
 let USER_DEFAULT_walletAddress_Key = "userdefault_walletAddress"
 let USER_DEFAULT_userID_Key = "userdefault_userID"
+let USER_DEFAULT_isDarkMode_Key = "userdefault_isDarkMode"
 
 
 
@@ -49,7 +50,7 @@ let five = 5
 
 //let fontSizeForLargeDevices:CGFloat = 2
 //let fontSizeForSmallDevices:CGFloat = 2
-let fontSizeDifferenceForSmallDevices:CGFloat = 4
+let fontSizeDifferenceForSmallDevices:CGFloat = 3
 let fontSizeDifferenceForMediumDevices:CGFloat = 2
 
 // MARK: Colors

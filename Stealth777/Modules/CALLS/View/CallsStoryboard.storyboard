@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -13,7 +13,7 @@
         <scene sceneID="DtD-0S-2MM">
             <objects>
                 <viewController storyboardIdentifier="CallLogsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uaZ-UE-Rbi" customClass="CallLogsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LXM-qS-kQm">
+                    <view key="view" contentMode="scaleToFill" id="LXM-qS-kQm" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -49,6 +49,14 @@
                             <constraint firstItem="njQ-Oj-skC" firstAttribute="leading" secondItem="vgl-kY-dhp" secondAttribute="leading" constant="30" id="oLh-2z-179"/>
                             <constraint firstItem="vgl-kY-dhp" firstAttribute="bottom" secondItem="szG-Ar-pFX" secondAttribute="bottom" id="tdg-z1-VIG"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="callLogsListListTableView" destination="szG-Ar-pFX" id="P7P-nh-aHS"/>
@@ -61,6 +69,9 @@
     </scenes>
     <resources>
         <namedColor name="ViewBackgroundColor">
+            <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBgGradientColor">
             <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -22,13 +22,13 @@
         <scene sceneID="Q7c-3u-reK">
             <objects>
                 <viewController storyboardIdentifier="GroupSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q7R-S0-SLO" customClass="GroupSettingsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6BT-bU-Qcv">
+                    <view key="view" contentMode="scaleToFill" id="6BT-bU-Qcv" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2AI-qZ-eAz">
                                 <rect key="frame" x="30" y="44" width="368" height="848"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Q7R-S0-SLO" id="7eW-t0-LCd"/>
                                     <outlet property="delegate" destination="Q7R-S0-SLO" id="jCY-S7-DEW"/>
@@ -43,7 +43,18 @@
                             <constraint firstItem="upl-tV-Sfx" firstAttribute="trailing" secondItem="2AI-qZ-eAz" secondAttribute="trailing" constant="30" id="lB3-6s-bMG"/>
                             <constraint firstItem="2AI-qZ-eAz" firstAttribute="top" secondItem="upl-tV-Sfx" secondAttribute="top" id="mZV-wY-5Wd"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="groupSettingsListTableView" destination="2AI-qZ-eAz" id="dYd-qx-pb1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8G-Ne-PT7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,7 +64,7 @@
         <scene sceneID="yCo-gQ-Omh">
             <objects>
                 <viewController storyboardIdentifier="UserInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="knu-jk-ap5" customClass="UserInfoViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Kuh-2n-cfn">
+                    <view key="view" contentMode="scaleToFill" id="Kuh-2n-cfn" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -85,13 +96,21 @@
                                         <color key="textColor" name="SecondaryThemeColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QcA-qQ-43O">
+                                        <rect key="frame" x="0.0" y="0.0" width="168" height="79"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="CustomViewBgColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="QcA-qQ-43O" secondAttribute="bottom" id="2Ux-xN-6lM"/>
+                                    <constraint firstItem="QcA-qQ-43O" firstAttribute="top" secondItem="hau-z0-yS7" secondAttribute="top" id="2pi-db-Ce1"/>
                                     <constraint firstItem="R6t-y6-JW2" firstAttribute="centerX" secondItem="hau-z0-yS7" secondAttribute="centerX" id="MAc-Ys-feb"/>
                                     <constraint firstAttribute="bottom" secondItem="R6t-y6-JW2" secondAttribute="bottom" constant="12" id="VhI-Ka-ctE"/>
                                     <constraint firstItem="TpI-fg-zFY" firstAttribute="centerX" secondItem="hau-z0-yS7" secondAttribute="centerX" id="bAR-BO-Iuv"/>
+                                    <constraint firstAttribute="trailing" secondItem="QcA-qQ-43O" secondAttribute="trailing" id="obx-di-ic6"/>
                                     <constraint firstItem="R6t-y6-JW2" firstAttribute="top" secondItem="TpI-fg-zFY" secondAttribute="bottom" constant="8" id="v79-bZ-i9C"/>
+                                    <constraint firstItem="QcA-qQ-43O" firstAttribute="leading" secondItem="hau-z0-yS7" secondAttribute="leading" id="xTm-Cc-cwn"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -123,13 +142,21 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QRIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7k5-Ml-sGM">
                                         <rect key="frame" x="70" y="15" width="28" height="30"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9JK-4r-66Z">
+                                        <rect key="frame" x="8" y="0.0" width="168" height="79"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="CustomViewBgColor"/>
                                 <constraints>
+                                    <constraint firstItem="9JK-4r-66Z" firstAttribute="leading" secondItem="WaS-EU-vt2" secondAttribute="leading" constant="8" id="0aP-8A-Yvr"/>
+                                    <constraint firstAttribute="bottom" secondItem="9JK-4r-66Z" secondAttribute="bottom" id="I1W-qn-IYr"/>
                                     <constraint firstItem="7k5-Ml-sGM" firstAttribute="centerX" secondItem="WaS-EU-vt2" secondAttribute="centerX" id="YYp-CK-5Zc"/>
+                                    <constraint firstItem="9JK-4r-66Z" firstAttribute="top" secondItem="WaS-EU-vt2" secondAttribute="top" id="eOK-go-zo8"/>
                                     <constraint firstItem="A8J-so-3DW" firstAttribute="top" secondItem="7k5-Ml-sGM" secondAttribute="bottom" constant="8" id="hgB-KT-wIr"/>
                                     <constraint firstAttribute="width" secondItem="WaS-EU-vt2" secondAttribute="height" multiplier="168:79" id="sF5-XK-vRi"/>
                                     <constraint firstItem="A8J-so-3DW" firstAttribute="centerX" secondItem="WaS-EU-vt2" secondAttribute="centerX" id="uV3-AZ-Q4X"/>
+                                    <constraint firstAttribute="trailing" secondItem="9JK-4r-66Z" secondAttribute="trailing" constant="-8" id="xuy-5Y-yID"/>
                                     <constraint firstAttribute="bottom" secondItem="A8J-so-3DW" secondAttribute="bottom" constant="12" id="yKh-i4-bWK"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -152,11 +179,11 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1t-BZ-KEv" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="32" y="358" width="364" height="45"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="CustomViewBgColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="joH-BL-dvy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Add Friend">
                                     <color key="titleColor" name="SecondaryThemeColor"/>
@@ -169,11 +196,11 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGM-KU-94j" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="32" y="407" width="364" height="45"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="CustomViewBgColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="FJY-vi-Aug"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Make Group Admin">
                                     <color key="titleColor" name="SecondaryThemeColor"/>
@@ -186,8 +213,8 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikd-G3-PdN" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="32" y="456" width="364" height="45"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <color key="backgroundColor" name="CustomViewBgColor"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Remove from Group">
                                     <color key="titleColor" name="SecondaryThemeColor"/>
@@ -200,11 +227,11 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRx-y1-3nL" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="32" y="505" width="364" height="45"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="CustomViewBgColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="FZl-zm-DRe"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Block User">
                                     <color key="titleColor" name="SecondaryThemeColor"/>
@@ -246,173 +273,32 @@
                             <constraint firstItem="9GP-8f-DYv" firstAttribute="trailing" secondItem="VGM-KU-94j" secondAttribute="trailing" constant="32" id="wTZ-Mn-zwE"/>
                             <constraint firstItem="9GP-8f-DYv" firstAttribute="trailing" secondItem="ikd-G3-PdN" secondAttribute="trailing" constant="32" id="zuD-2H-TE3"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7U-jA-Zqh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2376" y="89"/>
         </scene>
-        <!--Create Group View Controller-->
-        <scene sceneID="Uva-ss-t0L">
-            <objects>
-                <viewController storyboardIdentifier="CreateGroupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gTW-nB-mPq" customClass="CreateGroupViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2bO-Xd-7WA">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5e-1L-CTg">
-                                <rect key="frame" x="0.0" y="118" width="428" height="763"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMz-bU-6Ex">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="284"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cameraIcon" translatesAutoresizingMaskIntoConstraints="NO" id="RW0-63-son" customClass="UIImageViewCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="30" width="54" height="54"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="54" id="20j-pQ-cjA"/>
-                                                    <constraint firstAttribute="width" secondItem="RW0-63-son" secondAttribute="height" multiplier="1:1" id="svt-5C-abE"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="round" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please provide a group name and optional group icon" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zO4-RP-2YO" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                                <rect key="frame" x="104" y="145" width="294" height="33"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                <color key="textColor" name="subHeadingColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Group Name" placeholder="Group Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pts-fQ-9ou" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                                <rect key="frame" x="104" y="35" width="294" height="48"/>
-                                                <color key="textColor" name="textFieldColor"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                        <color key="value" name="textFieldPlaceholderColor"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5F-5R-JhB">
-                                                <rect key="frame" x="104" y="83" width="294" height="1"/>
-                                                <color key="backgroundColor" name="subHeadingColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="U0R-XH-mZh"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2w3-h7-IRc">
-                                                <rect key="frame" x="104" y="134" width="294" height="1"/>
-                                                <color key="backgroundColor" name="subHeadingColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="0Or-R3-owu"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Group description " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kAG-Mu-zOv" customClass="UITextViewCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                                <rect key="frame" x="104" y="94" width="294" height="40"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="Cuq-0e-5XM"/>
-                                                </constraints>
-                                                <color key="textColor" name="textFieldColor"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9n4-ar-mFz" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="218" width="368" height="45"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="lWz-Nn-kgR"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="  Anonymous">
-                                                    <color key="titleColor" name="subHeadingColor"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="at2-Gt-Eqz">
-                                                <rect key="frame" x="339" y="225" width="51" height="31"/>
-                                            </switch>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="Pts-fQ-9ou" firstAttribute="leading" secondItem="RW0-63-son" secondAttribute="trailing" constant="20" id="1JG-TF-Tc6"/>
-                                            <constraint firstAttribute="bottom" secondItem="RW0-63-son" secondAttribute="bottom" constant="200" id="5q7-8d-KQZ"/>
-                                            <constraint firstItem="W5F-5R-JhB" firstAttribute="leading" secondItem="RW0-63-son" secondAttribute="trailing" constant="20" id="5wA-XR-m8G"/>
-                                            <constraint firstItem="at2-Gt-Eqz" firstAttribute="trailing" secondItem="9n4-ar-mFz" secondAttribute="trailing" constant="-10" id="8BY-xa-RfN"/>
-                                            <constraint firstItem="2w3-h7-IRc" firstAttribute="trailing" secondItem="kAG-Mu-zOv" secondAttribute="trailing" id="AWi-hW-zJt"/>
-                                            <constraint firstItem="2w3-h7-IRc" firstAttribute="top" secondItem="kAG-Mu-zOv" secondAttribute="bottom" id="BFI-bD-a5D"/>
-                                            <constraint firstItem="zO4-RP-2YO" firstAttribute="trailing" secondItem="Pts-fQ-9ou" secondAttribute="trailing" id="JbJ-ib-aa6"/>
-                                            <constraint firstItem="Pts-fQ-9ou" firstAttribute="top" secondItem="RW0-63-son" secondAttribute="top" constant="5" id="MOZ-nR-RWb"/>
-                                            <constraint firstItem="9n4-ar-mFz" firstAttribute="top" secondItem="zO4-RP-2YO" secondAttribute="bottom" constant="40" id="N78-d3-ELN"/>
-                                            <constraint firstItem="zO4-RP-2YO" firstAttribute="leading" secondItem="Pts-fQ-9ou" secondAttribute="leading" id="NhR-OJ-J0J"/>
-                                            <constraint firstItem="2w3-h7-IRc" firstAttribute="leading" secondItem="kAG-Mu-zOv" secondAttribute="leading" id="S1P-Wh-ZLd"/>
-                                            <constraint firstItem="at2-Gt-Eqz" firstAttribute="centerY" secondItem="9n4-ar-mFz" secondAttribute="centerY" id="VKD-A9-qKM"/>
-                                            <constraint firstItem="W5F-5R-JhB" firstAttribute="bottom" secondItem="RW0-63-son" secondAttribute="bottom" id="bS3-qp-mZf"/>
-                                            <constraint firstItem="RW0-63-son" firstAttribute="top" secondItem="KMz-bU-6Ex" secondAttribute="top" constant="30" id="dhR-PU-UUF"/>
-                                            <constraint firstItem="zO4-RP-2YO" firstAttribute="top" secondItem="2w3-h7-IRc" secondAttribute="bottom" constant="10" id="eJb-D9-yM2"/>
-                                            <constraint firstItem="RW0-63-son" firstAttribute="leading" secondItem="KMz-bU-6Ex" secondAttribute="leading" constant="30" id="fiI-Fw-ArA"/>
-                                            <constraint firstAttribute="trailing" secondItem="Pts-fQ-9ou" secondAttribute="trailing" constant="30" id="h5z-cq-IKm"/>
-                                            <constraint firstItem="W5F-5R-JhB" firstAttribute="trailing" secondItem="Pts-fQ-9ou" secondAttribute="trailing" id="h9H-Hu-UBZ"/>
-                                            <constraint firstItem="kAG-Mu-zOv" firstAttribute="top" secondItem="W5F-5R-JhB" secondAttribute="bottom" constant="10" id="hKa-JO-bfh"/>
-                                            <constraint firstItem="W5F-5R-JhB" firstAttribute="top" secondItem="Pts-fQ-9ou" secondAttribute="bottom" id="jDM-VX-L6O"/>
-                                            <constraint firstItem="kAG-Mu-zOv" firstAttribute="leading" secondItem="Pts-fQ-9ou" secondAttribute="leading" id="jLe-M8-F4d"/>
-                                            <constraint firstItem="kAG-Mu-zOv" firstAttribute="trailing" secondItem="Pts-fQ-9ou" secondAttribute="trailing" id="jRa-mK-phG"/>
-                                            <constraint firstItem="9n4-ar-mFz" firstAttribute="leading" secondItem="RW0-63-son" secondAttribute="leading" id="lce-zI-wrL"/>
-                                            <constraint firstItem="9n4-ar-mFz" firstAttribute="trailing" secondItem="Pts-fQ-9ou" secondAttribute="trailing" id="wNK-OQ-GRz"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="KMz-bU-6Ex" firstAttribute="width" secondItem="v5e-1L-CTg" secondAttribute="width" id="All-P1-vyE"/>
-                                    <constraint firstItem="KMz-bU-6Ex" firstAttribute="leading" secondItem="vqE-op-fzF" secondAttribute="leading" id="k5x-v7-wAh"/>
-                                    <constraint firstItem="KMz-bU-6Ex" firstAttribute="height" secondItem="v5e-1L-CTg" secondAttribute="height" priority="250" id="kLD-er-sCm"/>
-                                    <constraint firstItem="vqE-op-fzF" firstAttribute="trailing" secondItem="KMz-bU-6Ex" secondAttribute="trailing" id="x9m-Uq-aTH"/>
-                                    <constraint firstItem="KMz-bU-6Ex" firstAttribute="top" secondItem="vqE-op-fzF" secondAttribute="top" id="zE7-Rd-YMh"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="UVv-Ez-xg0"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="vqE-op-fzF"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="VTo-pP-3Ca"/>
-                        <color key="backgroundColor" name="ViewBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="VTo-pP-3Ca" firstAttribute="trailing" secondItem="v5e-1L-CTg" secondAttribute="trailing" id="4Eh-zd-ZuU"/>
-                            <constraint firstItem="v5e-1L-CTg" firstAttribute="top" secondItem="VTo-pP-3Ca" secondAttribute="top" id="lWv-wP-R5Q"/>
-                            <constraint firstItem="v5e-1L-CTg" firstAttribute="leading" secondItem="VTo-pP-3Ca" secondAttribute="leading" id="ySh-U3-Scc"/>
-                            <constraint firstItem="VTo-pP-3Ca" firstAttribute="bottom" secondItem="v5e-1L-CTg" secondAttribute="bottom" id="zSg-uP-ImQ"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jjv-TN-Z1n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-33.644859813084111" y="89.416846652267822"/>
-        </scene>
         <!--Group Chat View Controller-->
         <scene sceneID="bZW-cj-SDk">
             <objects>
                 <viewController storyboardIdentifier="GroupChatViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="elA-NF-th2" customClass="GroupChatViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fmX-9e-yhy">
+                    <view key="view" contentMode="scaleToFill" id="fmX-9e-yhy" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatScreenBg" translatesAutoresizingMaskIntoConstraints="NO" id="hYX-cD-AsH">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatScreenBg" translatesAutoresizingMaskIntoConstraints="NO" id="hYX-cD-AsH">
                                 <rect key="frame" x="0.0" y="44" width="428" height="882"/>
+                                <color key="backgroundColor" name="ChatBgTintColor"/>
+                                <color key="tintColor" red="0.078431372550000003" green="0.19215686269999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PPf-E0-Vlp">
                                 <rect key="frame" x="0.0" y="837" width="428" height="89"/>
@@ -422,15 +308,15 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xOd-6u-RzY" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="0.0" width="221" height="36"/>
-                                                <color key="textColor" name="textFieldColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="typeMsgTxtFieldColor"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                        <color key="value" name="textFieldColor"/>
+                                                        <color key="value" name="typeMsgTxtFieldColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -439,7 +325,7 @@
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face.smiling" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1H4-6Z-W0X">
                                                 <rect key="frame" x="232" y="8.9999999999999982" width="20" height="18.666666666666664"/>
-                                                <color key="tintColor" name="subHeadingColor"/>
+                                                <color key="tintColor" name="typeMsgTxtFieldColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="1H4-6Z-W0X" secondAttribute="height" multiplier="1:1" id="r6g-qb-AoL"/>
                                                     <constraint firstAttribute="width" constant="20" id="w57-Tg-w4D"/>
@@ -528,6 +414,14 @@
                             <constraint firstItem="aij-JS-bdo" firstAttribute="top" secondItem="asi-nr-2J3" secondAttribute="top" constant="10" id="ct3-jQ-ViP"/>
                             <constraint firstItem="asi-nr-2J3" firstAttribute="trailing" secondItem="hYX-cD-AsH" secondAttribute="trailing" id="jwC-c8-3I0"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="chatTableView" destination="aij-JS-bdo" id="92u-DL-5CD"/>
@@ -541,29 +435,38 @@
         <scene sceneID="73n-qk-48O">
             <objects>
                 <viewController storyboardIdentifier="GroupDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Tva-Mk-TUb" customClass="GroupDetailsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Scc-iM-eQL">
+                    <view key="view" contentMode="scaleToFill" id="Scc-iM-eQL" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lE0-89-Gp9">
-                                <rect key="frame" x="30" y="44" width="368" height="848"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TjQ-em-Ycc">
+                                <rect key="frame" x="20" y="44" width="388" height="848"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="Tva-Mk-TUb" id="pi7-gr-4mo"/>
-                                    <outlet property="delegate" destination="Tva-Mk-TUb" id="GvE-aM-SDl"/>
+                                    <outlet property="dataSource" destination="Tva-Mk-TUb" id="rci-X2-uqm"/>
+                                    <outlet property="delegate" destination="Tva-Mk-TUb" id="RWE-jR-0kx"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CmY-4A-jga"/>
                         <color key="backgroundColor" name="ViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="lE0-89-Gp9" firstAttribute="leading" secondItem="CmY-4A-jga" secondAttribute="leading" constant="30" id="L3L-6K-Avn"/>
-                            <constraint firstItem="CmY-4A-jga" firstAttribute="trailing" secondItem="lE0-89-Gp9" secondAttribute="trailing" constant="30" id="Qc9-YB-zVj"/>
-                            <constraint firstItem="CmY-4A-jga" firstAttribute="bottom" secondItem="lE0-89-Gp9" secondAttribute="bottom" id="Ztw-dZ-dVR"/>
-                            <constraint firstItem="lE0-89-Gp9" firstAttribute="top" secondItem="CmY-4A-jga" secondAttribute="top" id="lWG-B4-omU"/>
+                            <constraint firstItem="CmY-4A-jga" firstAttribute="bottom" secondItem="TjQ-em-Ycc" secondAttribute="bottom" id="QgG-wU-nGC"/>
+                            <constraint firstItem="TjQ-em-Ycc" firstAttribute="top" secondItem="CmY-4A-jga" secondAttribute="top" id="gg1-Xj-fCK"/>
+                            <constraint firstItem="CmY-4A-jga" firstAttribute="trailing" secondItem="TjQ-em-Ycc" secondAttribute="trailing" constant="20" id="hst-5w-zM8"/>
+                            <constraint firstItem="TjQ-em-Ycc" firstAttribute="leading" secondItem="CmY-4A-jga" secondAttribute="leading" constant="20" id="rG1-2v-gWu"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
-                        <outlet property="groupDetailsListTableView" destination="lE0-89-Gp9" id="WRI-Kf-xEY"/>
+                        <outlet property="groupDetailsListTableView" destination="TjQ-em-Ycc" id="tYV-x3-mbg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cN-jP-lgv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -572,32 +475,23 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="9n4-ar-mFz">
-            <size key="intrinsicContentSize" width="93" height="31"/>
-        </designable>
         <designable name="A8J-so-3DW">
             <size key="intrinsicContentSize" width="49" height="14.333333333333334"/>
         </designable>
         <designable name="M1t-BZ-KEv">
-            <size key="intrinsicContentSize" width="77" height="31"/>
+            <size key="intrinsicContentSize" width="82" height="32"/>
         </designable>
         <designable name="MRx-y1-3nL">
-            <size key="intrinsicContentSize" width="76" height="31"/>
-        </designable>
-        <designable name="Pts-fQ-9ou">
-            <size key="intrinsicContentSize" width="90" height="20.666666666666668"/>
+            <size key="intrinsicContentSize" width="81" height="32"/>
         </designable>
         <designable name="R6t-y6-JW2">
             <size key="intrinsicContentSize" width="49" height="14.333333333333334"/>
         </designable>
-        <designable name="RW0-63-son">
-            <size key="intrinsicContentSize" width="54" height="54"/>
-        </designable>
         <designable name="VGM-KU-94j">
-            <size key="intrinsicContentSize" width="137" height="31"/>
+            <size key="intrinsicContentSize" width="145" height="32"/>
         </designable>
         <designable name="ikd-G3-PdN">
-            <size key="intrinsicContentSize" width="143" height="31"/>
+            <size key="intrinsicContentSize" width="152" height="32"/>
         </designable>
         <designable name="jwJ-na-ZJq">
             <size key="intrinsicContentSize" width="119" height="21.333333333333332"/>
@@ -606,22 +500,24 @@
             <size key="intrinsicContentSize" width="124" height="124"/>
         </designable>
         <designable name="xOd-6u-RzY">
-            <size key="intrinsicContentSize" width="103.33333333333333" height="18.666666666666668"/>
-        </designable>
-        <designable name="zO4-RP-2YO">
-            <size key="intrinsicContentSize" width="330.33333333333331" height="16.666666666666668"/>
+            <size key="intrinsicContentSize" width="103.33333333333333" height="20.666666666666668"/>
         </designable>
     </designables>
     <resources>
         <image name="QRIcon" width="28" height="30"/>
-        <image name="cameraIcon" width="54" height="54"/>
-        <image name="chatScreenBg" width="428" height="918"/>
+        <image name="chatScreenBg" width="428" height="926"/>
         <image name="face.smiling" catalog="system" width="128" height="121"/>
         <image name="plusIcon" width="18" height="19"/>
         <image name="privateAvatar" width="124" height="124"/>
         <image name="profileMsgIcon" width="25.333333969116211" height="25"/>
         <image name="sendAudioMsgIcon" width="16" height="24"/>
         <image name="sendTextMsgIcon" width="22" height="23"/>
+        <namedColor name="ChatBgTintColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CustomViewBgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="HeaderBgColor">
             <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -634,17 +530,14 @@
         <namedColor name="chatTextColor">
             <color red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="subHeadingColor">
-            <color red="0.43529411764705883" green="0.43529411764705883" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="textFieldColor">
-            <color red="0.35294117647058826" green="0.37254901960784315" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="textFieldPlaceholderColor">
-            <color red="0.66399997472763062" green="0.66399997472763062" blue="0.66399997472763062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="typeMessageBgColor">
             <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.11999999731779099" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="typeMsgTxtFieldColor">
+            <color red="0.43529411764705883" green="0.43529411764705883" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBgGradientColor">
+            <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

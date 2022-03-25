@@ -12,7 +12,6 @@ struct AppLanguages {
 
     let languageName: String
     let languageCode: String
-
 }
 
 class GeneralSettingsViewController: BaseViewController {
@@ -42,7 +41,6 @@ class GeneralSettingsViewController: BaseViewController {
 
         // Initial Setup
         self.initialSetup()
-
     }
     
     @IBAction func cancelBtnAction(_ sender: Any) {
@@ -78,6 +76,20 @@ class GeneralSettingsViewController: BaseViewController {
         self.pickerView.reloadAllComponents()
 
     }
+    
+    @objc func switchChanged(_ sender : UISwitch!){
+
+          print("table row switch Changed \(sender.tag)")
+          print("The switch is \(sender.isOn ? "ON" : "OFF")")
+        
+        if sender.isOn{
+            appDelegate.window?.overrideUserInterfaceStyle = .dark
+            userDefault.set("dark" , forKey: USER_DEFAULT_isDarkMode_Key)
+        }else{
+            appDelegate.window?.overrideUserInterfaceStyle = .light
+            userDefault.set("light" , forKey: USER_DEFAULT_isDarkMode_Key)
+        }
+    }
 }
 
 
@@ -94,14 +106,19 @@ extension GeneralSettingsViewController: UITableViewDelegate, UITableViewDataSou
         guard  let settingsCell = self.settingsListTableView.dequeueReusableCell(withIdentifier: SettingsOptionsTableViewCell.identifier , for: indexPath) as? SettingsOptionsTableViewCell else {
             return cell
         }
-        
+        settingsCell.permissionSwitch.tag = indexPath.row
         switch indexPath.row {
         case 0:
             settingsCell.permissionSwitch.isHidden = true
             settingsCell.forwardIconImgView.isHidden = false
             settingsCell.languageLbl.isHidden = true
-
         case 1:
+            
+            if (userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) as? String == "light"){
+                settingsCell.permissionSwitch.isOn = false
+            }else{
+                settingsCell.permissionSwitch.isOn = true
+            }
             settingsCell.permissionSwitch.isHidden = false
             settingsCell.forwardIconImgView.isHidden = true
             settingsCell.languageLbl.isHidden = true
@@ -109,10 +126,9 @@ extension GeneralSettingsViewController: UITableViewDelegate, UITableViewDataSou
             settingsCell.permissionSwitch.isHidden = true
             settingsCell.forwardIconImgView.isHidden = false
             settingsCell.languageLbl.isHidden = false
-            
         }
         settingsCell.titleLbl.text = self.settingsListTitleArr[indexPath.row]
-        
+        settingsCell.permissionSwitch.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
         return settingsCell
     }
     

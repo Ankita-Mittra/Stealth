@@ -31,7 +31,7 @@ class UITextFieldFontSize: UITextField {
         if (UIScreen.main.bounds.height > iPhone_6_Height) && (UIScreen.main.bounds.height < iPhone_11Pro_MAX_Height){
             self.font = self.font!.withSize(currentSize-fontSizeDifferenceForMediumDevices)
         }
-        if (UIScreen.main.bounds.height < iPhone_6_Height){
+        if (UIScreen.main.bounds.height <= iPhone_6_Height){
             self.font = self.font!.withSize(currentSize-fontSizeDifferenceForSmallDevices)
         }
 

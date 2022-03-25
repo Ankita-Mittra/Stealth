@@ -180,8 +180,18 @@ class CommonFxns: NSObject {
         let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
         return (isReachable && !needsConnection)
     }
-    
-    
-}
+    class func overrideApplicationThemeStyle() {
+        let enabledMode = userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) as? String
+        
+        switch enabledMode {
+        case "light":
+            appDelegate.window?.overrideUserInterfaceStyle = .light
+            userDefault.set("light" , forKey: USER_DEFAULT_isDarkMode_Key)
+        default:
+            appDelegate.window?.overrideUserInterfaceStyle = .dark
+            userDefault.set("dark" , forKey: USER_DEFAULT_isDarkMode_Key)
+        }
+    }
 
+}
 
