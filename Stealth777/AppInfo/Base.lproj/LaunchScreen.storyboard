@@ -22,7 +22,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="SecondaryThemeColor"/>
+                        <color key="backgroundColor" name="PrimaryThemeColor"/>
                         <constraints>
                             <constraint firstItem="A52-9z-GID" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wCT-Ps-Mqr"/>
                             <constraint firstItem="A52-9z-GID" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="z9r-9J-a0i"/>
@@ -36,8 +36,8 @@
     </scenes>
     <resources>
         <image name="appLogo" width="198" height="180"/>
-        <namedColor name="SecondaryThemeColor">
-            <color red="0.0" green="0.73299998044967651" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="PrimaryThemeColor">
+            <color red="0.0" green="0.3529999852180481" blue="0.62000000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

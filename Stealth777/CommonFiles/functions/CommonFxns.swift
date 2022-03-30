@@ -192,6 +192,44 @@ class CommonFxns: NSObject {
             userDefault.set("dark" , forKey: USER_DEFAULT_isDarkMode_Key)
         }
     }
+    
+    // Method to Show default Alert view with message
+    class func showAlert (_ reference:UIViewController, message:String, title:String){
+        var alert = UIAlertController()
+        if title == "" {
+            alert = UIAlertController(title: nil, message: message,preferredStyle: UIAlertController.Style.alert)
+        }
+        else{
+            alert = UIAlertController(title: title, message: message,preferredStyle: UIAlertController.Style.alert)
+        }
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        reference.present(alert, animated: true, completion: nil)
+    }
+    
 
 }
+
+struct VpnChecker {
+
+    private static let vpnProtocolsKeysIdentifiers = [
+        "tap", "tun", "ppp", "ipsec", "utun"
+    ]
+
+    static func isVpnActive() -> Bool {
+        guard let cfDict = CFNetworkCopySystemProxySettings() else { return false }
+        let nsDict = cfDict.takeRetainedValue() as NSDictionary
+        guard let keys = nsDict["__SCOPED__"] as? NSDictionary,
+            let allKeys = keys.allKeys as? [String] else { return false }
+
+        // Checking for tunneling protocols in the keys
+        for key in allKeys {
+            for protocolId in vpnProtocolsKeysIdentifiers
+                where key.starts(with: protocolId) {
+                return true
+            }
+        }
+        return false
+    }
+}
+
 

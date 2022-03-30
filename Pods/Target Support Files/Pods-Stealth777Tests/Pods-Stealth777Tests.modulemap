@@ -1,0 +1,6 @@
+framework module Pods_Stealth777Tests {
+  umbrella header "Pods-Stealth777Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

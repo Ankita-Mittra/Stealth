@@ -10,14 +10,16 @@ import UIKit
 import SwiftUI
 
 // All the strings using for app code
-// MARK: - App name
+// MARK: - App mains
 let appName = "meem"
+let baseUrl = "185.247.226.7./api/users/"
 
 // MARK: - Common
 
 let usernamePrefix = "777"
 
-//MARK:- Enum_StoryBoard
+let emptyStr = ""
+// MARK: - Enum_StoryBoard
 
 enum enumViewControllerIdentifier: String {
     
@@ -63,7 +65,10 @@ enum enumViewControllerIdentifier: String {
     case createGroup = "CreateGroupViewController"
 
     case userInfo = "UserInfoViewController"
-
+    case subscribeNow = "SubscribeNowViewController"
+    case checkOut = "CheckOutViewController"
+    case subscriptionDetails = "SubscriptionDetailsViewController"
+    
 }
 
 enum enumStoryBoard:String {
@@ -83,8 +88,7 @@ enum enumStoryBoard:String {
     case contacts = "ContactsStoryboard"
     case calls = "CallsStoryboard"
     case profile = "ProfileStoryboard"
-
-//    case  = "ProfileStoryboard"
+    case subscribe = "SubscriptionStoryboard"
 
 }
 

@@ -7,6 +7,9 @@ target 'Stealth777' do
 
   # Pods for Stealth777
 
+  pod 'BinanceSmartChainSDK'
+
+
   target 'Stealth777Tests' do
     inherit! :search_paths
     # Pods for testing

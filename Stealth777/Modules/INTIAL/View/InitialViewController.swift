@@ -17,7 +17,10 @@ class InitialViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         self.hideNavigationBar()
+        self.checkVPNConnectivity()
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,6 +30,16 @@ class InitialViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
+    // MARK: - Methods
+    
+    func checkVPNConnectivity(){
+        if VpnChecker.isVpnActive(){
+            CommonFxns.showAlert(self, message: "VPN is connected", title: "Alert")
+        }else{
+            CommonFxns.showAlert(self, message: "VPN is NOT connected", title: "Alert")
+        }
     }
 
     // MARK: - Button Actions

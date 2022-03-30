@@ -13,7 +13,7 @@ class AccountSettingsViewController: BaseViewController {
 
     @IBOutlet weak var settingsListTableView: UITableView!
 
-    let settingsListTitleArr = ["Security", "Sell Account", "Wipeout Permission"]
+    let settingsListTitleArr = ["Security", "Sell Account", "Wipeout Permission", "Subscribe"]
     
 //    let settingsListTitleImgArr = ["privateAvatar","settings-account","settings-generalSettings", "settings-about", "settings-privacyPolicy", "settings-about", "settings-logout"]
     // MARK: - View life cycle
@@ -81,6 +81,10 @@ extension AccountSettingsViewController: UITableViewDelegate, UITableViewDataSou
         case 0:
             let storyBoard = UIStoryboard.init(name: enumStoryBoard.settings.rawValue, bundle: nil)
             let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.securitySettings.rawValue) as? SecuritySettingsViewController
+            self.navigationController?.pushViewController(otherController!, animated: true)
+        case 3:
+            let storyBoard = UIStoryboard.init(name: enumStoryBoard.subscribe.rawValue, bundle: nil)
+            let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.subscriptionDetails.rawValue) as? SubscriptionDetailsViewController
             self.navigationController?.pushViewController(otherController!, animated: true)
         default:
             break

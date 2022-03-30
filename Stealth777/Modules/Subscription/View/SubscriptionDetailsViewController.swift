@@ -28,5 +28,13 @@ class SubscriptionDetailsViewController: BaseViewController {
         self.navigationItem.largeTitleDisplayMode = .never
     }
     
+    // MARK: - Button Actions
+    
+    @IBAction func nextBtnAction(_ sender: Any) {
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.subscribe.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.subscribeNow.rawValue) as? SubscribeNowViewController
+        self.navigationController?.pushViewController(otherController!, animated: true)
+    }
+    
 
 }

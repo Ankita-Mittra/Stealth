@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CheckOutViewController: UIViewController {
+class CheckOutViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

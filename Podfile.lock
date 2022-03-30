@@ -1,0 +1,56 @@
+PODS:
+  - Alamofire (4.9.1)
+  - BigInt (5.2.0)
+  - BinanceSmartChainSDK (0.1.3):
+    - Alamofire (~> 4.0)
+    - SwiftyJSON
+    - web3swift
+  - CryptoSwift (1.4.3)
+  - PromiseKit (6.15.3):
+    - PromiseKit/CorePromise (= 6.15.3)
+    - PromiseKit/Foundation (= 6.15.3)
+    - PromiseKit/UIKit (= 6.15.3)
+  - PromiseKit/CorePromise (6.15.3)
+  - PromiseKit/Foundation (6.15.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.15.3):
+    - PromiseKit/CorePromise
+  - secp256k1.c (0.1.2)
+  - Starscream (4.0.4)
+  - SwiftyJSON (5.0.1)
+  - web3swift (2.5.0):
+    - BigInt (~> 5.2.0)
+    - CryptoSwift (~> 1.4.2)
+    - PromiseKit (~> 6.15.3)
+    - secp256k1.c (~> 0.1)
+    - Starscream (~> 4.0.4)
+
+DEPENDENCIES:
+  - BinanceSmartChainSDK
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - BigInt
+    - BinanceSmartChainSDK
+    - CryptoSwift
+    - PromiseKit
+    - secp256k1.c
+    - Starscream
+    - SwiftyJSON
+    - web3swift
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  BigInt: f668a80089607f521586bbe29513d708491ef2f7
+  BinanceSmartChainSDK: f31f32e7b235f9d479a809a1e6dc26556a4366d0
+  CryptoSwift: a0799ee936271bd2253a006f1e4523df21845000
+  PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
+  secp256k1.c: db47b726585d80f027423682eb369729e61b3b20
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  web3swift: 31ecb7a7da543f851344cdd64badea94c439b0d9
+
+PODFILE CHECKSUM: c852a184052ab00925cbbd856f6a662f4efcf17a
+
+COCOAPODS: 1.11.2
