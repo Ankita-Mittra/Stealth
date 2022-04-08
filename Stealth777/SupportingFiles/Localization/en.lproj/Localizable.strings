@@ -7,10 +7,15 @@
 
 
 // MARK: - Strings
+// ************** Common ******************
+"okay" = "Okay";
+"cancel" = "Cancel";
+"success" = "Success";
+"alert" = "Alert";
 
 // ************** Login and Sign up ******************
 
-"login" = "LOGIN";
+"login" = "Login";
 "sign_up" = "Sign Up";
 "sign_up_ques" = "Don't have an account? ";
 "login_email" = "Email";
@@ -18,3 +23,14 @@
 "forgot_password" = "Forgot Password";
 "request" = "Request";
 "did_you_forget_pwd" = "Did you forget your password?";
+
+"terma_and_conditions" = "Create Wallet";
+
+"create_wallet" = "Create Wallet";
+"import_wallet" = "Import Wallet";
+
+// ************** Contacts ******************
+
+"contacts" = "Contacts";
+"requests" = "Requests";
+"groups" = "Groups";

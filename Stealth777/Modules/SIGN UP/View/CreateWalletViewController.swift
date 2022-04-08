@@ -14,11 +14,19 @@ class CreateWalletViewController: BaseViewController {
     
     @IBOutlet weak var phraseCollectionView: UICollectionView!
     @IBOutlet weak var copyBtn: UIButton!
-
+    
+    // MARK: - Injection
+    
+//    let viewModel = PhotoViewModel(dataService: DataService())
+    let viewModel = CreateWalletViewModel(apiService: SignUpAPIService())
+    
     // MARK: - View life cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.registerUser(withId: 8)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,18 +41,41 @@ class CreateWalletViewController: BaseViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    
+
     override func viewWillLayoutSubviews() {
         self.phraseCollectionView.reloadData()
     }
 
+    // MARK: - Methods
+
+    // MARK: - Networking
+    
+    private func registerUser(withId id: Int) {
+        viewModel.registerUser()
+        
+        viewModel.updateLoadingStatus = {
+//            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
+        }
+        
+        viewModel.showAlertClosure = {
+            if let error = self.viewModel.error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        viewModel.didFinishFetch = {
+            print("viewmodel...didFinishFetch")
+        }
+    }
+    
+    
     // MARK: - Button Actions
     
     @IBAction func nextBtnAction(_ sender: Any) {
         
         let navController:UINavigationController = (appDelegate.window?.rootViewController as? UINavigationController)!
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.privateTabBarController.rawValue, bundle: nil)
-        let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateModeTabBar .rawValue) as! PrivateModeTabBarViewController
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
+        let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar .rawValue) as! PublicModeTabBarViewController
         navController.pushViewController(loginVcObj, animated: true)
     }
     
@@ -52,32 +83,5 @@ class CreateWalletViewController: BaseViewController {
 
 }
 
-
-extension CreateWalletViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = UICollectionViewCell()
-        
-        guard let phraseCell = self.phraseCollectionView.dequeueReusableCell(withReuseIdentifier: WalletPhraseCollectionViewCell.identifier, for: indexPath) as? WalletPhraseCollectionViewCell else{
-            return cell
-        }
-        phraseCell.titleLbl.text = "\(indexPath.row + 1). Title"
-        return phraseCell
-
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        print((self.phraseCollectionView.frame.width/2) - 23)
-        return CGSize(width: (self.phraseCollectionView.frame.width/2) - 23, height: 45)
-    }
-}
 
 

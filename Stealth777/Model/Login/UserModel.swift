@@ -39,7 +39,10 @@ struct UserModel: Codable {
     }
 }
 
-//// MARK: Convenience initializers
+
+
+
+// MARK: Convenience initializers
 //extension UserModel {
 //    init(data: Data) throws {
 //        self = try JSONDecoder().decode(UserModel.self, from: data)
@@ -64,7 +67,7 @@ struct UserModel: Codable {
 //        return String(data: try self.jsonData(), encoding: encoding)
 //    }
 //}
-//
+
 //
 //// MARK: - Alamofire response handlers
 //extension DataRequest {

@@ -11,8 +11,10 @@ import SwiftUI
 
 // All the strings using for app code
 // MARK: - App mains
-let appName = "meem"
-let baseUrl = "185.247.226.7./api/users/"
+let appName = "Stealth777"
+var baseUrl = "https://stealth777.is/"//"https://185.247.226.7./api/users/register"//"https://jsonplaceholder.typicode.com/todos/" 
+
+let coreDataName = "Stealth777"
 
 // MARK: - Common
 
@@ -23,7 +25,9 @@ let emptyStr = ""
 
 enum enumViewControllerIdentifier: String {
     
-    case privateModeTabBar = "PrivateModeTabBarViewController"
+//    case privateModeTabBar = "PrivateModeTabBarViewController"
+    case publicModeTabBar = "PublicModeTabBarViewController"
+
     case importWallet = "ImportWalletViewController"
     case enterUsername = "EnterUsernameViewController"
     case login = "LoginViewController"
@@ -74,7 +78,9 @@ enum enumViewControllerIdentifier: String {
 enum enumStoryBoard:String {
     case main = "Main"
     case home = "RecoverPasswordStoryboard"
-    case privateTabBarController = "PrivateModeTabBarControllerStoryboard"
+//    case privateTabBarController = "PrivateModeTabBarControllerStoryboard"
+    case publicModeTabBarController = "PublicModeTabBarControllerStoryboard"
+
     case login = "LoginStoryboard"
     case enterUsername = "EnterUsernameStoryboard"
     case enterPassword = "EnterPasswordStoryboard"
@@ -89,6 +95,72 @@ enum enumStoryBoard:String {
     case calls = "CallsStoryboard"
     case profile = "ProfileStoryboard"
     case subscribe = "SubscriptionStoryboard"
+
+}
+
+enum APIKeysForUser: String{
+    
+    case username_key = "username"
+    
+    case imageUrl_key = "imageUrl"
+    
+    case publicKey_key = "pbKey"
+    
+    case deviceNo_key = "deviceNo"
+    
+    case deviceName_key = "deviceName"
+    
+    case deviceVersion_key = "deviceVersion"
+    
+    case platform_key = "platform"
+    
+    case walletPhrase = "wPhrase"
+    
+    case walletId_key = "walletKey"
+    
+    case password_key = "password"
+
+    case id_key = "id"
+        
+    case status_key = "status"
+
+    case remark_key = "remark"
+    
+    case userId_key = "userId"
+
+}
+
+enum APIKeysForGroup: String{
+    case name_key = "name"
+    
+    case disperse_key = "disperse"
+    
+    case description_key = "description"
+    
+    case anonymous_key = "anonymous"
+    
+    case user_ids_key = "user_ids"
+    
+    case type_key = "type"
+    
+    case imageUrl_key = "mediaId"
+        
+}
+
+
+enum APICommonKeys: String{
+    
+    case success_key = "success"
+    
+    case code_key = "code"
+    
+    case message_key = "message"
+    
+    case version_key = "version"
+    
+    case data_key = "data"
+    
+    case token_key = "token"
 
 }
 

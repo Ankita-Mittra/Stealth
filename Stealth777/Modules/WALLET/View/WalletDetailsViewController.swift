@@ -60,7 +60,7 @@ class WalletDetailsViewController: BaseViewController {
         let play = UIBarButtonItem(image: UIImage(named: "moreIcon"), style: .plain, target: self, action: #selector(moreButtonAction))
         self.navigationItem.setRightBarButtonItems([play], animated: true)
 
-        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Wallet")
+//        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Wallet")
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.sizeToFit()
     }

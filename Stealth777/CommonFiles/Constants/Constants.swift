@@ -24,8 +24,6 @@ let USER_DEFAULT_walletAddress_Key = "userdefault_walletAddress"
 let USER_DEFAULT_userID_Key = "userdefault_userID"
 let USER_DEFAULT_isDarkMode_Key = "userdefault_isDarkMode"
 
-
-
 // MARK: iPhone device's size Constants
 
 // OS type

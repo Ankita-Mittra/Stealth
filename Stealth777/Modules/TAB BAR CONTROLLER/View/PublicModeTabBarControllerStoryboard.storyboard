@@ -17,13 +17,11 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Chats-->
         <scene sceneID="2db-8L-ML4">
             <objects>
                 <navigationController toolbarHidden="NO" id="9kM-7a-pAS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="LEC-6y-HDv">
-                        <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Chats" image="tab-chatsIcon" id="LEC-6y-HDv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="r6q-dR-HYA">
                         <rect key="frame" x="0.0" y="44" width="428" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -35,9 +33,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsG-kB-Hsc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-132" y="-680"/>
+            <point key="canvasLocation" x="-133" y="184"/>
         </scene>
-        <!--Chats-->
+        <!--Home View Controller-->
         <scene sceneID="5Ii-ho-QZj">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ipS-vk-zIT" customClass="HomeViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
@@ -122,7 +120,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Settings                       " image="homeMenu-SettingsIcon">
+                                                <state key="normal" title="Settings                       " image="homeMenu-settingsIcon">
                                                     <color key="titleColor" name="blackLabelColor"/>
                                                 </state>
                                                 <connections>
@@ -199,7 +197,6 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chats" image="tab-chatsIcon" id="VzM-Ep-seE"/>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="csb-Uz-lXb"/>
                     <connections>
                         <outlet property="allChatsTableview" destination="KFX-gv-3bO" id="45c-nc-a2Y"/>
@@ -213,9 +210,9 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="660" y="-680"/>
+            <point key="canvasLocation" x="659" y="183"/>
         </scene>
-        <!--Contacts-->
+        <!--Contacts View Controller-->
         <scene sceneID="kBz-pF-gMm">
             <objects>
                 <viewController storyboardIdentifier="ContactsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cbj-Kn-mj2" customClass="ContactsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
@@ -250,7 +247,6 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Contacts" image="tab-contactsIcon" id="5gi-rP-dWo"/>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="cFI-No-xPL"/>
                     <connections>
                         <outlet property="contactsListTableView" destination="EEd-yT-CIk" id="dUl-JM-25j"/>
@@ -258,9 +254,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kj9-Vt-ymr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="659" y="67"/>
+            <point key="canvasLocation" x="659" y="877"/>
         </scene>
-        <!--Wallet-->
+        <!--Wallet Details View Controller-->
         <scene sceneID="XNe-sI-HAa">
             <objects>
                 <viewController storyboardIdentifier="WalletDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="P6i-VV-8mx" customClass="WalletDetailsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
@@ -519,7 +515,6 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wallet" image="tab-walletIcon" id="e7x-mM-Zt4"/>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="lk7-D0-sTM"/>
                     <connections>
                         <outlet property="tokensListTableView" destination="e6l-B3-6jh" id="Fr3-gQ-ze4"/>
@@ -527,12 +522,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNj-hL-3kk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="659" y="827"/>
+            <point key="canvasLocation" x="659" y="3017"/>
         </scene>
-        <!--Private Mode Tab Bar View Controller-->
+        <!--Public Mode Tab Bar View Controller-->
         <scene sceneID="ZK8-cq-0YR">
             <objects>
-                <tabBarController storyboardIdentifier="PrivateModeTabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gNf-mj-rSK" customClass="PrivateModeTabBarViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="PublicModeTabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gNf-mj-rSK" customClass="PublicModeTabBarViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4eh-ts-7BD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -546,19 +541,20 @@
                     <connections>
                         <segue destination="9kM-7a-pAS" kind="relationship" relationship="viewControllers" id="MsJ-3x-Ukf"/>
                         <segue destination="hEx-Ib-aPG" kind="relationship" relationship="viewControllers" id="LDz-9Y-eHr"/>
-                        <segue destination="FMZ-aA-6gN" kind="relationship" relationship="viewControllers" id="EF3-eC-WyA"/>
                         <segue destination="SZp-Us-xn9" kind="relationship" relationship="viewControllers" id="cIg-Hh-4gf"/>
+                        <segue destination="lSC-rZ-yqz" kind="relationship" relationship="viewControllers" id="Saf-zM-XCp"/>
+                        <segue destination="FMZ-aA-6gN" kind="relationship" relationship="viewControllers" id="AZs-tC-rbx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djN-Pg-A9X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1423" y="-266"/>
+            <point key="canvasLocation" x="-1412" y="1569"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Contacts-->
         <scene sceneID="eNU-o9-CfQ">
             <objects>
                 <navigationController toolbarHidden="NO" id="hEx-Ib-aPG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="kYe-Qb-DnM"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="tab-contactsIcon" badgeValue="4" id="kYe-Qb-DnM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="JhU-yU-4E8">
                         <rect key="frame" x="0.0" y="44" width="428" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -570,13 +566,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11L-It-IAt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-133" y="68"/>
+            <point key="canvasLocation" x="-133" y="877"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Wallet-->
         <scene sceneID="2UT-yp-UhC">
             <objects>
                 <navigationController toolbarHidden="NO" id="FMZ-aA-6gN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="K9o-OW-142"/>
+                    <tabBarItem key="tabBarItem" title="Wallet" image="tab-walletIcon" id="K9o-OW-142"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="dbv-OD-GXs">
                         <rect key="frame" x="0.0" y="44" width="428" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -588,33 +584,53 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7L-tq-U1C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-133" y="827"/>
+            <point key="canvasLocation" x="-133" y="3017"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="Qwt-dG-woT">
+        <!--My Life-->
+        <scene sceneID="je8-7s-nPd">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HJz-YX-yo1" customClass="SettingsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nlI-xg-c8b" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
+                <navigationController toolbarHidden="NO" id="SZp-Us-xn9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Life" image="tab-mylifeIcon" id="Ind-uG-SA1"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="MJL-tN-xrA">
+                        <rect key="frame" x="0.0" y="44" width="428" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="SecondaryThemeColor"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9Si-Us-aDp" kind="relationship" relationship="rootViewController" id="7xC-ZB-s77"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s6X-Oj-xbC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-133" y="1569"/>
+        </scene>
+        <!--Market Place-->
+        <scene sceneID="bMX-eH-Hs9">
+            <objects>
+                <navigationController toolbarHidden="NO" id="lSC-rZ-yqz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Market Place" image="tab-marketIcon" id="7o3-kt-hdU"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="EXC-YY-2gq">
+                        <rect key="frame" x="0.0" y="44" width="428" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="SecondaryThemeColor"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yKa-ug-xBl" kind="relationship" relationship="rootViewController" id="yI7-aL-T9e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ORu-dY-Np1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-133" y="2289"/>
+        </scene>
+        <!--My Life View Controller-->
+        <scene sceneID="wFk-93-6FR">
+            <objects>
+                <viewController storyboardIdentifier="MyLifeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Si-Us-aDp" customClass="MyLifeViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g8L-Qj-XoC" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WEz-po-sxc">
-                                <rect key="frame" x="30" y="140" width="368" height="654"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="HJz-YX-yo1" id="Nfx-AU-8dQ"/>
-                                    <outlet property="delegate" destination="HJz-YX-yo1" id="2wV-YE-XQe"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="rrq-tR-7Cr"/>
+                        <viewLayoutGuide key="safeArea" id="w14-G5-KRT"/>
                         <color key="backgroundColor" name="ViewBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="rrq-tR-7Cr" firstAttribute="bottom" secondItem="WEz-po-sxc" secondAttribute="bottom" id="0eW-0V-EqV"/>
-                            <constraint firstItem="WEz-po-sxc" firstAttribute="top" secondItem="rrq-tR-7Cr" secondAttribute="top" id="f34-q8-A83"/>
-                            <constraint firstItem="WEz-po-sxc" firstAttribute="leading" secondItem="rrq-tR-7Cr" secondAttribute="leading" constant="30" id="kyc-P6-P8w"/>
-                            <constraint firstItem="rrq-tR-7Cr" firstAttribute="trailing" secondItem="WEz-po-sxc" secondAttribute="trailing" constant="30" id="peH-sB-MdO"/>
-                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
                                 <color key="value" name="viewBgGradientColor"/>
@@ -624,33 +640,35 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="homeMenu-SettingsIcon" id="VaS-74-Rwy"/>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="ARF-xW-Wkt"/>
-                    <connections>
-                        <outlet property="settingsListTableView" destination="WEz-po-sxc" id="shB-Q9-4Nq"/>
-                    </connections>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Lez-O1-DzL"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MLA-Vg-fdR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Lg-FX-clg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658.87850467289718" y="1568.6825053995681"/>
+            <point key="canvasLocation" x="659" y="1569"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="je8-7s-nPd">
+        <!--Market Place View Controller-->
+        <scene sceneID="uc7-2P-8rL">
             <objects>
-                <navigationController toolbarHidden="NO" id="SZp-Us-xn9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="Ind-uG-SA1"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="MJL-tN-xrA">
-                        <rect key="frame" x="0.0" y="44" width="428" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="SecondaryThemeColor"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="HJz-YX-yo1" kind="relationship" relationship="rootViewController" id="XbV-Ms-195"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s6X-Oj-xbC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="MarketPlaceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yKa-ug-xBl" customClass="MarketPlaceViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0EP-7C-HRw" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="8Zf-ej-d3v"/>
+                        <color key="backgroundColor" name="ViewBackgroundColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="cYB-0w-JaO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2F5-iD-jKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-133" y="1569"/>
+            <point key="canvasLocation" x="659" y="2289"/>
         </scene>
     </scenes>
     <designables>
@@ -690,15 +708,17 @@
     </designables>
     <resources>
         <image name="QRIcon" width="28" height="30"/>
-        <image name="homeMenu-SettingsIcon" width="19" height="19"/>
         <image name="homeMenu-addFriendIcon" width="22.333333969116211" height="23.666666030883789"/>
         <image name="homeMenu-callIcon" width="18" height="18"/>
         <image name="homeMenu-notificationsIcon" width="20" height="24"/>
+        <image name="homeMenu-settingsIcon" width="19" height="19"/>
         <image name="privateAvatar" width="124" height="124"/>
         <image name="receiveAmountIcon" width="36" height="36"/>
         <image name="sendAmountIcon" width="27" height="29"/>
         <image name="tab-chatsIcon" width="20" height="17"/>
         <image name="tab-contactsIcon" width="18" height="18"/>
+        <image name="tab-marketIcon" width="17" height="18"/>
+        <image name="tab-mylifeIcon" width="17" height="18"/>
         <image name="tab-walletIcon" width="18" height="18"/>
         <namedColor name="CustomViewBgColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -710,7 +730,7 @@
             <color red="0.0" green="0.73299998044967651" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SeperatorColor">
-            <color red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ViewBackgroundColor">
             <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

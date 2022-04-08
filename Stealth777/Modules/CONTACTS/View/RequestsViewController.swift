@@ -27,7 +27,7 @@ class RequestsViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
     

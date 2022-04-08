@@ -28,14 +28,18 @@ class SettingsViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
-        self.tabBarController?.tabBar.isHidden = false
+        
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setToolbarHidden(true, animated: true)
+        
+//        self.tabBarController?.tabBar.isHidden = false
+//        self.navigationController?.setToolbarHidden(true, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
 
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Settings")
+        self.navigationItem.largeTitleDisplayMode = .never
+//        self.setSmallHeaderAndHideLargeHeader(header: "Settings")
         self.navigationController?.navigationBar.sizeToFit()
     }
 
@@ -74,7 +78,7 @@ class SettingsViewController: BaseViewController {
         let refreshAlert = UIAlertController(title: "Logout", message: "Are you sure you want to logout from App?", preferredStyle: UIAlertController.Style.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action: UIAlertAction!) in
-            CommonFxns.directLogOut()
+            CommonFxns.popToLoginVC()
         }))
 
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -85,70 +89,5 @@ class SettingsViewController: BaseViewController {
 
 }
 
-
-extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return self.settingsListTitleArr.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            return 100
-        default:
-            return 60
-        }
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        
-        guard  let settingsCell = self.settingsListTableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.identifier , for: indexPath) as? SettingsTableViewCell else {
-            return cell
-        }
-        settingsCell.titleLbl.text = self.settingsListTitleArr[indexPath.row]
-        
-        if indexPath.row % 2 == 0{
-            if indexPath.row == 0{
-                settingsCell.titleBgImgView.image = UIImage(named: "privateAvatar")
-                settingsCell.titleBgImgView.backgroundColor = UIColor.clear
-
-            }else{
-                settingsCell.titleBgImgView.backgroundColor = UIColor(named: "SecondaryThemeColor")
-
-            }
-        }else{
-            settingsCell.titleBgImgView.backgroundColor = UIColor(named: "PrimaryThemeColor")
-
-        }
-        settingsCell.titleImgView.image = UIImage(named: self.settingsListTitleImgArr[indexPath.row])
-
-        
-        return settingsCell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        switch indexPath.row {
-            case 1:
-                let storyBoard = UIStoryboard.init(name: enumStoryBoard.settings.rawValue, bundle: nil)
-                let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.accountSettings.rawValue) as? AccountSettingsViewController
-                self.navigationController?.pushViewController(otherController!, animated: true)
-            case 2:
-                let storyBoard = UIStoryboard.init(name: enumStoryBoard.settings.rawValue, bundle: nil)
-                let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.generalSettings.rawValue) as? GeneralSettingsViewController
-                self.navigationController?.pushViewController(otherController!, animated: true)
-                
-            case 6:
-                self.showLogoutAlert()
-            
-            default:
-                break
-            }
-        }
-
-}
 
 

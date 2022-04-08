@@ -8,14 +8,13 @@
 import Foundation
 import Alamofire
 
-struct DataService {
+struct APIService {
     
-    // MARK: - Singleton
-    static let shared = DataService()
-    
-    // MARK: - URL
-    private var baseUrl = "185.247.226.7./api/users/"
-    
+//    // MARK: - Singleton
+////    static let shared = APIService()
+//    
+//    // MARK: - URL
+//    
     enum enumAPIEndPoints: String {
 
         case login = "login"

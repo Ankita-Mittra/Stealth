@@ -103,8 +103,8 @@ class CommonFxns: NSObject {
 //            navController.navigationBar.semanticContentAttribute = .forceRightToLeft
 //       }
 
-        let storyboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.privateTabBarController.rawValue, bundle: nil)
-        let tabBarControllerObj = storyboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateModeTabBar .rawValue) as! PrivateModeTabBarViewController
+        let storyboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
+        let tabBarControllerObj = storyboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar .rawValue) as! PublicModeTabBarViewController
         var vcArray = (appDelegate.window?.rootViewController as! UINavigationController).viewControllers
         vcArray.removeAll()
         vcArray.append(tabBarControllerObj)
@@ -153,8 +153,8 @@ class CommonFxns: NSObject {
     
     // Method to go to Home screen
     class func popToHomeVC(){
-        let storyboard = UIStoryboard(name: enumStoryBoard.privateTabBarController.rawValue, bundle: nil)
-        let tabVc = storyboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateModeTabBar.rawValue) as! PrivateModeTabBarViewController
+        let storyboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
+        let tabVc = storyboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar.rawValue) as! PublicModeTabBarViewController
         var vcArray = (appDelegate.window?.rootViewController as! UINavigationController).viewControllers
         vcArray.removeAll()
         vcArray.append(tabVc)
@@ -206,16 +206,60 @@ class CommonFxns: NSObject {
         reference.present(alert, animated: true, completion: nil)
     }
     
+    
+    // Method to trim Strings
+    class func trimString(string:String) -> String{
+        return string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    }
+    
+    // Method to check Email Validations
+    class func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"// "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
+    
+    // Method to check password Validations
+    class func isValidPwd(str:String)->Bool{
+        var valid = true
+        let whitespace = NSCharacterSet.whitespaces
+        let range = str.rangeOfCharacter(from: whitespace)
 
-}
-
-struct VpnChecker {
-
-    private static let vpnProtocolsKeysIdentifiers = [
-        "tap", "tun", "ppp", "ipsec", "utun"
-    ]
-
-    static func isVpnActive() -> Bool {
+        // range will be nil if no whitespace is found
+        if range != nil {
+            valid = false
+        } else {
+            valid = true
+        }
+        return valid
+    }
+    
+    // Method to check Email Validations
+    class func isValidUsername(username:String) -> Bool {
+        let emailRegEx = "^[0-9a-zA-Z]{4,25}$" // "^[0-9a-zA-Z\\_]{4,15}$"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+//        if !emailTest.evaluate(with: username){
+//            self.showAlert((appDelegate.window?.rootViewController)!, message: "Please enter valid username", title: "Alert")
+//        }
+        return emailTest.evaluate(with: username)
+    }
+    
+    // Method to check Email Validations
+    class func isValidDisplayName(testStr:String) -> Bool {
+        let regEx = "{4,15}$"
+        
+        let nameTest = NSPredicate(format:"SELF MATCHES %@", regEx)
+        return nameTest.evaluate(with: testStr)
+    }
+    
+    class func isVPNActive() -> Bool {
+        
+        let vpnProtocolsKeysIdentifiers = [
+            "tap", "tun", "ppp", "ipsec", "utun"
+        ]
+        
         guard let cfDict = CFNetworkCopySystemProxySettings() else { return false }
         let nsDict = cfDict.takeRetainedValue() as NSDictionary
         guard let keys = nsDict["__SCOPED__"] as? NSDictionary,
@@ -230,6 +274,7 @@ struct VpnChecker {
         }
         return false
     }
+    
 }
 
 

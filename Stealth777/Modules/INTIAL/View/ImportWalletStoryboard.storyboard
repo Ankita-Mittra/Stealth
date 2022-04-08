@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Import Wallet-->
+        <!--Import Wallet View Controller-->
         <scene sceneID="8UP-WN-gfa">
             <objects>
                 <viewController storyboardIdentifier="ImportWalletViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="K29-1l-MT8" customClass="ImportWalletViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
@@ -165,9 +165,6 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" title="Import Wallet" leftItemsSupplementBackButton="YES" id="0ad-gb-sLc">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="44a-5l-KBi"/>
-                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsQ-3I-ghc" sceneMemberID="firstResponder"/>
             </objects>
@@ -179,7 +176,7 @@
             <size key="intrinsicContentSize" width="55" height="32"/>
         </designable>
         <designable name="yaD-Tv-Ns2">
-            <size key="intrinsicContentSize" width="75.5" height="20"/>
+            <size key="intrinsicContentSize" width="83.5" height="20"/>
         </designable>
     </designables>
     <resources>

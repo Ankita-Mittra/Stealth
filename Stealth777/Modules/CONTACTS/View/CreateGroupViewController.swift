@@ -24,7 +24,7 @@ class CreateGroupViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
     

@@ -63,7 +63,7 @@ class GeneralSettingsViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
 
         self.navigationItem.largeTitleDisplayMode = .never
-//        self.setSmallHeaderAndHideLargeHeader(header: "General Settings")
+        self.title = "General *Settings"
     }
     
     // MARK: - Methods

@@ -17,11 +17,11 @@ class InitialViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         self.hideNavigationBar()
+        
+
 //        self.checkVPNConnectivity()
     }
-    
-    
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -35,7 +35,7 @@ class InitialViewController: BaseViewController {
     // MARK: - Methods
     
     func checkVPNConnectivity(){
-        if VpnChecker.isVpnActive(){
+        if CommonFxns.isVPNActive(){
             CommonFxns.showAlert(self, message: "VPN is connected", title: "Alert")
         }else{
             CommonFxns.showAlert(self, message: "VPN is NOT connected", title: "Alert")
@@ -57,6 +57,8 @@ class InitialViewController: BaseViewController {
 //    let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
 //    navController.pushViewController(signUpVcObj, animated: true)
     //
+    
+    
     @IBAction func termaAndConditionsBtnAction(_ sender: Any) {
 
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.main.rawValue, bundle: nil)

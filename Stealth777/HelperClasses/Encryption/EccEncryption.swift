@@ -80,7 +80,6 @@ class Encryption{
             }
         }
 
-
     func exportPrivateKey(_ privateKey: P256.KeyAgreement.PrivateKey) -> String {
         
         let rawPrivateKey = privateKey.pemRepresentation
@@ -113,7 +112,6 @@ class Encryption{
             sharedInfo: Data(),
             outputByteCount: 32
         )
-        
         print("symmetricKey....", symmetricKey.withUnsafeBytes { Data(Array($0)).base64EncodedString() })
         return symmetricKey
     }

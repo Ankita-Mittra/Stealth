@@ -10,10 +10,12 @@ import Alamofire
 
 // MARK: - Services
 
+
+func abc1(){
+    
+}
 //func loginRequest(with password: String, walletPhrase: String, userType: Int, deviceNo: String, deviceVersion: String, platform: String, completion: @escaping (Photo?, Error?) -> ()) {
 //    let url = "\(baseUrl)/\(DataService.enumAPIEndPoints.login)"
-//
-//
 //
 //    Alamofire.request(url).responsePhoto { response in
 //        if let error = response.error {

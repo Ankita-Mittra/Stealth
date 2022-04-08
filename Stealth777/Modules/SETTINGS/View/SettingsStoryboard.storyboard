@@ -205,6 +205,50 @@
             </objects>
             <point key="canvasLocation" x="1867" y="94"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="fAr-LZ-efP">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FVs-qz-Flx" customClass="SettingsViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="32d-Fy-dPn" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hEw-Z1-kmf">
+                                <rect key="frame" x="30" y="44" width="354" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="FVs-qz-Flx" id="7tM-vJ-T4b"/>
+                                    <outlet property="delegate" destination="FVs-qz-Flx" id="hNy-eR-RXh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="p7h-21-tgr"/>
+                        <color key="backgroundColor" name="ViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hEw-Z1-kmf" firstAttribute="top" secondItem="p7h-21-tgr" secondAttribute="top" id="CtO-xN-iPV"/>
+                            <constraint firstItem="hEw-Z1-kmf" firstAttribute="leading" secondItem="p7h-21-tgr" secondAttribute="leading" constant="30" id="E8E-Hp-TMf"/>
+                            <constraint firstItem="p7h-21-tgr" firstAttribute="trailing" secondItem="hEw-Z1-kmf" secondAttribute="trailing" constant="30" id="bnn-Up-whN"/>
+                            <constraint firstItem="p7h-21-tgr" firstAttribute="bottom" secondItem="hEw-Z1-kmf" secondAttribute="bottom" id="im9-cf-XnG"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="B7Z-Yp-vak"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="FlQ-lZ-6xL"/>
+                    <connections>
+                        <outlet property="settingsListTableView" destination="hEw-Z1-kmf" id="Scy-6Y-RfQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M4A-C9-7jP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1104" y="94"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="ddV-1L-gbm">
@@ -219,7 +263,7 @@
             <color red="0.0" green="0.73299998044967651" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SeperatorColor">
-            <color red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ViewBackgroundColor">
             <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

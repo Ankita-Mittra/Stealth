@@ -37,7 +37,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aI-wH-mpL" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                        <rect key="frame" x="59" y="28" width="71.5" height="19"/>
+                        <rect key="frame" x="59" y="28" width="71" height="19"/>
                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -110,7 +110,7 @@
                         <rect key="frame" x="497" y="0.0" width="85" height="98"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accept" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGA-xD-3X4" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="50.5" y="64.5" width="34.5" height="13"/>
+                                <rect key="frame" x="50" y="64.5" width="35" height="13"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

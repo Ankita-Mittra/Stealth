@@ -22,7 +22,7 @@ class ContactsViewController: BaseViewController {
         super.viewDidLoad()
 
         // Initial Setup
-        self.initialUISetup()
+        self.initialSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,10 +36,15 @@ class ContactsViewController: BaseViewController {
 
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         self.navigationItem.setRightBarButton(add, animated: true)
-        
-        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Contacts")
+        self.title = LocalizationSystem.sharedInstance.localizedStringForKey(key:"contacts", comment: "")
+
+//        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Contacts")
         self.setSearchBarOnNavigationBar()
         self.navigationItem.largeTitleDisplayMode = .always
+        
+//        self.tabBarItem.title = ""
+
+        self.tabBarController?.tabBarItem.title = ""
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -52,11 +57,7 @@ class ContactsViewController: BaseViewController {
 //        self.navigationItem.setRightBarButton(add, animated: true)
 //    }
 //
-    @objc func addTapped(){
-        let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
-        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.searchUsers.rawValue) as? SearchUsersViewController
-        self.navigationController?.pushViewController(otherController!, animated: true)
-    }
+
 //
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(true)
@@ -75,18 +76,42 @@ class ContactsViewController: BaseViewController {
 //        navigationController?.setNavigationBarHidden(true, animated: false)
 //    }
 
+    // MARK: - Methods for Initial Setup
 
-    // MARK: - Methods
-
-    func initialUISetup(){
+    // Method for initial Setups
+    func initialSetup(){
+        self.registerCustomCells() // Register Cells
+        self.setStrings() // Set UI Strings as per the selected language
+    }
+    
+    // Method to register Custom cell xib's
+    func registerCustomCells(){
+        
         self.contactsListTableView.register(ContactsListTableViewCell.nib(), forCellReuseIdentifier: ContactsListTableViewCell.identifier)
         self.contactsListTableView.register(ContactsRequestListTableViewCell.nib(), forCellReuseIdentifier: ContactsRequestListTableViewCell.identifier)
 
-//        self.contactsListTableView.register(ContactsRequestListTableViewCell.nib(), forHeaderFooterViewReuseIdentifier: ContactsRequestListTableViewCell.identifier)
         self.contactsListTableView.rowHeight = UITableView.automaticDimension
         self.contactsListTableView.estimatedRowHeight = 100
     }
+    
+    func setStrings(){
+//        self.text = LocalizationSystem.sharedInstance.localizedStringForKey(key:"change_pwd", comment: "")
+        
+    }
 
+    // MARK: - Methods
+
+    // MARK: - Actions
+    
+    @objc func addTapped(){
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.searchUsers.rawValue) as? SearchUsersViewController
+        self.navigationController?.pushViewController(otherController!, animated: true)
+    }
+    
+    // MARK: - Button Actions
+
+    
 }
 
 
@@ -95,7 +120,7 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section == 0 {
+        if section == zero {
             return 2
 
         }else {
@@ -105,7 +130,7 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.section == 0{
+        if indexPath.section == zero{
             return 60
         }else{
             return 68
@@ -115,7 +140,7 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        if section == 0{
+        if section == zero{
             return 0
         }else{
             return 25
@@ -123,25 +148,12 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("numberOfSections")
         return 2
     }
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-//        if section == ContactsTableSection.groups.rawValue || section == ContactsTableSection.requests.rawValue{
-        
-//        print("section == 0 && section == 1 viewForHeaderInSection")
-//        let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: ContactsRequestListTableViewCell.identifier) as! ContactsRequestListTableViewCell
-//
-//        if section == ContactsTableSection.groups.rawValue{
-//            headerCell.titleLbl.text = ContactsTableSection.groups.sectionTitle
-//            headerCell.titleImgView.image = UIImage(named: "groupIcon")
-//        }else if section == ContactsTableSection.requests.rawValue{
-//            headerCell.titleLbl.text = ContactsTableSection.requests.sectionTitle
-//            headerCell.titleImgView.image = UIImage(named: "friendRequest")
-//        }
+
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 25))
         headerView.backgroundColor = UIColor.systemGray4
         let label = UILabel()
@@ -151,9 +163,9 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.addSubview(label)
         
         if section == 0{
-            label.text = ""
+            label.text = emptyStr
         }else{
-            label.text = "Contacts"
+            label.text = LocalizationSystem.sharedInstance.localizedStringForKey(key:"contacts", comment: "")
         }
         
         return headerView
@@ -171,11 +183,12 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             if indexPath.row == 0{
-                requestCell.titleLbl.text = "Requests"
+                requestCell.titleLbl.text = LocalizationSystem.sharedInstance.localizedStringForKey(key:"requests", comment: "")
+                
                 requestCell.titleImgView.image = UIImage(named: "friendRequest")
 
             }else{
-                requestCell.titleLbl.text = "Groups"
+                requestCell.titleLbl.text = LocalizationSystem.sharedInstance.localizedStringForKey(key:"groups", comment: "")
                 requestCell.titleImgView.image = UIImage(named: "groupIcon")
             }
             return requestCell

@@ -67,11 +67,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.initial.rawValue) as! InitialViewController
                 navController.pushViewController(signUpVcObj, animated: true)
 
-//                let storyBoard = UIStoryboard.init(name: enumStoryBoard.login.rawValue, bundle: nil)
 //                let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-//
-//                let objLocationSearch = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.login.rawValue) as? LoginViewController
-//                navController.navigationController?.pushViewController(objLocationSearch!, animated: true)
+//                let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.login.rawValue, bundle: nil)
+//                let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.login.rawValue) as! LoginViewController
+//                navController.pushViewController(signUpVcObj, animated: true)
             }
         }
     
@@ -98,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "Stealth777")
+        let container = NSPersistentContainer(name: coreDataName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -113,6 +112,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  Check the error message to determine what the actual problem was.
                  */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
+            }else{
+                print("Successfully loaded core data.")
+
             }
         })
         return container
@@ -130,6 +132,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+    
+    func clearStorage(forEntity entity: String) {
+        let isInMemoryStore = persistentContainer.persistentStoreDescriptions.reduce(false) {
+            return $0 ? true : $1.type == NSInMemoryStoreType
+        }
+
+        let managedObjectContext = persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        // NSBatchDeleteRequest is not supported for in-memory stores
+        if isInMemoryStore {
+            do {
+                let entities = try managedObjectContext.fetch(fetchRequest)
+                for entity in entities {
+                    managedObjectContext.delete(entity as! NSManagedObject)
+                }
+            } catch let error as NSError {
+                print(error)
+            }
+        } else {
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            do {
+                try managedObjectContext.execute(batchDeleteRequest)
+            } catch let error as NSError {
+                print(error)
             }
         }
     }

@@ -29,18 +29,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBS-3t-y5X">
                                 <rect key="frame" x="30" y="400.66666666666669" width="368" height="46.333333333333314"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter Password" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wAz-g0-xXW" customClass="UITextViewCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="2" width="333" height="44"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" name="textFieldPlaceholderColor"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" secureTextEntry="YES"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0N3-eP-e8I">
                                         <rect key="frame" x="0.0" y="46" width="368" height="0.3333333333333357"/>
                                         <color key="backgroundColor" name="textFieldSeperatorColor"/>
@@ -60,19 +48,36 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="eye.slash" catalog="system"/>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rzC-qe-I6R" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="46"/>
+                                        <color key="textColor" name="textFieldColor"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" name="textFieldPlaceholderColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="AkA-q3-L4R"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="0N3-eP-e8I" firstAttribute="top" secondItem="wAz-g0-xXW" secondAttribute="bottom" id="Bne-To-mLB"/>
                                     <constraint firstAttribute="trailing" secondItem="YCo-qi-cNk" secondAttribute="trailing" id="Fzr-BS-3rW"/>
                                     <constraint firstItem="YCo-qi-cNk" firstAttribute="top" secondItem="qBS-3t-y5X" secondAttribute="top" id="JwA-Kf-TC8"/>
-                                    <constraint firstItem="wAz-g0-xXW" firstAttribute="top" secondItem="qBS-3t-y5X" secondAttribute="top" constant="2" id="Mt5-rS-Oxb"/>
                                     <constraint firstAttribute="bottom" secondItem="0N3-eP-e8I" secondAttribute="bottom" id="Q3H-4u-ugA"/>
+                                    <constraint firstItem="YCo-qi-cNk" firstAttribute="leading" secondItem="rzC-qe-I6R" secondAttribute="trailing" id="Skt-Ql-KDn"/>
+                                    <constraint firstItem="rzC-qe-I6R" firstAttribute="top" secondItem="qBS-3t-y5X" secondAttribute="top" id="V75-h3-p7j"/>
                                     <constraint firstAttribute="trailing" secondItem="0N3-eP-e8I" secondAttribute="trailing" id="WDO-lN-jF7"/>
+                                    <constraint firstItem="0N3-eP-e8I" firstAttribute="top" secondItem="rzC-qe-I6R" secondAttribute="bottom" id="amx-fc-NHw"/>
                                     <constraint firstItem="0N3-eP-e8I" firstAttribute="leading" secondItem="qBS-3t-y5X" secondAttribute="leading" id="fzG-G7-Pgv"/>
                                     <constraint firstItem="0N3-eP-e8I" firstAttribute="top" secondItem="YCo-qi-cNk" secondAttribute="bottom" id="gVD-nW-Qnf"/>
-                                    <constraint firstItem="wAz-g0-xXW" firstAttribute="leading" secondItem="qBS-3t-y5X" secondAttribute="leading" id="kjY-sY-tJS"/>
-                                    <constraint firstItem="YCo-qi-cNk" firstAttribute="leading" secondItem="wAz-g0-xXW" secondAttribute="trailing" id="yow-eL-JFw"/>
+                                    <constraint firstItem="rzC-qe-I6R" firstAttribute="leading" secondItem="qBS-3t-y5X" secondAttribute="leading" id="jPl-IO-QWb"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKY-DL-LMC" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
@@ -107,7 +112,7 @@
                                     <color key="titleColor" name="subHeadingColor"/>
                                 </state>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZqE-jv-pT6">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZqE-jv-pT6">
                                 <rect key="frame" x="349" y="502" width="51" height="31"/>
                                 <connections>
                                     <action selector="loginWithFaceIdSwitch:" destination="Y6W-OH-hqX" eventType="valueChanged" id="mFu-yx-qGN"/>
@@ -194,6 +199,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="OkI-Qu-v1n"/>
                     <connections>
+                        <outlet property="enterPasswordTxtField" destination="rzC-qe-I6R" id="hwb-JF-L5o"/>
                         <outlet property="loginWithFaceIdSwitch" destination="ZqE-jv-pT6" id="xET-7k-C9l"/>
                     </connections>
                 </viewController>
@@ -219,6 +225,9 @@
         <designable name="huG-yC-Mlg">
             <size key="intrinsicContentSize" width="132" height="31"/>
         </designable>
+        <designable name="rzC-qe-I6R">
+            <size key="intrinsicContentSize" width="111.66666666666667" height="20.666666666666668"/>
+        </designable>
         <designable name="tE8-cb-Ehd">
             <size key="intrinsicContentSize" width="359" height="345"/>
         </designable>
@@ -237,6 +246,9 @@
         </namedColor>
         <namedColor name="subHeadingColor">
             <color red="0.43529411764705883" green="0.43529411764705883" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textFieldColor">
+            <color red="0.35294117647058826" green="0.37254901960784315" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textFieldPlaceholderColor">
             <color red="0.66399997472763062" green="0.66399997472763062" blue="0.66399997472763062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -9,6 +9,8 @@ import UIKit
 
 class EnterPasswordViewController: BaseViewController {
 
+    var signUpDict = [String:Any]()
+
     // MARK: - View life cycle
     
     override func viewDidLoad() {

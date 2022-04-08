@@ -37,6 +37,9 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Chats")
         self.setSearchBarOnNavigationBar()
         self.navigationItem.largeTitleDisplayMode = .always
+//        self.title = "Chats"
+
+//        self.tabBarItem.title = ""
 //        self.navigationController?.navigationBar.sizeToFit()
     }
     
@@ -54,6 +57,9 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             }),
             UIAction(title: NSLocalizedString("Notifications", comment: ""), image: UIImage(named: "homeMenu-notificationsIcon"), handler: { (handler) in
                 self.goToNotificationsScreen()
+            }),
+            UIAction(title: NSLocalizedString("Settings", comment: ""), image: UIImage(named: "homeMenu-settingsIcon"), handler: { (handler) in
+                self.goToSettingsScreen()
             })
         ])
         if #available(iOS 14.0, *) {
@@ -70,6 +76,12 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         } else {
             // Fallback on earlier versions
         }
+    }
+    
+    func goToSettingsScreen(){
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.settings.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.settings.rawValue) as? SettingsViewController
+        self.navigationController?.pushViewController(otherController!, animated: true)
     }
     
     func goToNotificationsScreen(){
@@ -231,10 +243,10 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 //        navigationItem.searchController = searchController
 //    }
     
-    func initialUiSetup(){
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(startChatBtnAction))
-//        let startChat = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(addTapped))
-//        let more = UIBarButtonItem(title: "Play", style: .done, target: self, action: #selector(addTapped))
+    // MARK: - Methods for Initial Setup
+
+    // Method for initial Setups
+    func initialSetup(){
     }
 
     
