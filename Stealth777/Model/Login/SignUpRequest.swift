@@ -20,7 +20,7 @@ struct SignUpRequest : Codable {
     
     
     enum CodingKeys: String, CodingKey {
-        case username = "name"
+        case username  = "name"
         case password = "password"
         case walletPhrase = "walletPhrase"
         case walletId = "walletKey"
@@ -29,22 +29,10 @@ struct SignUpRequest : Codable {
         case deviceName = "deviceName"
         case platform = "platform"
     }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        username = try values.decodeIfPresent(String.self, forKey: .username)
-        password = try values.decodeIfPresent(String.self, forKey: .password)
-        walletPhrase = try values.decodeIfPresent(String.self, forKey: .walletPhrase)
-        walletId = try values.decodeIfPresent(String.self, forKey: .walletId)
-        deviceNo = try values.decodeIfPresent(String.self, forKey: .deviceNo)
-        deviceVersion = try values.decodeIfPresent(String.self, forKey: .deviceVersion)
-        deviceName = try values.decodeIfPresent(String.self, forKey: .deviceName)
-        platform = try values.decodeIfPresent(String.self, forKey: .platform)
-    }
     
     func toAnyObject() -> Any {
         return [
-            "name": username,
+            "name" : username,
             "password": password,
             "walletPhrase": walletPhrase,
             "deviceName": deviceName,

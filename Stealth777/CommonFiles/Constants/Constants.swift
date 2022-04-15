@@ -30,6 +30,10 @@ let USER_DEFAULT_isDarkMode_Key = "userdefault_isDarkMode"
 let iOSDeviceType = 1
 let appVersion = 1.8
 
+// MARK: - Others
+
+let userType = 1 // 0: Private, 1: Public
+let platform = "ios"
 
 // Screen sizes
 let iPhone_8Plus_Height:CGFloat = 736

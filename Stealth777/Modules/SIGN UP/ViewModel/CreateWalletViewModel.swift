@@ -29,9 +29,7 @@ class CreateWalletViewModel {
     private var apiService: SignUpAPIService?
     
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
-    
-    
-    
+
     var showAlertClosure: (() -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
@@ -44,9 +42,26 @@ class CreateWalletViewModel {
 
 // MARK: - Network call
 
-func registerUser() {
+    func registerUser(dict: [String:Any]) {
     
-    self.apiService?.signup(parameters: [:], completion: { data, succeeded, error in
+
+        var signUpDict = dict
+
+        let deviceVersion = "1"
+        
+        let deviceName = "iPhone"
+        
+        let  deviceNumber = "number"
+    
+        signUpDict[APIKeysForUser.userType_key.rawValue] = userType
+        signUpDict[APIKeysForUser.platform_key.rawValue] = platform
+        signUpDict[APIKeysForUser.deviceNo_key.rawValue] = deviceNumber
+        signUpDict[APIKeysForUser.deviceName_key.rawValue] = deviceName
+        signUpDict[APIKeysForUser.deviceVersion_key.rawValue] = deviceVersion
+         
+        print("sign Up DIct ....", signUpDict)
+    
+    self.apiService?.signup(parameters: signUpDict, completion: { data, succeeded, error in
         if error != nil{
             self.isLoading = false
             print("error...", error)
@@ -62,7 +77,7 @@ extension CreateWalletViewController: UICollectionViewDelegate, UICollectionView
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return self.walletPhraseArr.count
     }
     
     
@@ -73,8 +88,9 @@ extension CreateWalletViewController: UICollectionViewDelegate, UICollectionView
         guard let phraseCell = self.phraseCollectionView.dequeueReusableCell(withReuseIdentifier: WalletPhraseCollectionViewCell.identifier, for: indexPath) as? WalletPhraseCollectionViewCell else{
             return cell
         }
-        phraseCell.titleLbl.text = "\(indexPath.row + 1). Title"
-        self.copyBtn.isHidden = false
+        
+        phraseCell.titleLbl.text = "\(indexPath.row + 1). \(self.walletPhraseArr[indexPath.row])"
+//        self.copyBtn.isHidden = false
         return phraseCell
 
     }

@@ -8,20 +8,32 @@
 
 import Foundation
 import Alamofire
-
+import UIKit
 // MARK: - SignUpResponse Model
+
 struct SignUpResponse: Codable {
-    let success: Bool
-    let code: Int
-    let message: String
-    let version: Int
-    let data: SignUpResponseDataClass
+    let userId: String
+    let token: String
+
+    init(userId: String, token: String){
+        self.userId = userId
+        self.token = token
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case userId = "id"
+        case token = "token"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        userId = try values.decodeIfPresent(String.self, forKey: .userId) ?? emptyStr
+        token = try values.decodeIfPresent(String.self, forKey: .token) ?? emptyStr
+    }
+    
+    
 }
 
-// MARK: - DataClass
-struct SignUpResponseDataClass: Codable {
-    let id, token: String?
-}
 
 
 

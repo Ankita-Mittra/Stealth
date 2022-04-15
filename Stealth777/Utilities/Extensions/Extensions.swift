@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-// Extension to convert string to and from base 64
+// MARK: - Extension to convert string to and from base 64
 extension String {
 
     func fromBase64() -> String? {
@@ -25,7 +25,7 @@ extension String {
 
 }
 
-// Extension to split string into words
+// MARK: - Extension to split string into words
 extension String {
     func contains(word : String) -> Bool
     {
@@ -33,7 +33,7 @@ extension String {
     }
 }
 
-// Extension to hide keyboard on single tap on screen
+// MARK: - Extension to hide keyboard on single tap on screen
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
@@ -45,7 +45,7 @@ extension UIViewController {
     }
 }
 
-// Extension to lock app on double tap on screen
+// MARK: - Extension to lock app on double tap on screen
 extension UIViewController {
     func lockAppOnDoubleTap() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.showloginScreen))
@@ -58,6 +58,8 @@ extension UIViewController {
     }
 }
 
+// MARK: - Extension to add gradient on background of screen
+
 extension UIView{
     
     func addGradient(){
@@ -66,27 +68,32 @@ extension UIView{
         gradientLayer.frame.size = gradientView.frame.size
         let gradientColor1 = UIColor(red: 20/255, green: 49/255, blue: 80/255, alpha: 1).cgColor
         let gradientColor2 = UIColor(red: 26/255, green: 27/255, blue: 39/255, alpha: 1).cgColor
-
         
         gradientLayer.colors = [gradientColor1,gradientColor2]
-        
-        
-//        gradientLayer.colors = [UIColor.blue.cgColor,UIColor.red.cgColor]
-
-        
-//        [UIColor.blue.cgColor,UIColor.black.withAlphaComponent(1).cgColor]
-//        gradientLayer.backgroundColor = CGColor(red: 20, green: 49, blue: 80, alpha: 1)
-
-        //Use diffrent colors
         gradientView.layer.addSublayer(gradientLayer)
         
         gradientLayer.startPoint = CGPoint(x: -0.8, y: -0.8)
         gradientLayer.endPoint = CGPoint(x: 0.6, y: 0.8)
         
-        
         self.inputView?.layer.addSublayer(gradientLayer)
-//        self.window?.rootViewController?.view.layer.addSublayer(gradientLayer)
-//            .layer.addSublayer(gradientLayer)
     }
     
+}
+
+// MARK: - Extension to force update navigation bar
+
+extension UINavigationController {
+    func forceUpdateNavBar() {
+        DispatchQueue.main.async {
+            self.navigationBar.sizeToFit()
+        }
+      }
+}
+
+// MARK: - Extension to split String into Array
+extension StringProtocol {
+    var words: [SubSequence]{
+        
+        return split { !$0.isLetter}
+    }
 }

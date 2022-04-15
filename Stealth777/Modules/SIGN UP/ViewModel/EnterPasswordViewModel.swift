@@ -1,30 +1,31 @@
 //
-//  EnterUsernameViewModel.swift
+//  EnterPasswordViewModel.swift
 //  Stealth777
 //
-//  Created by Fareed Alzoorani on 04/03/2022.
+//  Created by Fareed Alzoorani on 12/04/2022.
 //
 
 import Foundation
 import UIKit
 
-class EnterUsernameViewModel {
-
-    
-    
-    
-    
-}
-
 // MARK: - TextField delegates
 
-extension EnterUsernameViewController: UITextFieldDelegate {
+extension EnterPasswordViewController: UITextFieldDelegate {
     
     // dismissing keyboard on pressing return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
     }
+    
+
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        let updatedText = CommonFxns.trimString(string: textField.text ?? "")
+//
+//
+//        updatedText != emptyStr && CommonFxns.isValidPassword(password: updatedText) && (self.enterPasswordTxtField.text == self.confirmPasswordTxtField.text) ? validInput() : invalidInput()
+//
+//    }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -36,25 +37,27 @@ extension EnterUsernameViewController: UITextFieldDelegate {
         
         // add their new text to the existing text
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        self.verifiedUsernameImgView.isHidden = true
         
+print("updatedText....", updatedText)
         if let text = textField.text,
             let textRange = Range(range, in: text) {
             let updatedText = CommonFxns.trimString(string: text.replacingCharacters(in: textRange, with: string))
             
-            if updatedText != emptyStr && CommonFxns.isValidUsername(username: CommonFxns.trimString(string: updatedText)){
-                self.verifiedUsernameImgView.isHidden = false
-            }
+            updatedText != emptyStr && CommonFxns.isValidPassword(password: updatedText) && (self.enterPasswordTxtField.text == self.confirmPasswordTxtField.text) ? validInput() : invalidInput()
         }
-        return updatedText.count <= 15
+        return updatedText.count <= 30
     }
-}
-
-extension EnterUsernameViewController: ImagePickerDelegate {
-
-    func didSelect(image: UIImage?) {
-        if image != nil{
-            self.profileImgView.image = image
-        }
+    
+    func validInput(){
+        self.validPasswordImgView.isHidden = false
+        self.passwordStrengthLbl.text = "Strong"
     }
+    
+    func invalidInput(){
+        self.validPasswordImgView.isHidden = true
+        self.passwordStrengthLbl.text = "Weak"
+    }
+    
+    
+    
 }

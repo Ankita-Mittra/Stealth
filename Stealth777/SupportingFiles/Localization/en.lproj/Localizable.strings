@@ -6,14 +6,22 @@
 //
 
 
-// MARK: - Strings
+// MARK: - Common Strings
 // ************** Common ******************
 "okay" = "Okay";
 "cancel" = "Cancel";
 "success" = "Success";
 "alert" = "Alert";
 
-// ************** Login and Sign up ******************
+// MARK: - Tab Bar strings
+
+"chats" = "Chats";
+"contacts" = "Contacts";
+"wallet" = "Wallet";
+"market_place" = "Market Place";
+"my_life" = "My Life";
+
+// MARK: - ************** Login and Sign up ******************
 
 "login" = "Login";
 "sign_up" = "Sign Up";
@@ -26,11 +34,80 @@
 
 "terma_and_conditions" = "Create Wallet";
 
+// Initial Screen
 "create_wallet" = "Create Wallet";
 "import_wallet" = "Import Wallet";
+"terma_and_conditions" = "Terms & Conditions";
 
-// ************** Contacts ******************
+// Login screen
 
-"contacts" = "Contacts";
+"enter_wallet_phrase" = "Enter Wallet Phrase";
+
+// App Lock screen
+"welcome" = "Welcome Back!";
+"recover_password" = "Recover Password";
+"signIn" = "Sign In";
+"faceId_signIn" = "Sign In with Face ID";
+
+// Enter username screen
+
+"enter_username" = "Enter Username";
+"777" = "777";
+
+// Create wallet screen
+
+"wallet_phrase_heading" = "Write down or copy these words in the right\norder and save them somewhere save.";
+"copy" = "Copy";
+"finish" = "finish";
+
+// Enter password screen
+
+"weak" = "Weak";
+"strong" = "Strong";
+"password_strength" = "password Strength";
+"enter_password" = "Enter Password";
+"confirm_password" = "Confirm Password";
+"continue" = "Continue";
+
+// Recover password screen
+
+// MARK: - ************** Contacts ******************
+
 "requests" = "Requests";
 "groups" = "Groups";
+"reject" = "Reject";
+"accept" = "Accept";
+"say_hi" = "Say Hi";
+"join" = "Join";
+"search_freinds" = "Search Friends";
+"send_request" = "Send Request";
+
+"group" = "Group";
+"add_participants" = "Add Participants";
+"owner" = "Owner";
+"admin" = "Admin";
+"member" = "Member";
+"next" = "Next";
+"create" = "Create";
+
+//Create group
+
+"group_name" = "Group Name";
+"group_description" = "Group Description";
+"participants" = "Participants";
+"of" =  "of";
+"anonymous" = "Anonymous";
+"diperse_group" = "Disperse Group";
+"enter_group_info" = "Please provide a group name and optional\ngroup icon";
+"anonymous_alert" = "Group members cannot see real names for each other";
+"disperse_group_alert" = "Group will be dispersed, all data will removed permanantly";
+"manually" = "Manually";
+
+// Requests
+
+"friend_requests" = "Friend Requests";
+"group_requests" = "Group Requests";
+
+
+
+// MARK: - ************** Settings ******************

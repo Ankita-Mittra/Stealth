@@ -37,6 +37,23 @@ struct UserModel: Codable {
         case onlineStatus = "onlineStatus"
         case lastOnlineTime = "lastOnlineTime"
     }
+    
+    init(userId: String, username: String, userType: Int, bio: String, imageUrl: String, isMute: Int, isBlock: Int, isPin: Int, allowWipeout: Int, status: Int, onlineStatus: Int, lastOnlineTime: String){
+        self.userId = userId
+        self.username = username
+        self.userType = userType
+        self.bio = bio
+        self.imageUrl = imageUrl
+        self.isMute = isMute
+        self.isBlock = isBlock
+        self.isPin = isPin
+        self.allowWipeout = allowWipeout
+        self.status = status
+        self.onlineStatus = onlineStatus
+        self.lastOnlineTime = lastOnlineTime
+    }
+    
+    
 }
 
 

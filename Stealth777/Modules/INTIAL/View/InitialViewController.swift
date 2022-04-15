@@ -58,12 +58,11 @@ class InitialViewController: BaseViewController {
 //    navController.pushViewController(signUpVcObj, animated: true)
     //
     
-    
     @IBAction func termaAndConditionsBtnAction(_ sender: Any) {
 
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.main.rawValue, bundle: nil)
         let objLocationSearch = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.termsAndConditions.rawValue) as? ImportWalletViewController
-                    self.navigationController?.pushViewController(objLocationSearch!, animated: true)
+        self.navigationController?.pushViewController(objLocationSearch!, animated: true)
     }
     
     @IBAction func createWalletBtnAction(_ sender: Any) {
@@ -71,7 +70,6 @@ class InitialViewController: BaseViewController {
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.enterUsername.rawValue, bundle: nil)
         let objLocationSearch = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.enterUsername.rawValue) as? EnterUsernameViewController
         self.navigationController?.pushViewController(objLocationSearch!, animated: true)
-        
     }
     
 }

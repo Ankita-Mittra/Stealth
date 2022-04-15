@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import SwiftUI
+import BinanceSmartChainSDK
+import web3swift
 
 class CreateWalletViewController: BaseViewController {
 
@@ -15,9 +18,12 @@ class CreateWalletViewController: BaseViewController {
     @IBOutlet weak var phraseCollectionView: UICollectionView!
     @IBOutlet weak var copyBtn: UIButton!
     
+    var walletAddress = String()
+    var signUpDict = [String:Any]()
+    var walletPhraseArr = [Any]()
+    
     // MARK: - Injection
     
-//    let viewModel = PhotoViewModel(dataService: DataService())
     let viewModel = CreateWalletViewModel(apiService: SignUpAPIService())
     
     // MARK: - View life cycle
@@ -25,8 +31,8 @@ class CreateWalletViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.registerUser(withId: 8)
-
+        // Initial UI setup
+        self.importBinanceWallet()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,17 +53,66 @@ class CreateWalletViewController: BaseViewController {
     }
 
     // MARK: - Methods
+    
+    func importBinanceWallet(){
+        
+//        let queue = DispatchQueue(label: "createWallet")
+//
+//        queue.async { [self] in
+//
+//        }
+        
+        do {
+            if let walletPhrase = try BIP39.generateMnemonics(bitsOfEntropy: 128, language: .english){
+                
+                walletPhraseArr = walletPhrase.words
+                print("phrase.....", walletPhraseArr.count)
+                
+                print("phrase.....", walletPhraseArr)
 
+                for i in walletPhraseArr{
+                    print("phrase ...", i)
+                }
+                let binance = BnbWalletManager.init(infuraUrl: "https://bsc-dataseed1.binance.org:443")
+                
+                let wallet = try binance.createWallet(walletPhrase: walletPhrase ?? emptyStr)
+                
+//                    if let phrase = walletPhrase.words as? [String]{
+//                        self.mneomonicPhraseArr = phrase
+//                    }
+                
+                self.phraseCollectionView.reloadData()
+                self.walletAddress = wallet?.walletAddress ?? emptyStr
+                self.signUpDict["walletKey"] = walletAddress
+                
+                print("wallet....", walletAddress)
+            }
+
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    func displayWalletPharseOnScreen(){
+        
+    }
+    
+    
     // MARK: - Networking
     
-    private func registerUser(withId id: Int) {
-        viewModel.registerUser()
+    private func registerUser() {
         
+        viewModel.registerUser(dict: self.signUpDict)
+    
         viewModel.updateLoadingStatus = {
+            
+            print("updateLoadingStatus")
+
 //            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
         }
         
         viewModel.showAlertClosure = {
+            print("showAlertClosure")
+
             if let error = self.viewModel.error {
                 print(error.localizedDescription)
             }
@@ -73,12 +128,34 @@ class CreateWalletViewController: BaseViewController {
     
     @IBAction func nextBtnAction(_ sender: Any) {
         
-        let navController:UINavigationController = (appDelegate.window?.rootViewController as? UINavigationController)!
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
-        let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar .rawValue) as! PublicModeTabBarViewController
-        navController.pushViewController(loginVcObj, animated: true)
+        signUpDict[APIKeysForUser.walletId_key.rawValue] = self.walletAddress
+        
+        self.registerUser()
+        
     }
     
+    @IBAction func copyBtnAction(_ sender: Any) {
+        
+        
+    }
+    
+    // MARK: - Methods
+    
+    // Save data locally
+    func saveDataLocally(){
+        
+    }
+    
+    // Go to profile screen
+    func goToProfileScreen(){
+        
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
+        let nextVcObj = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar .rawValue) as? PublicModeTabBarViewController
+        self.navigationController?.pushViewController(nextVcObj!, animated: true)
+    }
+    
+    
+
 
 
 }

@@ -90,7 +90,6 @@
 		205AAB2527F1C7A7002FE32E /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205AAB2427F1C7A7002FE32E /* SignUpResponse.swift */; };
 		205AAB2727F1C7C2002FE32E /* UserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205AAB2627F1C7C2002FE32E /* UserProfileModel.swift */; };
 		205D495A27E4A69F00A0CD54 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D495927E4A69F00A0CD54 /* UserProfileViewController.swift */; };
-		20625C3427EAF4600089ECB5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20625C3327EAF4600089ECB5 /* GradientView.swift */; };
 		20625C3627EB33510089ECB5 /* UIViewCustomGradientClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20625C3527EB33510089ECB5 /* UIViewCustomGradientClass.swift */; };
 		2072761B27FF06EC00985D46 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072761A27FF06EC00985D46 /* ImagePicker.swift */; };
 		2087DAFA27E869DB00D9F7C0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2087DAFC27E869DB00D9F7C0 /* Localizable.strings */; };
@@ -98,6 +97,7 @@
 		2087DB0527E88E4B00D9F7C0 /* AppWireframe+PrivateChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2087DB0427E88E4B00D9F7C0 /* AppWireframe+PrivateChat.swift */; };
 		2087DB0827E88F3700D9F7C0 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2087DB0727E88F3700D9F7C0 /* AppWireframe.swift */; };
 		208BE8A427F720DA00112DA3 /* SignUpAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BE8A327F720DA00112DA3 /* SignUpAPIService.swift */; };
+		2092FFC828059A3200A88616 /* EnterPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092FFC728059A3200A88616 /* EnterPasswordViewModel.swift */; };
 		209C3C3C27F2FC65002C554D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3C3B27F2FC65002C554D /* APIService.swift */; };
 		209C3C3E27F2FCAE002C554D /* APIService+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3C3D27F2FCAE002C554D /* APIService+Login.swift */; };
 		209C3C4C27F316C7002C554D /* ContactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3C4B27F316C7002C554D /* ContactsModel.swift */; };
@@ -129,6 +129,7 @@
 		20B486F327CCD22A00E12376 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B486F227CCD22A00E12376 /* Constants.swift */; };
 		20B486F527CCD23A00E12376 /* StringsForCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B486F427CCD23A00E12376 /* StringsForCode.swift */; };
 		20B486F727CCD24700E12376 /* LanguageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B486F627CCD24700E12376 /* LanguageConstants.swift */; };
+		20B7DFED280425B3004739F3 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7DFEC280425B3004739F3 /* Credentials.swift */; };
 		20B83C6F27D9D606003CA9D2 /* WalletStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B83C6E27D9D606003CA9D2 /* WalletStoryboard.storyboard */; };
 		20B83C7527DA01F9003CA9D2 /* ContactsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B83C7327DA01F9003CA9D2 /* ContactsListTableViewCell.swift */; };
 		20B83C7627DA01F9003CA9D2 /* ContactsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20B83C7427DA01F9003CA9D2 /* ContactsListTableViewCell.xib */; };
@@ -294,7 +295,6 @@
 		205AAB2427F1C7A7002FE32E /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
 		205AAB2627F1C7C2002FE32E /* UserProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileModel.swift; sourceTree = "<group>"; };
 		205D495927E4A69F00A0CD54 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		20625C3327EAF4600089ECB5 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		20625C3527EB33510089ECB5 /* UIViewCustomGradientClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewCustomGradientClass.swift; sourceTree = "<group>"; };
 		2072761A27FF06EC00985D46 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		2087DAFB27E869DB00D9F7C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -306,6 +306,7 @@
 		2087DB0427E88E4B00D9F7C0 /* AppWireframe+PrivateChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppWireframe+PrivateChat.swift"; sourceTree = "<group>"; };
 		2087DB0727E88F3700D9F7C0 /* AppWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWireframe.swift; sourceTree = "<group>"; };
 		208BE8A327F720DA00112DA3 /* SignUpAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAPIService.swift; sourceTree = "<group>"; };
+		2092FFC728059A3200A88616 /* EnterPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewModel.swift; sourceTree = "<group>"; };
 		209C3C3B27F2FC65002C554D /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		209C3C3D27F2FCAE002C554D /* APIService+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIService+Login.swift"; sourceTree = "<group>"; };
 		209C3C4B27F316C7002C554D /* ContactsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsModel.swift; sourceTree = "<group>"; };
@@ -337,6 +338,7 @@
 		20B486F227CCD22A00E12376 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		20B486F427CCD23A00E12376 /* StringsForCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsForCode.swift; sourceTree = "<group>"; };
 		20B486F627CCD24700E12376 /* LanguageConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageConstants.swift; sourceTree = "<group>"; };
+		20B7DFEC280425B3004739F3 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		20B83C6E27D9D606003CA9D2 /* WalletStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalletStoryboard.storyboard; sourceTree = "<group>"; };
 		20B83C7327DA01F9003CA9D2 /* ContactsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListTableViewCell.swift; sourceTree = "<group>"; };
 		20B83C7427DA01F9003CA9D2 /* ContactsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsListTableViewCell.xib; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				200D98FB27D1F5B50088B2E5 /* SignUpViewModel.swift */,
 				200D990827D1F7710088B2E5 /* EnterUsernameViewModel.swift */,
 				200D990A27D1F7960088B2E5 /* CreateWalletViewModel.swift */,
+				2092FFC728059A3200A88616 /* EnterPasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				209C3C4B27F316C7002C554D /* ContactsModel.swift */,
 				209C3C4D27F317E6002C554D /* ResultModel.swift */,
 				2043BA7627FADF1200D00041 /* SignUpRequest.swift */,
+				20B7DFEC280425B3004739F3 /* Credentials.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1051,8 +1055,8 @@
 			isa = PBXGroup;
 			children = (
 				20FBC6A927C7ABCE004E0697 /* Stealth777.xcdatamodeld */,
-				20FBC6AC27C7ABD0004E0697 /* Assets.xcassets */,
 				20FBC6AE27C7ABD0004E0697 /* LaunchScreen.storyboard */,
+				20FBC6AC27C7ABD0004E0697 /* Assets.xcassets */,
 				20FBC6B127C7ABD0004E0697 /* Info.plist */,
 			);
 			path = AppInfo;
@@ -1219,7 +1223,6 @@
 			children = (
 				209F9A4527E07ACC008CFA80 /* EnterPasswordCustomAlertView.swift */,
 				209F9A4727E07AD5008CFA80 /* EnterPasswordCustomAlertView.xib */,
-				20625C3327EAF4600089ECB5 /* GradientView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -1684,6 +1687,7 @@
 				20EFFB5227F43E1B009BD3B9 /* MarketPlaceViewController.swift in Sources */,
 				20B83C9627DA175F003CA9D2 /* GroupDetailsViewController.swift in Sources */,
 				200D993327D201F50088B2E5 /* PrivateChatSenderTableViewCell.swift in Sources */,
+				2092FFC828059A3200A88616 /* EnterPasswordViewModel.swift in Sources */,
 				20E01CBD27DF49C2003DB80F /* ContactsViewModel.swift in Sources */,
 				20FBC6F327C7C223004E0697 /* UILabelCustomClass.swift in Sources */,
 				201AEA1E27EDEB9200BA2CE0 /* SubscriptionDetailsViewController.swift in Sources */,
@@ -1750,8 +1754,8 @@
 				205AAB1327F196A3002FE32E /* EccEncryption.swift in Sources */,
 				2043BA7427FAD32900D00041 /* Messages+CoreDataClass.swift in Sources */,
 				2043BA7127FAD32900D00041 /* User+CoreDataProperties.swift in Sources */,
-				20625C3427EAF4600089ECB5 /* GradientView.swift in Sources */,
 				2030F57227F5D2CC001D5F61 /* Strings.swift in Sources */,
+				20B7DFED280425B3004739F3 /* Credentials.swift in Sources */,
 				200D993027D200E70088B2E5 /* HomeViewModel.swift in Sources */,
 				20ECAFA827E0AD760018C877 /* TransactionsHistoryViewController.swift in Sources */,
 				2087DB0327E86EC700D9F7C0 /* ToolbarPickerView.swift in Sources */,

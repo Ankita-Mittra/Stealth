@@ -246,6 +246,11 @@ class CommonFxns: NSObject {
         return emailTest.evaluate(with: username)
     }
     
+    class func isValidPassword(password: String) -> Bool {
+        let passwordRegex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()\\-_=+{}|?>.<,:;~`’]{8,}$"
+        return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
+    }
+    
     // Method to check Email Validations
     class func isValidDisplayName(testStr:String) -> Bool {
         let regEx = "{4,15}$"
@@ -275,6 +280,12 @@ class CommonFxns: NSObject {
         return false
     }
     
+     
+    
+    
+    class func validateLength(text : String, size : (min : Int, max : Int)) -> Bool{
+            return (size.min...size.max).contains(text.count)
+        }
 }
 
 

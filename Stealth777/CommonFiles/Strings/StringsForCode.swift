@@ -21,6 +21,10 @@ let coreDataName = "Stealth777"
 let usernamePrefix = "777"
 
 let emptyStr = ""
+
+let lightMode = "light"
+let darkMode = "dark"
+
 // MARK: - Enum_StoryBoard
 
 enum enumViewControllerIdentifier: String {
@@ -106,6 +110,8 @@ enum APIKeysForUser: String{
     
     case publicKey_key = "pbKey"
     
+    case userType_key = "usertype"
+
     case deviceNo_key = "deviceNo"
     
     case deviceName_key = "deviceName"

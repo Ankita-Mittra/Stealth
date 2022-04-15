@@ -13,14 +13,14 @@ import SwiftUI
 
 struct SignUpAPIService {
     
-    func signup(parameters: [String: AnyObject], completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
+    func signup(parameters: [String: Any], completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
 
-        let urlString = "https://185.247.226.7./api/users/verify/test9" //https://stealth777.is/api/users/register"//"\(baseUrl)\(APIService.enumAPIEndPoints.register)" //"http://185.247.226.7./api/users/verify/test9"
+        let urlString = "https://www.stealth777.is/api/users/register"
         
         print(urlString)
         print(parameters)
     
-        Alamofire.request(urlString, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON {response in
+        Alamofire.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON {response in
             guard response.result.error == nil else {
                 
                 DispatchQueue.main.async(execute: {

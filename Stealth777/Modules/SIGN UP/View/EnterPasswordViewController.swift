@@ -9,8 +9,16 @@ import UIKit
 
 class EnterPasswordViewController: BaseViewController {
 
-    var signUpDict = [String:Any]()
+    // MARK: - Outlets & Properties
+    
+    @IBOutlet weak var enterPasswordTxtField: UITextField!
+    @IBOutlet weak var confirmPasswordTxtField: UITextField!
+    @IBOutlet weak var validPasswordImgView: UIImageView!
+    @IBOutlet weak var passwordStrengthLbl: UILabel!
 
+    var signUpDict = [String:Any]()
+    var isValidPassword = Bool()
+    
     // MARK: - View life cycle
     
     override func viewDidLoad() {
@@ -18,6 +26,76 @@ class EnterPasswordViewController: BaseViewController {
         // Initial Setup
         
         self.showNavigationBar()
+    }
+
+    override func willMove(toParent parent: UIViewController?) {
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        self.setSmallHeaderAndHideLargeHeader(header: "Create Account")
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    // MARK: - Button Actions
+    
+    @IBAction func nextBtnAction(_ sender: Any) {
+        
+        let password = CommonFxns.trimString(string: enterPasswordTxtField.text ?? emptyStr)
+        let confirmPassword = CommonFxns.trimString(string: confirmPasswordTxtField.text ?? emptyStr)
+        
+        password != emptyStr && CommonFxns.validateLength(text: password, size: (8,30)) && CommonFxns.isValidPassword(password: password) && password == confirmPassword ? goToNextScreen() : CommonFxns.showAlert(self, message: "Please Enter a valid password to continue.", title: "Alert")
+    }
+    
+    // MARK: - Methods
+    
+    func goToNextScreen(){
+        
+        signUpDict[APIKeysForUser.password_key.rawValue] = CommonFxns.trimString(string: enterPasswordTxtField.text ?? emptyStr)
+
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.createWallet.rawValue, bundle: nil)
+        let nextVcObj = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.createWallet .rawValue) as? CreateWalletViewController
+        nextVcObj?.signUpDict = self.signUpDict
+        self.navigationController?.pushViewController(nextVcObj!, animated: true)
+    }
+
+}
+
+
+//    func initialSetup(){
+//        self.navigationController?.title = "Create Account"
+//        self.navigationController?.navigationBar.isHidden = false
+//        self.navigationController?.navigationBar.backItem?.leftBarButtonItem?.tintColor = .blue
+//    }
+//
+//override func viewWillDisappear(_ animated: Bool) {
+//    super.viewWillDisappear(animated)
+////        self.navigationItem.largeTitleDisplayMode = .automatic
+//    navigationController?.setNavigationBarHidden(true, animated: true)
+//
+//    DispatchQueue.main.async {
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+//        let backButton = UIBarButtonItem(title: "", style: .plain, target: self.navigationController, action: nil)
+//        self.navigationItem.leftBarButtonItem = backButton
+//
+//        self.navigationItem.hidesBackButton = true
+//
+//        self.navigationItem.setHidesBackButton(true, animated: true)
+//        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Chat")
+//        self.setSearchBarOnNavigationBar()
+//    }
+//    self.navigationController?.forceUpdateNavBar()
+//}
+
+
 //        self.setHeader(header: "Create Account")
         
 //        self.title = "Create Account"
@@ -25,88 +103,19 @@ class EnterPasswordViewController: BaseViewController {
 //        self.navigationController?.navigationBar.prefersLargeTitles = false
 //
 //        self.navigationController?.navigationItem.leftBarButtonItem?.tintColor = .green
-//        
-//        
+//
+//
 //        self.navigationController?.navigationItem
 //        self.initialSetup()
-    }
-    
-//    func initialSetup(){
-//        self.navigationController?.title = "Create Account"
-//        self.navigationController?.navigationBar.isHidden = false
-//        self.navigationController?.navigationBar.backItem?.leftBarButtonItem?.tintColor = .blue
-//    }
-    
 
-    override func willMove(toParent parent: UIViewController?) {
-        navigationController?.navigationBar.prefersLargeTitles = true
 
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.largeTitleDisplayMode = .never
-
-//        navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.navigationItem.largeTitleDisplayMode = .never
+//
+////        navigationController?.setNavigationBarHidden(true, animated: true)
+//        navigationController?.setNavigationBarHidden(false, animated: true)
+////        self.setSmallHeaderAndHideLargeHeader(header: "Create Account")
 //        self.setSmallHeaderAndHideLargeHeader(header: "Create Account")
-        self.setSmallHeaderAndHideLargeHeader(header: "Create Account")
-
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        self.navigationItem.largeTitleDisplayMode = .automatic
-        navigationController?.setNavigationBarHidden(true, animated: true)
-
-//        DispatchQueue.main.async {
-//            self.navigationController?.navigationBar.prefersLargeTitles = true
-//            let backButton = UIBarButtonItem(title: "", style: .plain, target: self.navigationController, action: nil)
-//            self.navigationItem.leftBarButtonItem = backButton
 //
-//            self.navigationItem.hidesBackButton = true
-//
-//            self.navigationItem.setHidesBackButton(true, animated: true)
-//            self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Chat")
-//            self.setSearchBarOnNavigationBar()
-//        }
-
-        
-//        self.navigationController?.forceUpdateNavBar()
-    }
-
-
-    // MARK: - Button Actions
-    
-    @IBAction func nextBtnAction(_ sender: Any) {
-//
-//        let storyBoard = UIStoryboard.init(name: enumStoryBoard.privateTabBarController.rawValue, bundle: nil)
-//        let objLocationSearch = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateModeTabBar .rawValue) as? PrivateModeTabBarViewController
-//                    self.navigationController?.pushViewController(objLocationSearch!, animated: true)
-        
-        let storyBoard = UIStoryboard.init(name: enumStoryBoard.createWallet.rawValue, bundle: nil)
-        let objLocationSearch = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.createWallet .rawValue) as? CreateWalletViewController
-                    self.navigationController?.pushViewController(objLocationSearch!, animated: true)
-        
-        
-//        let navController:UINavigationController = (appDelegate.window?.rootViewController as? UINavigationController)!
-//        let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.privateTabBarController.rawValue, bundle: nil)
-//        let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateModeTabBar .rawValue) as! PrivateModeTabBarViewController
-//        navController.pushViewController(loginVcObj, animated: true)
-    }
-    
-    @IBAction func backBtnAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    
-
-}
-
-extension UINavigationController {
-    func forceUpdateNavBar() {
-        DispatchQueue.main.async {
-            self.navigationBar.sizeToFit()
-        }
-      }
-}
+//    }

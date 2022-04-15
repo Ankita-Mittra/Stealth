@@ -11,7 +11,6 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -22,12 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let enabledMode = userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) as? String
         
         switch enabledMode {
-        case "light":
+        case lightMode:
             appDelegate.window?.overrideUserInterfaceStyle = .light
-            userDefault.set("light" , forKey: USER_DEFAULT_isDarkMode_Key)
+            userDefault.set(lightMode , forKey: USER_DEFAULT_isDarkMode_Key)
         default:
             appDelegate.window?.overrideUserInterfaceStyle = .dark
-            userDefault.set("dark" , forKey: USER_DEFAULT_isDarkMode_Key)
+            userDefault.set(darkMode , forKey: USER_DEFAULT_isDarkMode_Key)
         }
 //
 //        if userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) == nil{
@@ -48,32 +47,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: Methods
 
+    // Method
     func navigateToRightScreen(){
     // Check whether user is logged in or not
-        let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-    
             if (userDefault.value(forKey: USER_DEFAULT_userID_Key)) != nil{
                 let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
+                let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar.rawValue) as! PublicModeTabBarViewController
                 navController.pushViewController(loginVcObj, animated: true)
             }else{
                 // Go to SignUP screen
-//                    let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-//                    navController.pushViewController(loginVcObj, animated: true)
                 let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.main.rawValue, bundle: nil)
                 let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.initial.rawValue) as! InitialViewController
                 navController.pushViewController(signUpVcObj, animated: true)
 
-//                let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-//                let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.login.rawValue, bundle: nil)
-//                let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.login.rawValue) as! LoginViewController
-//                navController.pushViewController(signUpVcObj, animated: true)
+    //                let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
+    //                let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.login.rawValue, bundle: nil)
+    //                let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.login.rawValue) as! LoginViewController
+    //                navController.pushViewController(signUpVcObj, animated: true)
             }
         }
-    
+
     // MARK: UISceneSession Lifecycle
 
 //    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
