@@ -9,11 +9,51 @@ import Foundation
 import UIKit
 
 class EnterUsernameViewModel {
+    
+    // MARK: - Properties
+    private var apiService: UserAPIServices?
+    
+    var error: Error? {
+        didSet { self.showAlertClosure?() }
+    }
+    var isLoading: Bool = false {
+        didSet { self.updateLoadingStatus?() }
+    }
+    
+    // MARK: - Constructor
+    init(apiService: UserAPIServices) {
+        self.apiService = apiService
+    }
+    
+    // MARK: - Closures for callback, since we are not using the ViewModel to the View.
+    var showAlertClosure: (() -> ())?
+    var updateLoadingStatus: (() -> ())?
+    var didFinishFetch: (() -> ())?
+    
+    // MARK: - Network call
+    
+    func verifyUsername(username: String){
 
-    
-    
-    
-    
+        self.apiService?.verifyUsername(username: username, completion: { data, succeeded, error in
+            print("self.apiService?.verifyUsername....", username)
+            if succeeded {
+                print("succeeded....", succeeded)
+                guard let tempData = data else{
+                    self.error = error as? Error
+                    self.isLoading = false
+                    return
+                }
+            
+                print("tempData....", tempData)
+                
+            } else {
+                self.error = error as? Error
+                self.isLoading = false
+               print("error....", error)
+                return 
+            }
+        })
+  }
 }
 
 // MARK: - TextField delegates

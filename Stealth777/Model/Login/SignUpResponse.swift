@@ -10,82 +10,48 @@ import Foundation
 import Alamofire
 import UIKit
 // MARK: - SignUpResponse Model
+//
+//struct SignUpResponse: Codable {
+//    let success: Bool
+//    let code: Int
+//    let message: String
+//    let version: Int
+//    let data: SignUpDataClass
+//}
+//
+//// MARK: - DataClass
+//struct SignUpDataClass: Codable {
+//    let userId, token : String
+//}
+//
+//
 
 struct SignUpResponse: Codable {
     let userId: String
     let token: String
 
-    init(userId: String, token: String){
-        self.userId = userId
-        self.token = token
-    }
+//    init(userId: String, token: String){
+//
+//    }
     
+    init(with data: [String: AnyObject]?) {
+        
+        self.userId = data?[enumAPIKeysForUser.id_key.rawValue] as? String ?? emptyStr
+        self.token = data?[enumAPICommonKeys.token_key.rawValue] as? String ?? emptyStr
+    }
+
     enum CodingKeys: String, CodingKey {
         case userId = "id"
         case token = "token"
     }
-    
+
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         userId = try values.decodeIfPresent(String.self, forKey: .userId) ?? emptyStr
         token = try values.decodeIfPresent(String.self, forKey: .token) ?? emptyStr
     }
-    
-    
+
+
 }
 
 
-
-
-
-
-//// MARK: Convenience initializers
-//extension SignUpModel {
-//    init(data: Data) throws {
-//        self = try JSONDecoder().decode(SignUpModel.self, from: data)
-//    }
-//
-//    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
-//        guard let data = json.data(using: encoding) else {
-//            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
-//        }
-//        try self.init(data: data)
-//    }
-//
-//    init(fromURL url: URL) throws {
-//        try self.init(data: try Data(contentsOf: url))
-//    }
-//
-//    func jsonData() throws -> Data {
-//        return try JSONEncoder().encode(self)
-//    }
-//
-//    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
-//        return String(data: try self.jsonData(), encoding: encoding)
-//    }
-//}
-//
-//// MARK: - Alamofire response handlers
-//extension DataRequest {
-//    fileprivate func decodableResponseSerializer<T: Decodable>() -> DataResponseSerializer<T> {
-//        return DataResponseSerializer { _, response, data, error in
-//            guard error == nil else { return .failure(error!) }
-//
-//            guard let data = data else {
-//                return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
-//            }
-//
-//            return Result { try JSONDecoder().decode(T.self, from: data) }
-//        }
-//    }
-//
-//    @discardableResult
-//    fileprivate func responseDecodable<T: Decodable>(queue: DispatchQueue? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
-//        return response(queue: queue, responseSerializer: decodableResponseSerializer(), completionHandler: completionHandler)
-//    }
-//
-//    @discardableResult
-//    func responseSignUp(queue: DispatchQueue? = nil, completionHandler: @escaping (DataResponse<SignUpModel>) -> Void) -> Self {
-//        return responseDecodable(queue: queue, completionHandler: completionHandler)
-//    }
-//}

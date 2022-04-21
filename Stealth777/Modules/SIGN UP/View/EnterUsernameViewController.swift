@@ -21,6 +21,10 @@ class EnterUsernameViewController: BaseViewController {
     var signUpDict = [String:Any]()
     var isUsernameVerfied = false
     
+    // MARK: - Injection
+    
+    let viewModel = EnterUsernameViewModel(apiService: UserAPIServices())
+    
     // MARK: - View life cycle
     
     override func viewDidLoad() {
@@ -53,13 +57,41 @@ class EnterUsernameViewController: BaseViewController {
         self.verifiedUsernameImgView.isHidden = true // Hide verified username image
     }
 
+    // MARK: - Networking
+    
+    private func verifyUsername(username: String) {
+        
+        viewModel.verifyUsername(username: username)
+    
+        viewModel.updateLoadingStatus = {
+            print("success....updateLoadingStatus")
+
+
+//            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
+        }
+        
+        viewModel.showAlertClosure = {
+            print("showAlertClosure")
+
+            if let error = self.viewModel.error {
+                print( "error...", error.localizedDescription)
+            }
+        }
+        
+        viewModel.didFinishFetch = {
+            print("viewmodel...didFinishFetch")
+            self.goToNextScreen(username: username)
+
+        }
+    }
+    
     // MARK: - Button Actions
     
     @IBAction func nextBtnAction(_ sender: Any) {
         
         let username = CommonFxns.trimString(string: enterUsernameTxtField.text ?? emptyStr)
         
-        username != emptyStr && CommonFxns.isValidUsername(username: username) ? goToNextScreen(username: username) : CommonFxns.showAlert(self, message: "Please Enter a username to continue.", title: "Alert")
+        username != emptyStr && CommonFxns.isValidUsername(username: username) ? self.verifyUsername(username: username) : CommonFxns.showAlert(self, message: "Please Enter a username to continue.", title: "Alert")
     }
     
     @IBAction func chooseProfileImageBtnAction(_ sender: Any) {
@@ -68,16 +100,21 @@ class EnterUsernameViewController: BaseViewController {
     }
     
     // MARK: - Other Methods
+    
     // Methods to go to next screen with entered data by user.
     func goToNextScreen(username: String){
-        signUpDict[APIKeysForUser.username_key.rawValue] = username
-        signUpDict[APIKeysForUser.walletPhrase.rawValue] = username
+        signUpDict[enumAPIKeysForUser.username_key.rawValue] = username
+        signUpDict[enumAPIKeysForUser.walletPhrase.rawValue] = username
 
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.enterPassword.rawValue, bundle: nil)
         let nextVcObj = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.enterPassword .rawValue) as? EnterPasswordViewController
         nextVcObj?.signUpDict = self.signUpDict
         self.navigationController?.pushViewController(nextVcObj!, animated: true)
     }
+    
+    
+    
+    
 
 }
 

@@ -131,7 +131,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    
     func clearStorage(forEntity entity: String) {
         let isInMemoryStore = persistentContainer.persistentStoreDescriptions.reduce(false) {
             return $0 ? true : $1.type == NSInMemoryStoreType

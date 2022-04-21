@@ -59,7 +59,7 @@ class EnterPasswordViewController: BaseViewController {
     
     func goToNextScreen(){
         
-        signUpDict[APIKeysForUser.password_key.rawValue] = CommonFxns.trimString(string: enterPasswordTxtField.text ?? emptyStr)
+        signUpDict[enumAPIKeysForUser.password_key.rawValue] = CommonFxns.trimString(string: enterPasswordTxtField.text ?? emptyStr)
 
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.createWallet.rawValue, bundle: nil)
         let nextVcObj = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.createWallet .rawValue) as? CreateWalletViewController

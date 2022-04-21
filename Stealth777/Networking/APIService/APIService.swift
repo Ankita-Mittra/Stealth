@@ -11,17 +11,9 @@ import Alamofire
 struct APIService {
     
 //    // MARK: - Singleton
-////    static let shared = APIService()
-//    
-//    // MARK: - URL
-//    
-    enum enumAPIEndPoints: String {
+    static let shared = APIService()
 
-        case login = "login"
-        case register = "register"
-        case profileInfo = "profile"
-        case getContactsList = "getContactsList"
-        case otherUserProfile = "queryUserById"
-    }
+ 
+
     
 }

@@ -13,8 +13,7 @@ class CreateWalletViewModel {
     // MARK: - Properties
     private var signUpResponse: SignUpResponse? {
         didSet {
-            guard let p = signUpResponse else { return }
-//            self.setupText(with: p)
+            guard signUpResponse != nil else { return }
             self.didFinishFetch?()
         }
     }
@@ -22,10 +21,13 @@ class CreateWalletViewModel {
     var error: Error? {
         didSet { self.showAlertClosure?() }
     }
+    
     var isLoading: Bool = false {
         didSet { self.updateLoadingStatus?() }
     }
     
+    var privateKey = String()
+    var publickey = String()
     private var apiService: SignUpAPIService?
     
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
@@ -42,35 +44,111 @@ class CreateWalletViewModel {
 
 // MARK: - Network call
 
-    func registerUser(dict: [String:Any]) {
     
+    // MARK: - Network call
+    
+    func registerUser1(dict: [String:Any]) {
 
         var signUpDict = dict
+        
+        let device = self.getDeviceInfo()
+        let publickey = self.getPublicKey()
 
-        let deviceVersion = "1"
-        
-        let deviceName = "iPhone"
-        
-        let  deviceNumber = "number"
-    
-        signUpDict[APIKeysForUser.userType_key.rawValue] = userType
-        signUpDict[APIKeysForUser.platform_key.rawValue] = platform
-        signUpDict[APIKeysForUser.deviceNo_key.rawValue] = deviceNumber
-        signUpDict[APIKeysForUser.deviceName_key.rawValue] = deviceName
-        signUpDict[APIKeysForUser.deviceVersion_key.rawValue] = deviceVersion
-         
+        signUpDict[enumAPIKeysForUser.userType_key.rawValue] = userType
+        signUpDict[enumAPIKeysForUser.platform_key.rawValue] = platform
+        signUpDict[enumAPIKeysForUser.deviceNo_key.rawValue] = device.uuid
+        signUpDict[enumAPIKeysForUser.deviceName_key.rawValue] = device.name
+        signUpDict[enumAPIKeysForUser.deviceVersion_key.rawValue] = device.version
+        signUpDict[enumAPIKeysForUser.publicKey_key.rawValue] = publickey
+        signUpDict[enumAPIKeysForUser.mediaId_key.rawValue] = emptyStr
+        signUpDict[enumAPIKeysForUser.bio_key.rawValue] = emptyStr
         print("sign Up DIct ....", signUpDict)
+//
+//        self.apiService?.requestRegister(parameters: signUpDict, completion: { signUpResponse, succeeded, error in
+//
+//
+//            print("elf.apiService?.requestRegister(parameters: signUpDict, completion: { data, succeeded, error in")
+//
+////            if let error = error {
+////                self.error = error
+////                self.isLoading = false
+////                return
+////            }
+////            self.error = nil
+////            self.isLoading = false
+//
+////            self.signUpResponse = signUpResponse as SignUpResponse
+//
+//            print("signUpResponse", signUpResponse)
+//
+//        })
+    }
     
-    self.apiService?.signup(parameters: signUpDict, completion: { data, succeeded, error in
-        if error != nil{
-            self.isLoading = false
-            print("error...", error)
-        }else{
-            print("signUpResponse...", data)
-        }
-    })
+    
+    func registerUser(dict: [String:Any]) {
+    
+        var signUpDict = dict
+        
+        let device = self.getDeviceInfo()
+        let publickey = self.getPublicKey()
+
+        signUpDict[enumAPIKeysForUser.userType_key.rawValue] = userType
+        signUpDict[enumAPIKeysForUser.platform_key.rawValue] = platform
+        signUpDict[enumAPIKeysForUser.deviceNo_key.rawValue] = device.uuid
+        signUpDict[enumAPIKeysForUser.deviceName_key.rawValue] = device.name
+        signUpDict[enumAPIKeysForUser.deviceVersion_key.rawValue] = device.version
+        signUpDict[enumAPIKeysForUser.publicKey_key.rawValue] = publickey
+        signUpDict[enumAPIKeysForUser.mediaId_key.rawValue] = emptyStr
+        signUpDict[enumAPIKeysForUser.bio_key.rawValue] = emptyStr
+        
+        print("sign Up DIct ....", signUpDict)
+        
+        //        RestApiManager.signup(parameters: signUpDict, completion: { data, succeeded, error in
+
+        self.apiService?.signup(parameters: signUpDict, completion: { data, succeeded, error in
+            print("RestApiManager.signup   /.....", signUpDict)
+            if succeeded {
+                print("succeeded....", succeeded)
+                guard let tempData = data else{
+                    self.error = error as? Error
+                    self.isLoading = false
+                    return
+                }
+                print("tempData....", tempData)
+                self.signUpResponse = SignUpResponse(with: tempData["data"] as? [String : AnyObject])
+            } else {
+                self.error = error as? Error
+                self.isLoading = false
+               print("error....", error)
+            }
+        })
   }
     
+    
+    // MARK: - UI Logic
+
+    // Method to get device basic info like name, uuid, version
+    func getDeviceInfo()->(uuid: String, name: String, version: String){
+        let uuid = UIDevice.current.identifierForVendor?.uuidString ?? emptyStr
+        
+        let name = UIDevice.current.name
+        
+        let version = UIDevice.current.systemVersion
+        print("uuid...\(uuid)", "name...\(name)", "version...\(version)")
+
+        return (uuid, name, version)
+    }
+        
+    // Method to get public key from generated Key pair
+    func getPublicKey()->String{
+        let encryption = EccEncryption()
+        
+        let keyPair = encryption.generateEccKeys()
+        self.privateKey = keyPair.privateKey
+        
+        return keyPair.publicKey
+    }
+
 }
 
 extension CreateWalletViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

@@ -11,17 +11,16 @@ import SwiftUI
 
 // All the strings using for app code
 // MARK: - App mains
-let appName = "Stealth777"
-var baseUrl = "https://stealth777.is/"//"https://185.247.226.7./api/users/register"//"https://jsonplaceholder.typicode.com/todos/" 
-
-let coreDataName = "Stealth777"
+let appName = "Stealth777" // App name
+let coreDataName = "Stealth777" // Core database name
+var baseUrl = "https://www.stealth777.is/api/"   //"https://185.247.226.7./api/users/register" // Base url for API's calls
 
 // MARK: - Common
 
 let usernamePrefix = "777"
-
 let emptyStr = ""
 
+// App display mode strings
 let lightMode = "light"
 let darkMode = "dark"
 
@@ -29,9 +28,7 @@ let darkMode = "dark"
 
 enum enumViewControllerIdentifier: String {
     
-//    case privateModeTabBar = "PrivateModeTabBarViewController"
     case publicModeTabBar = "PublicModeTabBarViewController"
-
     case importWallet = "ImportWalletViewController"
     case enterUsername = "EnterUsernameViewController"
     case login = "LoginViewController"
@@ -79,12 +76,15 @@ enum enumViewControllerIdentifier: String {
     
 }
 
+enum EncryptionKeys: String {
+    case publicSuffix  = "\n-----END PUBLIC KEY-----"
+    case publicPrefix = "-----BEGIN PUBLIC KEY-----\n"
+}
+
 enum enumStoryBoard:String {
     case main = "Main"
     case home = "RecoverPasswordStoryboard"
-//    case privateTabBarController = "PrivateModeTabBarControllerStoryboard"
     case publicModeTabBarController = "PublicModeTabBarControllerStoryboard"
-
     case login = "LoginStoryboard"
     case enterUsername = "EnterUsernameStoryboard"
     case enterPassword = "EnterPasswordStoryboard"
@@ -102,71 +102,77 @@ enum enumStoryBoard:String {
 
 }
 
-enum APIKeysForUser: String{
+// MARK: - NETWORK's Strings
+
+
+// MARK: - End Points
+
+enum enumAPIEndPoints: String {
+    
+    // MARK: - Users
+    
+    // Post requests
+    case login = "users/login"
+    case register = "users/register"
+
+    // Get requests
+    case profileInfo = "users/profile"
+    case getContactsList = "users/getContactsList"
+    case otherUserProfile = "users/queryUserById"
+    case verifyUsername = "users/verify/"
+    case logout = "users/logout"
+    
+    
+    // Groups
+    
+    
+    // Messages
+    
+    
+}
+
+enum enumAPIKeysForUser: String{
     
     case username_key = "username"
-    
     case imageUrl_key = "imageUrl"
-    
     case publicKey_key = "pbKey"
-    
     case userType_key = "usertype"
-
     case deviceNo_key = "deviceNo"
-    
     case deviceName_key = "deviceName"
-    
     case deviceVersion_key = "deviceVersion"
-    
     case platform_key = "platform"
-    
-    case walletPhrase = "wPhrase"
-    
+    case walletPhrase = "walletPhrase"
     case walletId_key = "walletKey"
-    
     case password_key = "password"
-
     case id_key = "id"
-        
     case status_key = "status"
-
     case remark_key = "remark"
-    
     case userId_key = "userId"
-
+    case bio_key = "bio"
+    case mediaId_key = "mediaID"
+    
 }
 
-enum APIKeysForGroup: String{
+enum enumAPIKeysForGroup: String{
+    
     case name_key = "name"
-    
     case disperse_key = "disperse"
-    
     case description_key = "description"
-    
     case anonymous_key = "anonymous"
-    
     case user_ids_key = "user_ids"
-    
     case type_key = "type"
-    
     case imageUrl_key = "mediaId"
-        
 }
 
-
-enum APICommonKeys: String{
+enum enumAPICommonKeys: String{
     
     case success_key = "success"
-    
     case code_key = "code"
-    
     case message_key = "message"
-    
     case version_key = "version"
-    
     case data_key = "data"
-    
     case token_key = "token"
 
 }
+
 

@@ -1,8 +1,8 @@
 //
-//  SignUpAPIService.swift
+//  UserAPIServices.swift
 //  Stealth777
 //
-//  Created by Fareed Alzoorani on 01/04/2022.
+//  Created by Fareed Alzoorani on 21/04/2022.
 //
 
 import Foundation
@@ -11,21 +11,19 @@ import SwiftyJSON
 
 // MARK: - Services
 
-struct SignUpAPIService {
+struct UserAPIServices {
 
-     func signup(parameters: [String: Any], completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
+     func verifyUsername(username: String, completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
     
-        let url = baseUrl + "\(enumAPIEndPoints.register.rawValue)"
+        let url = baseUrl + "\(enumAPIEndPoints.verifyUsername.rawValue)//////////\(username)"
         print("url....", url)
-        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON {response in
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON {response in
             guard response.result.error == nil else {
                 
                 DispatchQueue.main.async(execute: {
                     
                     completion(nil, false, response.result.error.debugDescription)
-                    
                 })
-                
                 return
             }
             print(response.result.description)

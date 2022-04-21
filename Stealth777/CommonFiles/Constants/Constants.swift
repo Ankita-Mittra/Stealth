@@ -19,10 +19,22 @@ let appDelegate = UIApplication.shared.delegate as!(AppDelegate)
 let userDefault = UserDefaults.standard
 
 // User default Keys
-let USER_DEFAULT_username_Key = "userdefault_username"
-let USER_DEFAULT_walletAddress_Key = "userdefault_walletAddress"
-let USER_DEFAULT_userID_Key = "userdefault_userID"
-let USER_DEFAULT_isDarkMode_Key = "userdefault_isDarkMode"
+// User info
+let USER_DEFAULT_userInfo_Key = "userDefault_userInfo"
+
+let USER_DEFAULT_username_Key = "userDefault_username"
+let USER_DEFAULT_walletAddress_Key = "userDefault_walletAddress"
+let USER_DEFAULT_userID_Key = "userDefault_userID"
+
+let USER_DEFAULT_privateKey_Key = "userDefault_privateKey"
+let USER_DEFAULT_publicKey_Key = "userDefault_publicKey"
+
+let USER_DEFAULT_imageUrl_Key = "userDefault_imageUrl"
+let USER_DEFAULT_bio_Key = "userDefault_bio"
+let USER_DEFAULT_token_Key = "userDefault_token"
+
+// Other Settings
+let USER_DEFAULT_isDarkMode_Key = "userDefault_isDarkMode"
 
 // MARK: iPhone device's size Constants
 
@@ -43,6 +55,7 @@ let iPhone_13Pro_MAX_Height:CGFloat = 926
 let iPhone_11Pro_MAX_Height:CGFloat = 896
 
 // Numbers
+let defaultIntValue = 0
 let zero = 0
 let one = 1
 let two = 2

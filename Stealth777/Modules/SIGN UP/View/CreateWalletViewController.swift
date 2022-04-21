@@ -11,7 +11,6 @@ import BinanceSmartChainSDK
 import web3swift
 
 class CreateWalletViewController: BaseViewController {
-
     
     // MARK: - Outlets & Properties
     
@@ -61,7 +60,6 @@ class CreateWalletViewController: BaseViewController {
 //        queue.async { [self] in
 //
 //        }
-        
         do {
             if let walletPhrase = try BIP39.generateMnemonics(bitsOfEntropy: 128, language: .english){
                 
@@ -80,22 +78,20 @@ class CreateWalletViewController: BaseViewController {
 //                    if let phrase = walletPhrase.words as? [String]{
 //                        self.mneomonicPhraseArr = phrase
 //                    }
-                
                 self.phraseCollectionView.reloadData()
                 self.walletAddress = wallet?.walletAddress ?? emptyStr
                 self.signUpDict["walletKey"] = walletAddress
                 
                 print("wallet....", walletAddress)
             }
-
         } catch {
             print(error.localizedDescription)
         }
     }
+    
     func displayWalletPharseOnScreen(){
         
     }
-    
     
     // MARK: - Networking
     
@@ -107,28 +103,46 @@ class CreateWalletViewController: BaseViewController {
             
             print("updateLoadingStatus")
 
-//            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
+            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
         }
         
         viewModel.showAlertClosure = {
             print("showAlertClosure")
 
             if let error = self.viewModel.error {
-                print(error.localizedDescription)
+                print( "error...", error.localizedDescription)
             }
         }
         
         viewModel.didFinishFetch = {
             print("viewmodel...didFinishFetch")
+            
+            // save data locally
+            
+//            UserDefaults.saveUserDataInUserDefaults(token: self.viewModel.s.token, userId: self.viewModel.s.userId, publicKey: self.viewModel.publickey, privateKey: self.viewModel.privateKey)
+
         }
     }
     
+    // MARK: - UI Setup
+    
+    private func activityIndicatorStart() {
+        // Code for show activity indicator view
+        // ...
+        print("start")
+    }
+    
+    private func activityIndicatorStop() {
+        // Code for stop activity indicator view
+        // ...
+        print("stop")
+    }
     
     // MARK: - Button Actions
     
     @IBAction func nextBtnAction(_ sender: Any) {
         
-        signUpDict[APIKeysForUser.walletId_key.rawValue] = self.walletAddress
+        signUpDict[enumAPIKeysForUser.walletId_key.rawValue] = self.walletAddress
         
         self.registerUser()
         

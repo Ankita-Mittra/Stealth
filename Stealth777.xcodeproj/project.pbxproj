@@ -82,6 +82,7 @@
 		2043BA7427FAD32900D00041 /* Messages+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2043BA6A27FAD32900D00041 /* Messages+CoreDataClass.swift */; };
 		2043BA7527FAD32900D00041 /* Messages+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2043BA6B27FAD32900D00041 /* Messages+CoreDataProperties.swift */; };
 		2043BA7727FADF1200D00041 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2043BA7627FADF1200D00041 /* SignUpRequest.swift */; };
+		204E1A05280D43D40007F3BA /* PerformEncryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E1A04280D43D40007F3BA /* PerformEncryption.swift */; };
 		205AAB1327F196A3002FE32E /* EccEncryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205AAB1227F196A3002FE32E /* EccEncryption.swift */; };
 		205AAB1627F19751002FE32E /* SwiftECC in Frameworks */ = {isa = PBXBuildFile; productRef = 205AAB1527F19751002FE32E /* SwiftECC */; };
 		205AAB1827F19C4D002FE32E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205AAB1727F19C4D002FE32E /* Extensions.swift */; };
@@ -102,6 +103,7 @@
 		209C3C3E27F2FCAE002C554D /* APIService+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3C3D27F2FCAE002C554D /* APIService+Login.swift */; };
 		209C3C4C27F316C7002C554D /* ContactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3C4B27F316C7002C554D /* ContactsModel.swift */; };
 		209C3C4E27F317E6002C554D /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3C4D27F317E6002C554D /* ResultModel.swift */; };
+		209ED38428101DCB00B77933 /* RestApiManager+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209ED38328101DCB00B77933 /* RestApiManager+User.swift */; };
 		209F9A3127E072A1008CFA80 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F9A2F27E072A1008CFA80 /* SettingsTableViewCell.swift */; };
 		209F9A3227E072A1008CFA80 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 209F9A3027E072A1008CFA80 /* SettingsTableViewCell.xib */; };
 		209F9A3527E076CC008CFA80 /* SettingsOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F9A3327E076CC008CFA80 /* SettingsOptionsTableViewCell.swift */; };
@@ -156,6 +158,9 @@
 		20E01CBF27DF6CBA003DB80F /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E01CBE27DF6CBA003DB80F /* RequestsViewController.swift */; };
 		20E01CC127DF700E003DB80F /* ContactsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E01CC027DF700E003DB80F /* ContactsStoryboard.storyboard */; };
 		20E01CC327DF7FF1003DB80F /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E01CC227DF7FF1003DB80F /* UserInfoViewController.swift */; };
+		20E1B4B2280ECB5F0019306A /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E1B4B1280ECB5F0019306A /* RestApiManager.swift */; };
+		20EC25A62811466F005EA2B8 /* UserAPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC25A52811466F005EA2B8 /* UserAPIServices.swift */; };
+		20EC25A828116464005EA2B8 /* UserDefaultsToStoreUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC25A728116464005EA2B8 /* UserDefaultsToStoreUserInfo.swift */; };
 		20ECAF9C27E0ACCD0018C877 /* TransferAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ECAF9B27E0ACCD0018C877 /* TransferAmountViewController.swift */; };
 		20ECAF9E27E0ACE30018C877 /* SendingAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ECAF9D27E0ACE30018C877 /* SendingAmountViewController.swift */; };
 		20ECAFA227E0AD110018C877 /* ReceiveAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ECAFA127E0AD110018C877 /* ReceiveAmountViewController.swift */; };
@@ -288,6 +293,7 @@
 		2043BA6A27FAD32900D00041 /* Messages+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2043BA6B27FAD32900D00041 /* Messages+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2043BA7627FADF1200D00041 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
+		204E1A04280D43D40007F3BA /* PerformEncryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformEncryption.swift; sourceTree = "<group>"; };
 		205AAB1227F196A3002FE32E /* EccEncryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EccEncryption.swift; sourceTree = "<group>"; };
 		205AAB1727F19C4D002FE32E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		205AAB1C27F1C76A002FE32E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -311,6 +317,7 @@
 		209C3C3D27F2FCAE002C554D /* APIService+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIService+Login.swift"; sourceTree = "<group>"; };
 		209C3C4B27F316C7002C554D /* ContactsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsModel.swift; sourceTree = "<group>"; };
 		209C3C4D27F317E6002C554D /* ResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
+		209ED38328101DCB00B77933 /* RestApiManager+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestApiManager+User.swift"; sourceTree = "<group>"; };
 		209F9A2F27E072A1008CFA80 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		209F9A3027E072A1008CFA80 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		209F9A3327E076CC008CFA80 /* SettingsOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionsTableViewCell.swift; sourceTree = "<group>"; };
@@ -365,6 +372,9 @@
 		20E01CBE27DF6CBA003DB80F /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		20E01CC027DF700E003DB80F /* ContactsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContactsStoryboard.storyboard; sourceTree = "<group>"; };
 		20E01CC227DF7FF1003DB80F /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		20E1B4B1280ECB5F0019306A /* RestApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
+		20EC25A52811466F005EA2B8 /* UserAPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIServices.swift; sourceTree = "<group>"; };
+		20EC25A728116464005EA2B8 /* UserDefaultsToStoreUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsToStoreUserInfo.swift; sourceTree = "<group>"; };
 		20ECAF9B27E0ACCD0018C877 /* TransferAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferAmountViewController.swift; sourceTree = "<group>"; };
 		20ECAF9D27E0ACE30018C877 /* SendingAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingAmountViewController.swift; sourceTree = "<group>"; };
 		20ECAFA127E0AD110018C877 /* ReceiveAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAmountViewController.swift; sourceTree = "<group>"; };
@@ -740,6 +750,7 @@
 			isa = PBXGroup;
 			children = (
 				205AAB1227F196A3002FE32E /* EccEncryption.swift */,
+				204E1A04280D43D40007F3BA /* PerformEncryption.swift */,
 			);
 			path = Encryption;
 			sourceTree = "<group>";
@@ -778,6 +789,7 @@
 			children = (
 				2087DB0227E86EC700D9F7C0 /* ToolbarPickerView.swift */,
 				2072761A27FF06EC00985D46 /* ImagePicker.swift */,
+				20EC25A728116464005EA2B8 /* UserDefaultsToStoreUserInfo.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -1073,9 +1085,12 @@
 		20FBC6D627C7BE24004E0697 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
+				209ED38328101DCB00B77933 /* RestApiManager+User.swift */,
 				209C3C3B27F2FC65002C554D /* APIService.swift */,
 				209C3C3D27F2FCAE002C554D /* APIService+Login.swift */,
 				208BE8A327F720DA00112DA3 /* SignUpAPIService.swift */,
+				20E1B4B1280ECB5F0019306A /* RestApiManager.swift */,
+				20EC25A52811466F005EA2B8 /* UserAPIServices.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -1724,6 +1739,7 @@
 				20ECAFAD27E0C2190018C877 /* TransactionsHistoryTableViewCell.swift in Sources */,
 				2018C81027D780650011B238 /* BaseViewController.swift in Sources */,
 				20B83C8627DA14A4003CA9D2 /* NotificationsTableViewCell.swift in Sources */,
+				20EC25A62811466F005EA2B8 /* UserAPIServices.swift in Sources */,
 				2043BA6F27FAD32900D00041 /* Groups+CoreDataProperties.swift in Sources */,
 				20FBC6AB27C7ABCE004E0697 /* Stealth777.xcdatamodeld in Sources */,
 				209C3C3E27F2FCAE002C554D /* APIService+Login.swift in Sources */,
@@ -1749,7 +1765,9 @@
 				20B83C9427DA174D003CA9D2 /* GroupChatViewController.swift in Sources */,
 				20F2843427E851B600043F8C /* CreateGroupViewController.swift in Sources */,
 				20B486F727CCD24700E12376 /* LanguageConstants.swift in Sources */,
+				20EC25A828116464005EA2B8 /* UserDefaultsToStoreUserInfo.swift in Sources */,
 				209F9A3527E076CC008CFA80 /* SettingsOptionsTableViewCell.swift in Sources */,
+				20E1B4B2280ECB5F0019306A /* RestApiManager.swift in Sources */,
 				200D991327D1F7E00088B2E5 /* CreateWalletViewController.swift in Sources */,
 				205AAB1327F196A3002FE32E /* EccEncryption.swift in Sources */,
 				2043BA7427FAD32900D00041 /* Messages+CoreDataClass.swift in Sources */,
@@ -1764,6 +1782,7 @@
 				200D990B27D1F7960088B2E5 /* CreateWalletViewModel.swift in Sources */,
 				20B486ED27CCC6B900E12376 /* Localization.swift in Sources */,
 				209F9A4227E07A02008CFA80 /* SecuritySettingsViewController.swift in Sources */,
+				209ED38428101DCB00B77933 /* RestApiManager+User.swift in Sources */,
 				204122D927EC7EEC00443D2D /* WalletPhraseCollectionViewCell.swift in Sources */,
 				205AAB2727F1C7C2002FE32E /* UserProfileModel.swift in Sources */,
 				201AEA2427EDF49500BA2CE0 /* SubscribeNowViewController.swift in Sources */,
@@ -1790,6 +1809,7 @@
 				200D98FC27D1F5B50088B2E5 /* SignUpViewModel.swift in Sources */,
 				208BE8A427F720DA00112DA3 /* SignUpAPIService.swift in Sources */,
 				200D992C27D2009B0088B2E5 /* PublicModeTabBarViewController.swift in Sources */,
+				204E1A05280D43D40007F3BA /* PerformEncryption.swift in Sources */,
 				200D98ED27D1F1250088B2E5 /* LoginViewModel.swift in Sources */,
 				209F9A3127E072A1008CFA80 /* SettingsTableViewCell.swift in Sources */,
 				200D991527D1F8210088B2E5 /* ImportWalletViewController.swift in Sources */,
