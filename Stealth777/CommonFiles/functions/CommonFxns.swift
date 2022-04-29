@@ -151,6 +151,16 @@ class CommonFxns: NSObject {
         (appDelegate.window?.rootViewController as! UINavigationController).setViewControllers(vcArray, animated: false)
     }
     
+    // Method to go to Initial screen
+    class func popToInitialVC(){
+        let storyboard = UIStoryboard(name: enumStoryBoard.main.rawValue, bundle: nil)
+        let initialVc = storyboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.initial.rawValue) as! InitialViewController
+        var vcArray = (appDelegate.window?.rootViewController as! UINavigationController).viewControllers
+        vcArray.removeAll()
+        vcArray.append(initialVc)
+        (appDelegate.window?.rootViewController as! UINavigationController).setViewControllers(vcArray, animated: false)
+    }
+    
     // Method to go to Home screen
     class func popToHomeVC(){
         let storyboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)

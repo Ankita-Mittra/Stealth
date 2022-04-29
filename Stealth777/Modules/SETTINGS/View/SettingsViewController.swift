@@ -42,13 +42,13 @@ class SettingsViewController: BaseViewController {
 //        self.setSmallHeaderAndHideLargeHeader(header: "Settings")
         self.navigationController?.navigationBar.sizeToFit()
     }
-
     
     // MARK: - Methods
 
     func initialSetup(){
         self.settingsListTableView.register(SettingsTableViewCell.nib(), forCellReuseIdentifier: SettingsTableViewCell.identifier)
     }
+    
     func enterPasswordAlert(){
         let alertController = UIAlertController(title: "New Folder", message: "name this folder", preferredStyle: .alert)
 
@@ -59,26 +59,25 @@ class SettingsViewController: BaseViewController {
         // add the buttons/actions to the view controller
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-
             // this code runs when the user hits the "save" button
 
             let inputName = alertController.textFields![0].text
 
             print("inputName..", inputName)
         }
-
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
 
         present(alertController, animated: true, completion: nil)
     }
     
-    
     func showLogoutAlert(){
         let refreshAlert = UIAlertController(title: "Logout", message: "Are you sure you want to logout from App?", preferredStyle: UIAlertController.Style.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action: UIAlertAction!) in
-            CommonFxns.popToLoginVC()
+            
+            // Logout from the app and go to Inital screen
+            CommonFxns.popToInitialVC()
         }))
 
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in

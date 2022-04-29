@@ -44,6 +44,8 @@ class EnterUsernameViewModel {
                     return
                 }
             
+                self.didFinishFetch?()
+
                 print("tempData....", tempData)
                 
             } else {

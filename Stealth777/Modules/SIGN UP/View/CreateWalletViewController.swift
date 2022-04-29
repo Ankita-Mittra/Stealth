@@ -73,7 +73,7 @@ class CreateWalletViewController: BaseViewController {
                 }
                 let binance = BnbWalletManager.init(infuraUrl: "https://bsc-dataseed1.binance.org:443")
                 
-                let wallet = try binance.createWallet(walletPhrase: walletPhrase ?? emptyStr)
+                let wallet = try binance.createWallet(walletPhrase: walletPhrase)
                 
 //                    if let phrase = walletPhrase.words as? [String]{
 //                        self.mneomonicPhraseArr = phrase
@@ -88,11 +88,7 @@ class CreateWalletViewController: BaseViewController {
             print(error.localizedDescription)
         }
     }
-    
-    func displayWalletPharseOnScreen(){
-        
-    }
-    
+ 
     // MARK: - Networking
     
     private func registerUser() {
@@ -149,8 +145,15 @@ class CreateWalletViewController: BaseViewController {
     }
     
     @IBAction func copyBtnAction(_ sender: Any) {
+        var walletPhrase = String()
         
-        
+        for i in self.walletPhraseArr{
+            if let word = i as? String{
+                walletPhrase = word + walletPhrase
+            }
+        }
+        print("wallet phrase...", walletPhrase)
+        UIPasteboard.general.string = walletPhrase
     }
     
     // MARK: - Methods

@@ -66,6 +66,7 @@ class EnterUsernameViewController: BaseViewController {
         viewModel.updateLoadingStatus = {
             print("success....updateLoadingStatus")
 
+            CommonFxns.showAlert(self, message: "username already existed", title: "alert")
 
 //            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
         }

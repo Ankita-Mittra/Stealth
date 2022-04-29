@@ -17,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         self.navigateToRightScreen()
+//        self.getAppStoreVersion()
 
+        
+        
         let enabledMode = userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) as? String
         
         switch enabledMode {
@@ -43,6 +46,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
 //
         return true
+    }
+    
+    func getAppStoreVersion(){
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+        print("version....", version)
+        
+        guard let bundleId = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String else { return }
+        guard let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(bundleId)&country=br") else { return }
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let data = data {
+                do {
+                    let jsonObject = try JSONSerialization.jsonObject(with: data)
+                    guard let json = jsonObject as? [String: Any] else {
+                        print("The received that is not a Dictionary")
+                        return
+                    }
+                    let results = json["results"] as? [[String: Any]]
+                    let firstResult = results?.first
+                    let currentVersion = firstResult?["version"] as? String
+                    print("currentVersion: ", currentVersion)
+                } catch let serializationError {
+                    print("Serialization Error: ", serializationError)
+                }
+            } else if let error = error {
+                print("Error: ", error)
+            } else if let response = response {
+                print("Response: ", response)
+            } else {
+                print("Unknown error")
+            }
+        }
+        task.resume()
     }
     
     // MARK: Methods

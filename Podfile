@@ -9,6 +9,7 @@ target 'Stealth777' do
 
   pod 'BinanceSmartChainSDK'
 
+  pod 'MBProgressHUD'
 
   target 'Stealth777Tests' do
     inherit! :search_paths
