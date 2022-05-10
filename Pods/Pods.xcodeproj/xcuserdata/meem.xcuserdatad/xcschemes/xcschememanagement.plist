@@ -8,6 +8,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
 		<key>Alamofire.xcscheme_^#shared#^_</key>
 		<dict>
@@ -18,6 +20,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>BigInt.xcscheme_^#shared#^_</key>
 		<dict>
@@ -28,6 +32,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>BinanceSmartChainSDK.xcscheme_^#shared#^_</key>
 		<dict>
@@ -38,6 +44,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>CryptoSwift.xcscheme_^#shared#^_</key>
 		<dict>
@@ -48,11 +56,15 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-Stealth777-Stealth777UITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Pods-Stealth777-Stealth777UITests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -63,6 +75,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Pods-Stealth777.xcscheme_^#shared#^_</key>
 		<dict>
@@ -73,6 +87,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>Pods-Stealth777Tests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -83,6 +99,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>PromiseKit.xcscheme_^#shared#^_</key>
 		<dict>
@@ -93,6 +111,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 		<key>Starscream.xcscheme_^#shared#^_</key>
 		<dict>
@@ -103,6 +123,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme_^#shared#^_</key>
 		<dict>
@@ -113,6 +135,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>secp256k1.c.xcscheme_^#shared#^_</key>
 		<dict>
@@ -123,6 +147,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>13</integer>
 		</dict>
 		<key>web3swift-Browser.xcscheme_^#shared#^_</key>
 		<dict>
@@ -133,6 +159,8 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 		<key>web3swift.xcscheme_^#shared#^_</key>
 		<dict>

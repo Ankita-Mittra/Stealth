@@ -197,6 +197,8 @@
 		20FBC6FE27C7C240004E0697 /* UILabelFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6FA27C7C240004E0697 /* UILabelFontSize.swift */; };
 		5D26F1044F2A963EFCBFEF4F /* Pods_Stealth777.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79DB081BD4246E2A7604F798 /* Pods_Stealth777.framework */; };
 		762BA5D6DDFA56EDE04ACFAD /* Pods_Stealth777_Stealth777UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF060544A2F70F3A15070558 /* Pods_Stealth777_Stealth777UITests.framework */; };
+		9A5EFDBA281D5FD400AB84A6 /* GroupSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5EFDB9281D5FD400AB84A6 /* GroupSettingsViewModel.swift */; };
+		9A5EFDBC281D5FEA00AB84A6 /* AllGroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5EFDBB281D5FEA00AB84A6 /* AllGroupsViewModel.swift */; };
 		A30E8E953CACCF956F66DC6E /* Pods_Stealth777Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627E5B42235A6DDD3E330867 /* Pods_Stealth777Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -425,6 +427,8 @@
 		627E5B42235A6DDD3E330867 /* Pods_Stealth777Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stealth777Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DB081BD4246E2A7604F798 /* Pods_Stealth777.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stealth777.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F25442004A06EA1861712C1 /* Pods-Stealth777.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stealth777.release.xcconfig"; path = "Target Support Files/Pods-Stealth777/Pods-Stealth777.release.xcconfig"; sourceTree = "<group>"; };
+		9A5EFDB9281D5FD400AB84A6 /* GroupSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingsViewModel.swift; sourceTree = "<group>"; };
+		9A5EFDBB281D5FEA00AB84A6 /* AllGroupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsViewModel.swift; sourceTree = "<group>"; };
 		C796900EA0DAF1AF97FBC747 /* Pods-Stealth777.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stealth777.debug.xcconfig"; path = "Target Support Files/Pods-Stealth777/Pods-Stealth777.debug.xcconfig"; sourceTree = "<group>"; };
 		DF060544A2F70F3A15070558 /* Pods_Stealth777_Stealth777UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stealth777_Stealth777UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C546C64D3091E3AB80EF2E /* Pods-Stealth777-Stealth777UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stealth777-Stealth777UITests.debug.xcconfig"; path = "Target Support Files/Pods-Stealth777-Stealth777UITests/Pods-Stealth777-Stealth777UITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -951,6 +955,7 @@
 		20EFFB4D27F43DDE009BD3B9 /* MY LIFE */ = {
 			isa = PBXGroup;
 			children = (
+				9A5EFDB7281D5F1C00AB84A6 /* ViewModel */,
 				20EFFB5027F43DFA009BD3B9 /* View */,
 			);
 			path = "MY LIFE";
@@ -959,6 +964,7 @@
 		20EFFB4E27F43DE9009BD3B9 /* MARKET PLACE */ = {
 			isa = PBXGroup;
 			children = (
+				9A5EFDB6281D5F0D00AB84A6 /* ViewModel */,
 				20EFFB4F27F43DF1009BD3B9 /* View */,
 			);
 			path = "MARKET PLACE";
@@ -1190,6 +1196,7 @@
 		20FBC6E127C7C0FB004E0697 /* GroupChat */ = {
 			isa = PBXGroup;
 			children = (
+				9A5EFDB8281D5FBD00AB84A6 /* ViewModel */,
 				20B83C9027DA1710003CA9D2 /* ViewModel */,
 				20B83C8F27DA170A003CA9D2 /* View */,
 			);
@@ -1226,6 +1233,8 @@
 		20FBC6E527C7C140004E0697 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9A5EFDB5281D5EE600AB84A6 /* Chat */,
+				9A5EFDB4281D5EC000AB84A6 /* Contacts */,
 				205AAB2927F1C8DC002FE32E /* Contacts */,
 				205AAB2827F1C894002FE32E /* Chat */,
 				205AAB1B27F1C688002FE32E /* Login */,
@@ -1375,6 +1384,43 @@
 				F222B23EB1C36E6DEC9BF127 /* Pods-Stealth777Tests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9A5EFDB4281D5EC000AB84A6 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		9A5EFDB5281D5EE600AB84A6 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		9A5EFDB6281D5F0D00AB84A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9A5EFDB7281D5F1C00AB84A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9A5EFDB8281D5FBD00AB84A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A5EFDB9281D5FD400AB84A6 /* GroupSettingsViewModel.swift */,
+				9A5EFDBB281D5FEA00AB84A6 /* AllGroupsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DB283C26704F219BA8435B3B /* Frameworks */ = {
@@ -1743,6 +1789,7 @@
 				2043BA6F27FAD32900D00041 /* Groups+CoreDataProperties.swift in Sources */,
 				20FBC6AB27C7ABCE004E0697 /* Stealth777.xcdatamodeld in Sources */,
 				209C3C3E27F2FCAE002C554D /* APIService+Login.swift in Sources */,
+				9A5EFDBC281D5FEA00AB84A6 /* AllGroupsViewModel.swift in Sources */,
 				2043BA7327FAD32900D00041 /* UserRelation+CoreDataProperties.swift in Sources */,
 				209C3C3C27F2FC65002C554D /* APIService.swift in Sources */,
 				20B486F527CCD23A00E12376 /* StringsForCode.swift in Sources */,
@@ -1761,6 +1808,7 @@
 				20625C3627EB33510089ECB5 /* UIViewCustomGradientClass.swift in Sources */,
 				209F9A4627E07ACC008CFA80 /* EnterPasswordCustomAlertView.swift in Sources */,
 				205AAB2527F1C7A7002FE32E /* SignUpResponse.swift in Sources */,
+				9A5EFDBA281D5FD400AB84A6 /* GroupSettingsViewModel.swift in Sources */,
 				20AE96C827E46DFA00FB1EB6 /* AllContactsListViewController.swift in Sources */,
 				20B83C9427DA174D003CA9D2 /* GroupChatViewController.swift in Sources */,
 				20F2843427E851B600043F8C /* CreateGroupViewController.swift in Sources */,

@@ -17,8 +17,6 @@ class InitialViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         self.hideNavigationBar()
-        
-
 //        self.checkVPNConnectivity()
     }
         
