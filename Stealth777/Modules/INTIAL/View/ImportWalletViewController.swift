@@ -6,10 +6,14 @@
 //
 
 import UIKit
-import UIKit
 import SwiftUI
 import BinanceSmartChainSDK
 import web3swift
+
+import SwiftyJSON
+import Alamofire
+import BigInt
+//import BinanceChain
 
 class ImportWalletViewController: BaseViewController {
     
@@ -58,16 +62,33 @@ class ImportWalletViewController: BaseViewController {
     
     func importWallet(walletPhrase: String){
 
+        // chair obscure choose right piano dinner weather scatter pony drum wash ready
         do {
             let binance = BnbWalletManager.init(infuraUrl: "https://bsc-dataseed1.binance.org:443")
             
             let wallet = try binance.createWallet(walletPhrase: walletPhrase)
-
+            //          bnb2.web3Manager.transactionOptions.from
             self.walletAddress = wallet?.walletAddress ?? emptyStr
-            
             print("wallet....", walletAddress)
-            
             self.checkWalletBalance(walletAddress: walletAddress)
+            
+            let tokenAmount = 0.001
+            let receiverAddress = ""
+            
+            let gasPrice = 0.0007
+            let gasLimit = 0.0007
+            print("gasPrice", gasPrice)
+            
+//            bnb2.sendBnb(walletAddress: "", password: "", receiverAddress: "", etherAmount: "", gasPrice: 0, gasLimit: 0)
+//            bnb2.sendBnb(walletAddress: "", password: "", receiverAddress: "", etherAmount: "", gasPrice: 0, gasLimit: 0)
+            
+//            walletManager.sendBEP20Token(walletAddress: "", password: "", receiverAddress: "", tokenAmount: tokenAmount, tokenContractAddress: "", gasPrice: gasPrice, gasLimit: gasLimit)
+            print("gasPrice...", gasPrice)
+            
+//            sendBnb(walletAddress: <#T##String#>, password: <#T##String#>, receiverAddress: <#T##String#>, etherAmount: <#T##String#>, gasPrice: <#T##BigUInt#>, gasLimit: <#T##BigUInt#>)
+
+//            sendBnb(walletAddress: <#T##String#>, password: <#T##String#>, receiverAddress: <#T##String#>, etherAmount: <#T##String#>, gasPrice: <#T##BigUInt#>, gasLimit: <#T##BigUInt#>)
+            
         } catch {
             print(error.localizedDescription)
         }
@@ -86,25 +107,54 @@ class ImportWalletViewController: BaseViewController {
             let USDTContractAddress = "0x55d398326f99059ff775485246999027b3197955"
             let tokenBalance = try binance.getBEP20TokenBalance(tokenContractAddress: armoneyContractAddress, walletAddress: walletAddress2)
             
-            
-            
+
             print("BNB balance...", balance)
-            
             print("BNB tokenBalance...", tokenBalance)
+            
+            
+        
+            let tokenAmount = 0.001
+            let receiverAddress = ""
+            
+            let gasPrice = 0.0007
+            let gasLimit = 0.0007
+
+            binance.testing()
+            
+//            binance.sendBnb(walletAddress: "", password: "", receiverAddress: "", etherAmount: "", gasPrice: "", gasLimit: "")
+
+//            try binance.sendBnb(walletAddress: walletAddress2, password: "", receiverAddress: receiverAddress, etherAmount: tokenAmount, gasPrice: gasPrice, gasLimit: gasLimit)
+            
+//            try binance.sendBEP20Token(walletAddress: walletAddress2, password: "", receiverAddress: receiverAddress, tokenAmount: tokenAmount, tokenContractAddress: armoneyContractAddress, gasPrice: gasPrice, gasLimit: gasLimit)
+            
+        
+//            // Get token list
+//            let binanceChain = BinanceChain()
+//
+//            binanceChain.tokens(limit: .fiveHundred, offset: 0) { (response) in
+//                print(response.tokens)
+//            }
+//
+//            // Obtain trading fees information
+//            binance.fees() { (response) in
+//                print(response.fees)
+//            }
         }catch let error {
             print("error...", error)
         }
 
     }
-    
+
     
     // MARK: - Button Actions
     
     @IBAction func submitBtnAction(_ sender: Any) {
 
-        if let recoveryPhrase = self.enterRecoveryPhraseTxtField.text{
-            self.importWallet(walletPhrase: recoveryPhrase)
-        }
+//        if let recoveryPhrase = self.enterRecoveryPhraseTxtField.text{
+//            self.importWallet(walletPhrase: recoveryPhrase)
+//        }
+//        
+        self.goToHomeScreen()
         
         
     }

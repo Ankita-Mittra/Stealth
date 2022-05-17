@@ -8,7 +8,7 @@ target 'Stealth777' do
   # Pods for Stealth777
 
   pod 'BinanceSmartChainSDK'
-
+#  pod 'BinanceChain', :git => 'https://github.com/mh7821/SwiftBinanceChain.git'
   pod 'MBProgressHUD'
 
   target 'Stealth777Tests' do

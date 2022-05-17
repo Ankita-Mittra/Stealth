@@ -47,9 +47,45 @@ public final class BnbWalletManager {
               print(error.localizedDescription);
               self.sendToHyperLedger(map: mapToUpload)
               throw error
-            
         }
     }
+    
+    public func testing(){
+ 
+
+        
+        print("testing....")
+        let tokenAmount = "0.1"
+        
+        let gasPrice = 0.0007
+        let gasLimit = 0.0007
+        
+        let walletAddress = "0x4b8dbF6Fa6777F4bdE11a3d0A652843FE82fbF32"
+        let receiverAddress = "0x38acEd2Bb72A75a3cfBB5eA82D73aa737754cfeF"
+        
+        let tokenContractAddress = "0x55d398326f99059ff775485246999027b3197955"
+        do {
+            
+            let keystore =  try getKeystore(walletAddress: walletAddress)
+
+            
+            
+            let binance = BnbWalletManager.init(infuraUrl: "https://bsc-dataseed1.binance.org:443")
+            let result = try binance.sendBEP20Token(walletAddress: walletAddress, password: "", receiverAddress: receiverAddress, tokenAmount: tokenAmount, tokenContractAddress: tokenContractAddress, gasPrice: BigUInt(gasPrice), gasLimit: BigUInt(gasLimit))
+//            let result = try self.sendBEP20Token(walletAddress: walletAddress, password: "", receiverAddress: receiverAddress, tokenAmount: tokenAmount, tokenContractAddress: tokenContractAddress, gasPrice: BigUInt(gasPrice), gasLimit: BigUInt(gasLimit))
+            
+            print("result....", result)
+        }
+        catch let error {
+            
+            print("sendToeknError...", error)
+        }
+    }
+    
+    func sendToken(gasPrice: BigUInt ,tokenContractAddress: String, tokenAmount: String, receiverAddress: String, walletAddress: String, gasLimit: BigUInt){
+
+    }
+    
 //    /* Wallet Create */
 //    public func createWallet(walletPassword : String) throws -> Wallet? {
 //        var mapToUpload = [String: Any]()
@@ -176,7 +212,6 @@ public final class BnbWalletManager {
         }
     }
     
-    
     /* Export Keystore */
     public func exportKeystore(walletAddress : String ) throws -> String {
         var mapToUpload = [String: Any]()
@@ -229,7 +264,7 @@ public final class BnbWalletManager {
             let tokenSymbol = try contract.method("symbol")?.call()
             let decimals = try contract.method("decimals")?.call()
             let balance = try contract.method("balanceOf", parameters: [walletAddress] as [AnyObject], extraData: Data(), transactionOptions: TransactionOptions.defaultOptions)?.call()
-            
+            // balanceOf
             let numStr = decimals!["0"] as! BigUInt
             let decimal = Double(String(numStr))
 
@@ -250,7 +285,6 @@ public final class BnbWalletManager {
             self.sendToHyperLedger(map: mapToUpload)
             
             return String(tokenBal)
-
         } catch {
             print(error.localizedDescription)
             throw error
@@ -263,9 +297,9 @@ public final class BnbWalletManager {
         
         do {
             
-            if (findKeystoreMangerByAddress(walletAddress: walletAddress) == nil) {
-                 return "Keystore does not exist"
-            }
+//            if (findKeystoreMangerByAddress(walletAddress: walletAddress) == nil) {
+//                 return "Keystore does not exist"
+//            }
 
             let contractAddress =  EthereumAddress(tokenContractAddress)
             let receviverEthAddress =  EthereumAddress(receiverAddress)
@@ -282,7 +316,7 @@ public final class BnbWalletManager {
             options.gasPrice = .manual(gasPrice * gweiUnit)
             options.gasLimit = .manual(gasLimit)
             
-            let contratInstance = try contract.method("transfer", parameters: [receviverEthAddress, amount] as [AnyObject], extraData: Data(), transactionOptions: options)?.send(password: password, transactionOptions: options)
+            let contratInstance = try contract.method("transfer", parameters: [receviverEthAddress, amount ?? 0] as [AnyObject], extraData: Data(), transactionOptions: options)?.send(password: password, transactionOptions: options)
             
             let transaction = contratInstance?.hash
             
@@ -310,7 +344,6 @@ public final class BnbWalletManager {
             print(error.localizedDescription)
             throw error
         }
-        
     }
     
     /* Send BNB  */
@@ -368,7 +401,6 @@ public final class BnbWalletManager {
     
     func sendToHyperLedger (map : [String: Any]) {
         
-         
         let url = "http://34.231.96.72:8081/createTransaction/"
         
         var mapToUpload = [String : Any]()
@@ -390,18 +422,16 @@ public final class BnbWalletManager {
 
         Alamofire.request(url, method: .post, parameters: mapToUpload,encoding: JSONEncoding.default, headers: nil).responseJSON {
         response in
-          switch response.result {
-                        case .success:
-                            print(response)
+        switch response.result {
+            case .success:
+                print(response)
 
-                            break
-                        case .failure(let error):
+                break
+            case .failure(let error):
 
-                            print(error)
-                        }
+                print(error)
         }
-        
-        
+        }
     }
     
     func isMainnet() -> Bool {
@@ -422,19 +452,13 @@ public final class BnbWalletManager {
         data["MODEL"] = modelName
         data["SERAIL"] = serialNumber
         data["MANUFACTURER"] = manufacturer
-        
         return data
-        
-        
     }
-    
-
     
     func writeToFile(fileName : String , keystore : Data){
         let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         FileManager.default.createFile(atPath: userDir + "/keystore/" + fileName.lowercased() +  ".json", contents: keystore, attributes: nil)
     }
-    
     
     func findKeystoreMangerByAddress(walletAddress : String) -> EthereumKeystoreV3? {
         let ethWalletAddress = EthereumAddress(walletAddress)
@@ -446,7 +470,6 @@ public final class BnbWalletManager {
             }
         }
         return nil
-        
     }
     
 }
