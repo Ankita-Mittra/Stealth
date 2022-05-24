@@ -7,10 +7,13 @@ target 'Stealth777' do
 
   # Pods for Stealth777
 
+  
   pod 'BinanceSmartChainSDK'
-#  pod 'BinanceChain', :git => 'https://github.com/mh7821/SwiftBinanceChain.git'
   pod 'MBProgressHUD'
-
+  pod 'SDWebImage'
+  pod 'NVActivityIndicatorView'
+  pod 'Alamofire'
+  
   target 'Stealth777Tests' do
     inherit! :search_paths
     # Pods for testing

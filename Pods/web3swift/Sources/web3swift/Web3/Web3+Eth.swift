@@ -19,7 +19,7 @@ extension web3.Eth {
     /// This function is synchronous!
     ///
     /// Returns the Result object that indicates either success of failure.
-    public func sendTransaction(_ transaction: EthereumTransaction, transactionOptions: TransactionOptions, password:String = "web3swift") throws -> TransactionSendingResult {
+    public func sendTransaction(_ transaction: EthereumTransaction, transactionOptions: TransactionOptions, password:String = "") throws -> TransactionSendingResult { // password: web3swift
         let result = try self.sendTransactionPromise(transaction, transactionOptions: transactionOptions, password: password).wait()
         return result
     }

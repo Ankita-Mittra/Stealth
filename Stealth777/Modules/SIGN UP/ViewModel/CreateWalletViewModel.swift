@@ -11,9 +11,11 @@ import UIKit
 class CreateWalletViewModel {
     
     // MARK: - Properties
+    
     private var signUpResponse: SignUpResponse? {
         didSet {
-            guard signUpResponse != nil else { return }
+            guard let s = signUpResponse else { return }
+            self.storeUserDataLocally(with: s)
             self.didFinishFetch?()
         }
     }
@@ -28,6 +30,7 @@ class CreateWalletViewModel {
     
     var privateKey = String()
     var publickey = String()
+    var walletAddress = String()
     private var apiService: SignUpAPIService?
     
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
@@ -83,14 +86,13 @@ class CreateWalletViewModel {
 //
 //        })
     }
-    
-    
+        
     func registerUser(dict: [String:Any]) {
     
         var signUpDict = dict
         
         let device = self.getDeviceInfo()
-        let publickey = self.getPublicKey()
+        self.publickey = self.getPublicKey()
 
         signUpDict[enumAPIKeysForUser.userType_key.rawValue] = userType
         signUpDict[enumAPIKeysForUser.platform_key.rawValue] = platform
@@ -147,6 +149,14 @@ class CreateWalletViewModel {
         self.privateKey = keyPair.privateKey
         
         return keyPair.publicKey
+    }
+    
+    
+    // MARK: - UI Logic
+    private func storeUserDataLocally(with signUpResponse: SignUpResponse) {
+        
+        // save data locally
+        UserDefaultsToStoreUserInfo.saveUserDataInUserDefaults(token: signUpResponse.token, userId: signUpResponse.userId, publicKey: self.publickey, privateKey: self.privateKey, walletAddress: self.walletAddress)
     }
 
 }

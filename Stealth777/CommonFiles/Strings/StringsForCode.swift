@@ -11,9 +11,11 @@ import SwiftUI
 
 // All the strings using for app code
 // MARK: - App mains
+
 let appName = "Stealth777" // App name
 let coreDataName = "Stealth777" // Core database name
-var baseUrl = "https://www.stealth777.is/api/"   //"https://185.247.226.7./api/users/register" // Base url for API's calls
+let baseUrl = "https://www.stealth777.is/api/"   //"https://185.247.226.7./api/users/register" // Base url for API's calls
+let binanceUrl = "https://bsc-dataseed1.binance.org:443" // URL for Binance network calls
 
 // MARK: - Common
 

@@ -56,6 +56,7 @@ class EnterUsernameViewModel {
             }
         })
   }
+
 }
 
 // MARK: - TextField delegates

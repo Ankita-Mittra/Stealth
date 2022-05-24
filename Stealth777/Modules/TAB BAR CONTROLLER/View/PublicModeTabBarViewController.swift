@@ -14,6 +14,7 @@ class PublicModeTabBarViewController: UITabBarController {
         
         self.tabBarController?.tabBar.isHidden = false
 
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     func setLargeHeaderOnNavigationBar(largeTitleHeader: String){

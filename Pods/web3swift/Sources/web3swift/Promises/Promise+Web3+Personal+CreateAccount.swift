@@ -10,7 +10,7 @@ import PromiseKit
 //import EthereumAddress
 
 extension web3.Personal {
-    public func createAccountPromise(password:String = "web3swift") -> Promise<EthereumAddress> {
+    public func createAccountPromise(password:String = "") -> Promise<EthereumAddress> { // password: web3swift
         let queue = web3.requestDispatcher.queue
         do {
             if self.web3.provider.attachedKeystoreManager == nil {

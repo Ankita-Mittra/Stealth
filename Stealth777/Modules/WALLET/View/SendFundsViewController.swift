@@ -9,6 +9,15 @@ import UIKit
 
 class SendFundsViewController: BaseViewController {
 
+    
+    // MARK: - Properties & Delegates
+
+//    @IBOutlet weak var tokenContractAddressTxtField: UITextField!
+
+    var walletAddress = String()
+    
+    // MARK: - View life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

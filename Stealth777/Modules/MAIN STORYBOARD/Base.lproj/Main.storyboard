@@ -35,9 +35,6 @@
                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="28"/>
                         </textAttributes>
                     </navigationBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="cTt-dW-GvJ"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vuQ-p7-G9e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

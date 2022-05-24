@@ -33,6 +33,14 @@ let USER_DEFAULT_imageUrl_Key = "userDefault_imageUrl"
 let USER_DEFAULT_bio_Key = "userDefault_bio"
 let USER_DEFAULT_token_Key = "userDefault_token"
 
+let USER_DEFAULT_userTokensList_Key = "userDefault_userTokensList"
+
+let USER_DEFAULT_tokenContractAddress_Key = "userDefault_tokenContractAddress"
+let USER_DEFAULT_tokenSymbol_Key = "userDefault_tokenSymbol"
+let USER_DEFAULT_tokenBalance_Key = "userDefault_tokenBalance"
+let USER_DEFAULT_tokenPrecision_Key = "userDefault_tokenPrecision"
+let USER_DEFAULT_tokenName_Key = "userDefault_tokenName"
+
 // Other Settings
 let USER_DEFAULT_isDarkMode_Key = "userDefault_isDarkMode"
 

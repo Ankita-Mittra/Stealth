@@ -15,12 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         self.navigateToRightScreen()
 //        self.getAppStoreVersion()
 
-        
-        
         let enabledMode = userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) as? String
         
         switch enabledMode {
@@ -82,27 +80,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: Methods
 
-    // Method
+    // Method tonavigate user on appropriate screen
     func navigateToRightScreen(){
+        
+        let userInfoDict = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String: Any]
+        print("userInfoDict....", userInfoDict)
+
+        
     // Check whether user is logged in or not
-            if (userDefault.value(forKey: USER_DEFAULT_userID_Key)) != nil{
+        guard  let userInfoDict = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String: Any] else {
+  
+            self.goToInitialScreen()
+            return
+        }
+        
+            print("userInfoDict....", userInfoDict)
+            if (userInfoDict[USER_DEFAULT_userID_Key] != nil) {
+//(userDefault.value(forKey: USER_DEFAULT_userID_Key)) != nil{
                 let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
                 let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar.rawValue) as! PublicModeTabBarViewController
                 navController.pushViewController(loginVcObj, animated: true)
             }else{
-                // Go to SignUP screen
-                let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.main.rawValue, bundle: nil)
-                let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.initial.rawValue) as! InitialViewController
-                navController.pushViewController(signUpVcObj, animated: true)
+                // Go to Initial screen
+
+                self.goToInitialScreen()
 
     //                let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
     //                let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.login.rawValue, bundle: nil)
     //                let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.login.rawValue) as! LoginViewController
     //                navController.pushViewController(signUpVcObj, animated: true)
             }
-        }
+        
+    }
+    
+    func goToInitialScreen(){
+        let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.main.rawValue, bundle: nil)
+        let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.initial.rawValue) as! InitialViewController
+        navController.pushViewController(signUpVcObj, animated: true)
+    }
 
     // MARK: UISceneSession Lifecycle
 

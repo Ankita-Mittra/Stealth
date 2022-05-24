@@ -947,17 +947,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vzf-cp-jfu">
                                 <rect key="frame" x="30" y="270" width="368" height="60"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iqe-AW-vUK" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Contract Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iqe-AW-vUK" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="368" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="textFieldColor"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                 <color key="value" name="textFieldPlaceholderColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="Vzf-cp-jfu" id="mPL-qo-2MU"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbg-mf-RVT">
                                         <rect key="frame" x="0.0" y="59" width="368" height="1"/>
@@ -985,7 +988,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaV-QO-esk">
                                 <rect key="frame" x="30" y="360" width="368" height="60"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zJ-4S-bha" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Symbol" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zJ-4S-bha" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="368" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="textFieldColor"/>
@@ -1023,7 +1026,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dzs-GY-jNe">
                                 <rect key="frame" x="30" y="450" width="368" height="60"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token of Precision" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KuI-DZ-aRU" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token of Precision" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KuI-DZ-aRU" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="368" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="textFieldColor"/>
@@ -1111,10 +1114,15 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="tokenContractAddressTxtField" destination="iqe-AW-vUK" id="YhY-ap-Li4"/>
+                        <outlet property="tokenPrecisionTxtField" destination="KuI-DZ-aRU" id="Us7-Wy-bd8"/>
+                        <outlet property="tokenSymbolTxtField" destination="4zJ-4S-bha" id="hwM-Up-dL4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dT7-4M-25e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3962" y="687"/>
+            <point key="canvasLocation" x="4075" y="687"/>
         </scene>
         <!--Receive Amount View Controller-->
         <scene sceneID="h6T-0j-SmK">
@@ -1127,9 +1135,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smi-NQ-bs9" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                 <rect key="frame" x="77.666666666666686" y="561.33333333333337" width="273" height="35"/>
                                 <color key="backgroundColor" name="PrimaryThemeColor"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="04innx8394j9dj38ddm93jxjx">
+                                <state key="normal">
                                     <color key="titleColor" name="whiteLabelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1155,7 +1163,19 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lT-QP-OM2">
                                 <rect key="frame" x="30" y="88.999999999999972" width="368" height="383.33333333333326"/>
-                                <color key="backgroundColor" name="textFieldPlaceholderColor"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1CF-q8-vfv">
+                                        <rect key="frame" x="0.0" y="0.0" width="368" height="383.33333333333331"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1CF-q8-vfv" secondAttribute="trailing" id="2nV-pj-Kbx"/>
+                                    <constraint firstItem="1CF-q8-vfv" firstAttribute="leading" secondItem="3lT-QP-OM2" secondAttribute="leading" id="a8p-na-Mjv"/>
+                                    <constraint firstItem="1CF-q8-vfv" firstAttribute="top" secondItem="3lT-QP-OM2" secondAttribute="top" id="e3n-3U-Pda"/>
+                                    <constraint firstAttribute="bottom" secondItem="1CF-q8-vfv" secondAttribute="bottom" id="xsz-t7-ZgD"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLt-8O-X0d">
                                 <rect key="frame" x="154" y="616.33333333333337" width="120" height="40"/>
@@ -1164,6 +1184,9 @@
                                 <state key="normal" title="   Copy " image="copyIcon" backgroundImage="copyPhraseBg">
                                     <color key="titleColor" name="SecondaryThemeColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="copyBtnAction:" destination="Yib-AZ-TRm" eventType="touchUpInside" id="2aX-xp-pI4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y0O-Fh-AtA"/>
@@ -1191,6 +1214,10 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="QRCodeImgView" destination="1CF-q8-vfv" id="YaO-gs-5XE"/>
+                        <outlet property="walletAddressBtn" destination="Smi-NQ-bs9" id="Rc6-KZ-bOI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9x-4z-DUx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1208,7 +1235,7 @@
             <size key="intrinsicContentSize" width="21.333333333333332" height="17.666666666666668"/>
         </designable>
         <designable name="4zJ-4S-bha">
-            <size key="intrinsicContentSize" width="112.66666666666667" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="106.66666666666667" height="21.666666666666668"/>
         </designable>
         <designable name="9b5-zC-HFx">
             <size key="intrinsicContentSize" width="85.666666666666671" height="20"/>
@@ -1250,7 +1277,7 @@
             <size key="intrinsicContentSize" width="124" height="124"/>
         </designable>
         <designable name="Smi-NQ-bs9">
-            <size key="intrinsicContentSize" width="176" height="29"/>
+            <size key="intrinsicContentSize" width="30" height="25"/>
         </designable>
         <designable name="Snb-5c-W9f">
             <size key="intrinsicContentSize" width="85.666666666666671" height="20"/>
@@ -1292,7 +1319,7 @@
             <size key="intrinsicContentSize" width="175" height="26"/>
         </designable>
         <designable name="iqe-AW-vUK">
-            <size key="intrinsicContentSize" width="112.66666666666667" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="181.66666666666666" height="21.666666666666668"/>
         </designable>
         <designable name="jYp-0q-Wgk">
             <size key="intrinsicContentSize" width="36" height="32"/>

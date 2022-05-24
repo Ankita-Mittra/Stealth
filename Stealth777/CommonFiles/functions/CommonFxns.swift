@@ -14,7 +14,6 @@ class CommonFxns: NSObject {
     // Method to change language to Selcted language at Home screen
     class func switchLanguageAtHomeScreen(selectedLanguageCode: String){
         
-        
         switch selectedLanguageCode {
             
         case enumLanguageCodes.arabicLanguage.rawValue:
@@ -269,6 +268,14 @@ class CommonFxns: NSObject {
         return nameTest.evaluate(with: testStr)
     }
     
+    class func hidePassword(textField: UITextField, hide: Bool){
+        if hide{
+            textField.isSecureTextEntry = true
+        }else{
+            textField.isSecureTextEntry = false
+        }
+    }
+    
     class func isVPNActive() -> Bool {
         
         let vpnProtocolsKeysIdentifiers = [
@@ -290,7 +297,20 @@ class CommonFxns: NSObject {
         return false
     }
     
-     
+    class func generateQRCode(from string: String) -> UIImage? {
+        let data = string.data(using: String.Encoding.ascii)
+
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 3, y: 3)
+
+            if let output = filter.outputImage?.transformed(by: transform) {
+                return UIImage(ciImage: output)
+            }
+        }
+        return nil
+    }
+
     
     
     class func validateLength(text : String, size : (min : Int, max : Int)) -> Bool{

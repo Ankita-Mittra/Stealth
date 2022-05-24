@@ -10,8 +10,8 @@ import PromiseKit
 
 extension web3.Eth {
     
-    public func sendTransactionPromise(_ transaction: EthereumTransaction, transactionOptions: TransactionOptions? = nil, password:String = "web3swift") -> Promise<TransactionSendingResult> {
-//        print(transaction)
+    public func sendTransactionPromise(_ transaction: EthereumTransaction, transactionOptions: TransactionOptions? = nil, password:String = "") -> Promise<TransactionSendingResult> { // password: web3swift
+        print(transaction)
         var assembledTransaction : EthereumTransaction = transaction // .mergedWithOptions(transactionOptions)
         let queue = web3.requestDispatcher.queue
         do {
@@ -34,7 +34,6 @@ extension web3.Eth {
                     throw Web3Error.processingError(desc: "Transaction is canceled by middleware")
                 }
             }
-            
             assembledTransaction = forAssemblyPipeline.0
             mergedOptions = forAssemblyPipeline.1
             

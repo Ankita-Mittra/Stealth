@@ -12,15 +12,159 @@ class WalletDetailsViewController: BaseViewController {
     // MARK: - Properties & Delegates
 
     @IBOutlet weak var tokensListTableView: UITableView!
+    @IBOutlet weak var walletAddressLbl: UILabel!
     
+    var tokenListArr = [ImportedTokenList]()
+        
+    lazy var refreshControl: UIRefreshControl = {
+            let refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action:
+                         #selector(handleRefresh(_:)),
+                                     for: UIControl.Event.valueChanged)
+            refreshControl.tintColor = UIColor.red
+            
+            return refreshControl
+        }()
+    
+
+
     // MARK: - View life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Initial Setup
         self.initialUISetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // Initial Setup
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        self.setNavigationBar()
+        
+        self.fetchTokensAndShowOnScreen()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        self.setNavigationBar()
+    }
+
+    func setNavigationBar(){
+
+        self.title = "Wallet"
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.setToolbarHidden(true, animated: true)
+
+        let play = UIBarButtonItem(image: UIImage(named: "moreIcon"), style: .plain, target: self, action: #selector(moreButtonAction))
+        self.navigationItem.setRightBarButtonItems([play], animated: true)
+
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.sizeToFit()
+    }
+
+    
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.sizeToFit()
+    }
+
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    
+    // MARK: - Methods
+
+    func initialUISetup(){
+        self.tokensListTableView.register(TokenListTableViewCell.nib(), forCellReuseIdentifier: TokenListTableViewCell.identifier)
+        
+        // Show Wallet details on screen
+        guard  let userInfoDict = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String: Any] else {
+            return
+        }
+        
+        if let userWalletAddress = userInfoDict[USER_DEFAULT_walletAddress_Key] as? String{
+            print("userWalletAddress....", userWalletAddress)
+            
+            self.walletAddressLbl.text = userWalletAddress
+        }
+        
+        self.tokensListTableView.addSubview(self.refreshControl)
+
+    }
+
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+            
+        print("handle refresh")
+        self.tokensListTableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    func fetchTokensAndShowOnScreen(){
+        // fetch token
+        // Show Wallet details on screen
+        
+        let list =  UserDefaultsToStoreUserInfo.fetchImportedTokenForLoggedInUser()
+        self.tokenListArr = list
+        
+        print("tokenListArr....", tokenListArr)
+        self.tokensListTableView.reloadData()
+    }
+    
+    // MARK: - Button Actions
+    
+    @IBAction func sendAmountBtnAction(_ sender: Any) {
+        
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.sendFunds.rawValue) as? SendFundsViewController
+        otherController?.walletAddress = self.walletAddressLbl.text ?? emptyStr
+        self.navigationController?.pushViewController(otherController!, animated: true)
+    }
+    
+    @IBAction func receiveAmountBtnAction(_ sender: Any) {
+        
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.receiveAmount.rawValue) as? ReceiveAmountViewController
+        self.navigationController?.pushViewController(otherController!, animated: true)
+    }
+    
+    @IBAction func importTokenBtnAction(_ sender: Any) {
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.importToken.rawValue) as? ImportTokenViewController
+        
+        otherController?.walletAddress = self.walletAddressLbl.text ?? emptyStr
+        self.navigationController?.pushViewController(otherController!, animated: true)
+    }
+    
+    @IBAction func QRScanBtnAction(_ sender: Any) {
+
+    }
+    
+    @objc func  moreButtonAction(){
+        print("Open wallet list")
+        
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.walletList.rawValue) as? WalletListViewController
+        self.navigationController?.pushViewController(otherController!, animated: true)
+    }
+    
+
+
+}
+
+
+
+
+
+
+
+
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(true)
 //
@@ -39,39 +183,6 @@ class WalletDetailsViewController: BaseViewController {
 //        self.navigationController?.navigationBar.sizeToFit()
 //
 //    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-
-        self.setNavigationBar()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        self.setNavigationBar()
-    }
-
-    func setNavigationBar(){
-
-        self.title = "Wallet"
-        self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.setToolbarHidden(true, animated: true)
-
-        let play = UIBarButtonItem(image: UIImage(named: "moreIcon"), style: .plain, target: self, action: #selector(moreButtonAction))
-        self.navigationItem.setRightBarButtonItems([play], animated: true)
-
-//        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Wallet")
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.sizeToFit()
-    }
-
-    
-    override func willMove(toParent parent: UIViewController?) {
-        super.willMove(toParent: parent)
-        
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.sizeToFit()
-    }
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(true)
 //        self.title = "Wallet"
@@ -110,79 +221,3 @@ class WalletDetailsViewController: BaseViewController {
 ////        navigationItem.rightBarButtonItems = [more, startChat]
 //
 //    }
-
-    @objc func  moreButtonAction(){
-        print("Open wallet list")
-        
-        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
-        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.walletList.rawValue) as? WalletListViewController
-        self.navigationController?.pushViewController(otherController!, animated: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-
-    
-    // MARK: - Methods
-
-    func initialUISetup(){
-        self.tokensListTableView.register(TokenListTableViewCell.nib(), forCellReuseIdentifier: TokenListTableViewCell.identifier)
-    }
-    
-    // MARK: - Button Actions
-    
-    @IBAction func sendAmountBtnAction(_ sender: Any) {
-        
-        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
-        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.sendFunds.rawValue) as? SendFundsViewController
-        self.navigationController?.pushViewController(otherController!, animated: true)
-    }
-    
-    @IBAction func receiveAmountBtnAction(_ sender: Any) {
-        
-        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
-        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.receiveAmount.rawValue) as? ReceiveAmountViewController
-        self.navigationController?.pushViewController(otherController!, animated: true)
-    }
-    
-    @IBAction func QRScanBtnAction(_ sender: Any) {
-
-    }
-
-    @IBAction func importTokenBtnAction(_ sender: Any) {
-        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
-        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.importToken.rawValue) as? ImportTokenViewController
-        self.navigationController?.pushViewController(otherController!, animated: true)
-    }
-    
-
-}
-
-
-
-
-
-extension WalletDetailsViewController: UITableViewDelegate, UITableViewDataSource {
-
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
-}
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 68
-    }
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = UITableViewCell()
-    
-    guard  let tokenCell = self.tokensListTableView.dequeueReusableCell(withIdentifier: TokenListTableViewCell.identifier , for: indexPath) as? TokenListTableViewCell else {
-        return cell
-    }
-    
-    return tokenCell
-}
-
-}
-
-

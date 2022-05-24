@@ -15,6 +15,7 @@ class EnterPasswordViewController: BaseViewController {
     @IBOutlet weak var confirmPasswordTxtField: UITextField!
     @IBOutlet weak var validPasswordImgView: UIImageView!
     @IBOutlet weak var passwordStrengthLbl: UILabel!
+    @IBOutlet weak var hidePasswordBtn: UIButton!
 
     var signUpDict = [String:Any]()
     var isValidPassword = Bool()
@@ -26,6 +27,7 @@ class EnterPasswordViewController: BaseViewController {
         // Initial Setup
         
         self.showNavigationBar()
+        hideKeyboardWhenTappedAround()
     }
 
     override func willMove(toParent parent: UIViewController?) {
@@ -46,7 +48,8 @@ class EnterPasswordViewController: BaseViewController {
     }
 
     // MARK: - Button Actions
-    
+    var iconClick = true
+
     @IBAction func nextBtnAction(_ sender: Any) {
         
         let password = CommonFxns.trimString(string: enterPasswordTxtField.text ?? emptyStr)
@@ -55,6 +58,21 @@ class EnterPasswordViewController: BaseViewController {
         password != emptyStr && CommonFxns.validateLength(text: password, size: (8,30)) && CommonFxns.isValidPassword(password: password) && password == confirmPassword ? goToNextScreen() : CommonFxns.showAlert(self, message: "Please Enter a valid password to continue.", title: "Alert")
     }
     
+    var hidePwdBtnClicked = true
+    
+    @IBAction func showHidePwdBtnAction(_ sender: Any) {
+
+        if hidePwdBtnClicked{
+            self.enterPasswordTxtField.isSecureTextEntry = false
+            self.hidePasswordBtn.setImage(UIImage(systemName: "eye"), for: .normal)
+        }else{
+            self.enterPasswordTxtField.isSecureTextEntry = true
+            self.hidePasswordBtn.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+
+        }
+        hidePwdBtnClicked = !hidePwdBtnClicked
+    }
+
     // MARK: - Methods
     
     func goToNextScreen(){

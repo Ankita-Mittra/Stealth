@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 import BinanceSmartChainSDK
 import web3swift
+import MBProgressHUD
 
 class CreateWalletViewController: BaseViewController {
     
@@ -81,7 +82,7 @@ class CreateWalletViewController: BaseViewController {
                 self.phraseCollectionView.reloadData()
                 self.walletAddress = wallet?.walletAddress ?? emptyStr
                 self.signUpDict["walletKey"] = walletAddress
-                
+                self.viewModel.walletAddress = walletAddress
                 print("wallet....", walletAddress)
             }
         } catch {
@@ -111,11 +112,10 @@ class CreateWalletViewController: BaseViewController {
         }
         
         viewModel.didFinishFetch = {
-            print("viewmodel...didFinishFetch")
+            print("didFinishFetch.....")
             
-            // save data locally
-            
-//            UserDefaults.saveUserDataInUserDefaults(token: self.viewModel.s.token, userId: self.viewModel.s.userId, publicKey: self.viewModel.publickey, privateKey: self.viewModel.privateKey)
+            // stop indicator loader
+            self.goToHomeScreen()
 
         }
     }
@@ -158,13 +158,9 @@ class CreateWalletViewController: BaseViewController {
     
     // MARK: - Methods
     
-    // Save data locally
-    func saveDataLocally(){
-        
-    }
     
-    // Go to profile screen
-    func goToProfileScreen(){
+    // Go to Home screen
+    func goToHomeScreen(){
         
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
         let nextVcObj = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar .rawValue) as? PublicModeTabBarViewController

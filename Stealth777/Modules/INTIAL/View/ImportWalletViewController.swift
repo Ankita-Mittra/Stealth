@@ -26,10 +26,8 @@ class ImportWalletViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Initial Setup
         self.initialSetup()
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +36,6 @@ class ImportWalletViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         self.title = "Import Wallet"
 //        self.setSmallHeaderAndHideLargeHeader(header: "Create Account")
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,7 +54,8 @@ class ImportWalletViewController: BaseViewController {
 //    }
     
     func initialSetup(){
-
+        
+        self.enterRecoveryPhraseTxtField.text = "gentle essence eye scene hurt manage dinner net foam spirit cube circle"//"chair obscure choose right piano dinner weather scatter pony drum wash ready"
     }
     
     func importWallet(walletPhrase: String){
@@ -67,9 +65,16 @@ class ImportWalletViewController: BaseViewController {
             let binance = BnbWalletManager.init(infuraUrl: "https://bsc-dataseed1.binance.org:443")
             
             let wallet = try binance.createWallet(walletPhrase: walletPhrase)
+            let walletWithPassword = try binance.createWallet(walletPassword: "stealth777")
+
             //          bnb2.web3Manager.transactionOptions.from
             self.walletAddress = wallet?.walletAddress ?? emptyStr
-            print("wallet....", walletAddress)
+
+            let walletkeystore = wallet?.keystore
+            
+            self.importedWalletAdd = walletAddress
+            print("importedWalletAdd....", importedWalletAdd , "   ", walletAddress)
+
             self.checkWalletBalance(walletAddress: walletAddress)
             
             let tokenAmount = 0.001
@@ -78,7 +83,8 @@ class ImportWalletViewController: BaseViewController {
             let gasPrice = 0.0007
             let gasLimit = 0.0007
             print("gasPrice", gasPrice)
-            
+            binance.testing()
+
 //            bnb2.sendBnb(walletAddress: "", password: "", receiverAddress: "", etherAmount: "", gasPrice: 0, gasLimit: 0)
 //            bnb2.sendBnb(walletAddress: "", password: "", receiverAddress: "", etherAmount: "", gasPrice: 0, gasLimit: 0)
             
@@ -93,11 +99,11 @@ class ImportWalletViewController: BaseViewController {
             print(error.localizedDescription)
         }
     }
-    
+    var importedWalletAdd = String()
     
     func checkWalletBalance(walletAddress: String){
 
-        let walletAddress2 = "0x4b8dbF6Fa6777F4bdE11a3d0A652843FE82fbF32"
+        let walletAddress2 = importedWalletAdd //"0x4b8dbF6Fa6777F4bdE11a3d0A652843FE82fbF32"
         do{
             let binance = BnbWalletManager.init(infuraUrl: "https://bsc-dataseed1.binance.org:443")
 
@@ -110,16 +116,14 @@ class ImportWalletViewController: BaseViewController {
 
             print("BNB balance...", balance)
             print("BNB tokenBalance...", tokenBalance)
-            
-            
-        
+
             let tokenAmount = 0.001
             let receiverAddress = ""
             
             let gasPrice = 0.0007
             let gasLimit = 0.0007
 
-            binance.testing()
+//            binance.testing()
             
 //            binance.sendBnb(walletAddress: "", password: "", receiverAddress: "", etherAmount: "", gasPrice: "", gasLimit: "")
 
@@ -150,11 +154,11 @@ class ImportWalletViewController: BaseViewController {
     
     @IBAction func submitBtnAction(_ sender: Any) {
 
-//        if let recoveryPhrase = self.enterRecoveryPhraseTxtField.text{
-//            self.importWallet(walletPhrase: recoveryPhrase)
-//        }
-//        
-        self.goToHomeScreen()
+        if let recoveryPhrase = self.enterRecoveryPhraseTxtField.text{
+            self.importWallet(walletPhrase: recoveryPhrase)
+        }
+        
+//        self.goToHomeScreen()
         
         
     }
@@ -165,4 +169,15 @@ class ImportWalletViewController: BaseViewController {
                     self.navigationController?.pushViewController(objLocationSearch!, animated: true)
     }
         
+}
+
+
+extension ImportWalletViewController: UITextViewDelegate{
+    
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        
+        textView.text = emptyStr
+        return true
+    }
 }

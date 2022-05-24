@@ -15,6 +15,7 @@ class InitialViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
         self.hideNavigationBar()
 //        self.checkVPNConnectivity()

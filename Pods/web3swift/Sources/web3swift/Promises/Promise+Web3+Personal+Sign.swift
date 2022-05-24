@@ -11,7 +11,7 @@ import PromiseKit
 
 extension web3.Personal {
     
-    public func signPersonalMessagePromise(message: Data, from: EthereumAddress, password:String = "web3swift") -> Promise<Data> {
+    public func signPersonalMessagePromise(message: Data, from: EthereumAddress, password:String = "") -> Promise<Data> { // password: web3swift
         let queue = web3.requestDispatcher.queue
         do {
             if self.web3.provider.attachedKeystoreManager == nil {

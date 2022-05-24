@@ -9,10 +9,19 @@ import UIKit
 
 class ReceiveAmountViewController: BaseViewController {
 
+    // MARK: - Properties & Delegates
+
+    @IBOutlet weak var QRCodeImgView: UIImageView!
+    @IBOutlet weak var walletAddressBtn: UIButton!
+
+    // MARK: - View life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Initial setup
+        
+        self.intialSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -22,10 +31,7 @@ class ReceiveAmountViewController: BaseViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    
     override func viewDidAppear(_ animated: Bool) {
-        
-
         self.navigationItem.largeTitleDisplayMode = .never
 
 //        self.navigationItem.titleView = setTitle(title: "Username", subtitle: "status")
@@ -35,9 +41,31 @@ class ReceiveAmountViewController: BaseViewController {
 
     }
     
+    // MARK: - Methods
+    
+    func intialSetup(){
+        
+        // Show Wallet details on screen
+        guard  let userInfoDict = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String: Any] else {
+            return
+        }
+        
+        if let userWalletAddress = userInfoDict[USER_DEFAULT_walletAddress_Key] as? String{
+            print("userWalletAddress....", userWalletAddress)
+            
+            self.walletAddressBtn.setTitle(userWalletAddress, for: .normal)
+            
+            // create QR code and disple on screen
+            let image = CommonFxns.generateQRCode(from: userWalletAddress)
+            self.QRCodeImgView.image = image
+        }
+        
+    }
+    
     // MARK: - Button Actions
     
     @IBAction func copyBtnAction(_ sender: Any) {
+        
         
 
     }

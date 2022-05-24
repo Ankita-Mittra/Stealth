@@ -90,7 +90,7 @@
 "next" = "Next";
 "create" = "Create";
 
-//Create group
+// Create group
 
 "group_name" = "Group Name";
 "group_description" = "Group Description";
@@ -108,6 +108,8 @@
 "friend_requests" = "Friend Requests";
 "group_requests" = "Group Requests";
 
+// Wallet Module
 
+"send" = "Send";
 
 // MARK: - ************** Settings ******************

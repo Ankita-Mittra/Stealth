@@ -18,7 +18,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Initial Setup
         self.allChatsTableview.register(HomeScreenListTableViewCell.nib(), forCellReuseIdentifier: HomeScreenListTableViewCell.identifier)
     }
@@ -26,8 +26,6 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
-//        self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Chats")
-//        self.setSearchBarOnNavigationBar()
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
@@ -40,7 +38,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 //        self.title = "Chats"
 
 //        self.tabBarItem.title = ""
-//        self.navigationController?.navigationBar.sizeToFit()
+        self.navigationController?.navigationBar.sizeToFit()
     }
     
     func setTopBarButtonswithMenu(){

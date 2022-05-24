@@ -173,7 +173,7 @@ public class WriteTransaction: ReadTransaction {
         return returnPromise
     }
     
-    public func sendPromise(password:String = "web3swift", transactionOptions: TransactionOptions? = nil) -> Promise<TransactionSendingResult>{
+    public func sendPromise(password:String = "", transactionOptions: TransactionOptions? = nil) -> Promise<TransactionSendingResult>{ // password : web3swift
         let queue = self.web3.requestDispatcher.queue
         return self.assemblePromise(transactionOptions: transactionOptions).then(on: queue) { transaction throws -> Promise<TransactionSendingResult> in
             let mergedOptions = self.transactionOptions.merge(transactionOptions)
@@ -184,7 +184,7 @@ public class WriteTransaction: ReadTransaction {
         }
     }
     
-    public func send(password:String = "web3swift", transactionOptions: TransactionOptions? = nil) throws -> TransactionSendingResult {
+    public func send(password:String = "", transactionOptions: TransactionOptions? = nil) throws -> TransactionSendingResult { // password web3swift
         return try self.sendPromise(password: password, transactionOptions: transactionOptions).wait()
     }
     
