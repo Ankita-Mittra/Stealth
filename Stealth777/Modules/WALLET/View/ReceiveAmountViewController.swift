@@ -38,7 +38,6 @@ class ReceiveAmountViewController: BaseViewController {
         
 //        self.navigationController?.navigationBar.backItem?.title = "Back"
         self.setSmallHeaderAndHideLargeHeader(header: "Receive")
-
     }
     
     // MARK: - Methods
@@ -59,7 +58,6 @@ class ReceiveAmountViewController: BaseViewController {
             let image = CommonFxns.generateQRCode(from: userWalletAddress)
             self.QRCodeImgView.image = image
         }
-        
     }
     
     // MARK: - Button Actions

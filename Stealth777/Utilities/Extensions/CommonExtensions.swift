@@ -53,6 +53,7 @@ extension UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
+    
     @objc func showloginScreen() {
         CommonFxns.popToLoginVC()
     }

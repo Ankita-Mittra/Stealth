@@ -9,6 +9,11 @@ import UIKit
 
 class GroupMembersListCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Outlets & Properties
+
+    @IBOutlet weak var userImgView: UIImageViewCustomClass!
+    @IBOutlet weak var usernameLbl: UILabelCustomClass!
+    
     static let identifier = "GroupMembersListCollectionViewCell"
 
 }

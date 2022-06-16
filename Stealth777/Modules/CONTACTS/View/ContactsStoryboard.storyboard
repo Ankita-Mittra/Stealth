@@ -44,6 +44,9 @@
                                     <segment title="Admin"/>
                                     <segment title="Member"/>
                                 </segments>
+                                <connections>
+                                    <action selector="groupSegmentedBarAction:" destination="UdA-m8-42a" eventType="valueChanged" id="xsm-Kn-w5u"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Yx-rG-29n"/>
@@ -143,20 +146,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1PT-mN-Vm0">
-                                <rect key="frame" x="30" y="44" width="354" height="818"/>
+                                <rect key="frame" x="30" y="94" width="354" height="768"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="iZk-b1-b4w" id="TuU-FB-pxm"/>
                                     <outlet property="delegate" destination="iZk-b1-b4w" id="aFy-O9-niS"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No user has been searched." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIV-mh-Lre">
+                                <rect key="frame" x="100.5" y="437.5" width="213" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="izr-U2-nOR">
+                                <rect key="frame" x="20" y="44" width="374" height="45"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="iZk-b1-b4w" id="MQq-p2-qWH"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="w6F-8a-BmC"/>
                         <color key="backgroundColor" name="ViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="w6F-8a-BmC" firstAttribute="bottom" secondItem="1PT-mN-Vm0" secondAttribute="bottom" id="3Dc-0w-MuH"/>
                             <constraint firstItem="1PT-mN-Vm0" firstAttribute="leading" secondItem="w6F-8a-BmC" secondAttribute="leading" constant="30" id="Kzd-c5-Niv"/>
-                            <constraint firstItem="1PT-mN-Vm0" firstAttribute="top" secondItem="w6F-8a-BmC" secondAttribute="top" id="oNP-HC-UpQ"/>
+                            <constraint firstItem="izr-U2-nOR" firstAttribute="top" secondItem="w6F-8a-BmC" secondAttribute="top" id="L4p-Ky-sOj"/>
+                            <constraint firstItem="izr-U2-nOR" firstAttribute="leading" secondItem="w6F-8a-BmC" secondAttribute="leading" constant="20" id="Pma-Ay-XH5"/>
+                            <constraint firstItem="1PT-mN-Vm0" firstAttribute="top" secondItem="izr-U2-nOR" secondAttribute="bottom" constant="5" id="QDC-34-cVg"/>
+                            <constraint firstItem="izr-U2-nOR" firstAttribute="trailing" secondItem="w6F-8a-BmC" secondAttribute="trailing" constant="-20" id="Rqe-ka-FL3"/>
+                            <constraint firstItem="AIV-mh-Lre" firstAttribute="centerX" secondItem="kde-1J-Wt7" secondAttribute="centerX" id="T7x-BF-T8r"/>
+                            <constraint firstItem="AIV-mh-Lre" firstAttribute="centerY" secondItem="kde-1J-Wt7" secondAttribute="centerY" id="VkR-MS-alB"/>
+                            <constraint firstItem="1PT-mN-Vm0" firstAttribute="top" secondItem="w6F-8a-BmC" secondAttribute="top" constant="50" id="oNP-HC-UpQ"/>
                             <constraint firstItem="w6F-8a-BmC" firstAttribute="trailing" secondItem="1PT-mN-Vm0" secondAttribute="trailing" constant="30" id="puw-GI-w2o"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -169,6 +191,8 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="noUserFoundLbl" destination="AIV-mh-Lre" id="r8H-op-9UU"/>
+                        <outlet property="searchBar" destination="izr-U2-nOR" id="PBr-Oe-qeV"/>
                         <outlet property="searchedUsersListTableView" destination="1PT-mN-Vm0" id="oZI-e9-IfG"/>
                     </connections>
                 </viewController>
@@ -243,13 +267,20 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="round" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Drw-dK-sIq">
+                                                <rect key="frame" x="30" y="30" width="54" height="54"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="chooseGroupImgBtnAction:" destination="DW5-WH-KFi" eventType="touchUpInside" id="nyE-E7-M9M"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please provide a group name and optional group icon" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuG-Hi-Hpg" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
                                                 <rect key="frame" x="104" y="145" width="280" height="33"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <color key="textColor" name="subHeadingColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Group Name" placeholder="Group Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iHU-lv-f5F" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Group Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iHU-lv-f5F" customClass="UITextFieldCustomClass" customModule="Stealth777" customModuleProvider="target">
                                                 <rect key="frame" x="104" y="35" width="280" height="48"/>
                                                 <color key="textColor" name="textFieldColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
@@ -312,6 +343,9 @@
                                             </button>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5B5-Rx-0Za">
                                                 <rect key="frame" x="325" y="225" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="anonymousSwitchAction:" destination="DW5-WH-KFi" eventType="valueChanged" id="4b5-tE-dbH"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group members cannot see real names for each other" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqQ-a9-OiI" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="273" width="354" height="15.5"/>
@@ -349,6 +383,9 @@
                                                 <state key="normal" title="Manually">
                                                     <color key="titleColor" name="subHeadingColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="disperseGroupBtnAction:" destination="DW5-WH-KFi" eventType="touchUpInside" id="Ozy-Be-nWb"/>
+                                                </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightGrayForwardIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rDp-mQ-spj">
                                                 <rect key="frame" x="361.5" y="323.5" width="8.5" height="15"/>
@@ -434,6 +471,10 @@
                                                             </constraints>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="78" height="81"/>
+                                                        <connections>
+                                                            <outlet property="userImgView" destination="kKH-PB-xMU" id="qbt-0W-Kxh"/>
+                                                            <outlet property="usernameLbl" destination="FZn-hK-8Tj" id="jOp-IV-hP3"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                                 <connections>
@@ -455,11 +496,13 @@
                                             <constraint firstItem="rDp-mQ-spj" firstAttribute="trailing" secondItem="4Br-KL-gag" secondAttribute="trailing" constant="-14" id="DYR-Kb-G3u"/>
                                             <constraint firstItem="GPj-UM-5Jb" firstAttribute="top" secondItem="LKF-NX-hrX" secondAttribute="bottom" constant="10" id="EcW-OY-a9U"/>
                                             <constraint firstItem="RRi-aJ-oYv" firstAttribute="trailing" secondItem="iHU-lv-f5F" secondAttribute="trailing" id="F2Y-18-efL"/>
+                                            <constraint firstItem="Drw-dK-sIq" firstAttribute="trailing" secondItem="rHq-fd-YzE" secondAttribute="trailing" id="Fja-yz-tq8"/>
                                             <constraint firstItem="rHq-fd-YzE" firstAttribute="top" secondItem="wjw-b2-x5N" secondAttribute="top" constant="30" id="IO1-lj-DpF"/>
                                             <constraint firstItem="4Br-KL-gag" firstAttribute="trailing" secondItem="iHU-lv-f5F" secondAttribute="trailing" id="L6d-WC-2co"/>
                                             <constraint firstItem="JZY-5p-d5D" firstAttribute="leading" secondItem="GPj-UM-5Jb" secondAttribute="leading" id="Nlm-j1-kWu"/>
                                             <constraint firstItem="4Br-KL-gag" firstAttribute="leading" secondItem="rHq-fd-YzE" secondAttribute="leading" id="O6O-Ak-Hti"/>
                                             <constraint firstItem="wgO-ob-ocU" firstAttribute="leading" secondItem="SS6-jY-aQy" secondAttribute="leading" id="ODT-0O-wDE"/>
+                                            <constraint firstItem="Drw-dK-sIq" firstAttribute="leading" secondItem="rHq-fd-YzE" secondAttribute="leading" id="Qz9-sU-8lt"/>
                                             <constraint firstItem="LKF-NX-hrX" firstAttribute="top" secondItem="iHU-lv-f5F" secondAttribute="bottom" id="Rbb-q8-ZpY"/>
                                             <constraint firstItem="5B5-Rx-0Za" firstAttribute="trailing" secondItem="RRi-aJ-oYv" secondAttribute="trailing" constant="-10" id="T6b-Jk-79Z"/>
                                             <constraint firstItem="rHq-fd-YzE" firstAttribute="leading" secondItem="wjw-b2-x5N" secondAttribute="leading" constant="30" id="TjB-Ov-HLg"/>
@@ -469,6 +512,7 @@
                                             <constraint firstItem="rGP-gK-39K" firstAttribute="trailing" secondItem="iHU-lv-f5F" secondAttribute="trailing" id="Zec-95-PMY"/>
                                             <constraint firstItem="GPj-UM-5Jb" firstAttribute="leading" secondItem="iHU-lv-f5F" secondAttribute="leading" id="Zh3-T6-pPB"/>
                                             <constraint firstItem="4Br-KL-gag" firstAttribute="top" secondItem="UqQ-a9-OiI" secondAttribute="bottom" constant="20" id="a6M-gV-aVR"/>
+                                            <constraint firstItem="Drw-dK-sIq" firstAttribute="bottom" secondItem="rHq-fd-YzE" secondAttribute="bottom" id="cBB-oI-hRX"/>
                                             <constraint firstItem="rGP-gK-39K" firstAttribute="leading" secondItem="rHq-fd-YzE" secondAttribute="leading" id="d09-B4-Hyi"/>
                                             <constraint firstItem="rGP-gK-39K" firstAttribute="top" secondItem="4Br-KL-gag" secondAttribute="bottom" constant="10" id="eId-Zw-rPb"/>
                                             <constraint firstItem="rDp-mQ-spj" firstAttribute="centerY" secondItem="4Br-KL-gag" secondAttribute="centerY" id="f0i-sx-neE"/>
@@ -486,6 +530,7 @@
                                             <constraint firstItem="wgO-ob-ocU" firstAttribute="top" secondItem="SS6-jY-aQy" secondAttribute="bottom" constant="10" id="rvd-dE-YHi"/>
                                             <constraint firstItem="LKF-NX-hrX" firstAttribute="bottom" secondItem="rHq-fd-YzE" secondAttribute="bottom" id="t26-FK-pHG"/>
                                             <constraint firstItem="UqQ-a9-OiI" firstAttribute="leading" secondItem="rHq-fd-YzE" secondAttribute="leading" id="v7p-rh-zCb"/>
+                                            <constraint firstItem="Drw-dK-sIq" firstAttribute="top" secondItem="rHq-fd-YzE" secondAttribute="top" id="vRn-OT-NfH"/>
                                             <constraint firstItem="HuG-Hi-Hpg" firstAttribute="leading" secondItem="iHU-lv-f5F" secondAttribute="leading" id="w5I-ZQ-JhJ"/>
                                             <constraint firstItem="rDp-mQ-spj" firstAttribute="leading" secondItem="sNp-Aw-w6K" secondAttribute="trailing" constant="12" id="xXR-Di-Sug"/>
                                             <constraint firstItem="GPj-UM-5Jb" firstAttribute="trailing" secondItem="iHU-lv-f5F" secondAttribute="trailing" id="xgO-6X-UoA"/>
@@ -523,12 +568,17 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="anonymousSwitch" destination="5B5-Rx-0Za" id="2Uv-Oc-0nv"/>
+                        <outlet property="disperseGroupTimeStatus" destination="sNp-Aw-w6K" id="uHm-9Z-lhJ"/>
+                        <outlet property="groupDescLbl" destination="GPj-UM-5Jb" id="rkX-zZ-r97"/>
+                        <outlet property="groupImgView" destination="rHq-fd-YzE" id="mvM-KH-1gA"/>
+                        <outlet property="groupNameLbl" destination="iHU-lv-f5F" id="FGz-dv-RSC"/>
                         <outlet property="membersCollectionView" destination="4sf-cH-EMg" id="VgK-b7-36u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fRg-o2-0sM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1579.7101449275362" y="81.696428571428569"/>
+            <point key="canvasLocation" x="1588" y="228"/>
         </scene>
     </scenes>
     <designables>

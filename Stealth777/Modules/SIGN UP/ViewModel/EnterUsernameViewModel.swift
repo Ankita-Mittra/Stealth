@@ -25,7 +25,8 @@ class EnterUsernameViewModel {
         self.apiService = apiService
     }
     
-    // MARK: - Closures for callback, since we are not using the ViewModel to the View.
+    // MARK: - Closures for callback, since we are not using the ViewModel to the View
+    
     var showAlertClosure: (() -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
@@ -43,11 +44,8 @@ class EnterUsernameViewModel {
                     self.isLoading = false
                     return
                 }
-            
                 self.didFinishFetch?()
-
                 print("tempData....", tempData)
-                
             } else {
                 self.error = error as? Error
                 self.isLoading = false

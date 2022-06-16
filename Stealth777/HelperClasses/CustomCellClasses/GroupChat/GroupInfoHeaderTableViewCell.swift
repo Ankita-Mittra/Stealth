@@ -9,12 +9,15 @@ import UIKit
 
 class GroupInfoHeaderTableViewCell: UITableViewHeaderFooterView {
 
-    
+    // MARK: - Outlets & Properties
+
     static let identifier = "GroupInfoHeaderTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "GroupInfoHeaderTableViewCell", bundle: nil)
     }
     
+    // MARK: - Methods
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

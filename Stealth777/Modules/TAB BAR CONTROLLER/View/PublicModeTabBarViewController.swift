@@ -9,6 +9,8 @@ import UIKit
 
 class PublicModeTabBarViewController: UITabBarController {
 
+    // MARK: - View Life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,6 +18,8 @@ class PublicModeTabBarViewController: UITabBarController {
 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+
+    // MARK: - Methods
 
     func setLargeHeaderOnNavigationBar(largeTitleHeader: String){
         self.title = largeTitleHeader

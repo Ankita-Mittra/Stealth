@@ -9,17 +9,25 @@ import UIKit
 
 class GroupSettingsTableViewCell: UITableViewCell {
 
-    
+    // MARK: - Outlets & Properties
+
     @IBOutlet weak var onOffSwitch: UISwitch!
     @IBOutlet weak var forwardIconImgView: UIImageView!
+    @IBOutlet weak var titleLbl: UILabelCustomClass!
+
     static let identifier = "GroupSettingsTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "GroupSettingsTableViewCell", bundle: nil)
     }
     
+    // MARK: - Methods
+
     @IBAction func onOffSwitch(_ sender: Any) {
+        
     }
-    @IBOutlet weak var titleLbl: UILabelCustomClass!
+    
+    // MARK: - Actions
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -55,12 +55,6 @@ class CreateWalletViewController: BaseViewController {
     // MARK: - Methods
     
     func importBinanceWallet(){
-        
-//        let queue = DispatchQueue(label: "createWallet")
-//
-//        queue.async { [self] in
-//
-//        }
         do {
             if let walletPhrase = try BIP39.generateMnemonics(bitsOfEntropy: 128, language: .english){
                 
@@ -116,7 +110,6 @@ class CreateWalletViewController: BaseViewController {
             
             // stop indicator loader
             self.goToHomeScreen()
-
         }
     }
     
@@ -158,7 +151,6 @@ class CreateWalletViewController: BaseViewController {
     
     // MARK: - Methods
     
-    
     // Go to Home screen
     func goToHomeScreen(){
         
@@ -166,10 +158,6 @@ class CreateWalletViewController: BaseViewController {
         let nextVcObj = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar .rawValue) as? PublicModeTabBarViewController
         self.navigationController?.pushViewController(nextVcObj!, animated: true)
     }
-    
-    
-
-
 
 }
 

@@ -10,13 +10,13 @@ import UIKit
 class BaseViewController: UIViewController {
     
     // MARK: - View life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Initial Setup
         self.initialSetupForEveryViewController()
     }
-    
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -26,7 +26,8 @@ class BaseViewController: UIViewController {
 
     // Method for initial Setups
     func initialSetupForEveryViewController(){
-        self.lockAppOnDoubleTap() // Lock app
+        
+//        self.lockAppOnDoubleTap() // Lock app
     }
     
     func addKeyboardobserversOnScreen(){
@@ -39,7 +40,6 @@ class BaseViewController: UIViewController {
     
     // MARK: - Keyboard notifications methods
     
-
     // Method to show keyboard
 
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -58,6 +58,7 @@ class BaseViewController: UIViewController {
       // move back the root view origin to zero
       self.view.frame.origin.y = 0
     }
+    
     // MARK: - Methods
     func setLargeHeaderOnNavigationBar(largeTitleHeader: String){
         self.title = largeTitleHeader

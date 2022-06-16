@@ -17,22 +17,24 @@ extension User {
     }
 
     @NSManaged public var accStatus: Int16
-    @NSManaged public var allowWipeout: Bool
+    @NSManaged public var allowWipeout: Int16
     @NSManaged public var bio: String?
-    @NSManaged public var id: Int64
+    @NSManaged public var id: String
     @NSManaged public var imgUrl: String?
-    @NSManaged public var isBlock: Bool
-    @NSManaged public var isMute: Bool
-    @NSManaged public var isPin: Bool
+    @NSManaged public var isBlock: Int16
+    @NSManaged public var isMute: Int16
+    @NSManaged public var isPin: Int16
     @NSManaged public var lastOnlineTime: Date?
     @NSManaged public var onlineStatus: Int16
     @NSManaged public var pbKey: String?
     @NSManaged public var username: String?
     @NSManaged public var userType: Int16
     @NSManaged public var userRelation: UserRelation?
+    @NSManaged public var wKey: String?
 
 }
 
 extension User : Identifiable {
+
 
 }

@@ -15,7 +15,7 @@ struct ImportedTokenList {
     var balance: String?
     var contractAddress: String?
     
-    init(name: String, symbol: String,decimals: String, balance: String, contractAddress: String){
+    init(name: String, symbol: String, decimals: String, balance: String, contractAddress: String){
 
         self.name = name
         self.symbol = symbol

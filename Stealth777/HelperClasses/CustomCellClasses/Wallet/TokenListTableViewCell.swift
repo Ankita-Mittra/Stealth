@@ -9,10 +9,10 @@ import UIKit
 
 class TokenListTableViewCell: UITableViewCell {
 
+    // MARK: - Outlets & Properties
+
     @IBOutlet weak var titleImgView: UIImageViewCustomClass!
-    
     @IBOutlet weak var titleLbl: UILabelCustomClass!
-    
     @IBOutlet weak var cellSelectedBtn: UIButton!
     
     static let identifier = "TokenListTableViewCell"
@@ -20,6 +20,8 @@ class TokenListTableViewCell: UITableViewCell {
         return UINib(nibName: "TokenListTableViewCell", bundle: nil)
     }
     
+    // MARK: - Methods
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

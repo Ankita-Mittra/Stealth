@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import MBProgressHUD
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        print("token ...",userDefault.value(forKey: USER_DEFAULT_token_Key) as? String ?? emptyStr)
         self.navigateToRightScreen()
 //        self.getAppStoreVersion()
 
@@ -29,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appDelegate.window?.overrideUserInterfaceStyle = .dark
             userDefault.set(darkMode , forKey: USER_DEFAULT_isDarkMode_Key)
         }
+        
+        
 //
 //        if userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) == nil{
 //
@@ -120,6 +124,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.initial.rawValue) as! InitialViewController
         navController.pushViewController(signUpVcObj, animated: true)
     }
+    
+    
+    // Show activity Indicator
+    func showProgressHUD(view : UIView)->Void{
+        let hud:MBProgressHUD = MBProgressHUD.showAdded(to: view, animated: true)
+        hud.bezelView.color = UIColor.clear // Your backgroundcolor
+        hud.bezelView.style = .solidColor
+//        MBProgressHUD.showAdded(to: view, animated: true)
+    }
+
+    // Hide activity Indicator
+    func hideProgressHUD(view : UIView)->Void{
+        MBProgressHUD.hide(for: view, animated: true)
+    }
+
+    
 
     // MARK: UISceneSession Lifecycle
 

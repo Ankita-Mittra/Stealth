@@ -9,11 +9,14 @@ import UIKit
 
 class CallLogsTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets & Properties
+
     static let identifier = "CallLogsTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "CallLogsTableViewCell", bundle: nil)
     }
     
+    // MARK: - Methods
 
     override func awakeFromNib() {
         super.awakeFromNib()

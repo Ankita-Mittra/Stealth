@@ -26,8 +26,6 @@ class WalletDetailsViewController: BaseViewController {
             return refreshControl
         }()
     
-
-
     // MARK: - View life cycle
 
     override func viewDidLoad() {
@@ -63,7 +61,6 @@ class WalletDetailsViewController: BaseViewController {
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.sizeToFit()
     }
-
     
     override func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)
@@ -71,7 +68,6 @@ class WalletDetailsViewController: BaseViewController {
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.sizeToFit()
     }
-
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -88,15 +84,12 @@ class WalletDetailsViewController: BaseViewController {
         guard  let userInfoDict = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String: Any] else {
             return
         }
-        
         if let userWalletAddress = userInfoDict[USER_DEFAULT_walletAddress_Key] as? String{
             print("userWalletAddress....", userWalletAddress)
             
             self.walletAddressLbl.text = userWalletAddress
         }
-        
         self.tokensListTableView.addSubview(self.refreshControl)
-
     }
 
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
@@ -143,7 +136,6 @@ class WalletDetailsViewController: BaseViewController {
     }
     
     @IBAction func QRScanBtnAction(_ sender: Any) {
-
     }
     
     @objc func  moreButtonAction(){
@@ -154,8 +146,6 @@ class WalletDetailsViewController: BaseViewController {
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
     
-
-
 }
 
 

@@ -9,6 +9,8 @@ import UIKit
 
 class RecoveryPhraseTableViewCell: UITableViewCell {
 
+    // MARK: - Outlets & Properties
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

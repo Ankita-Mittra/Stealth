@@ -9,6 +9,8 @@ import UIKit
 
 class GroupControlsListTableViewCell: UITableViewCell {
 
+    // MARK: - Outlets & Properties
+
     @IBOutlet weak var titleBtn: UIButton!
 
     static let identifier = "GroupControlsListTableViewCell"
@@ -16,6 +18,8 @@ class GroupControlsListTableViewCell: UITableViewCell {
         return UINib(nibName: "GroupControlsListTableViewCell", bundle: nil)
     }
     
+    // MARK: - Methods
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

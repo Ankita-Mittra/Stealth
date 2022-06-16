@@ -74,7 +74,6 @@ class ImportTokenViewController: BaseViewController {
                                 print("symbol....", symbol)
                                 self.tokenSymbolTxtField.text = symbol
                                 
-                                
                                 if let tokenNameDict = importedTokenInfo["tokenName"] as? [String:Any]{
                                     
                                     print("tokenNameDict...", tokenNameDict)
@@ -88,7 +87,9 @@ class ImportTokenViewController: BaseViewController {
                                                 self.tokenSymbolTxtField.text = name
                                                 let balance = importedTokenInfo["balance"] as? Double
                                                 print("balance:", balance)
-                                                UserDefaultsToStoreUserInfo.saveImportedTokenForLoggedInUser(tokenContractAddress: tokenContractAddress, userId: "", tokenName: name, tokenSymbol: symbol, tokenBalance: String(balance ?? 0.0), tokenPrecision: "0")
+                                                
+                                                let tokenDict = ImportedTokenList(name: name, symbol: name, decimals: name, balance: String(format: "%.1f", balance ?? 0), contractAddress: tokenContractAddress)
+                                                UserDefaultsToStoreUserInfo.saveImportedTokenForLoggedInUser(tokenInfoDict: tokenDict)
                                             }
                                         }
                                     }
@@ -175,7 +176,6 @@ class ImportTokenViewController: BaseViewController {
             else {
             return 0
         }
-
         return status
     }
 
@@ -189,16 +189,9 @@ extension ImportTokenViewController: UITextFieldDelegate{
         
         print("doneBtnAction")
         self.doneBtnAction()
-
         return true
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        print("doneBtnAction")
-        self.doneBtnAction()
-    }
-    
+
 }
 
       

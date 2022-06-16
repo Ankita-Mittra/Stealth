@@ -7,32 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DA171A34-E223-4E5B-A875-56FDB993ADCD"
+            uuid = "59D4075C-0BBD-4206-9C3E-1111008EF8E4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/WALLET/View/ImportTokenViewController.swift"
+            filePath = "Stealth777/HelperClasses/Others/UserDefaultsToStoreUserInfo.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "doneBtnAction()"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "UserDefaultsToStoreUserInfo"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "20542834-F595-4ECA-975A-04DC1A26686C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stealth777/Modules/CONTACTS/View/CreateGroupViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "createGroupBtnAction()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FAC5731F-0333-4631-872C-72721E3AFE73"
+            uuid = "C55BCA45-3D96-4B39-8889-071BF78A3FDE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/WALLET/View/ImportTokenViewController.swift"
+            filePath = "Stealth777/Modules/CHAT/GroupChat/View/AllGroupsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "doneBtnAction()"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "getAllGroups()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

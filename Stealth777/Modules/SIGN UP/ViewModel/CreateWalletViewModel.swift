@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
 
 class CreateWalletViewModel {
     
@@ -33,6 +34,8 @@ class CreateWalletViewModel {
     var walletAddress = String()
     private var apiService: SignUpAPIService?
     
+    var userDetailsDict = [String: Any] ()
+    
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
 
     var showAlertClosure: (() -> ())?
@@ -44,9 +47,6 @@ class CreateWalletViewModel {
     init(apiService: SignUpAPIService) {
         self.apiService = apiService
     }
-
-// MARK: - Network call
-
     
     // MARK: - Network call
     
@@ -65,6 +65,8 @@ class CreateWalletViewModel {
         signUpDict[enumAPIKeysForUser.publicKey_key.rawValue] = publickey
         signUpDict[enumAPIKeysForUser.mediaId_key.rawValue] = emptyStr
         signUpDict[enumAPIKeysForUser.bio_key.rawValue] = emptyStr
+        
+        
         print("sign Up DIct ....", signUpDict)
 //
 //        self.apiService?.requestRegister(parameters: signUpDict, completion: { signUpResponse, succeeded, error in
@@ -89,6 +91,7 @@ class CreateWalletViewModel {
         
     func registerUser(dict: [String:Any]) {
     
+        
         var signUpDict = dict
         
         let device = self.getDeviceInfo()
@@ -104,6 +107,8 @@ class CreateWalletViewModel {
         signUpDict[enumAPIKeysForUser.bio_key.rawValue] = emptyStr
         
         print("sign Up DIct ....", signUpDict)
+        
+        self.userDetailsDict = signUpDict
         
         //        RestApiManager.signup(parameters: signUpDict, completion: { data, succeeded, error in
 
@@ -153,11 +158,19 @@ class CreateWalletViewModel {
     
     
     // MARK: - UI Logic
+    
     private func storeUserDataLocally(with signUpResponse: SignUpResponse) {
-        
+                    
+        let userDetails =  UserModel(userId:signUpResponse.userId, username: self.userDetailsDict[enumAPIKeysForUser.username_key.rawValue] as! String, userType: self.userDetailsDict[enumAPIKeysForUser.userType_key.rawValue] as! Int, bio: self.userDetailsDict[enumAPIKeysForUser.bio_key.rawValue] as! String, imageUrl: self.userDetailsDict[enumAPIKeysForUser.mediaId_key.rawValue] as! String, isMute: zero, isBlock: zero, isPin: zero, allowWipeout: zero, onlineStatus: zero, lastOnlineTime: emptyStr, walletKey: self.userDetailsDict[enumAPIKeysForUser.walletId_key.rawValue] as! String, relation: zero, publicKey: self.userDetailsDict[enumAPIKeysForUser.publicKey_key.rawValue] as! String, accountStatus: zero).toAnyObject()
         // save data locally
-        UserDefaultsToStoreUserInfo.saveUserDataInUserDefaults(token: signUpResponse.token, userId: signUpResponse.userId, publicKey: self.publickey, privateKey: self.privateKey, walletAddress: self.walletAddress)
+        
+        
+        
+        print("userdetails dict...", userDetails)
+        
+        UserDefaultsToStoreUserInfo.saveUserDataInUserDefaults(token: signUpResponse.token, userId: signUpResponse.userId, publicKey: self.publickey, privateKey: self.privateKey, walletAddress: self.walletAddress, userDetails: userDetails as! [String : Any])
     }
+
 
 }
 

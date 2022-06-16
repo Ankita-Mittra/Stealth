@@ -327,14 +327,19 @@ public final class BnbWalletManager {
             let decimals = try contract.method("decimals")?.call()
             let balance = try contract.method("balanceOf", parameters: [walletAddress] as [AnyObject], extraData: Data(), transactionOptions: TransactionOptions.defaultOptions)?.call()
             // balanceOf
-            let numStr = decimals!["0"] as! BigUInt
-            let decimal = Double(String(numStr))
 
-            let balanceStr = balance!["0"] as! BigUInt
-            let tokenBalance = Double(String(balanceStr))
-            let tokenBal = tokenBalance!/pow(10, decimal!)
+            var dict = [String: Any]()
             
-            let dict = ["tokenName" : tokenName as Any,"tokenSymbol": tokenSymbol, "decimals": decimals, "balance": tokenBal] as? [String: Any]
+            if decimals != nil {
+                let numStr = decimals?["0"] as! BigUInt
+                let decimal = Double(String(numStr))
+
+                let balanceStr = balance!["0"] as! BigUInt
+                let tokenBalance = Double(String(balanceStr))
+                let tokenBal = tokenBalance!/pow(10, decimal!)
+                
+                dict = ["tokenName" : tokenName as Any,"tokenSymbol": tokenSymbol, "decimals": decimals, "balance": tokenBal] as? [String: Any] ?? [:]
+            }
             return dict
         } catch {
             print(error.localizedDescription)

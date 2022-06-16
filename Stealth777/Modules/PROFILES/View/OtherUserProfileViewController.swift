@@ -9,12 +9,19 @@ import UIKit
 
 class OtherUserProfileViewController: BaseViewController {
 
+    var selectedUserId = String()
+    
+    
+    // MARK: - Injection
+    
+    let viewModel = RequestsViewModel(contactApiService: ContactsAPIServices(), groupApiService: GroupsAPIServices())
+    
     // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.initialUISetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +36,12 @@ class OtherUserProfileViewController: BaseViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         self.setSmallHeaderAndHideLargeHeader(header: "User Details")
         
+    }
+    
+    // MARK: - Methods
+
+    func initialUISetup(){
+
     }
 
 }

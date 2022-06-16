@@ -13,7 +13,11 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var allChatsTableview: UITableView!
     @IBOutlet weak var topMenuView: UIView!
+    @IBOutlet weak var noChatsLbl: UILabel!
 
+    
+    var sessionsList = [String: Any]()
+    
     // MARK: - View life cycle
 
     override func viewDidLoad() {
@@ -286,7 +290,13 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        
+        if sessionsList.count == 0{
+            self.noChatsLbl.isHidden = false
+            self.noChatsLbl.text = "Make new friends to start a chat."
+        }
+        
+        return sessionsList.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

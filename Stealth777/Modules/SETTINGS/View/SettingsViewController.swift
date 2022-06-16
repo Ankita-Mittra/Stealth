@@ -13,8 +13,8 @@ class SettingsViewController: BaseViewController {
 
     @IBOutlet weak var settingsListTableView: UITableView!
 
-    let settingsListTitleArr = ["Profile", "Account", "General Settings", "About", "Privacy and policies", "Share", "App lock"]
-    let settingsListTitleImgArr = ["","settings-account","settings-generalSettings", "settings-about", "settings-privacyPolicy", "settings-about", "settings-logout"]
+    let settingsListTitleArr = ["Profile", "Account", "General Settings", "About", "Privacy and policies", "Share", "App lock", "Logout"]
+    let settingsListTitleImgArr = ["","settings-account","settings-generalSettings", "settings-about", "settings-privacyPolicy", "settings-about", "settings-logout", "settings-logout"]
     
     // MARK: - View life cycle
     
@@ -77,7 +77,7 @@ class SettingsViewController: BaseViewController {
         refreshAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action: UIAlertAction!) in
             
             // Logout from the app and go to Inital screen
-            CommonFxns.popToInitialVC()
+            CommonFxns.directLogOut()
         }))
 
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in

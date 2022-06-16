@@ -9,12 +9,18 @@ import UIKit
 
 class AddParticipantsTableViewCell: UITableViewHeaderFooterView {
 
+    // MARK: - Outlets & Properties
     
+    @IBOutlet weak var username: UITableView!
+
+
     static let identifier = "AddParticipantsTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "AddParticipantsTableViewCell", bundle: nil)
     }
     
+    // MARK: - Methods
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

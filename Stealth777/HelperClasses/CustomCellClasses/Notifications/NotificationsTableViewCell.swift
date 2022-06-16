@@ -9,11 +9,15 @@ import UIKit
 
 class NotificationsTableViewCell: UITableViewCell {
 
+    // MARK: - Outlets & Properties
+
     static let identifier = "NotificationsTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "NotificationsTableViewCell", bundle: nil)
     }
     
+    // MARK: - Methods
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

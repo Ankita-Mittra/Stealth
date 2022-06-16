@@ -19,7 +19,8 @@ class EnterPasswordViewController: BaseViewController {
 
     var signUpDict = [String:Any]()
     var isValidPassword = Bool()
-    
+    var hidePwdBtnClicked = true
+
     // MARK: - View life cycle
     
     override func viewDidLoad() {
@@ -48,6 +49,7 @@ class EnterPasswordViewController: BaseViewController {
     }
 
     // MARK: - Button Actions
+    
     var iconClick = true
 
     @IBAction func nextBtnAction(_ sender: Any) {
@@ -58,7 +60,6 @@ class EnterPasswordViewController: BaseViewController {
         password != emptyStr && CommonFxns.validateLength(text: password, size: (8,30)) && CommonFxns.isValidPassword(password: password) && password == confirmPassword ? goToNextScreen() : CommonFxns.showAlert(self, message: "Please Enter a valid password to continue.", title: "Alert")
     }
     
-    var hidePwdBtnClicked = true
     
     @IBAction func showHidePwdBtnAction(_ sender: Any) {
 

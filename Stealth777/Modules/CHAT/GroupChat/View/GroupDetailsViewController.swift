@@ -10,14 +10,14 @@ import UIKit
 class GroupDetailsViewController: UIViewController {
 
     
-    // MARK: - Properties & Delegates
+    // MARK: - Properties & Outlets
 
     @IBOutlet weak var groupDetailsListTableView: UITableView!
-    
-    let ownerAndAdminArr = ["Owner", "Admin", "Admin", ""]
-    let settingsArr = ["Group Settings", "Mute Chat", "Pin Chat"]
-    let controlsArr = ["Report Group", "Clear Chat History", "Exit Group"]
+    var groupInfo : GroupsModel!
 
+    var ownerAndAdminArr = [String]()
+    var settingsArr = [String]()
+    var controlsArr = [String]()
 
     // MARK: - View life cycle
 
@@ -40,6 +40,10 @@ class GroupDetailsViewController: UIViewController {
         self.groupDetailsListTableView.register(AddParticipantsTableViewCell.nib(), forHeaderFooterViewReuseIdentifier: AddParticipantsTableViewCell.identifier)
 
         self.groupDetailsListTableView.register(GroupInfoHeaderTableViewCell.nib(), forHeaderFooterViewReuseIdentifier: GroupInfoHeaderTableViewCell.identifier)
+        
+        ownerAndAdminArr = ["Owner", "Admin", "Admin", ""]
+        settingsArr = ["Group Settings", "Mute Chat", "Pin Chat"]
+        controlsArr = ["Report Group", "Clear Chat History", "Exit Group"]
     }
 
 }
@@ -50,7 +54,7 @@ extension GroupDetailsViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 1:
-            return ownerAndAdminArr.count
+            return self.groupInfo.members?.count ?? zero
         case 2:
             return settingsArr.count
         case 3:
@@ -89,7 +93,16 @@ extension GroupDetailsViewController: UITableViewDelegate, UITableViewDataSource
             memberCell.userStatusLbl.isHidden = false
             memberCell.forwardIconImgView.isHidden = false
 
-            memberCell.userStatusLbl.text = ownerAndAdminArr[indexPath.row]
+            let dict = self.groupInfo.members?[indexPath.row]
+            memberCell.usernameLbl.text = dict?.username
+            switch dict?.groupRole {
+            case 3:
+                memberCell.userStatusLbl.text = "Owner"
+            case 2:
+                memberCell.userStatusLbl.text = "Admin"
+            default:
+                memberCell.userStatusLbl.text = emptyStr
+            }
             return memberCell
             
         case 2:

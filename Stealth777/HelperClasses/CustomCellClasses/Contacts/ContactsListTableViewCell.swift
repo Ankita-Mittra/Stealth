@@ -9,6 +9,7 @@ import UIKit
 
 class ContactsListTableViewCell: UITableViewCell {
 
+    // MARK: Outlets & Properties
     
     @IBOutlet weak var userImgView: UIImageViewCustomClass!
     @IBOutlet weak var forwardIconImgView: UIImageView!
@@ -21,6 +22,8 @@ class ContactsListTableViewCell: UITableViewCell {
         return UINib(nibName: "ContactsListTableViewCell", bundle: nil)
     }
     
+    // MARK: Methods
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

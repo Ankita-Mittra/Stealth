@@ -46,8 +46,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
         }
         settingsCell.titleImgView.image = UIImage(named: self.settingsListTitleImgArr[indexPath.row])
-
-        
         return settingsCell
     }
     
@@ -62,14 +60,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 let storyBoard = UIStoryboard.init(name: enumStoryBoard.settings.rawValue, bundle: nil)
                 let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.generalSettings.rawValue) as? GeneralSettingsViewController
                 self.navigationController?.pushViewController(otherController!, animated: true)
-                
-            case 6:
+            case 6:// App lock
+                CommonFxns.popToLoginVC()
+            case 7:// Logout
                 self.showLogoutAlert()
-            
             default:
                 break
             }
-        }
+    }
+    
 
 }
 

@@ -41,18 +41,19 @@
     </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
         <attribute name="accStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="allowWipeout" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="allowWipeout" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="bio" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="imgUrl" optional="YES" attributeType="String"/>
-        <attribute name="isBlock" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isMute" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isPin" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isBlock" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="isMute" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="isPin" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastOnlineTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="onlineStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="pbKey" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <attribute name="userType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wKey" optional="YES" attributeType="String"/>
         <relationship name="userRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserRelation" inverseName="user" inverseEntity="UserRelation"/>
     </entity>
     <entity name="UserRelation" representedClassName=".UserRelation" syncable="YES">
@@ -63,10 +64,10 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userRelation" inverseEntity="User"/>
     </entity>
     <elements>
-        <element name="GroupMembers" positionX="-36" positionY="162" width="128" height="89"/>
-        <element name="Groups" positionX="-54" positionY="153" width="128" height="224"/>
-        <element name="Messages" positionX="-63" positionY="90" width="128" height="269"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="239"/>
-        <element name="UserRelation" positionX="-63" positionY="144" width="128" height="104"/>
+        <element name="GroupMembers" positionX="271.94140625" positionY="-103.47265625" width="128" height="89"/>
+        <element name="Groups" positionX="74.5546875" positionY="-215.58984375" width="128" height="224"/>
+        <element name="Messages" positionX="-253.4921875" positionY="-338.36328125" width="128" height="269"/>
+        <element name="UserRelation" positionX="-490.28125" positionY="-190.671875" width="128" height="104"/>
+        <element name="User" positionX="-697.5078125" positionY="-277.40234375" width="128" height="254"/>
     </elements>
 </model>

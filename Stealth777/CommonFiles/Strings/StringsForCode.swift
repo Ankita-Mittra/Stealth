@@ -26,6 +26,41 @@ let emptyStr = ""
 let lightMode = "light"
 let darkMode = "dark"
 
+// MARK: - Api's keys
+
+let userId_API_key = "userId"
+let name_API_key = "name"
+
+// contacts
+
+
+let action_API_key = "action"
+let status_API_key = "status"
+
+// groups
+let groupId_API_key = "groupId"
+
+enum enumLocalDBIdentifires : String{
+    
+    case users = "Users"
+    case userRelation = "UserRelation"
+    case messages = "Messages"
+    case groupMembers = "GroupMembers"
+    case groups = "Groups"
+}
+
+enum enumLocalDBUserRelationKeys : String{
+
+ case relation = "relation"
+    
+}
+
+enum enumLocalDBUserKeys : String{
+
+ case id = "id"
+    
+}
+
 // MARK: - Enum_StoryBoard
 
 enum enumViewControllerIdentifier: String {
@@ -124,13 +159,21 @@ enum enumAPIEndPoints: String {
     case verifyUsername = "users/verify/"
     case logout = "users/logout"
     
-    
+    // Contacts
+    case search = "users/searchUserContact" // name
+    case sendRequest = "users/sendUserRequest" // userId
+    case respondRequest = "users/responseUserRequest" // userId, action
+    case getContactRequests = "users/getContactsRequests" // get
+    case unfriendUser = "users/unFriendUser"
     // Groups
     
+    case getGroupInvitations = "groups/inviteList" // get
+    case responseInvitaions = "groups/responseInvite" // groupId, status
+    case createGroup = "groups" // groupName, mediaId, members, anonymous, disperse, disperseDate, description
+//    case getGroups = "groups" // get
     
     // Messages
-    
-    
+
 }
 
 enum enumAPIKeysForUser: String{
@@ -156,14 +199,13 @@ enum enumAPIKeysForUser: String{
 }
 
 enum enumAPIKeysForGroup: String{
-    
-    case name_key = "name"
+    case groupName_key = "groupName"
     case disperse_key = "disperse"
     case description_key = "description"
     case anonymous_key = "anonymous"
-    case user_ids_key = "user_ids"
-    case type_key = "type"
-    case imageUrl_key = "mediaId"
+    case members_key = "members"
+    case disperseDate_key = "disperseDate"
+    case mediaId_key = "mediaId"
 }
 
 enum enumAPICommonKeys: String{

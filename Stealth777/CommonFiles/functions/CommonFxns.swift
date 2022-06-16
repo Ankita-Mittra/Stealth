@@ -102,6 +102,7 @@ class CommonFxns: NSObject {
 //            navController.navigationBar.semanticContentAttribute = .forceRightToLeft
 //       }
 
+        
         let storyboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
         let tabBarControllerObj = storyboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar .rawValue) as! PublicModeTabBarViewController
         var vcArray = (appDelegate.window?.rootViewController as! UINavigationController).viewControllers
@@ -112,32 +113,13 @@ class CommonFxns: NSObject {
     
     // Method to LogOut from App and clear all the saved data
     class func directLogOut(){
-//        let uid = (Auth.auth().currentUser?.uid)!
-//        do{
-//            CommonFxns.setOnlineOfflineStatus(status: false) // Update online/offline status of loggedIn user
-//
-//            try Auth.auth().signOut()
-//            removeDeviceTokenFromDB(uid: uid)
-//            let deviceToken = userDefault.value(forKey: USER_DEFAULT_FireBaseToken) as? String
-//            let selectedLang = LocalizationSystem.sharedInstance.getLanguage()
-//            // self.updateDeviceTokenFlow()
-//            let keys = userDefault.array(forKey: USER_DEFAULT_KeyPairs_Key) as? [[String: Any]]
-//
-//            let domain = Bundle.main.bundleIdentifier!
-//            UserDefaults.standard.removePersistentDomain(forName: domain)
-//            UserDefaults.standard.synchronize()
-//            userDefault.set(nil, forKey: USER_DEFAULT_Logged_In_userId_Key)
-//
-//            userDefault.set(deviceToken, forKey: USER_DEFAULT_FireBaseToken)
-//            LocalizationSystem.sharedInstance.setLanguage(languageCode: selectedLang)
-//            userDefault.set(keys, forKey: USER_DEFAULT_KeyPairs_Key)
-//            CommonFxns.setOnlineOfflineStatus(status: false) // Update online/offline status of loggedIn user
-//            CommonFxns.popToLoginVC()
-//        }catch let err{
-//            print("Background error","Sign out", err)
-//        }
-        
-        CommonFxns.popToLoginVC()
+
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+
+        CommonFxns.popToInitialVC()
     }
     
     // Method to go to Login screen
@@ -169,6 +151,29 @@ class CommonFxns: NSObject {
         vcArray.append(tabVc)
         (appDelegate.window?.rootViewController as! UINavigationController).setViewControllers(vcArray, animated: false)
     }
+    
+    // Public method to fetch token from user defaults
+    class func getAuthenticationToken() -> [String: String]{
+    
+        let token  = userDefault.value(forKey: USER_DEFAULT_token_Key) as? String ?? emptyStr
+        let headers = [
+           "Authorization" : String(format: "Bearer \(token)")
+        ]
+        
+        return headers
+    }
+    
+    // Public method to fetch userId from user defaults
+    class func getLoggedInUserId() -> String{
+        
+        guard  let userInfoDict = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String: Any] else {
+            return emptyStr
+        }
+
+        let userId = userInfoDict[USER_DEFAULT_walletAddress_Key] as? String ?? emptyStr
+        return userId
+    }
+    
     
     // Method to check internet connectivity
     class func isInternetAvailable() -> Bool{
@@ -214,8 +219,7 @@ class CommonFxns: NSObject {
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         reference.present(alert, animated: true, completion: nil)
     }
-    
-    
+
     // Method to trim Strings
     class func trimString(string:String) -> String{
         return string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)

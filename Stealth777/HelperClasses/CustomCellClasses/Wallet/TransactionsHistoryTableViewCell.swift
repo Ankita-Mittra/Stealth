@@ -9,11 +9,15 @@ import UIKit
 
 class TransactionsHistoryTableViewCell: UITableViewCell {
 
+    // MARK: - Outlets & Properties
+
     static let identifier = "TransactionsHistoryTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "TransactionsHistoryTableViewCell", bundle: nil)
     }
     
+    // MARK: - Methods
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

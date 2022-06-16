@@ -28,5 +28,4 @@ class WalletFxns: NSObject {
         }
         return importedTokenInfoDict
     }
-    
 }

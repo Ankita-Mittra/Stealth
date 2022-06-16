@@ -51,6 +51,12 @@
                                     <outlet property="delegate" destination="ipS-vk-zIT" id="ArT-hA-io5"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys9-GL-rSB">
+                                <rect key="frame" x="214" y="463" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btp-Lc-7r9">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                                 <subviews>
@@ -179,11 +185,13 @@
                         <viewLayoutGuide key="safeArea" id="kzC-Wu-SdI"/>
                         <color key="backgroundColor" name="ViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ys9-GL-rSB" firstAttribute="centerY" secondItem="xXq-lc-P5b" secondAttribute="centerY" id="5eU-48-fYh"/>
                             <constraint firstAttribute="bottom" secondItem="btp-Lc-7r9" secondAttribute="bottom" id="D5J-NC-s3p"/>
                             <constraint firstItem="KFX-gv-3bO" firstAttribute="leading" secondItem="kzC-Wu-SdI" secondAttribute="leading" constant="25" id="D7b-mJ-ch5"/>
                             <constraint firstItem="btp-Lc-7r9" firstAttribute="leading" secondItem="kzC-Wu-SdI" secondAttribute="leading" id="GsF-Mm-0EW"/>
                             <constraint firstItem="btp-Lc-7r9" firstAttribute="trailing" secondItem="kzC-Wu-SdI" secondAttribute="trailing" id="LN2-pX-cwV"/>
                             <constraint firstItem="btp-Lc-7r9" firstAttribute="top" secondItem="xXq-lc-P5b" secondAttribute="top" id="SJa-vS-MwR"/>
+                            <constraint firstItem="ys9-GL-rSB" firstAttribute="centerX" secondItem="xXq-lc-P5b" secondAttribute="centerX" id="gcf-vZ-cac"/>
                             <constraint firstItem="KFX-gv-3bO" firstAttribute="top" secondItem="kzC-Wu-SdI" secondAttribute="top" id="hRG-FW-Kpx"/>
                             <constraint firstItem="kzC-Wu-SdI" firstAttribute="trailing" secondItem="KFX-gv-3bO" secondAttribute="trailing" constant="25" id="wgT-hh-PIF"/>
                             <constraint firstAttribute="bottom" secondItem="KFX-gv-3bO" secondAttribute="bottom" id="zqJ-Lc-Ind"/>
@@ -200,6 +208,7 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="csb-Uz-lXb"/>
                     <connections>
                         <outlet property="allChatsTableview" destination="KFX-gv-3bO" id="45c-nc-a2Y"/>
+                        <outlet property="noChatsLbl" destination="ys9-GL-rSB" id="ZVD-Mj-6o8"/>
                         <outlet property="topMenuView" destination="btp-Lc-7r9" id="PiC-3a-xqZ"/>
                     </connections>
                 </viewController>
@@ -229,6 +238,13 @@
                                     <outlet property="delegate" destination="cbj-Kn-mj2" id="5a8-hO-Xbz"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AY8-ht-0tV">
+                                <rect key="frame" x="214" y="463" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5Vf-cn-H5y"/>
                         <color key="backgroundColor" name="ViewBackgroundColor"/>
@@ -250,6 +266,7 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="cFI-No-xPL"/>
                     <connections>
                         <outlet property="contactsListTableView" destination="EEd-yT-CIk" id="dUl-JM-25j"/>
+                        <outlet property="noContactsLbl" destination="AY8-ht-0tV" id="ueX-Bh-Nlo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kj9-Vt-ymr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -9,6 +9,8 @@ import UIKit
 
 class EncryptionAlertTableViewCell: UITableViewCell {
 
+    // MARK: - Methods
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

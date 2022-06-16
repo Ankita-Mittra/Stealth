@@ -13,8 +13,10 @@ class GroupChatViewController: BaseViewController {
 
     @IBOutlet weak var chatTableView: UITableView!
 
-    // MARK: - View life cycle
+    var groupId = String()
+    var groupInfo : GroupsModel!
     
+    // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +24,6 @@ class GroupChatViewController: BaseViewController {
         // Initial Setup
         self.initialUISetup()
     }
-    
-    
     
     // MARK: - Methods
 
@@ -41,13 +41,10 @@ class GroupChatViewController: BaseViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    
     override func viewDidAppear(_ animated: Bool) {
-        
 
         self.navigationItem.largeTitleDisplayMode = .never
         self.setSmallHeaderAndHideLargeHeader(header: "Group chat")
-
     }
 
     
@@ -77,10 +74,11 @@ extension GroupChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("didSelectRowAt...")
-           let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
-           let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupDetails.rawValue) as? GroupDetailsViewController
-           self.navigationController?.pushViewController(otherController!, animated: true)
+        print("didSelectRowAt...", self.groupInfo)
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupDetails.rawValue) as? GroupDetailsViewController
+        otherController?.groupInfo = self.groupInfo
+        self.navigationController?.pushViewController(otherController!, animated: true)
     }
 
 

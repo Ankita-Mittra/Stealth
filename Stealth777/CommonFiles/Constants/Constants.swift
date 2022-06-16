@@ -10,7 +10,6 @@ import UIKit
 
 // All the app costants using in code
 
-
 // MARK: AppDelegate reference
 let appDelegate = UIApplication.shared.delegate as!(AppDelegate)
 
@@ -22,16 +21,17 @@ let userDefault = UserDefaults.standard
 // User info
 let USER_DEFAULT_userInfo_Key = "userDefault_userInfo"
 
-let USER_DEFAULT_username_Key = "userDefault_username"
+//let USER_DEFAULT_username_Key = "userDefault_username"
 let USER_DEFAULT_walletAddress_Key = "userDefault_walletAddress"
 let USER_DEFAULT_userID_Key = "userDefault_userID"
+let USER_DEFAULT_userDetails_Key = "userDefault_userDetails"
+let USER_DEFAULT_token_Key = "userDefault_token"
 
 let USER_DEFAULT_privateKey_Key = "userDefault_privateKey"
 let USER_DEFAULT_publicKey_Key = "userDefault_publicKey"
 
-let USER_DEFAULT_imageUrl_Key = "userDefault_imageUrl"
-let USER_DEFAULT_bio_Key = "userDefault_bio"
-let USER_DEFAULT_token_Key = "userDefault_token"
+//let USER_DEFAULT_imageUrl_Key = "userDefault_imageUrl"
+//let USER_DEFAULT_bio_Key = "userDefault_bio"
 
 let USER_DEFAULT_userTokensList_Key = "userDefault_userTokensList"
 
@@ -44,6 +44,9 @@ let USER_DEFAULT_tokenName_Key = "userDefault_tokenName"
 // Other Settings
 let USER_DEFAULT_isDarkMode_Key = "userDefault_isDarkMode"
 
+// MARK: - Local DB keys
+
+let messages_localDB = "Messages"
 // MARK: iPhone device's size Constants
 
 // OS type
@@ -80,3 +83,15 @@ let fontSizeDifferenceForMediumDevices:CGFloat = 2
 
 let usernameAlertBgGreenColor = UIColor(red: 69/250, green: 191/250, blue: 85/250, alpha: 1)
 
+// Constants for code
+
+
+let friends = 2
+let pendingRequest = 1
+let noRelation = 0
+
+let acceptFriendRequest = 1
+let rejectFriendRequest = 0
+
+let acceptGroupRequest = 1
+let rejectGroupRequest = 0

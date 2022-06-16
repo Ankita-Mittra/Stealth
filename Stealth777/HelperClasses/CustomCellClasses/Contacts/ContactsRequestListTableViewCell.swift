@@ -9,6 +9,8 @@ import UIKit
 
 class ContactsRequestListTableViewCell: UITableViewCell { // UITableViewHeaderFooterView
 
+    // MARK: - Outlets & Properties
+
     static let identifier = "ContactsRequestListTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "ContactsRequestListTableViewCell", bundle: nil)
@@ -17,16 +19,17 @@ class ContactsRequestListTableViewCell: UITableViewCell { // UITableViewHeaderFo
     @IBOutlet weak var titleLbl: UILabelCustomClass!
     @IBOutlet weak var titleImgView: UIImageViewCustomClass!
     
-    //
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
+    // MARK: - Methods
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
     
 }
