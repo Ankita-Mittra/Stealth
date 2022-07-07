@@ -74,6 +74,7 @@ class CreateWalletViewController: BaseViewController {
 //                        self.mneomonicPhraseArr = phrase
 //                    }
                 self.phraseCollectionView.reloadData()
+                
                 self.walletAddress = wallet?.walletAddress ?? emptyStr
                 self.signUpDict["walletKey"] = walletAddress
                 self.viewModel.walletAddress = walletAddress

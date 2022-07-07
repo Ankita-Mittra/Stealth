@@ -180,6 +180,7 @@ public class WriteTransaction: ReadTransaction {
             var cleanedOptions = TransactionOptions()
             cleanedOptions.from = mergedOptions.from
             cleanedOptions.to = mergedOptions.to
+            print("cleaned options:.....", cleanedOptions)
             return self.web3.eth.sendTransactionPromise(transaction, transactionOptions: cleanedOptions, password: password)
         }
     }

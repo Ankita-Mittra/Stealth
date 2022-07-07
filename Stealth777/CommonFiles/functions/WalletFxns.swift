@@ -28,4 +28,7 @@ class WalletFxns: NSObject {
         }
         return importedTokenInfoDict
     }
+    
+    class func sendBNb(){}
+    
 }

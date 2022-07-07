@@ -8,8 +8,12 @@
 import UIKit
 import SwiftUI
 import BigInt
-
 import BigNumber
+import web3swift
+
+import Foundation
+import SwiftyJSON
+import Alamofire
 
 class ImportTokenViewController: BaseViewController {
     
@@ -116,35 +120,31 @@ class ImportTokenViewController: BaseViewController {
 //
 //                            }
                             
-                            if let decimals = tokenDecimalDict["0"] as AnyObject?{
-                                print("decimals....", decimals)
+                            if let decimals = tokenDecimalDict["0"] as? AnyObject{
+                                                                
+                                print("decimals....", decimals, decimals as? BigNumber.BInt )
                                 self.tokenPrecisionTxtField.text = decimals as? String
-
-                                
                                 let value = decimals as? Double
-                                
 //                                if let value2:String = decimals{
 //                                    print("value2...", value2)
 //
 //                                }
-//
                                 let value3 = decimals as? Int
                                 
-//                                let value4 = BInt(decimals)
+//                                let value4 = BigInt(0)//
 //                                let value5 = value4 as String
 //
 //                                print("value4...", value4)
 //                                print("value5...", value5)
-
-                                print("value...", value)
                                 
-                                
-                                print("value3...", value3)
-                                
-
-                                
-                                
+                                print("value...", value, BInt.ONE)
+                                print("value3...", value3, BInt.FOUR)
                             }
+                            
+                            let integer = self.walletAddress
+                            
+                            let decimals = self.walletAddress.removeLast()
+                            print("decimals...", decimals)
                             
 //                            if let decimals = tokenDecimalDict["0"] as [String]{
 //                                print("decimals....", decimals)

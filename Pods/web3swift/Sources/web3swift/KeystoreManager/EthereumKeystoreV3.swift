@@ -14,7 +14,6 @@ public class EthereumKeystoreV3: AbstractKeystore {
     private var address: EthereumAddress?
     public var keystoreParams: KeystoreParamsV3?
 
-
     public var addresses: [EthereumAddress]? {
         get {
             if self.address != nil {

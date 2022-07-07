@@ -471,7 +471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cN-jP-lgv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3396.7289719626165" y="102.3758099352052"/>
+            <point key="canvasLocation" x="3248" y="89"/>
         </scene>
     </scenes>
     <designables>
@@ -505,7 +505,7 @@
     </designables>
     <resources>
         <image name="QRIcon" width="28" height="30"/>
-        <image name="chatScreenBg" width="428" height="918"/>
+        <image name="chatScreenBg" width="428" height="926"/>
         <image name="face.smiling" catalog="system" width="128" height="121"/>
         <image name="plusIcon" width="18" height="19"/>
         <image name="privateAvatar" width="124" height="124"/>

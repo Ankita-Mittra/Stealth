@@ -1,9 +1,10 @@
 //
-//  BnbWalletManager.swift
+//  EthWalletManager.swift
 //  BinanceSmartChainSDK
 //
-//  Created by CenterPrime on 2021/01/17.
+//  Created by Fareed Alzoorani on 04/07/2022.
 //
+
 
 import Foundation
 import web3swift
@@ -11,18 +12,13 @@ import SwiftyJSON
 import Alamofire
 import BigInt
 
-public final class BnbWalletManager {
+public final class EthWalletManager {
 
     var infuraUrl = "";
     var web3Manager:  web3
 
-    
-//    const val BINANCE_MAIN_NET = "https://bsc-dataseed1.binance.org:443"
-//    const val ETHEREUM_MAIN_NET = "https://mainnet.infura.io/v3/a396c3461ac048a59f389c7778f06689"
-    
-    
-    var importedWalletAddress = String()
-    
+//    let ETHEREUM_MAIN_NET = "https://mainnet.infura.io/v3/a396c3461ac048a59f389c7778f06689"
+        
     public init(infuraUrl : String) {
         let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let keystoreManager = KeystoreManager.managerForPath(userDir + "/keystore")
@@ -32,7 +28,7 @@ public final class BnbWalletManager {
     }
 
     /* Wallet Create */ // CHANGED
-    public func createWallet(walletPhrase : String) throws -> Wallet? {
+    public func createEthWallet(walletPhrase : String) throws -> Wallet? {
         var mapToUpload = [String: Any]()
         mapToUpload["network"] = isMainnet() ? "MAINNET" : "TESTNET"
         mapToUpload["action_type"] = "WALLET_CREATE"
@@ -42,43 +38,30 @@ public final class BnbWalletManager {
             let walletAddress = "\(wallet?.addresses?.first?.address ?? "0x")"
             print("createWallet walletAddress...", wallet?.addresses as Any)
             
-            self.importedWalletAddress = walletAddress
             print("walletAddress....", walletAddress)
-            
-//            let ks = try EthereumKeystoreV3(password : "stealth777", aesMode: "aes-128-ctr")
             // encode json
             let jsonEncoder = JSONEncoder()
             let keydata = try jsonEncoder.encode(wallet?.keystoreParams)
             let keystore = String(data: keydata, encoding: String.Encoding.utf8)
 
             print("keystore phrase..", keystore)
-
-//            let binance = BnbWalletManager.init(infuraUrl: "https://mainnet.infura.io/v3/a396c3461ac048a59f389c7778f06689")//"https://bsc-dataseed1.binance.org:443")
-//            let abc = try binance.exportPrivateKey(walletAddress: walletAddress, password: "")
-//            print("abc....", abc)
-            
-            writeToFile(fileName: walletAddress, keystore: keydata)
+            writeToFileEth(fileName: walletAddress, keystore: keydata)
 
             mapToUpload["wallet_address"] = walletAddress
             mapToUpload["status"] = "SUCCESS"
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             
             return Wallet(keystore: keystore!, walletAddress: walletAddress)
         } catch {
               mapToUpload["status"] = "FAILURE"
               print(error.localizedDescription);
-              self.sendToHyperLedger(map: mapToUpload)
+              self.sendToHyperLedgerEth(map: mapToUpload)
               throw error
         }
     }
     
-//    func send(){
-//        self.testing()
-//
-//    }
-    
     // Wallet Create
-    public func createWallet(walletPassword : String) throws -> Wallet? {
+    public func createEthWallet(walletPassword : String) throws -> Wallet? {
         var mapToUpload = [String: Any]()
         mapToUpload["network"] = isMainnet() ? "MAINNET" : "TESTNET"
         mapToUpload["action_type"] = "WALLET_CREATE"
@@ -97,22 +80,22 @@ public final class BnbWalletManager {
 
                 print("keystore..", keystore)
 
-                writeToFile(fileName: walletAddress!.address, keystore: keydata)
+                writeToFileEth(fileName: walletAddress!.address, keystore: keydata)
 
                 mapToUpload["wallet_address"] = walletAddress?.address
                 mapToUpload["status"] = "SUCCESS"
-                self.sendToHyperLedger(map: mapToUpload)
+                self.sendToHyperLedgerEth(map: mapToUpload)
 
             return Wallet(keystore: keystore!, walletAddress: walletAddress!.address)
         } catch {
               mapToUpload["status"] = "FAILURE"
               print(error.localizedDescription);
-              self.sendToHyperLedger(map: mapToUpload)
+              self.sendToHyperLedgerEth(map: mapToUpload)
               throw error
         }
     }
     
-    public func sendBNBTesting(walletAddress: String){
+    public func sendEthTesting(walletAddress: String){
 
         print("testing....")
         let tokenAmount = "0.005"
@@ -121,19 +104,20 @@ public final class BnbWalletManager {
         let gasLimit = 0.1
         
 //        let walletAddress = "0x6c1569B244ABDF8b3902467c300B7C22DB58c019"//0x113484312f8a6c4f98a2b5e3621316535ac13291"//
-        let receiverAddress = "0x4b8dbF6Fa6777F4bdE11a3d0A652843FE82fbF32"//"0x38acEd2Bb72A75a3cfBB5eA82D73aa737754cfeF"
+        let receiverAddress = "0x38acEd2Bb72A75a3cfBB5eA82D73aa737754cfeF"//"0x38acEd2Bb72A75a3cfBB5eA82D73aa737754cfeF"
+
         
-//        print("self.importedWalletAddress....", self.importedWalletAddress)
-//        let tokenContractAddress = "0xe142480898845f5270ee4A47Ad8D479bd37e6A3B"
+        print("sender address...", walletAddress)
         do {
-            let binance = BnbWalletManager.init(infuraUrl: "https://bsc-dataseed1.binance.org:443")
+            let EthNtwrk = EthWalletManager.init(infuraUrl: "https://bsc-dataseed1.binance.org:443") //"https://mainnet.infura.io/v3/a396c3461ac048a59f389c7778f06689")//BnbWalletManager.init(infuraUrl: "https://bsc-dataseed1.binance.org:443")
             
-            let balance = try binance.getBnbBalance(walletAddress: walletAddress)
-            
-            print("balance.....", balance)
+//            let balance = try EthNtwrk.getEthBalance(walletAddress: walletAddress)//getBnbBalance(walletAddress: walletAddress)
+//            let tokenBalance = try EthNtwrk.getBEP20TokenBalanceEth(tokenContractAddress: "0xc3761EB917CD790B30dAD99f6Cc5b4Ff93C4F9eA", walletAddress: walletAddress)
+//
+//            print("tokenBalance.....", tokenBalance)
 //            let result = try binance.sendBEP20Token(walletAddress: walletAddress, password: "", receiverAddress: receiverAddress, tokenAmount: tokenAmount, tokenContractAddress: tokenContractAddress, gasPrice: BigUInt(gasPrice), gasLimit: BigUInt(gasLimit))
             
-            let result = try binance.sendBnb(walletAddress: walletAddress, password: "", receiverAddress: receiverAddress, etherAmount: tokenAmount, gasPrice: BigUInt(0.005), gasLimit: BigUInt(0.1))
+            let result = try EthNtwrk.sendEth(walletAddress: walletAddress, password: "", receiverAddress: receiverAddress, etherAmount: tokenAmount, gasPrice: BigUInt(0.005), gasLimit: BigUInt(0.1))
             
 //            let result1 = try binance.sendBEP20Token(walletAddress: walletAddress, password: "123456", receiverAddress: receiverAddress, tokenAmount: tokenAmount, tokenContractAddress: tokenContractAddress, gasPrice: 0, gasLimit: 0)
             
@@ -148,7 +132,7 @@ public final class BnbWalletManager {
     }
     
     /* Import Wallet By Keystore */
-    public func importByKeystore(keystore : String , password : String) throws -> Wallet? {
+    public func importByKeystoreEth(keystore : String , password : String) throws -> Wallet? {
         var mapToUpload = [String: Any]()
         mapToUpload["network"] = isMainnet() ? "MAINNET" : "TESTNET"
         mapToUpload["action_type"] = "WALLET_IMPORT_KEYSTORE"
@@ -160,22 +144,22 @@ public final class BnbWalletManager {
             _ = try keystore1.privateKey(password: password)
             let walletAddress = keystore1.address
             
-            writeToFile(fileName: walletAddress, keystore: keystoreData)
+            writeToFileEth(fileName: walletAddress, keystore: keystoreData)
 
             mapToUpload["wallet_address"] = walletAddress
             mapToUpload["status"] = "SUCCESS"
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             return Wallet(keystore: keystore, walletAddress: walletAddress)
         } catch {
             print(error.localizedDescription)
             mapToUpload["status"] = "FAILURE"
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             throw error
         }
     }
     
     /* Import Wallet By Private Key */
-    public func importByPrivateKey(privateKey : String ) throws -> Wallet? {
+    public func importByPrivateKeyEth(privateKey : String ) throws -> Wallet? {
         var mapToUpload = [String: Any]()
         mapToUpload["network"] = isMainnet() ? "MAINNET" : "TESTNET"
         mapToUpload["action_type"] = "WALLET_IMPORT_PRIVATE_KEY"
@@ -190,49 +174,49 @@ public final class BnbWalletManager {
             
             let keystore = String(data: keydata, encoding: String.Encoding.utf8)
             
-            writeToFile(fileName: walletAddress!.address, keystore: keydata)
+            writeToFileEth(fileName: walletAddress!.address, keystore: keydata)
 
             mapToUpload["wallet_address"] = walletAddress?.address
             mapToUpload["status"] = "SUCCESS"
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             return Wallet(keystore: keystore, walletAddress: walletAddress?.address)
         } catch {
             print(error.localizedDescription)
             mapToUpload["status"] = "FAILURE"
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             throw error
         }
     }
     
     
     /* Export Private Key */
-    public func exportPrivateKey(walletAddress : String, password : String ) throws -> [UInt8] {
+    public func exportPrivateKeyEth(walletAddress : String, password : String ) throws -> [UInt8] {
         var mapToUpload = [String: Any]()
         mapToUpload["network"] = isMainnet() ? "MAINNET" : "TESTNET"
         mapToUpload["action_type"] = "WALLET_EXPORT_PRIVATE_KEY"
         do {
             let decoder = JSONDecoder()
-            let keystore = try getKeystore(walletAddress: walletAddress)
+            let keystore = try getKeystoreEth(walletAddress: walletAddress)
             let json = JSON.init(parseJSON:keystore)
             let keystoreData: Data =  try JSONEncoder().encode(json)// Load keystore data from file?
             let keystore1 = try decoder.decode(Keystore.self, from: keystoreData)
             let privateKey = try keystore1.privateKey(password: password)
             mapToUpload["wallet_address"] = walletAddress
             mapToUpload["status"] = "SUCCESS"
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             return privateKey
         } catch {
             print(error.localizedDescription)
             mapToUpload["wallet_address"] = walletAddress
             mapToUpload["status"] = "FAILURE"
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             throw error
         }
     }
     
-    func getKeystore(walletAddress : String ) throws -> String{
+    func getKeystoreEth(walletAddress : String ) throws -> String{
         do {
-            let ks = findKeystoreMangerByAddress(walletAddress: walletAddress)
+            let ks = findKeystoreMangerByAddressEth(walletAddress: walletAddress)
             let jsonEncoder = JSONEncoder()
             let keydata = try jsonEncoder.encode(ks?.keystoreParams)
             let keystore = String(data: keydata, encoding: String.Encoding.utf8)
@@ -243,29 +227,29 @@ public final class BnbWalletManager {
     }
     
     /* Export Keystore */
-    public func exportKeystore(walletAddress : String ) throws -> String {
+    public func exportKeystoreEth(walletAddress : String ) throws -> String {
         var mapToUpload = [String: Any]()
         mapToUpload["network"] = isMainnet() ? "MAINNET" : "TESTNET"
         mapToUpload["action_type"] = "WALLET_EXPORT_KEYSTORE"
         do {
-            let ks = findKeystoreMangerByAddress(walletAddress: walletAddress)
+            let ks = findKeystoreMangerByAddressEth(walletAddress: walletAddress)
             let jsonEncoder = JSONEncoder()
             let keydata = try jsonEncoder.encode(ks?.keystoreParams)
             let keystore = String(data: keydata, encoding: String.Encoding.utf8)
             mapToUpload["wallet_address"] = walletAddress
             mapToUpload["status"] = "SUCCESS"
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             return keystore!
         } catch {
             mapToUpload["wallet_address"] = walletAddress
             mapToUpload["status"] = "FAILURE"
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             throw error
         }
     }
     
     /* Get Bnb Balance */
-    public func getBnbBalance (walletAddress : String ) throws -> String? {
+    public func getEthBalance (walletAddress : String ) throws -> String? {
         do {
             var mapToUpload = [String: Any]()
             mapToUpload["network"] = isMainnet() ? "MAINNET" : "TESTNET"
@@ -277,7 +261,7 @@ public final class BnbWalletManager {
             mapToUpload["wallet_address"] = etherAddress?.address
             mapToUpload["status"] = "SUCCESS"
             mapToUpload["balance"] = etherBalance
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             return etherBalance
         } catch {
             print(error.localizedDescription)
@@ -286,7 +270,7 @@ public final class BnbWalletManager {
     }
     
     /* Get BEP20 Token Balance */
-    public func getBEP20TokenBalance (tokenContractAddress : String , walletAddress : String ) throws -> String? {
+    public func getBEP20TokenBalanceEth (tokenContractAddress : String , walletAddress : String ) throws -> String? {
         do {
             let contractAddress = EthereumAddress(tokenContractAddress)
             let contract = self.web3Manager.contract(Web3Utils.erc20ABI, at: contractAddress, abiVersion: 2)!
@@ -312,7 +296,7 @@ public final class BnbWalletManager {
             mapToUpload["balance"] = tokenBal
             mapToUpload["status"] = "SUCCESS"
             
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             
             return String(tokenBal)
         } catch {
@@ -321,7 +305,7 @@ public final class BnbWalletManager {
         }
     }
     /* Get BEP20 Token Balance */
-    public func importBEP20TokenAndGetBalance(tokenContractAddress : String , walletAddress : String ) throws -> [String: Any]? {
+    public func importBEP20TokenAndGetBalanceEth(tokenContractAddress : String , walletAddress : String ) throws -> [String: Any]? {
         do {
             let contractAddress = EthereumAddress(tokenContractAddress)
             let contract = self.web3Manager.contract(Web3Utils.erc20ABI, at: contractAddress, abiVersion: 2)!
@@ -350,14 +334,13 @@ public final class BnbWalletManager {
         }
     }
     
-    
     /* Send BEP20 Token */
-    public func sendBEP20Token(walletAddress : String , password : String , receiverAddress : String , tokenAmount : String, tokenContractAddress : String,
+    public func sendBEP20TokenEth(walletAddress : String , password : String , receiverAddress : String , tokenAmount : String, tokenContractAddress : String,
                                gasPrice : BigUInt , gasLimit : BigUInt) throws -> String? {
         
         do {
 
-            if (findKeystoreMangerByAddress(walletAddress: walletAddress) == nil) {
+            if (findKeystoreMangerByAddressEth(walletAddress: walletAddress) == nil) {
                 return "Keystore does not exist"
             }
             let contractAddress =  EthereumAddress(tokenContractAddress)
@@ -394,7 +377,7 @@ public final class BnbWalletManager {
             mapToUpload["tx_hash"] = transaction
             mapToUpload["status"] = "SUCCESS"
             
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
 
             return transaction
         } catch {
@@ -404,15 +387,15 @@ public final class BnbWalletManager {
     }
     
     /* Send BNB  */
-    public func sendBnb(walletAddress : String , password : String , receiverAddress : String , etherAmount : String ,
+    public func sendEth(walletAddress : String , password : String , receiverAddress : String , etherAmount : String ,
     gasPrice : BigUInt , gasLimit : BigUInt) throws -> String? {
         
         do {
-//            let keystoreManager = findKeystoreMangerByAddress(walletAddress: walletAddress)
-//            if (keystoreManager == nil) {
-//                return "Keystore does not exist"
-//            }
-//
+            let keystoreManager = findKeystoreMangerByAddressEth(walletAddress: walletAddress)
+            if (keystoreManager == nil) {
+                return "Keystore does not exist"
+            }
+
             print("gas price, limi..., wallet address ", gasPrice, gasLimit, walletAddress)
 
             let ethSenderAddress = EthereumAddress(walletAddress)!
@@ -424,7 +407,7 @@ public final class BnbWalletManager {
             options.from = ethSenderAddress
             
             print("sender....", options.from)
-            let gweiUnit = BigUInt(1000000000)
+            let gweiUnit = BigUInt(100)
             print(gweiUnit)
             
             
@@ -445,7 +428,7 @@ public final class BnbWalletManager {
             print("result..", result)
             var mapToUpload = [String: Any]()
             mapToUpload["network"] = isMainnet() ? "MAINNET" : "TESTNET"
-            mapToUpload["action_type"] = "SEND_BNB"
+            mapToUpload["action_type"] = "SEND_ETH"
             mapToUpload["from_wallet_address"] = walletAddress
             mapToUpload["to_wallet_address"] = receiverAddress
             mapToUpload["amount"] = etherAmount
@@ -455,7 +438,7 @@ public final class BnbWalletManager {
             mapToUpload["tx_hash"] = result.hash
             mapToUpload["status"] = "SUCCESS"
             
-            self.sendToHyperLedger(map: mapToUpload)
+            self.sendToHyperLedgerEth(map: mapToUpload)
             
             return result.hash
         } catch {
@@ -464,7 +447,7 @@ public final class BnbWalletManager {
         }
     }
     
-    func sendToHyperLedger (map : [String: Any]) {
+    func sendToHyperLedgerEth (map : [String: Any]) {
         
         let url = "http://34.231.96.72:8081/createTransaction/"
         
@@ -473,9 +456,9 @@ public final class BnbWalletManager {
         
         mapToUpload["orgname"] = "org1"
         mapToUpload["username"] = "user1"
-        mapToUpload["tx_type"] = "BINANCE"
+        mapToUpload["tx_type"] = "ETHEREUM"//BINANCE"
         if let theJSONData = try?  JSONSerialization.data(
-          withJSONObject: self.getDeviceInfo()
+          withJSONObject: self.getDeviceInfoEth()
           ),
           let theJSONText = String(data: theJSONData,
                                    encoding: String.Encoding(rawValue: String.Encoding.RawValue(Int(String.Encoding.ascii.rawValue)))) {
@@ -498,10 +481,10 @@ public final class BnbWalletManager {
     }
     
     func isMainnet() -> Bool {
-        return self.infuraUrl.contains("https://bsc-dataseed1.binance.org:443")
+        return self.infuraUrl.contains("https://mainnet.infura.io/v3/a396c3461ac048a59f389c7778f06689")
     }
     
-    func getDeviceInfo() -> [String : Any]{
+    func getDeviceInfoEth() -> [String : Any]{
         var data = [String : Any]()
         
         let deviceUUID = UIDevice.current.identifierForVendor!.uuidString
@@ -518,12 +501,12 @@ public final class BnbWalletManager {
         return data
     }
     
-    func writeToFile(fileName : String , keystore : Data){
+    func writeToFileEth(fileName : String , keystore : Data){
         let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         FileManager.default.createFile(atPath: userDir + "/keystore/" + fileName.lowercased() +  ".json", contents: keystore, attributes: nil)
     }
     
-    func findKeystoreMangerByAddress(walletAddress : String) -> EthereumKeystoreV3? {
+    func findKeystoreMangerByAddressEth(walletAddress : String) -> EthereumKeystoreV3? {
         let ethWalletAddress = EthereumAddress(walletAddress)
         let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let keystoreManager = KeystoreManager.managerForPath(userDir + "/keystore")

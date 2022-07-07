@@ -112,10 +112,7 @@ class EnterUsernameViewController: BaseViewController {
         nextVcObj?.signUpDict = self.signUpDict
         self.navigationController?.pushViewController(nextVcObj!, animated: true)
     }
-    
-    
-    
-    
+
 
 }
 

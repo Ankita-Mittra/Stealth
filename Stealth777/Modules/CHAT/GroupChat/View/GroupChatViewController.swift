@@ -13,7 +13,7 @@ class GroupChatViewController: BaseViewController {
 
     @IBOutlet weak var chatTableView: UITableView!
 
-    var groupId = String()
+//    var groupId = String()
     var groupInfo : GroupsModel!
     
     // MARK: - View life cycle

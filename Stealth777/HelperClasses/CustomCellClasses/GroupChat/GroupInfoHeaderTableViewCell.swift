@@ -10,7 +10,11 @@ import UIKit
 class GroupInfoHeaderTableViewCell: UITableViewHeaderFooterView {
 
     // MARK: - Outlets & Properties
+    
+    @IBOutlet weak var groupNameLbl: UILabel!
+    @IBOutlet weak var groupDescLbl: UILabel!
 
+    
     static let identifier = "GroupInfoHeaderTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "GroupInfoHeaderTableViewCell", bundle: nil)

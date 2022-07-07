@@ -60,7 +60,6 @@ class EnterPasswordViewController: BaseViewController {
         password != emptyStr && CommonFxns.validateLength(text: password, size: (8,30)) && CommonFxns.isValidPassword(password: password) && password == confirmPassword ? goToNextScreen() : CommonFxns.showAlert(self, message: "Please Enter a valid password to continue.", title: "Alert")
     }
     
-    
     @IBAction func showHidePwdBtnAction(_ sender: Any) {
 
         if hidePwdBtnClicked{
@@ -85,7 +84,6 @@ class EnterPasswordViewController: BaseViewController {
         nextVcObj?.signUpDict = self.signUpDict
         self.navigationController?.pushViewController(nextVcObj!, animated: true)
     }
-
 }
 
 

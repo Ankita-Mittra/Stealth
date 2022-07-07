@@ -11,7 +11,7 @@ class GroupControlsListTableViewCell: UITableViewCell {
 
     // MARK: - Outlets & Properties
 
-    @IBOutlet weak var titleBtn: UIButton!
+    @IBOutlet weak var titleLbl: UILabel!
 
     static let identifier = "GroupControlsListTableViewCell"
     static func nib() -> UINib{

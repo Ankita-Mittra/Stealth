@@ -7,12 +7,13 @@
 
 import UIKit
 
-class GroupDetailsViewController: UIViewController {
-
+class GroupDetailsViewController: UIViewController, AddParticipantsTableViewCellProtocol {
+    
     
     // MARK: - Properties & Outlets
 
     @IBOutlet weak var groupDetailsListTableView: UITableView!
+
     var groupInfo : GroupsModel!
 
     var ownerAndAdminArr = [String]()
@@ -43,7 +44,33 @@ class GroupDetailsViewController: UIViewController {
         
         ownerAndAdminArr = ["Owner", "Admin", "Admin", ""]
         settingsArr = ["Group Settings", "Mute Chat", "Pin Chat"]
-        controlsArr = ["Report Group", "Clear Chat History", "Exit Group"]
+        
+        if groupInfo.groupRole == 3{
+            controlsArr = ["Report Group", "Clear Chat History", "Delete Group"]
+        }else{
+            controlsArr = ["Report Group", "Clear Chat History", "Exit Group"]
+        }
+    }
+    
+    // MARK: - Actions
+
+    func viewAllMembersBtnSelected(cell: AddParticipantsTableViewCell) {
+        print("view all members...")
+        self.goToContactsScreen(comingFor: viewMembers)
+    }
+    
+    func addParticipantsBtnSelected(cell: AddParticipantsTableViewCell) {
+        print("add participants...")
+        self.goToContactsScreen(comingFor: addMembers)
+    }
+    
+    func goToContactsScreen(comingFor: Int){
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.allContactsList.rawValue) as? AllContactsListViewController
+        
+        otherController?.groupId = self.groupInfo.id ?? emptyStr
+        otherController?.comingFor  = comingFor
+        self.navigationController?.pushViewController(otherController!, animated: true)
     }
 
 }
@@ -122,7 +149,7 @@ extension GroupDetailsViewController: UITableViewDelegate, UITableViewDataSource
             guard  let controlsListCell = self.groupDetailsListTableView.dequeueReusableCell(withIdentifier: GroupControlsListTableViewCell.identifier , for: indexPath) as? GroupControlsListTableViewCell else {
                 return cell
             }
-            controlsListCell.titleBtn.setTitle(self.controlsArr[indexPath.row], for: .normal)
+            controlsListCell.titleLbl.text = self.controlsArr[indexPath.row]
             return controlsListCell
         }
 
@@ -140,8 +167,7 @@ extension GroupDetailsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        
+
         switch section {
         case 0:
             let cell = UITableViewHeaderFooterView()
@@ -150,6 +176,8 @@ extension GroupDetailsViewController: UITableViewDelegate, UITableViewDataSource
                 
                 return cell
             }
+            headerView.groupNameLbl.text = self.groupInfo.name
+            headerView.groupDescLbl.text = self.groupInfo.description
             return headerView
         case 1:
             let cell = UITableViewHeaderFooterView()
@@ -158,10 +186,13 @@ extension GroupDetailsViewController: UITableViewDelegate, UITableViewDataSource
                 
                 return cell
             }
+            headerView.delegate = self
             return headerView
         default:
             let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 25))
             headerView.backgroundColor = UIColor.clear
+            
+            
 //            let label = UILabel()
 //            label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
 //            label.textColor = UIColor.lightGray
@@ -181,6 +212,11 @@ extension GroupDetailsViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
+        case 3:
+        
+            if indexPath.row == 2{
+                print("delete....")
+            }
         case 2:
 
             if indexPath.row == 0{

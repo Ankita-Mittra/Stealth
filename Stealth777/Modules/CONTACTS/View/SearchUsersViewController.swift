@@ -34,13 +34,12 @@ class SearchUsersViewController: BaseViewController, UISearchBarDelegate, GroupR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        
         self.tabBarController?.tabBar.isHidden = true
-//        self.setSearchBarOnNavigationBar()
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         self.setSmallHeaderAndHideLargeHeader(header: "Search Friends")
         self.navigationItem.largeTitleDisplayMode = .never
     }
@@ -50,10 +49,7 @@ class SearchUsersViewController: BaseViewController, UISearchBarDelegate, GroupR
     func initialUISetup(){
         
         self.searchBar.delegate = self
-        
         self.searchedUsersListTableView.register(GroupRequestsTableViewCell.nib(), forCellReuseIdentifier: GroupRequestsTableViewCell.identifier)
-        
-
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -66,7 +62,7 @@ class SearchUsersViewController: BaseViewController, UISearchBarDelegate, GroupR
     }
     
     // MARK: - Networking
-    
+
     private func getSearchedUserInfo(username: String){
         
         self.activityIndicatorStart()
@@ -76,7 +72,6 @@ class SearchUsersViewController: BaseViewController, UISearchBarDelegate, GroupR
             
             print("showAlertClosure...", self.viewModel.error)
 
-            
             if let error = self.viewModel.error {
                 print( "errorlocalizedDescription...", error.localizedDescription)
 
@@ -84,15 +79,13 @@ class SearchUsersViewController: BaseViewController, UISearchBarDelegate, GroupR
             }
             self.activityIndicatorStop()
         }
-        
         viewModel.didFinishFetch = {
             
             print("didFinishFetch.....")
             
             // stop indicator loader
             self.activityIndicatorStop()
-            
-            
+                        
             // reload table
             self.searchedUsersList = self.viewModel.searchedUsers ?? []
             self.searchedUsersListTableView.reloadData()
@@ -104,15 +97,12 @@ class SearchUsersViewController: BaseViewController, UISearchBarDelegate, GroupR
         self.activityIndicatorStart()
 
         viewModel.sendRequest(selectedUser: userId)
-        
         viewModel.showAlertClosure = {
             
             print("showAlertClosure...", self.viewModel.error)
-
             
             if let error = self.viewModel.error {
                 print( "errorlocalizedDescription...", error.localizedDescription)
-
                 CommonFxns.showAlert(self, message: error.localizedDescription, title: "Alert")
             }
             self.activityIndicatorStop()
@@ -127,18 +117,13 @@ class SearchUsersViewController: BaseViewController, UISearchBarDelegate, GroupR
             self.activityIndicatorStop()
             
             self.updateUIForRequestSent(userId: userId)
-            
         }
     }
-    
     
     func updateUIForRequestSent(userId: String){
         // 1 update user relation in local DB to friends
         let userId = String()
 
-        
-        
-        
         if let row = self.searchedUsersList.firstIndex(where: {$0.userId == userId}){
 
             let foundRow = self.searchedUsersList[row]
@@ -149,7 +134,6 @@ class SearchUsersViewController: BaseViewController, UISearchBarDelegate, GroupR
             
             self.searchedUsersListTableView.reloadData()
         }
-        
     }
     
      func activityIndicatorStart() {
@@ -225,7 +209,6 @@ extension SearchUsersViewController: UITableViewDelegate, UITableViewDataSource 
             userCell.requestSent.isHidden = true
             
             userCell.sendRequest.isHidden = true
-
 
         case 1:
             userCell.requestSent.isHidden = false

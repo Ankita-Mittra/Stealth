@@ -63,7 +63,7 @@ class AllGroupsViewController: BaseViewController {
     @objc func addTapped(){
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.allContactsList.rawValue) as? AllContactsListViewController
-        otherController?.isCreateGroup = true
+        otherController?.comingFor = createGroup
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
     

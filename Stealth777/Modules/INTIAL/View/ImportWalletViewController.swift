@@ -84,7 +84,7 @@ class ImportWalletViewController: BaseViewController {
             let gasPrice = 0.0007
             let gasLimit = 0.0007
             print("gasPrice", gasPrice)
-            binance.testing()
+//            binance.sendBNBTesting()
 
 //            bnb2.sendBnb(walletAddress: "", password: "", receiverAddress: "", etherAmount: "", gasPrice: 0, gasLimit: 0)
 //            bnb2.sendBnb(walletAddress: "", password: "", receiverAddress: "", etherAmount: "", gasPrice: 0, gasLimit: 0)

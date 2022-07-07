@@ -49,6 +49,20 @@ class WalletDetailsViewController: BaseViewController {
         self.setNavigationBar()
     }
 
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.sizeToFit()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    // MARK: - Methods
+
     func setNavigationBar(){
 
         self.title = "Wallet"
@@ -62,21 +76,6 @@ class WalletDetailsViewController: BaseViewController {
         self.navigationController?.navigationBar.sizeToFit()
     }
     
-    override func willMove(toParent parent: UIViewController?) {
-        super.willMove(toParent: parent)
-        
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.sizeToFit()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-
-    
-    // MARK: - Methods
-
     func initialUISetup(){
         self.tokensListTableView.register(TokenListTableViewCell.nib(), forCellReuseIdentifier: TokenListTableViewCell.identifier)
         
@@ -92,15 +91,8 @@ class WalletDetailsViewController: BaseViewController {
         self.tokensListTableView.addSubview(self.refreshControl)
     }
 
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-            
-        print("handle refresh")
-        self.tokensListTableView.reloadData()
-        refreshControl.endRefreshing()
-    }
-    
     func fetchTokensAndShowOnScreen(){
-        // fetch token
+        // fetch tokens list stored locally with balance
         // Show Wallet details on screen
         
         let list =  UserDefaultsToStoreUserInfo.fetchImportedTokenForLoggedInUser()
@@ -108,9 +100,25 @@ class WalletDetailsViewController: BaseViewController {
         
         print("tokenListArr....", tokenListArr)
         self.tokensListTableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     // MARK: - Button Actions
+    
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+           
+        print("handle refresh")
+        self.fetchTokensAndShowOnScreen()
+    }
+    
+    @objc func  moreButtonAction(){
+        print("Open wallet list")
+        
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.walletList.rawValue) as? WalletListViewController
+        self.navigationController?.pushViewController(otherController!, animated: true)
+    }
     
     @IBAction func sendAmountBtnAction(_ sender: Any) {
         
@@ -136,15 +144,9 @@ class WalletDetailsViewController: BaseViewController {
     }
     
     @IBAction func QRScanBtnAction(_ sender: Any) {
-    }
-    
-    @objc func  moreButtonAction(){
-        print("Open wallet list")
         
-        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
-        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.walletList.rawValue) as? WalletListViewController
-        self.navigationController?.pushViewController(otherController!, animated: true)
     }
+
     
 }
 

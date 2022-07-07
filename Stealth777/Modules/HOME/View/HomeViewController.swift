@@ -15,7 +15,6 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var topMenuView: UIView!
     @IBOutlet weak var noChatsLbl: UILabel!
 
-    
     var sessionsList = [String: Any]()
     
     // MARK: - View life cycle
@@ -146,9 +145,8 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.contacts.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.allContactsList.rawValue) as? AllContactsListViewController
-        otherController?.isCreateGroup = false
+        otherController?.comingFor = showContacts
         self.navigationController?.pushViewController(otherController!, animated: true)
-
     }
     
 //
@@ -161,7 +159,6 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBAction func menuViewTapGestureAction(_ sender: Any) {
         
         self.topMenuView.isHidden = true
-
     }
     
 //    override func viewDidAppear(_ animated: Bool) {
@@ -316,7 +313,6 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.privateChat.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateChat.rawValue) as? PrivateChatViewController
         
-        
 //        self.navigationController?.navigationBar.addSubview(setTitle(title: "testing", subtitle: "test"))
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
@@ -356,8 +352,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             }
 
             return titleView
-        }
-
+    }
     
     func goToSelectedGroupChatScreen(){
         print("Group Chat........")

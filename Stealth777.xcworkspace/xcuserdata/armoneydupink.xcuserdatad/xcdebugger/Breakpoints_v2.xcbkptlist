@@ -23,33 +23,97 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "20542834-F595-4ECA-975A-04DC1A26686C"
+            uuid = "2251D203-09BC-485C-819A-2280373AC325"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/CONTACTS/View/CreateGroupViewController.swift"
+            filePath = "Stealth777/Modules/CONTACTS/View/AllContactsListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "createGroupBtnAction()"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C55BCA45-3D96-4B39-8889-071BF78A3FDE"
+            uuid = "A1E1E89A-9DE5-41BB-9B76-69F929CC59A6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/CHAT/GroupChat/View/AllGroupsViewController.swift"
+            filePath = "Pods/web3swift/Sources/web3swift/Promises/Promise+Web3+Eth+SendTransaction.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "getAllGroups()"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "sendTransactionPromise(_:transactionOptions:password:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5CA6AB40-3690-401C-B609-42CEE5E61862"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/BinanceSmartChainSDK/EthWalletManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "sendEthTesting(walletAddress:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E39C5FDA-02F8-40C7-B5FF-B33043A3C2AD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/BinanceSmartChainSDK/EthWalletManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "sendEthTesting(walletAddress:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E39C5FDA-02F8-40C7-B5FF-B33043A3C2AD - 222f77ee94a2bfd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BinanceSmartChainSDK.EthWalletManager.sendEthTesting(walletAddress: Swift.String) -&gt; ()"
+                  moduleName = "BinanceSmartChainSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/Stealth777/Pods/BinanceSmartChainSDK/EthWalletManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "836">
+               </Location>
+               <Location
+                  uuid = "E39C5FDA-02F8-40C7-B5FF-B33043A3C2AD - 222f77ee94a2b71"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BinanceSmartChainSDK.EthWalletManager.sendEthTesting(walletAddress: Swift.String) -&gt; ()"
+                  moduleName = "BinanceSmartChainSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/Stealth777/Pods/BinanceSmartChainSDK/EthWalletManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "736">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

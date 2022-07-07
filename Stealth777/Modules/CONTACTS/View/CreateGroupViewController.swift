@@ -20,6 +20,7 @@ class CreateGroupViewController: BaseViewController {
 
     var selectedGroupParticipants = [GroupParticipantsUserModel]()
     var imagePicker: ImagePicker!
+    var selectedImage : UIImage!
     var disperseManually = true
 
     // MARK: - Injection
@@ -30,6 +31,8 @@ class CreateGroupViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.initialSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,12 +85,68 @@ class CreateGroupViewController: BaseViewController {
             
             // stop indicator loader
             self.activityIndicatorStop()
-            // reload table
             print("createGroup....didFinishFetch")
             
-
+            let groupId = self.viewModel.groupId ?? emptyStr
+            let groupName = CommonFxns.trimString(string: self.groupNameLbl.text ?? emptyStr)
+            let groupDescription = CommonFxns.trimString(string: self.groupDescLbl.text ?? emptyStr)
+            let groupImgUrl = String()
             
+            let anonymous = self.anonymousSwitch.isOn ? 1 : 0
+
+            let disperseDate = self.disperseManually ? "" : "date"
+            let disperse = self.disperseManually ? 1 : 0
+            
+            var groupMembers = [GroupMembersModel]()
+            
+            for user in self.selectedGroupParticipants{
+                let member = GroupMembersModel(with: user)
+                groupMembers.append(member)
+            }
+            
+            let groupInfo = GroupsModel(id: groupId, name: groupName, description: groupDescription, imageUrl: groupImgUrl, anonymous: anonymous, disperse: disperse, disperseDate: disperseDate, canSendMsg: 1, showQr: 1, isPin: 0, isMute: 0, groupRole: 3, members: groupMembers)
+            
+            self.showCustomtAlert(groupInfo: groupInfo)
         }
+    }
+    
+    private func uploadGroupImage() {
+        let image = self.groupImgView.image
+        
+        print("image....", image)
+        self.activityIndicatorStart()
+        viewModel.uploadFile(groupImage: self.selectedImage)
+
+        viewModel.showAlertClosure = {
+            
+            print("showAlertClosure")
+
+            if let error = self.viewModel.error {
+                print( "error/////", error.localizedDescription)
+                CommonFxns.showAlert(self, message: error.localizedDescription, title: "Error")
+            }
+            self.activityIndicatorStop()
+        }
+        
+        viewModel.didFinishFetch = {
+            
+            print(" uploadGroupImage didFinishFetch.....")
+            // stop indicator loader
+            self.activityIndicatorStop()
+
+            self.collectParameteresAndCreateGroup(mediaID: self.viewModel.mediaID ?? emptyStr)
+        }
+    }
+    
+    //uploadFile
+    func showCustomtAlert(groupInfo: GroupsModel){
+        let refreshAlert = UIAlertController(title: "Success", message: "Group has been created successfully", preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action: UIAlertAction!) in
+            
+            self.goToGroupChatSsreen(groupInfo: groupInfo)
+        }))
+        present(refreshAlert, animated: true, completion: nil)
     }
     
     // MARK: - UI Setup
@@ -102,18 +161,12 @@ class CreateGroupViewController: BaseViewController {
         appDelegate.hideProgressHUD(view: self.view)
     }
     
-
-    // MARK: - Button Actions
-
-    @objc func createGroupBtnAction() {
-        
+    func collectParameteresAndCreateGroup(mediaID: String){
         self.activityIndicatorStart()
         let groupName = CommonFxns.trimString(string: self.groupNameLbl.text ?? emptyStr)
         let groupDescription = CommonFxns.trimString(string: self.groupDescLbl.text ?? emptyStr)
         let anonymous = self.anonymousSwitch.isOn ? 1 : 0
-   
-        let groupImgUrl = String()
-        
+           
         let disperseDate = disperseManually ? "" : "date"
         
         let disperse = disperseManually ? 1 : 0
@@ -124,16 +177,27 @@ class CreateGroupViewController: BaseViewController {
                 members.append(userId)
             }
         }
-        guard !groupName.isEmpty && !groupDescription.isEmpty else{
-            CommonFxns.showAlert(self, message: "Enter all the valid information to create the group", title: "Alert")
-            self.activityIndicatorStop()
-            return
-        }
-        let dict = [enumAPIKeysForGroup.groupName_key.rawValue: groupName, enumAPIKeysForGroup.description_key.rawValue: groupDescription, enumAPIKeysForGroup.mediaId_key.rawValue : groupImgUrl, enumAPIKeysForGroup.anonymous_key.rawValue : anonymous, enumAPIKeysForGroup.disperseDate_key.rawValue: disperseDate, enumAPIKeysForGroup.disperse_key.rawValue : disperse, enumAPIKeysForGroup.members_key.rawValue: members] as [String : Any]
+
+        let dict = [enumAPIKeysForGroup.groupName_key.rawValue: groupName, enumAPIKeysForGroup.description_key.rawValue: groupDescription, enumAPIKeysForGroup.mediaId_key.rawValue : mediaID, enumAPIKeysForGroup.anonymous_key.rawValue : anonymous, enumAPIKeysForGroup.disperseDate_key.rawValue: disperseDate, enumAPIKeysForGroup.disperse_key.rawValue : disperse, enumAPIKeysForGroup.members_key.rawValue: members] as [String : Any]
         print("create group dict ...", dict)
         
         self.createGroup(dict: dict)
         
+    }
+    
+
+    // MARK: - Button Actions
+
+    @objc func createGroupBtnAction() {
+        let groupName = CommonFxns.trimString(string: self.groupNameLbl.text ?? emptyStr)
+        let groupDescription = CommonFxns.trimString(string: self.groupDescLbl.text ?? emptyStr)
+        
+        guard !groupName.isEmpty && !groupDescription.isEmpty else{
+            CommonFxns.showAlert(self, message: "Enter all the valid information to create the group", title: "Alert")
+            return
+        }
+        
+        self.selectedImage == nil ? self.collectParameteresAndCreateGroup(mediaID: emptyStr) : self.uploadGroupImage()
     }
     
     @IBAction func anonymousSwitchAction(_ sender: Any) {
@@ -153,10 +217,10 @@ class CreateGroupViewController: BaseViewController {
         
     }
     
-    func goToGroupChatSsreen(groupId: String){
+    func goToGroupChatSsreen(groupInfo: GroupsModel){
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
         let otherVC = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupChat .rawValue) as? GroupChatViewController
-        otherVC?.groupId = groupId
+        otherVC?.groupInfo = groupInfo
         self.navigationController?.pushViewController(otherVC!, animated: true)
     }
 
@@ -187,7 +251,7 @@ extension CreateGroupViewController: UICollectionViewDelegate, UICollectionViewD
         
         return CGSize(width: 75, height: self.membersCollectionView.frame.height)
     }
-    
+        
 }
 
 extension CreateGroupViewController: ImagePickerDelegate {
@@ -195,6 +259,8 @@ extension CreateGroupViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         if image != nil{
             self.groupImgView.image = image
+            self.selectedImage = image
+            
         }
     }
 }

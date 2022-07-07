@@ -43,7 +43,6 @@ class GroupSettingsViewController: BaseViewController {
 
         self.navigationItem.largeTitleDisplayMode = .never
         self.setSmallHeaderAndHideLargeHeader(header: "Group Settings")
-
     }
 
 

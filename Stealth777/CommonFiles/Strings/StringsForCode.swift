@@ -26,6 +26,13 @@ let emptyStr = ""
 let lightMode = "light"
 let darkMode = "dark"
 
+// Groups
+
+let createGroup = 1
+let viewMembers = 2
+let addMembers = 3
+let showContacts = 0
+
 // MARK: - Api's keys
 
 let userId_API_key = "userId"
@@ -169,11 +176,12 @@ enum enumAPIEndPoints: String {
     
     case getGroupInvitations = "groups/inviteList" // get
     case responseInvitaions = "groups/responseInvite" // groupId, status
-    case createGroup = "groups" // groupName, mediaId, members, anonymous, disperse, disperseDate, description
-//    case getGroups = "groups" // get
-    
-    // Messages
-
+    case createGroup = "groups/createGroup" // groupName, mediaId, members, anonymous, disperse, disperseDate, description
+    case addMembers = "groups/addMembers" // get
+    case removeMembers = "groups/members/remove" // get
+    case getAllGroupMembers = "groups/getMembers?groupId=" // get
+    case getAllGroups = "groups/listGroup"
+    case uploadFile = "media/upload"
 }
 
 enum enumAPIKeysForUser: String{

@@ -56,7 +56,7 @@ class ContactsViewController: BaseViewController {
         self.registerCustomCells() // Register Cells
         self.setStrings() // Set UI Strings as per the selected language
         
-        // API call to fetch contacts
+         //API call to fetch contacts
         self.fetchContactsList()
 
 
@@ -136,7 +136,6 @@ class ContactsViewController: BaseViewController {
         appDelegate.hideProgressHUD(view: self.view)
         print("stop")
     }
-    
 
     // MARK: - Actions
     

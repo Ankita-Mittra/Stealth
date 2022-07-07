@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2004858B285CA89A007BF87E /* AllContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004858A285CA89A007BF87E /* AllContactsViewModel.swift */; };
 		200A578727D89951003561FF /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 200A577A27D89950003561FF /* LICENSE.txt */; };
 		200A578827D89951003561FF /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 200A577B27D89950003561FF /* Roboto-Regular.ttf */; };
 		200A578927D89951003561FF /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 200A577C27D89950003561FF /* Roboto-Medium.ttf */; };
@@ -238,6 +239,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2004858A285CA89A007BF87E /* AllContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllContactsViewModel.swift; sourceTree = "<group>"; };
 		200A577A27D89950003561FF /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		200A577B27D89950003561FF /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		200A577C27D89950003561FF /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -750,6 +752,7 @@
 				207D61A92849E20A00EDF8F0 /* RequestsViewModel.swift */,
 				20A9CB9D2844F7870043B8F9 /* SearchUsersViewModel.swift */,
 				20857A8B2858C2B60097A105 /* CreateGroupViewModel.swift */,
+				2004858A285CA89A007BF87E /* AllContactsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1795,6 +1798,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2087DB0827E88F3700D9F7C0 /* AppWireframe.swift in Sources */,
+				2004858B285CA89A007BF87E /* AllContactsViewModel.swift in Sources */,
 				200D994727D203A40088B2E5 /* PrivateChatViewModel.swift in Sources */,
 				207D61AA2849E20A00EDF8F0 /* RequestsViewModel.swift in Sources */,
 				204122DD27EC98D800443D2D /* GroupMembersListCollectionViewCell.swift in Sources */,

@@ -44,12 +44,15 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9f-Lu-zrQ">
-                        <rect key="frame" x="357" y="19.5" width="113" height="29"/>
+                        <rect key="frame" x="354" y="19.5" width="113" height="29"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="View All Members">
                             <color key="titleColor" name="SecondaryThemeColor"/>
                         </state>
+                        <connections>
+                            <action selector="viewAllMembersBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NnN-EP-LdO"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Participants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWj-gk-2do" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="58" y="26" width="104" height="16.5"/>
@@ -65,6 +68,9 @@
                         </constraints>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" image="cameraIcon"/>
+                        <connections>
+                            <action selector="addParticipantsBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ucI-CJ-cBc"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -77,13 +83,17 @@
                     <constraint firstItem="Hjm-SW-ngJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="OUU-Mf-CEo"/>
                     <constraint firstAttribute="trailing" secondItem="Hjm-SW-ngJ" secondAttribute="trailing" id="QJb-uS-Vhu"/>
                     <constraint firstItem="KEn-hd-S8h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="VaA-Ca-3Q0"/>
-                    <constraint firstAttribute="trailing" secondItem="I9f-Lu-zrQ" secondAttribute="trailing" id="WVi-Bh-h1v"/>
+                    <constraint firstAttribute="trailing" secondItem="I9f-Lu-zrQ" secondAttribute="trailing" constant="3" id="WVi-Bh-h1v"/>
                     <constraint firstAttribute="bottom" secondItem="Hjm-SW-ngJ" secondAttribute="bottom" id="YwD-cM-Vwc"/>
                     <constraint firstItem="I9f-Lu-zrQ" firstAttribute="centerY" secondItem="kFp-qu-62a" secondAttribute="centerY" id="nv8-di-d55"/>
                     <constraint firstAttribute="trailing" secondItem="KEn-hd-S8h" secondAttribute="trailing" id="teh-v4-Qeh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addParticipantsLbl" destination="VWj-gk-2do" id="30x-wO-Sii"/>
+                <outlet property="viewAllMembersBtn" destination="I9f-Lu-zrQ" id="bWU-Jy-0ry"/>
+            </connections>
             <point key="canvasLocation" x="263.768115942029" y="129.57589285714286"/>
         </tableViewCell>
     </objects>

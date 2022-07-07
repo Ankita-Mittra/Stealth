@@ -288,7 +288,6 @@ extension RequestsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.requests.count
-
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -312,12 +311,8 @@ extension RequestsViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             if let dict = self.requests[indexPath.row] as? GroupInvitaionsListModel {
                 
-                
                 requestCell.usernameLbl.text = dict.name
-                
                 requestCell.bioLbl.text = dict.id
-                
-                
             }
         }
         return requestCell

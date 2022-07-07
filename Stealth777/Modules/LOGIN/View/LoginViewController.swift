@@ -83,7 +83,6 @@ class LoginViewController: BaseViewController {
 //       backBtnImg.image = UIImage(named: LocalizationSystem.sharedInstance.localizedStringForKey(key:"GrayBackIcon-\(LocalizationSystem.sharedInstance.getLanguage())", comment: ""))
 //   }
    
-
     // MARK: - Button Actions
     
     @IBAction func loginBtnAction(_ sender: Any) {

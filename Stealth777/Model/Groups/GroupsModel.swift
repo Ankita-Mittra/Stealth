@@ -12,18 +12,34 @@ struct GroupsModel: Codable {
     
     let id: String? // 1
     let name: String? // 2
-    let description: String? // 4
-    let imageUrl: String? // 5
-    let disperse: Int? // 6
-    let anonymous: Int? // 7
-    let disperseDate: String? // 8
-    let canSendMsg: Int? // 9
-    let showQr: Int? // 10
-    let isPin: Int? // 11
-    let isMute: Int? // 12
-    let groupRole: Int? // 13
-    var members: [GroupMembersModel]? // 15
+    let description: String? // 3
+    let imageUrl: String? // 4
+    let disperse: Int? // 5
+    let anonymous: Int? // 6
+    let disperseDate: String? // 7
+    let canSendMsg: Int? // 8
+    let showQr: Int? // 19
+    let isPin: Int? // 10
+    let isMute: Int? // 11
+    let groupRole: Int? // 12
+    var members: [GroupMembersModel]? // 13
 
+    init(id: String, name: String, description: String, imageUrl: String, anonymous: Int, disperse: Int, disperseDate: String, canSendMsg: Int, showQr: Int, isPin: Int, isMute: Int, groupRole: Int, members: [GroupMembersModel]){
+        self.id = id
+        self.name = name
+        self.description = description
+        self.imageUrl = imageUrl
+        self.disperse = disperse
+        self.anonymous = anonymous
+        self.disperseDate = disperseDate
+        self.canSendMsg = canSendMsg
+        self.showQr = showQr
+        self.isPin = isPin
+        self.isMute = isMute
+        self.groupRole = groupRole
+        self.members = members
+    }
+    
     init(with data: [String: Any]?) {
 
         self.id = data?["id"] as? String ?? emptyStr
@@ -46,11 +62,5 @@ struct GroupsModel: Codable {
                 self.members?.append(member)
             }
         }
-        
-
     }
-    
-    
-    
-
 }
