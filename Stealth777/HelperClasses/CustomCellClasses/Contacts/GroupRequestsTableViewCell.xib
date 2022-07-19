@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="98" id="KGk-i7-Jjw" customClass="GroupRequestsTableViewCell" customModule="Stealth777" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="582" height="98"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="582" height="98"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="LKy-3c-4em" customClass="UIImageViewCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="1" y="25" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="4lh-YQ-97r"/>
+                            <constraint firstAttribute="width" secondItem="LKy-3c-4em" secondAttribute="height" multiplier="1:1" id="AuT-KH-eke"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="round" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aI-wH-mpL" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="59" y="28" width="391" height="19"/>
+                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fr-Yx-V7t">
+                        <rect key="frame" x="0.0" y="97.5" width="582" height="0.5"/>
+                        <color key="backgroundColor" name="SeperatorColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="YgJ-cg-OAW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="SeperatorColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR9-n9-gmP" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="504" y="31" width="78" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="78" id="Axh-XV-T9e"/>
+                            <constraint firstAttribute="height" constant="36" id="UzQ-ca-Vw1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="    Say hi" image="blueMsgIcon">
+                            <color key="titleColor" name="SecondaryThemeColor"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="18"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="SecondaryThemeColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="sendMessageBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yJo-Df-MNO"/>
+                        </connections>
+                    </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4Z-QY-eRz" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="460" y="33" width="122" height="32"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="151-nf-JHF"/>
+                            <constraint firstAttribute="width" constant="122" id="FJD-Em-bQw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                        <color key="tintColor" name="SecondaryThemeColor"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="  Send Request" image="friendRequest">
+                            <color key="titleColor" name="SecondaryThemeColor"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="SecondaryThemeColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="sendRequestBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uj0-d1-UVm"/>
+                        </connections>
+                    </button>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lpk-lL-FIU">
+                        <rect key="frame" x="497" y="0.0" width="85" height="98"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accept" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGA-xD-3X4" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="50" y="64.5" width="35" height="13"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJ0-Rz-frB" userLabel="Reject" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="26.5" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="3b3-9L-nuk"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="grayCrossIcon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="SeperatorColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="round" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="rejectRequestBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0OV-hq-GXE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wug-gi-pIy" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="2.5" y="64.5" width="30.5" height="13"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZA-aM-IcF" userLabel="Accept" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="50" y="26.5" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mZA-aM-IcF" secondAttribute="height" multiplier="1:1" id="bat-ba-TSH"/>
+                                    <constraint firstAttribute="width" constant="35" id="ySd-Gu-oeM"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="tickIcon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="SecondaryThemeColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="round" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="acceptRequestBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="F45-hB-F0C"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wug-gi-pIy" firstAttribute="centerX" secondItem="IJ0-Rz-frB" secondAttribute="centerX" id="CQZ-Re-FmO"/>
+                            <constraint firstItem="BGA-xD-3X4" firstAttribute="centerX" secondItem="mZA-aM-IcF" secondAttribute="centerX" id="JTk-K7-9Gc"/>
+                            <constraint firstItem="mZA-aM-IcF" firstAttribute="leading" secondItem="IJ0-Rz-frB" secondAttribute="trailing" constant="15" id="T6h-2V-uB5"/>
+                            <constraint firstItem="BGA-xD-3X4" firstAttribute="top" secondItem="mZA-aM-IcF" secondAttribute="bottom" constant="3" id="Y5j-ne-wdC"/>
+                            <constraint firstItem="IJ0-Rz-frB" firstAttribute="centerY" secondItem="mZA-aM-IcF" secondAttribute="centerY" id="han-28-GAA"/>
+                            <constraint firstAttribute="trailing" secondItem="mZA-aM-IcF" secondAttribute="trailing" id="jHr-62-twZ"/>
+                            <constraint firstItem="wug-gi-pIy" firstAttribute="top" secondItem="IJ0-Rz-frB" secondAttribute="bottom" constant="3" id="oLI-A4-TVT"/>
+                            <constraint firstItem="mZA-aM-IcF" firstAttribute="centerY" secondItem="Lpk-lL-FIU" secondAttribute="centerY" multiplier="0.9" id="saX-dc-9hz"/>
+                            <constraint firstItem="IJ0-Rz-frB" firstAttribute="width" secondItem="IJ0-Rz-frB" secondAttribute="height" multiplier="1:1" id="xy4-iO-smH"/>
+                            <constraint firstItem="IJ0-Rz-frB" firstAttribute="leading" secondItem="Lpk-lL-FIU" secondAttribute="leading" id="ybw-Fc-I4Q"/>
+                        </constraints>
+                    </view>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwO-SW-8rF" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="504" y="31" width="78" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="G2W-8w-Wi1"/>
+                            <constraint firstAttribute="width" constant="78" id="RCc-5e-vNz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Sent">
+                            <color key="titleColor" name="SecondaryThemeColor"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="18"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="SecondaryThemeColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio goes here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msv-QR-7Pw" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="59" y="52" width="391" height="16.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                        <color key="textColor" name="subHeadingColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="eR9-n9-gmP" firstAttribute="centerY" secondItem="LKy-3c-4em" secondAttribute="centerY" id="1u2-rC-BfO"/>
+                    <constraint firstItem="msv-QR-7Pw" firstAttribute="trailing" secondItem="6aI-wH-mpL" secondAttribute="trailing" id="5vW-Ag-Pxu"/>
+                    <constraint firstAttribute="bottom" secondItem="0Fr-Yx-V7t" secondAttribute="bottom" id="7BM-1X-UOx"/>
+                    <constraint firstItem="T4Z-QY-eRz" firstAttribute="trailing" secondItem="eR9-n9-gmP" secondAttribute="trailing" id="9qV-Gv-sSb"/>
+                    <constraint firstItem="LKy-3c-4em" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="BDJ-7Z-TcK"/>
+                    <constraint firstItem="6aI-wH-mpL" firstAttribute="top" secondItem="LKy-3c-4em" secondAttribute="top" constant="3" id="CTR-70-qkF"/>
+                    <constraint firstItem="TwO-SW-8rF" firstAttribute="leading" secondItem="eR9-n9-gmP" secondAttribute="leading" id="EeS-YB-8oJ"/>
+                    <constraint firstItem="msv-QR-7Pw" firstAttribute="leading" secondItem="LKy-3c-4em" secondAttribute="trailing" constant="10" id="JkK-ua-ujq"/>
+                    <constraint firstItem="6aI-wH-mpL" firstAttribute="leading" secondItem="LKy-3c-4em" secondAttribute="trailing" constant="10" id="PDD-T1-uhR"/>
+                    <constraint firstItem="T4Z-QY-eRz" firstAttribute="leading" secondItem="6aI-wH-mpL" secondAttribute="trailing" constant="10" id="PhP-wH-Ybm"/>
+                    <constraint firstItem="TwO-SW-8rF" firstAttribute="top" secondItem="eR9-n9-gmP" secondAttribute="top" id="TOR-NA-h9s"/>
+                    <constraint firstItem="0Fr-Yx-V7t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XR8-dj-ckZ"/>
+                    <constraint firstItem="Lpk-lL-FIU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="cIH-Aa-bGA"/>
+                    <constraint firstAttribute="trailing" secondItem="0Fr-Yx-V7t" secondAttribute="trailing" id="fPd-MB-vrj"/>
+                    <constraint firstItem="T4Z-QY-eRz" firstAttribute="centerY" secondItem="eR9-n9-gmP" secondAttribute="centerY" id="jO8-yV-1Ps"/>
+                    <constraint firstItem="msv-QR-7Pw" firstAttribute="top" secondItem="6aI-wH-mpL" secondAttribute="bottom" constant="5" id="laY-Mt-vb9"/>
+                    <constraint firstItem="TwO-SW-8rF" firstAttribute="bottom" secondItem="eR9-n9-gmP" secondAttribute="bottom" id="rxu-af-E5l"/>
+                    <constraint firstItem="eR9-n9-gmP" firstAttribute="trailing" secondItem="Lpk-lL-FIU" secondAttribute="trailing" id="sKy-52-yhA"/>
+                    <constraint firstItem="LKy-3c-4em" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tMn-Il-ZVT"/>
+                    <constraint firstAttribute="trailing" secondItem="Lpk-lL-FIU" secondAttribute="trailing" id="uQr-bb-6Jc"/>
+                    <constraint firstAttribute="bottom" secondItem="Lpk-lL-FIU" secondAttribute="bottom" id="yrH-Ih-HTN"/>
+                    <constraint firstItem="TwO-SW-8rF" firstAttribute="trailing" secondItem="eR9-n9-gmP" secondAttribute="trailing" id="zhY-jz-Mrw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="acceptLbl" destination="BGA-xD-3X4" id="iHP-0x-BsC"/>
+                <outlet property="bioLbl" destination="msv-QR-7Pw" id="xs9-TX-odn"/>
+                <outlet property="handleRequestView" destination="Lpk-lL-FIU" id="Yi9-5r-0cW"/>
+                <outlet property="rejectLbl" destination="wug-gi-pIy" id="TNy-yW-rRY"/>
+                <outlet property="requestSent" destination="TwO-SW-8rF" id="mQl-7E-CIC"/>
+                <outlet property="sendMessage" destination="eR9-n9-gmP" id="991-3T-34v"/>
+                <outlet property="sendRequest" destination="T4Z-QY-eRz" id="NMv-y3-qpL"/>
+                <outlet property="userImgView" destination="LKy-3c-4em" id="xga-7E-LG6"/>
+                <outlet property="usernameLbl" destination="6aI-wH-mpL" id="Lwl-Fw-ysW"/>
+            </connections>
+            <point key="canvasLocation" x="272.46376811594206" y="63.616071428571423"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="6aI-wH-mpL">
+            <size key="intrinsicContentSize" width="71.5" height="19"/>
+        </designable>
+        <designable name="BGA-xD-3X4">
+            <size key="intrinsicContentSize" width="34.5" height="13"/>
+        </designable>
+        <designable name="IJ0-Rz-frB">
+            <size key="intrinsicContentSize" width="13" height="22"/>
+        </designable>
+        <designable name="LKy-3c-4em">
+            <size key="intrinsicContentSize" width="124" height="124"/>
+        </designable>
+        <designable name="T4Z-QY-eRz">
+            <size key="intrinsicContentSize" width="109" height="22"/>
+        </designable>
+        <designable name="TwO-SW-8rF">
+            <size key="intrinsicContentSize" width="30" height="28"/>
+        </designable>
+        <designable name="eR9-n9-gmP">
+            <size key="intrinsicContentSize" width="65" height="16"/>
+        </designable>
+        <designable name="mZA-aM-IcF">
+            <size key="intrinsicContentSize" width="14" height="22"/>
+        </designable>
+        <designable name="msv-QR-7Pw">
+            <size key="intrinsicContentSize" width="85" height="16.5"/>
+        </designable>
+        <designable name="wug-gi-pIy">
+            <size key="intrinsicContentSize" width="30.5" height="13"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="blueMsgIcon" width="17" height="16"/>
+        <image name="defaultAvatar" width="124" height="124"/>
+        <image name="friendRequest" width="22" height="22"/>
+        <image name="grayCrossIcon" width="13" height="13"/>
+        <image name="tickIcon" width="14" height="11"/>
+        <namedColor name="SecondaryThemeColor">
+            <color red="0.0" green="0.73299998044967651" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SeperatorColor">
+            <color red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="subHeadingColor">
+            <color red="0.43529411764705883" green="0.43529411764705883" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

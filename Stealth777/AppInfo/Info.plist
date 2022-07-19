@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Stealth777 camera use</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>&quot;Log in to your account&quot;</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Roboto-LightItalic</string>
+		<string>Roboto-MediumItalic</string>
+		<string>Roboto-Black</string>
+		<string>Roboto-Bold</string>
+		<string>Roboto-Light</string>
+		<string>Roboto-Medium</string>
+		<string>Roboto-Regular</string>
+		<string>Roboto-Thin</string>
+		<string>Roboto-ThinItalic</string>
+		<string>Roboto-BlackItalic</string>
+	</array>
+	<key>CFBundleIdentifier</key>
+	<string>Roboto-BoldItalic</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+</dict>
+</plist>

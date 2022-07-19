@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="83" id="KGk-i7-Jjw" customClass="AddParticipantsTableViewCell" customModule="Stealth777" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="470" height="83"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="470" height="83"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEn-hd-S8h">
+                        <rect key="frame" x="0.0" y="0.0" width="470" height="1"/>
+                        <color key="backgroundColor" name="SeperatorColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="beD-Mp-Yq2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hjm-SW-ngJ">
+                        <rect key="frame" x="0.0" y="67" width="470" height="0.5"/>
+                        <color key="backgroundColor" name="SeperatorColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="2JB-LD-Xwj"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9f-Lu-zrQ">
+                        <rect key="frame" x="354" y="19.5" width="113" height="29"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="View All Members">
+                            <color key="titleColor" name="SecondaryThemeColor"/>
+                        </state>
+                        <connections>
+                            <action selector="viewAllMembersBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NnN-EP-LdO"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Participants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWj-gk-2do" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="58" y="26" width="104" height="16.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                        <color key="textColor" name="SecondaryThemeColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFp-qu-62a">
+                        <rect key="frame" x="0.0" y="15" width="38" height="38"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="38" id="YiH-tb-y2d"/>
+                            <constraint firstAttribute="width" secondItem="kFp-qu-62a" secondAttribute="height" multiplier="1:1" id="tsk-Wt-eCi"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="cameraIcon"/>
+                        <connections>
+                            <action selector="addParticipantsBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ucI-CJ-cBc"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KEn-hd-S8h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="42L-8Z-eGa"/>
+                    <constraint firstItem="VWj-gk-2do" firstAttribute="centerY" secondItem="kFp-qu-62a" secondAttribute="centerY" id="9AV-LR-yfV"/>
+                    <constraint firstItem="Hjm-SW-ngJ" firstAttribute="top" secondItem="kFp-qu-62a" secondAttribute="bottom" constant="14" id="9F3-VY-G8g"/>
+                    <constraint firstItem="kFp-qu-62a" firstAttribute="top" secondItem="KEn-hd-S8h" secondAttribute="bottom" constant="14" id="EBQ-c0-YuP"/>
+                    <constraint firstItem="kFp-qu-62a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Fij-DI-ki2"/>
+                    <constraint firstItem="VWj-gk-2do" firstAttribute="leading" secondItem="kFp-qu-62a" secondAttribute="trailing" constant="20" id="KfV-Wj-BZ4"/>
+                    <constraint firstItem="Hjm-SW-ngJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="OUU-Mf-CEo"/>
+                    <constraint firstAttribute="trailing" secondItem="Hjm-SW-ngJ" secondAttribute="trailing" id="QJb-uS-Vhu"/>
+                    <constraint firstItem="KEn-hd-S8h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="VaA-Ca-3Q0"/>
+                    <constraint firstAttribute="trailing" secondItem="I9f-Lu-zrQ" secondAttribute="trailing" constant="3" id="WVi-Bh-h1v"/>
+                    <constraint firstAttribute="bottom" secondItem="Hjm-SW-ngJ" secondAttribute="bottom" id="YwD-cM-Vwc"/>
+                    <constraint firstItem="I9f-Lu-zrQ" firstAttribute="centerY" secondItem="kFp-qu-62a" secondAttribute="centerY" id="nv8-di-d55"/>
+                    <constraint firstAttribute="trailing" secondItem="KEn-hd-S8h" secondAttribute="trailing" id="teh-v4-Qeh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addParticipantsLbl" destination="VWj-gk-2do" id="30x-wO-Sii"/>
+                <outlet property="viewAllMembersBtn" destination="I9f-Lu-zrQ" id="bWU-Jy-0ry"/>
+            </connections>
+            <point key="canvasLocation" x="263.768115942029" y="129.57589285714286"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="VWj-gk-2do">
+            <size key="intrinsicContentSize" width="104" height="16.5"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="cameraIcon" width="54" height="54"/>
+        <namedColor name="SecondaryThemeColor">
+            <color red="0.0" green="0.73299998044967651" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SeperatorColor">
+            <color red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

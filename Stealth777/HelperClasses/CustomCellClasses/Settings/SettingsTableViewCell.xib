@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="KGk-i7-Jjw" customClass="SettingsTableViewCell" customModule="Stealth777" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sma-Yh-eIL" customClass="UIViewCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Huc-KL-223" customClass="UIImageViewCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="15" y="10" width="30" height="30"/>
+                                <color key="backgroundColor" name="SecondaryThemeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Huc-KL-223" secondAttribute="height" multiplier="1:1" id="AUc-zA-QVt"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpi-M2-AxD" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="55" y="15" width="63" height="20"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <color key="textColor" name="subHeadingColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightGrayForwardIcon" translatesAutoresizingMaskIntoConstraints="NO" id="u0Z-j9-8FR">
+                                <rect key="frame" x="365.5" y="18" width="8.5" height="14.5"/>
+                                <color key="tintColor" name="lightForwardIconTintColor"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-account" translatesAutoresizingMaskIntoConstraints="NO" id="Cv6-Au-CgQ" customClass="UIImageViewCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="22.5" y="16" width="15" height="18"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="CustomViewBgColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="u0Z-j9-8FR" secondAttribute="trailing" constant="16" id="6qF-hQ-Gsb"/>
+                            <constraint firstAttribute="height" constant="50" id="AmL-af-w5W"/>
+                            <constraint firstItem="u0Z-j9-8FR" firstAttribute="centerY" secondItem="Sma-Yh-eIL" secondAttribute="centerY" id="Eiw-iO-ZOu"/>
+                            <constraint firstAttribute="bottom" secondItem="Huc-KL-223" secondAttribute="bottom" constant="10" id="NLU-Q4-VPJ"/>
+                            <constraint firstItem="Huc-KL-223" firstAttribute="top" secondItem="Sma-Yh-eIL" secondAttribute="top" constant="10" id="NU1-8h-3gs"/>
+                            <constraint firstItem="Cv6-Au-CgQ" firstAttribute="centerX" secondItem="Huc-KL-223" secondAttribute="centerX" id="aA3-dh-jMU"/>
+                            <constraint firstItem="hpi-M2-AxD" firstAttribute="centerY" secondItem="Huc-KL-223" secondAttribute="centerY" id="b4u-YP-WvB"/>
+                            <constraint firstItem="Huc-KL-223" firstAttribute="leading" secondItem="Sma-Yh-eIL" secondAttribute="leading" constant="15" id="bfT-TG-MYI"/>
+                            <constraint firstItem="Cv6-Au-CgQ" firstAttribute="centerY" secondItem="Huc-KL-223" secondAttribute="centerY" id="hqz-bp-B0v"/>
+                            <constraint firstItem="hpi-M2-AxD" firstAttribute="leading" secondItem="Huc-KL-223" secondAttribute="trailing" constant="10" id="pXM-28-3vh"/>
+                            <constraint firstItem="Huc-KL-223" firstAttribute="centerY" secondItem="Sma-Yh-eIL" secondAttribute="centerY" id="tf3-7H-Etp"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Sma-Yh-eIL" secondAttribute="bottom" constant="10" id="NPU-T6-9AA"/>
+                    <constraint firstAttribute="trailing" secondItem="Sma-Yh-eIL" secondAttribute="trailing" id="NRg-TE-4VW"/>
+                    <constraint firstItem="Sma-Yh-eIL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="rsL-yw-JQS"/>
+                    <constraint firstItem="Sma-Yh-eIL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="wgS-mt-DDd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="titleBgImgView" destination="Huc-KL-223" id="YYg-5U-Me1"/>
+                <outlet property="titleImgView" destination="Cv6-Au-CgQ" id="jSK-to-YeJ"/>
+                <outlet property="titleLbl" destination="hpi-M2-AxD" id="Nhe-gH-7ez"/>
+            </connections>
+            <point key="canvasLocation" x="188.40579710144928" y="123.21428571428571"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="Cv6-Au-CgQ">
+            <size key="intrinsicContentSize" width="15" height="18"/>
+        </designable>
+        <designable name="hpi-M2-AxD">
+            <size key="intrinsicContentSize" width="63" height="20"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="lightGrayForwardIcon" width="8.5" height="14.5"/>
+        <image name="settings-account" width="15" height="18"/>
+        <namedColor name="CustomViewBgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryThemeColor">
+            <color red="0.0" green="0.73299998044967651" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightForwardIconTintColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="subHeadingColor">
+            <color red="0.43529411764705883" green="0.43529411764705883" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
