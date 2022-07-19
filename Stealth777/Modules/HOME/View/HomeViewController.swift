@@ -14,8 +14,9 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var allChatsTableview: UITableView!
     @IBOutlet weak var topMenuView: UIView!
     @IBOutlet weak var noChatsLbl: UILabel!
-
-    var sessionsList = [String: Any]()
+    
+    var contactsList = [GroupParticipantsUserModel]()
+//    var sessionsList = [String: Any]()
     
     // MARK: - View life cycle
 
@@ -24,6 +25,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
         // Initial Setup
         self.allChatsTableview.register(HomeScreenListTableViewCell.nib(), forCellReuseIdentifier: HomeScreenListTableViewCell.identifier)
+        self.initialSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -246,7 +248,14 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     // Method for initial Setups
     func initialSetup(){
+        self.fetchContactsFromLocalDB()
     }
+    
+    func fetchContactsFromLocalDB(){
+        self.contactsList = ContactsDatabaseQueries.fetchAllContactsFromLocalDB()
+        self.allChatsTableview.reloadData()
+    }
+
 
     
     @IBAction func settingsBtnAction(_ sender: Any) {
@@ -283,17 +292,23 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         guard  let chatCell = self.allChatsTableview.dequeueReusableCell(withIdentifier: HomeScreenListTableViewCell.identifier , for: indexPath) as? HomeScreenListTableViewCell else {
             return cell
         }
+        
+        let dict = self.contactsList[indexPath.row]
+        chatCell.chatUsernameLbl.text = dict.username
+        chatCell.unreadMessageCountLbl.isHidden = false
+        
         return chatCell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if sessionsList.count == 0{
+        if contactsList.count == 0{
             self.noChatsLbl.isHidden = false
             self.noChatsLbl.text = "Make new friends to start a chat."
+        }else{
+            self.noChatsLbl.isHidden = true
         }
-        
-        return sessionsList.count
+        return contactsList.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

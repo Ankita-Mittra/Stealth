@@ -28,7 +28,7 @@ class SendFundsViewController: BaseViewController {
         // Initial Setup
         self.initialSetup()
         
-//        self.importBinanceWallet2()
+        self.importBinanceWallet2()
         self.importBinanceWallet()
     }
     
@@ -89,11 +89,11 @@ class SendFundsViewController: BaseViewController {
 
             if let walletPhrase = try BIP39.generateMnemonics(bitsOfEntropy: 128, language: .english){
 
-//                print("walletPhrase.....", walletPhrase)
+                print("walletPhrase.....", walletPhrase)
 
-//                let wallet = try eth.createEthWallet(walletPhrase: walletPhrase)
-//
-//                print("wallet1....", wallet?.walletAddress)
+                let wallet = try eth.createEthWallet(walletPhrase: walletPhrase)
+
+                print("wallet111111111....", wallet?.walletAddress)
                 
                 self.checkWalletBalance(walletAddress: "0xa3e26d47ca97a475a879bfd99c8fef4bf1ca74bc") //(wallet?.walletAddress)!)
                 eth.sendEthTesting(walletAddress: "0xa3e26d47ca97a475a879bfd99c8fef4bf1ca74bc")
@@ -121,9 +121,9 @@ class SendFundsViewController: BaseViewController {
             let wallet = try binance.createWallet(walletPassword: "")
             print("wallet2....", wallet?.walletAddress)
 
-            binance.sendBNBTesting(walletAddress: "0xa3e26d47ca97a475a879bfd99c8fef4bf1ca74bc")//(wallet?.walletAddress)!)
-            
-            self.checkWalletBalance(walletAddress: "0xa3e26d47ca97a475a879bfd99c8fef4bf1ca74bc")
+//            binance.sendBNBTesting(walletAddress: "0xa3e26d47ca97a475a879bfd99c8fef4bf1ca74bc")//(wallet?.walletAddress)!)
+//
+//            self.checkWalletBalance(walletAddress: "0xa3e26d47ca97a475a879bfd99c8fef4bf1ca74bc")
         } catch {
             print(error.localizedDescription)
         }

@@ -182,6 +182,11 @@ enum enumAPIEndPoints: String {
     case getAllGroupMembers = "groups/getMembers?groupId=" // get
     case getAllGroups = "groups/listGroup"
     case uploadFile = "media/upload"
+    
+    // Chats
+    case sendMessage = "groups/sendMsg"
+    case getMessageByUserID = "chat?receiverId="
+    
 }
 
 enum enumAPIKeysForUser: String{

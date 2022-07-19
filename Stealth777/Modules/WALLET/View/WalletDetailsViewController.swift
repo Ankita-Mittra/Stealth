@@ -146,16 +146,7 @@ class WalletDetailsViewController: BaseViewController {
     @IBAction func QRScanBtnAction(_ sender: Any) {
         
     }
-
-    
 }
-
-
-
-
-
-
-
 
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(true)

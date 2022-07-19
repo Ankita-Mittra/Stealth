@@ -7,6 +7,7 @@
 
 
 // MARK: - Common Strings
+
 // ************** Common ******************
 "okay" = "Okay";
 "cancel" = "Cancel";
@@ -111,5 +112,10 @@
 // Wallet Module
 
 "send" = "Send";
+
+
+// MarketPlace
+
+
 
 // MARK: - ************** Settings ******************
