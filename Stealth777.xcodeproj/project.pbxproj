@@ -62,6 +62,7 @@
 		201AEA2127EDEBFB00BA2CE0 /* SubscriptionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 201AEA2027EDEBFB00BA2CE0 /* SubscriptionStoryboard.storyboard */; };
 		201AEA2427EDF49500BA2CE0 /* SubscribeNowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201AEA2327EDF49400BA2CE0 /* SubscribeNowViewController.swift */; };
 		201AEA2627EDF4A500BA2CE0 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201AEA2527EDF4A500BA2CE0 /* CheckOutViewController.swift */; };
+		20249BBB28804C8800A4AEC3 /* ChatAPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20249BBA28804C8800A4AEC3 /* ChatAPIServices.swift */; };
 		2030F57227F5D2CC001D5F61 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2030F57127F5D2CC001D5F61 /* Strings.swift */; };
 		2030F57427F5EA84001D5F61 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2030F57327F5EA84001D5F61 /* SettingsViewModel.swift */; };
 		2037E76027D6106900674559 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037E75F27D6106900674559 /* ContactsViewController.swift */; };
@@ -111,7 +112,6 @@
 		209C3C3E27F2FCAE002C554D /* APIService+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3C3D27F2FCAE002C554D /* APIService+Login.swift */; };
 		209C3C4E27F317E6002C554D /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3C4D27F317E6002C554D /* ResultModel.swift */; };
 		209C5B002848AE270008F660 /* ContactsDatabaseQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C5AFF2848AE270008F660 /* ContactsDatabaseQueries.swift */; };
-		209ED38428101DCB00B77933 /* RestApiManager+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209ED38328101DCB00B77933 /* RestApiManager+User.swift */; };
 		209EE81D284E320F0074C354 /* OtherUserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EE81C284E320F0074C354 /* OtherUserProfileViewModel.swift */; };
 		209EE81F284E32300074C354 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EE81E284E32300074C354 /* UserProfileViewModel.swift */; };
 		209EE822284F337B0074C354 /* GroupInvitaionsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EE821284F337B0074C354 /* GroupInvitaionsListModel.swift */; };
@@ -294,6 +294,7 @@
 		201AEA2027EDEBFB00BA2CE0 /* SubscriptionStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SubscriptionStoryboard.storyboard; sourceTree = "<group>"; };
 		201AEA2327EDF49400BA2CE0 /* SubscribeNowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeNowViewController.swift; sourceTree = "<group>"; };
 		201AEA2527EDF4A500BA2CE0 /* CheckOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
+		20249BBA28804C8800A4AEC3 /* ChatAPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPIServices.swift; sourceTree = "<group>"; };
 		2030F57127F5D2CC001D5F61 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		2030F57327F5EA84001D5F61 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		2037E75F27D6106900674559 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
@@ -346,7 +347,6 @@
 		209C3C3D27F2FCAE002C554D /* APIService+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIService+Login.swift"; sourceTree = "<group>"; };
 		209C3C4D27F317E6002C554D /* ResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
 		209C5AFF2848AE270008F660 /* ContactsDatabaseQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDatabaseQueries.swift; sourceTree = "<group>"; };
-		209ED38328101DCB00B77933 /* RestApiManager+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestApiManager+User.swift"; sourceTree = "<group>"; };
 		209EE81C284E320F0074C354 /* OtherUserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileViewModel.swift; sourceTree = "<group>"; };
 		209EE81E284E32300074C354 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		209EE821284F337B0074C354 /* GroupInvitaionsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitaionsListModel.swift; sourceTree = "<group>"; };
@@ -1152,13 +1152,13 @@
 		20FBC6D627C7BE24004E0697 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
-				209ED38328101DCB00B77933 /* RestApiManager+User.swift */,
 				209C3C3B27F2FC65002C554D /* APIService.swift */,
 				209C3C3D27F2FCAE002C554D /* APIService+Login.swift */,
 				208BE8A327F720DA00112DA3 /* SignUpAPIService.swift */,
 				20EC25A52811466F005EA2B8 /* UserAPIServices.swift */,
 				20F99D18283E66CA0088A487 /* ContactsAPIServices.swift */,
 				207D61A72849E00E00EDF8F0 /* GroupsAPIServices.swift */,
+				20249BBA28804C8800A4AEC3 /* ChatAPIServices.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -1835,6 +1835,7 @@
 				20FBC6FE27C7C240004E0697 /* UILabelFontSize.swift in Sources */,
 				2043BA6D27FAD32900D00041 /* GroupMembers+CoreDataProperties.swift in Sources */,
 				20EFFB5427F43E26009BD3B9 /* MyLifeViewController.swift in Sources */,
+				20249BBB28804C8800A4AEC3 /* ChatAPIServices.swift in Sources */,
 				20FBC6F027C7C223004E0697 /* UIButtonCustomClass.swift in Sources */,
 				209F9A5927E0A9B2008CFA80 /* SendFundsViewController.swift in Sources */,
 				20FBC6FC27C7C240004E0697 /* UITextViewFontSize.swift in Sources */,
@@ -1910,7 +1911,6 @@
 				2076BB0B283777730008C39C /* ReceiveAmountViewModel.swift in Sources */,
 				20857A8A28589DD20097A105 /* GroupParticipantsUserModel.swift in Sources */,
 				209F9A4227E07A02008CFA80 /* SecuritySettingsViewController.swift in Sources */,
-				209ED38428101DCB00B77933 /* RestApiManager+User.swift in Sources */,
 				20F99D1B283F73A30088A487 /* SessionListModel.swift in Sources */,
 				204122D927EC7EEC00443D2D /* WalletPhraseCollectionViewCell.swift in Sources */,
 				2076BB09283774A10008C39C /* WalletDetailsViewModel.swift in Sources */,

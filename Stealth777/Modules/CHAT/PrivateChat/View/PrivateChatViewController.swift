@@ -13,6 +13,12 @@ class PrivateChatViewController: BaseViewController {
 
     @IBOutlet weak var chatTableView: UITableView!
 
+    var messagesList = [UserModel]()
+    
+    // MARK: - Injection
+
+    let viewModel = PrivateChatViewModel(apiService: ChatAPIServices())
+    
     // MARK: - View life cycle
     
     
@@ -60,6 +66,53 @@ class PrivateChatViewController: BaseViewController {
         self.chatTableView.estimatedRowHeight = 100
     }
     
+    // MARK: - Networking
+    
+    private func fetchContactsList() {
+        
+        self.activityIndicatorStart()
+        viewModel.getMessages(userID: "")
+        viewModel.showAlertClosure = {
+            
+            print("showAlertClosure")
+
+            if let error = self.viewModel.error {
+                print( "error...", error.localizedDescription)
+            }
+        }
+        
+        viewModel.didFinishFetch = {
+            
+            print("didFinishFetch.....")
+            
+            // stop indicator loader
+            self.activityIndicatorStop()
+            // reload table
+            
+                // save users locally
+            self.messagesList = self.viewModel.messagesList ?? []
+            
+            self.chatTableView.reloadData()
+        }
+    }
+    
+    // MARK: - UI Setup
+    
+    private func activityIndicatorStart() {
+        // Code for show activity indicator view
+        // ...
+        print("start")
+        
+        appDelegate.showProgressHUD(view: self.view)
+    }
+    
+    private func activityIndicatorStop() {
+        // Code for stop activity indicator view
+        // ...
+        appDelegate.hideProgressHUD(view: self.view)
+        print("stop")
+    }
+
 
 }
 

@@ -167,10 +167,10 @@ enum enumAPIEndPoints: String {
     case logout = "users/logout"
     
     // Contacts
-    case search = "users/searchUserContact" // name
-    case sendRequest = "users/sendUserRequest" // userId
-    case respondRequest = "users/responseUserRequest" // userId, action
-    case getContactRequests = "users/getContactsRequests" // get
+    case search = "users/searchContact" // name
+    case sendRequest = "users/sendRequest" // userId
+    case respondRequest = "users/respondRequest" // userId, action
+    case getContactRequests = "users/getRequestList" // get
     case unfriendUser = "users/unFriendUser"
     // Groups
     
@@ -182,6 +182,11 @@ enum enumAPIEndPoints: String {
     case getAllGroupMembers = "groups/getMembers?groupId=" // get
     case getAllGroups = "groups/listGroup"
     case uploadFile = "media/upload"
+    
+    // Chats
+    case sendMessage = "groups/sendMsg"
+    case getMessageByUserID = "chat?receiverId="
+    
 }
 
 enum enumAPIKeysForUser: String{

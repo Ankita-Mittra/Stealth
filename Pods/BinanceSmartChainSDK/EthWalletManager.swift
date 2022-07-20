@@ -389,7 +389,7 @@ public final class EthWalletManager {
     /* Send BNB  */
     public func sendEth(walletAddress : String , password : String , receiverAddress : String , etherAmount : String ,
     gasPrice : BigUInt , gasLimit : BigUInt) throws -> String? {
-        
+        print("walletAddress....", walletAddress)
         do {
             let keystoreManager = findKeystoreMangerByAddressEth(walletAddress: walletAddress)
             if (keystoreManager == nil) {
