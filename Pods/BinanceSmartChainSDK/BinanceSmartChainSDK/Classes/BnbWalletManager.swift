@@ -408,11 +408,11 @@ public final class BnbWalletManager {
     gasPrice : BigUInt , gasLimit : BigUInt) throws -> String? {
         
         do {
-//            let keystoreManager = findKeystoreMangerByAddress(walletAddress: walletAddress)
-//            if (keystoreManager == nil) {
-//                return "Keystore does not exist"
-//            }
-//
+            let keystoreManager = findKeystoreMangerByAddress(walletAddress: walletAddress)
+            if (keystoreManager == nil) {
+                return "Keystore does not exist"
+            }
+
             print("gas price, limi..., wallet address ", gasPrice, gasLimit, walletAddress)
 
             let ethSenderAddress = EthereumAddress(walletAddress)!
@@ -521,6 +521,9 @@ public final class BnbWalletManager {
     func writeToFile(fileName : String , keystore : Data){
         let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         FileManager.default.createFile(atPath: userDir + "/keystore/" + fileName.lowercased() +  ".json", contents: keystore, attributes: nil)
+        
+        print("writeToFile...")
+        
     }
     
     func findKeystoreMangerByAddress(walletAddress : String) -> EthereumKeystoreV3? {
