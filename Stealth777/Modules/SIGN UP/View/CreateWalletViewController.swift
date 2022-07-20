@@ -21,6 +21,7 @@ class CreateWalletViewController: BaseViewController {
     var walletAddress = String()
     var signUpDict = [String:Any]()
     var walletPhraseArr = [Any]()
+    var walletPhraseString = ""
     
     // MARK: - Injection
     
@@ -57,6 +58,7 @@ class CreateWalletViewController: BaseViewController {
     func importBinanceWallet(){
         do {
             if let walletPhrase = try BIP39.generateMnemonics(bitsOfEntropy: 128, language: .english){
+                self.walletPhraseString = walletPhrase
                 
                 walletPhraseArr = walletPhrase.words
                 print("phrase.....", walletPhraseArr.count)
@@ -139,15 +141,10 @@ class CreateWalletViewController: BaseViewController {
     }
     
     @IBAction func copyBtnAction(_ sender: Any) {
-        var walletPhrase = String()
+        print(walletPhraseString)
         
-        for i in self.walletPhraseArr{
-            if let word = i as? String{
-                walletPhrase = word + walletPhrase
-            }
-        }
-        print("wallet phrase...", walletPhrase)
-        UIPasteboard.general.string = walletPhrase
+        UIPasteboard.general.string = walletPhraseString
+        
     }
     
     // MARK: - Methods
