@@ -127,10 +127,10 @@ class SendFundsViewController: BaseViewController {
                 
                 let wallet = try binance.createWallet(walletPhrase: walletPhrase)
 
-                print("wallet....",wallet?.walletAddress)
+                print("wallet....seed....",wallet?.walletAddress)
                 binance.sendBNBTesting(walletAddress: wallet?.walletAddress ?? "") //(wallet?.walletAddress)!)
-
             }
+            
             let wallet = try binance.createWallet(walletPassword: "")
             print("wallet....",wallet?.walletAddress)
             binance.sendBNBTesting(walletAddress: wallet?.walletAddress ?? "") //(wallet?.walletAddress)!)
