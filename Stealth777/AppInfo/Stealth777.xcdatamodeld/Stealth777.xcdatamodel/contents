@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="GroupMembers" representedClassName=".GroupMembers" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Groups" inverseName="groupMembers" inverseEntity="Groups"/>
+    </entity>
+    <entity name="Groups" representedClassName=".Groups" syncable="YES">
+        <attribute name="anonymous" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="disperse" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="disperseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="groupImgUrl" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="isMute" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isPin" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sendMessage" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="showQR" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="groupMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupMembers" inverseName="group" inverseEntity="GroupMembers"/>
+    </entity>
+    <entity name="Messages" representedClassName=".Messages" syncable="YES">
+        <attribute name="enKey" optional="YES" attributeType="String"/>
+        <attribute name="groupId" optional="YES" attributeType="String"/>
+        <attribute name="msg" optional="YES" attributeType="Binary"/>
+        <attribute name="msgId" optional="YES" attributeType="String"/>
+        <attribute name="msgType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="qouteType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="quoteMsg" optional="YES" attributeType="Binary"/>
+        <attribute name="quoteMsgId" optional="YES" attributeType="String"/>
+        <attribute name="readTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="receiverId" optional="YES" attributeType="String"/>
+        <attribute name="senderId" optional="YES" attributeType="String"/>
+        <attribute name="senderImgUrl" optional="YES" attributeType="String"/>
+        <attribute name="senderName" optional="YES" attributeType="String"/>
+        <attribute name="senderPbKey" optional="YES" attributeType="String"/>
+        <attribute name="sendTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="User" representedClassName=".User" syncable="YES">
+        <attribute name="accStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="allowWipeout" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="bio" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="imgUrl" optional="YES" attributeType="String"/>
+        <attribute name="isBlock" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="isMute" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="isPin" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastOnlineTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="onlineStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pbKey" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <attribute name="userType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wKey" optional="YES" attributeType="String"/>
+        <relationship name="userRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserRelation" inverseName="user" inverseEntity="UserRelation"/>
+    </entity>
+    <entity name="UserRelation" representedClassName=".UserRelation" syncable="YES">
+        <attribute name="receiverId" optional="YES" attributeType="String"/>
+        <attribute name="relation" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="remarks" optional="YES" attributeType="String"/>
+        <attribute name="senderId" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userRelation" inverseEntity="User"/>
+    </entity>
+    <elements>
+        <element name="GroupMembers" positionX="271.94140625" positionY="-103.47265625" width="128" height="89"/>
+        <element name="Groups" positionX="74.5546875" positionY="-215.58984375" width="128" height="224"/>
+        <element name="Messages" positionX="-253.4921875" positionY="-338.36328125" width="128" height="269"/>
+        <element name="UserRelation" positionX="-490.28125" positionY="-190.671875" width="128" height="104"/>
+        <element name="User" positionX="-697.5078125" positionY="-277.40234375" width="128" height="254"/>
+    </elements>
+</model>

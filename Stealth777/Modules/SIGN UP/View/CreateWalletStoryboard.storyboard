@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Create Wallet View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="CreateWalletViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="CreateWalletViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down or copy these words in the right order and save them somewhere save." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEz-yc-fjg" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="42" y="61" width="330" height="59.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <color key="textColor" name="subHeadingColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EpC-oi-mi1">
+                                <rect key="frame" x="40" y="140.5" width="334" height="439"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iPA-WC-uEP">
+                                    <size key="itemSize" width="163" height="51"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletPhraseCollectionViewCell" id="Smy-nW-6t9" customClass="WalletPhraseCollectionViewCell" customModule="Stealth777" customModuleProvider="target">
+                                        <rect key="frame" x="85.5" y="0.0" width="163" height="51"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JWx-N3-law">
+                                            <rect key="frame" x="0.0" y="0.0" width="163" height="51"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmD-oV-k4l" customClass="UIViewCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                                    <rect key="frame" x="2" y="2" width="159" height="47"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Sleep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwv-DC-4Do" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                                            <rect key="frame" x="20" y="0.0" width="139" height="47"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                            <color key="textColor" name="subHeadingColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="CustomViewBgColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="vwv-DC-4Do" firstAttribute="leading" secondItem="rmD-oV-k4l" secondAttribute="leading" constant="20" id="Td6-gH-mzD"/>
+                                                        <constraint firstItem="vwv-DC-4Do" firstAttribute="top" secondItem="rmD-oV-k4l" secondAttribute="top" id="Tem-Gd-008"/>
+                                                        <constraint firstAttribute="trailing" secondItem="vwv-DC-4Do" secondAttribute="trailing" id="U3F-ir-lJm"/>
+                                                        <constraint firstAttribute="bottom" secondItem="vwv-DC-4Do" secondAttribute="bottom" id="cgw-lP-3sG"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rmD-oV-k4l" firstAttribute="leading" secondItem="JWx-N3-law" secondAttribute="leading" constant="2" id="297-QQ-nCh"/>
+                                                <constraint firstAttribute="bottom" secondItem="rmD-oV-k4l" secondAttribute="bottom" constant="2" id="GFm-R6-9pl"/>
+                                                <constraint firstItem="rmD-oV-k4l" firstAttribute="top" secondItem="JWx-N3-law" secondAttribute="top" constant="2" id="JWE-C7-D8a"/>
+                                                <constraint firstAttribute="trailing" secondItem="rmD-oV-k4l" secondAttribute="trailing" constant="2" id="rMz-sW-hKt"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="163" height="51"/>
+                                        <connections>
+                                            <outlet property="titleLbl" destination="vwv-DC-4Do" id="qef-Y4-S5q"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="QFk-Ri-HJq"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="udp-87-wEW"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyf-ze-uxu" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="109.5" y="669.5" width="195" height="53"/>
+                                <color key="backgroundColor" name="PrimaryThemeColor"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Finish">
+                                    <color key="titleColor" name="whiteLabelColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="nextBtnAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="oUt-jN-VpY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rI-eJ-HCq" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="147" y="589.5" width="120" height="40"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="   Copy " image="copyicon" backgroundImage="copyPhraseBg">
+                                    <color key="titleColor" name="SecondaryThemeColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="copyBtnAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CGO-5o-FbB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="ViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EpC-oi-mi1" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.49" id="9cB-Z7-4Pi"/>
+                            <constraint firstItem="Jyf-ze-uxu" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="CSx-Z4-XxL"/>
+                            <constraint firstItem="EpC-oi-mi1" firstAttribute="top" secondItem="tEz-yc-fjg" secondAttribute="bottom" constant="20" id="E5p-yc-eHZ"/>
+                            <constraint firstItem="Jyf-ze-uxu" firstAttribute="top" secondItem="2rI-eJ-HCq" secondAttribute="bottom" constant="40" id="I0z-mb-gHe"/>
+                            <constraint firstItem="tEz-yc-fjg" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.797101" id="P35-Li-ebi"/>
+                            <constraint firstItem="Jyf-ze-uxu" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.47" id="Rb2-ij-p2T"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="EpC-oi-mi1" secondAttribute="trailing" constant="40" id="ScY-OL-Kfy"/>
+                            <constraint firstItem="2rI-eJ-HCq" firstAttribute="top" secondItem="EpC-oi-mi1" secondAttribute="bottom" constant="10" id="Swc-Wr-457"/>
+                            <constraint firstItem="tEz-yc-fjg" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="17" id="Tji-b9-FUH"/>
+                            <constraint firstItem="2rI-eJ-HCq" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="aA5-gH-P6a"/>
+                            <constraint firstItem="Jyf-ze-uxu" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.059" id="ifw-vR-U7L"/>
+                            <constraint firstItem="2rI-eJ-HCq" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.0446429" id="jSA-Nw-Vec"/>
+                            <constraint firstItem="2rI-eJ-HCq" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.289855" id="u1e-Ho-vcw"/>
+                            <constraint firstItem="EpC-oi-mi1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="upK-a5-cXJ"/>
+                            <constraint firstItem="tEz-yc-fjg" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="xnl-ZK-NVD"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="NO"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="diagonalMode" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <connections>
+                        <outlet property="copyBtn" destination="2rI-eJ-HCq" id="0SN-Yl-Aej"/>
+                        <outlet property="phraseCollectionView" destination="EpC-oi-mi1" id="Biy-Uq-VDe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="655" y="-42"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="2rI-eJ-HCq">
+            <size key="intrinsicContentSize" width="120" height="40"/>
+        </designable>
+        <designable name="Jyf-ze-uxu">
+            <size key="intrinsicContentSize" width="45" height="32"/>
+        </designable>
+        <designable name="tEz-yc-fjg">
+            <size key="intrinsicContentSize" width="630.5" height="20"/>
+        </designable>
+        <designable name="vwv-DC-4Do">
+            <size key="intrinsicContentSize" width="58.5" height="19"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="copyPhraseBg" width="120" height="40"/>
+        <image name="copyicon" width="17.5" height="17.5"/>
+        <namedColor name="CustomViewBgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryThemeColor">
+            <color red="0.0" green="0.3529999852180481" blue="0.62000000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryThemeColor">
+            <color red="0.0" green="0.73299998044967651" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ViewBackgroundColor">
+            <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="subHeadingColor">
+            <color red="0.43529411764705883" green="0.43529411764705883" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBgGradientColor">
+            <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="whiteLabelColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

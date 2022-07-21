@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "62A5035F-0E92-484D-A3B5-6F909B29E61C"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59D4075C-0BBD-4206-9C3E-1111008EF8E4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stealth777/HelperClasses/Others/UserDefaultsToStoreUserInfo.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "UserDefaultsToStoreUserInfo"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2251D203-09BC-485C-819A-2280373AC325"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stealth777/Modules/CONTACTS/View/AllContactsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A1E1E89A-9DE5-41BB-9B76-69F929CC59A6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/web3swift/Sources/web3swift/Promises/Promise+Web3+Eth+SendTransaction.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "sendTransactionPromise(_:transactionOptions:password:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "24014A0C-8292-42EF-8B3D-91A6465EC779"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/BinanceSmartChainSDK/EthWalletManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
+            landmarkName = "sendEth(walletAddress:password:receiverAddress:etherAmount:gasPrice:gasLimit:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "857ED7A8-DD85-4E78-9656-C7AA346EE34C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
+            landmarkName = "sendBnb(walletAddress:password:receiverAddress:etherAmount:gasPrice:gasLimit:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "857ED7A8-DD85-4E78-9656-C7AA346EE34C - 940b0235433368bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BinanceSmartChainSDK.BnbWalletManager.sendBnb(walletAddress: Swift.String, password: Swift.String, receiverAddress: Swift.String, etherAmount: Swift.String, gasPrice: BigInt.BigUInt, gasLimit: BigInt.BigUInt) throws -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "BinanceSmartChainSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/Stealth777/Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "416"
+                  endingLineNumber = "416"
+                  offsetFromSymbolStart = "548">
+               </Location>
+               <Location
+                  uuid = "857ED7A8-DD85-4E78-9656-C7AA346EE34C - 940b0235433368bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BinanceSmartChainSDK.BnbWalletManager.sendBnb(walletAddress: Swift.String, password: Swift.String, receiverAddress: Swift.String, etherAmount: Swift.String, gasPrice: BigInt.BigUInt, gasLimit: BigInt.BigUInt) throws -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "BinanceSmartChainSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/Stealth777/Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "416"
+                  endingLineNumber = "416"
+                  offsetFromSymbolStart = "704">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
