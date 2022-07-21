@@ -16,6 +16,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var noChatsLbl: UILabel!
     
     var contactsList = [GroupParticipantsUserModel]()
+    var viewModel = HomeViewModel()
 //    var sessionsList = [String: Any]()
     
     // MARK: - View life cycle
@@ -248,7 +249,8 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     // Method for initial Setups
     func initialSetup(){
-        self.fetchContactsFromLocalDB()
+        fetchContactsList()
+        //self.fetchContactsFromLocalDB()
     }
     
     func fetchContactsFromLocalDB(){
@@ -256,6 +258,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.allChatsTableview.reloadData()
     }
 
+    
 
     
     @IBAction func settingsBtnAction(_ sender: Any) {
@@ -391,5 +394,55 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 //
 //
 //    }
+    
+}
+
+// MARK: - UI Setup
+extension HomeViewController{
+
+private func activityIndicatorStart() {
+    // Code for show activity indicator view
+    // ...
+    print("start")
+    
+    appDelegate.showProgressHUD(view: self.view)
+}
+
+private func activityIndicatorStop() {
+    // Code for stop activity indicator view
+    // ...
+    appDelegate.hideProgressHUD(view: self.view)
+    print("stop")
+}
+}
+
+
+//MARK: - API Calls
+extension HomeViewController{
+    private func fetchContactsList() {
+       
+        viewModel.updateLoadingStatus = {
+            print("updateLoadingStatus")
+
+            self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
+        }
+
+        viewModel.showAlertClosure = {
+            error in
+            print(error)
+            print("showAlertClosure")
+            CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
+  
+        }
+        
+        viewModel.didFinishFetch = {
+            print("Saving data to Local DB")
+          
+            ContactsDatabaseQueries.addAndUpdateContactsInLocalDB(contacts : self.viewModel.contactsList ?? [])
+        }
+        
+        viewModel.fetchContacts()
+    }
+    
     
 }

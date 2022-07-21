@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import SystemConfiguration
+import SDWebImage
 
 class CommonFxns: NSObject {
 
@@ -320,6 +321,10 @@ class CommonFxns: NSObject {
     class func validateLength(text : String, size : (min : Int, max : Int)) -> Bool{
             return (size.min...size.max).contains(text.count)
         }
+    
+    class func setImage(imageView:UIImageView,urlString:String?){
+        imageView.sd_setImage(with: URL(string: urlString ?? ""), placeholderImage:UIImage(named: "privateAvatar"), options: .allowInvalidSSLCertificates, completed: nil)
+    }
 }
 
 

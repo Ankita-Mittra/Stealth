@@ -181,6 +181,7 @@ enum enumAPIEndPoints: String {
     case removeMembers = "groups/members/remove" // get
     case getAllGroupMembers = "groups/getMembers?groupId=" // get
     case getAllGroups = "groups/listGroup"
+    
     case uploadFile = "media/upload"
     
     // Chats
