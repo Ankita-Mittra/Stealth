@@ -15,6 +15,7 @@ class GroupChatViewController: BaseViewController {
 
 //    var groupId = String()
     var groupInfo : GroupsModel!
+    var headerView : GroupChatHeaderView?
     
     // MARK: - View life cycle
     
@@ -23,6 +24,17 @@ class GroupChatViewController: BaseViewController {
 
         // Initial Setup
         self.initialUISetup()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+        self.navigationItem.largeTitleDisplayMode = .never
+        
     }
     
     // MARK: - Methods
@@ -33,18 +45,54 @@ class GroupChatViewController: BaseViewController {
 
         self.chatTableView.rowHeight = UITableView.automaticDimension
         self.chatTableView.estimatedRowHeight = 100
+        setupNavigationBar()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+    func setupNavigationBar(){
+        //back buttton
+        let backbtn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        backbtn.setImage(UIImage(named: "backIcon"), for: .normal)
+        backbtn.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
+        
+        headerView = GroupChatHeaderView(frame: CGRect(x: 0, y: 0, width: 150, height: 35))
+        headerView?.lblGroupName.text = groupInfo.name
+        headerView?.lblDescription.text = groupInfo.description
+        CommonFxns.setImage(imageView: headerView!.imgPhoto, urlString: groupInfo.imageUrl)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(toDetails))
+        headerView?.addGestureRecognizer(tap)
+        self.navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: backbtn),UIBarButtonItem(customView: headerView!)]
+        
+        //video call buttton
+        let videobtn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        videobtn.setImage(UIImage(named: "chatVideoCall"), for: .normal)
+        videobtn.addTarget(self, action: #selector(actionVideoCall), for: .touchUpInside)
+        
+        //Audio call buttton
+        let audiobtn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        audiobtn.setImage(UIImage(named: "chatVoiceCall"), for: .normal)
+        audiobtn.addTarget(self, action: #selector(actionAudioCall), for: .touchUpInside)
+        
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: videobtn),UIBarButtonItem(customView: audiobtn)]
 
-        self.tabBarController?.tabBar.isHidden = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-
-        self.navigationItem.largeTitleDisplayMode = .never
-        self.setSmallHeaderAndHideLargeHeader(header: "Group chat")
+    @objc func actionBack(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func actionVideoCall(){
+    }
+    
+    @objc func actionAudioCall(){
+    }
+    
+    @objc func toDetails(){
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupDetails.rawValue) as? GroupDetailsViewController
+        otherController?.groupInfo = self.groupInfo
+        self.navigationController?.pushViewController(otherController!, animated: true)
+        
     }
 
     

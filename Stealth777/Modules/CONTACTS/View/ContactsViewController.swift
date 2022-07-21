@@ -15,7 +15,7 @@ class ContactsViewController: BaseViewController {
     @IBOutlet weak var contactsListTableView: UITableView!
     @IBOutlet weak var noContactsLbl: UILabel!
     
-    var contactsList = [UserModel]()
+    var contactsList = [GroupParticipantsUserModel]()
     
     // MARK: - Injection
 
@@ -35,6 +35,7 @@ class ContactsViewController: BaseViewController {
 
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setToolbarHidden(true, animated: true)
+        self.fetchContactsFromLocalDB()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,7 +58,7 @@ class ContactsViewController: BaseViewController {
         self.setStrings() // Set UI Strings as per the selected language
         
          //API call to fetch contacts
-        self.fetchContactsList()
+        //self.fetchContactsList()
 
 
     }
@@ -71,6 +72,13 @@ class ContactsViewController: BaseViewController {
         self.contactsListTableView.rowHeight = UITableView.automaticDimension
         self.contactsListTableView.estimatedRowHeight = 100
     }
+    
+    func fetchContactsFromLocalDB(){
+        
+        self.contactsList = ContactsDatabaseQueries.fetchAllContactsFromLocalDB()
+        self.contactsListTableView.reloadData()
+    }
+    
     
     func setStrings(){
 //        self.text = LocalizationSystem.sharedInstance.localizedStringForKey(key:"change_pwd", comment: "")
@@ -110,13 +118,13 @@ class ContactsViewController: BaseViewController {
             // reload table
             
                 // save users locally
-            self.contactsList = self.viewModel.contactsList ?? []
+           // self.contactsList = self.viewModel.contactsList ?? []
             
             
             self.contactsListTableView.reloadData()
 //            ContactsDatabaseQueries.deleteUserDbData()
             
-            ContactsDatabaseQueries.addAndUpdateContactsInLocalDB(contacts : self.contactsList)
+           // ContactsDatabaseQueries.addAndUpdateContactsInLocalDB(contacts : self.contactsList)
         }
     }
     

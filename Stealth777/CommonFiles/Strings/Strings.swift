@@ -32,4 +32,9 @@ struct AlertMessages {
     static let NOT_SUFFICIENT_BALANCE = "Wallet balance insufficient."
     static let LOGOUT = "Are you sure you want to log out?"
     static let PROFILE_EMPTY = "You must complete your profile"
+    static let ERROR_TITLE = "Error"
+    static let CAST_ERROR = "Please try again later"
+    
 }
+
+

@@ -6,3 +6,63 @@
 //
 
 import Foundation
+class HomeViewModel{
+    
+    //MARK: - Properties
+    var contactsList: [UserModel]?{
+        didSet{
+            self.didFinishFetch?()
+        }
+    }
+    private var apiService = ContactsAPIServices()
+    var isLoading: Bool = true {
+        didSet { self.updateLoadingStatus?() }
+    }
+    
+    // MARK: - Closures for callback, since we are not using the ViewModel to the View.
+    var showAlertClosure: ((String) -> ())?
+    var updateLoadingStatus: (() -> ())?
+    var didFinishFetch: (() -> ())?
+
+    
+    
+    // MARK: - Network call
+    
+    
+    func fetchContacts() {
+        self.updateLoadingStatus?()
+        self.apiService.getContacts(completion: { data, succeeded, error in
+            print("getContacts   /.....")
+            self.isLoading = false
+            if succeeded {
+                print("succeeded....", succeeded)
+                guard let tempData = data else{
+                    self.showAlertClosure?(AlertMessages.CAST_ERROR)
+                    return
+                }
+                print("tempData....", tempData)
+               
+                var contacts = [UserModel]()
+                if let data =  tempData["data"] as? [String : AnyObject]{
+
+                    if let users = data["user"] as?  [[String: Any]]{
+                        print("users...", users)
+                        for user in users{
+                            let dict = UserModel(with: user)
+                            
+                            contacts.append(dict)
+                            print("dict...", dict)
+                        }
+                        self.contactsList = contacts
+                        
+                    }
+                }
+            } else {
+                self.showAlertClosure?(error)
+                print("error....", error)
+            }
+            
+        })
+    }
+    
+}
