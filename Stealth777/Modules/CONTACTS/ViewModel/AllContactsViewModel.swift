@@ -36,7 +36,8 @@ class AllContactsViewModel {
     var showAlertClosure: (() -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
-    
+    var successAlert:((String)->Void)?
+    var errorAlert:((String)->Void)?
     
     // MARK: - Constructor
     
@@ -121,6 +122,22 @@ class AllContactsViewModel {
                 self.error = error as? Error
                 self.isLoading = false
                 print("error....", error)
+            }
+        })
+    }
+    
+    func callMakeAdmin(userID:String,groupID:String){
+        self.updateLoadingStatus?()
+        let param:[String:Any] = ["id":groupID,
+                     "userId":userID,
+                     "status":3]
+        self.apiService?.setGroupAdmin(parameters: param, completion: { data, succeeded, error in
+            self.isLoading = false
+            if succeeded{
+                self.successAlert?(error)
+            }
+            else{
+                self.errorAlert?(error)
             }
         })
     }

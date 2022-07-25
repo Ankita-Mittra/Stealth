@@ -40,6 +40,12 @@ class PrivateChatViewModel {
         }
     }
     
+    var messageData:MessageData?{
+        didSet{
+            self.didFinishFetch?()
+        }
+    }
+    
     var error: Error? {
         didSet { self.showAlertClosure?() }
     }
@@ -68,37 +74,14 @@ class PrivateChatViewModel {
     
     func getMessages(userID: String) {
         self.updateLoadingStatus?()
-        self.apiService?.getMessageByUserID(receiverID: userID, completion: { data, succeeded, error in
+        let param = ["receiverId":userID]
+        self.apiService?.getMessageByUserID(param: param, completion: { data, succeeded, error in
             print("getMessages   /.....")
-            if succeeded {
-                print("succeeded....", succeeded)
-                guard let tempData = data else{
-                    self.error = error as? Error
-                    self.isLoading = false
-                    return
-                }
-                print("tempData....", tempData)
-               
-                var messages = [UserModel]()
-                if let data =  tempData["data"] as? [String : AnyObject]{
-
-                    if let allMessages = data["message"] as?  [[String: Any]]{
-                        print("messages...", messages)
-                        for user in allMessages{
-                            let dict = UserModel(with: user)
-                            
-                            messages.append(dict)
-                            
-                            print("dict...", dict)
-                        }
-                        self.messagesList = messages
-                    }
-                }
-            } else {
-                self.error = error as? Error
-                self.isLoading = false
-                print("error....", error)
+            self.isLoading = false
+            if succeeded{
+                
             }
+            
         })
     }
     

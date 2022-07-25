@@ -174,19 +174,24 @@ enum enumAPIEndPoints: String {
     case unfriendUser = "users/unFriendUser"
     // Groups
     
-    case getGroupInvitations = "groups/inviteList" // get
+    case getGroupInvitations = "groups/groupInviteList" // get
     case responseInvitaions = "groups/responseInvite" // groupId, status
     case createGroup = "groups/createGroup" // groupName, mediaId, members, anonymous, disperse, disperseDate, description
     case addMembers = "groups/addMembers" // get
     case removeMembers = "groups/members/remove" // get
     case getAllGroupMembers = "groups/getMembers?groupId=" // get
     case getAllGroups = "groups/listGroup"
+    case deleteGroup = "groups/messages"
+    case exitGroup = "groups/leaveGroup"
+    case setAdmin = "groups/setAdmin"
     
     case uploadFile = "media/upload"
     
     // Chats
     case sendMessage = "groups/sendMsg"
-    case getMessageByUserID = "chat?receiverId="
+    case getMessageByUserID = "chat/getMsgByUserId"
+    case listSession = "chat/listSession"
+    
     
 }
 
@@ -233,4 +238,8 @@ enum enumAPICommonKeys: String{
 
 }
 
-
+extension String{
+var localized:String{
+    return NSLocalizedString(self, comment: "")
+}
+}

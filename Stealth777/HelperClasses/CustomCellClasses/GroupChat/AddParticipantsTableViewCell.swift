@@ -18,7 +18,7 @@ class AddParticipantsTableViewCell: UITableViewHeaderFooterView {
     
     @IBOutlet weak var addParticipantsLbl: UILabel!
     @IBOutlet weak var viewAllMembersBtn: UIButton!
-    
+    @IBOutlet weak var addParticipantsStack: UIStackView!
     static let identifier = "AddParticipantsTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "AddParticipantsTableViewCell", bundle: nil)
@@ -30,6 +30,8 @@ class AddParticipantsTableViewCell: UITableViewHeaderFooterView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(addMembers))
+        addParticipantsStack.addGestureRecognizer(tap)
         // Initialization code
     }
 
@@ -41,6 +43,10 @@ class AddParticipantsTableViewCell: UITableViewHeaderFooterView {
     @IBAction func addParticipantsBtnAction(_ sender: Any) {
         self.delegate?.addParticipantsBtnSelected(cell: self)
 
+    }
+    
+    @objc func addMembers(){
+        self.delegate?.addParticipantsBtnSelected(cell: self)
     }
     
 }

@@ -161,6 +161,7 @@ class CommonFxns: NSObject {
            "Authorization" : String(format: "Bearer \(token)")
         ]
         
+        
         return headers
     }
     
@@ -322,9 +323,33 @@ class CommonFxns: NSObject {
             return (size.min...size.max).contains(text.count)
         }
     
-    class func setImage(imageView:UIImageView,urlString:String?){
-        imageView.sd_setImage(with: URL(string: urlString ?? ""), placeholderImage:UIImage(named: "privateAvatar"), options: .allowInvalidSSLCertificates, completed: nil)
+    class func setImage(imageView:UIImageView,urlString:String?,placeHolder:UIImage?){
+        imageView.sd_setImage(with: URL(string: urlString ?? ""), placeholderImage:placeHolder, options: .allowInvalidSSLCertificates, completed: nil)
     }
+    
+    class func showConfirmationAlert(title:String,message:String,okTitle:String = AlertMessages.ALERT_OK,cancelTitle:String = AlertMessages.ALERT_CANCEL,vc:UIViewController,success:@escaping(()->Void)){
+        let refreshAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: okTitle, style: .default, handler: { (action: UIAlertAction!) in
+            success()
+        }))
+
+        refreshAlert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: { (action: UIAlertAction!) in
+            vc.dismiss(animated: true)
+        }))
+        vc.present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    class func showAlertWithCompletion(title:String,message:String,vc:UIViewController,success:@escaping(()->Void)){
+        let refreshAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: AlertMessages.ALERT_OK, style: .default, handler: { (action: UIAlertAction!) in
+            success()
+        }))
+
+        vc.present(refreshAlert, animated: true, completion: nil)
+    }
+    
 }
 
 

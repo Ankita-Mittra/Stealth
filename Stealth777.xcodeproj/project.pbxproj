@@ -188,8 +188,6 @@
 		20F2843727E8550A00043F8C /* GroupInfoHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F2843527E8550A00043F8C /* GroupInfoHeaderTableViewCell.swift */; };
 		20F2843827E8550A00043F8C /* GroupInfoHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20F2843627E8550A00043F8C /* GroupInfoHeaderTableViewCell.xib */; };
 		20F99D19283E66CA0088A487 /* ContactsAPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F99D18283E66CA0088A487 /* ContactsAPIServices.swift */; };
-		20F99D1B283F73A30088A487 /* SessionListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F99D1A283F73A30088A487 /* SessionListModel.swift */; };
-		20F99D1D283F73C80088A487 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F99D1C283F73C80088A487 /* MessageModel.swift */; };
 		20F99D21283FAE4C0088A487 /* GroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F99D20283FAE4C0088A487 /* GroupsModel.swift */; };
 		20F9AE79283B89850057C881 /* BigIntConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F9AE78283B89850057C881 /* BigIntConverter.swift */; };
 		20F9AE7C283B8A0F0057C881 /* BigNumber in Frameworks */ = {isa = PBXBuildFile; productRef = 20F9AE7B283B8A0F0057C881 /* BigNumber */; };
@@ -215,8 +213,17 @@
 		20FBC6FD27C7C240004E0697 /* UIButtonFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6F927C7C240004E0697 /* UIButtonFontSize.swift */; };
 		20FBC6FE27C7C240004E0697 /* UILabelFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6FA27C7C240004E0697 /* UILabelFontSize.swift */; };
 		5D26F1044F2A963EFCBFEF4F /* Pods_Stealth777.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79DB081BD4246E2A7604F798 /* Pods_Stealth777.framework */; };
+		6B324790288E6F41002EC954 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B32478F288E6F41002EC954 /* WebService.swift */; };
+		6B32479D288EC8B0002EC954 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B324799288EC8AF002EC954 /* MessageModel.swift */; };
+		6B32479E288EC8B0002EC954 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B32479A288EC8B0002EC954 /* MessageData.swift */; };
+		6B32479F288EC8B0002EC954 /* MessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B32479B288EC8B0002EC954 /* MessageContent.swift */; };
+		6B3247A0288EC8B0002EC954 /* QuoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B32479C288EC8B0002EC954 /* QuoteMessage.swift */; };
+		6B3247A4288ECA75002EC954 /* Msg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3247A1288ECA75002EC954 /* Msg.swift */; };
+		6B3247A5288ECA75002EC954 /* SessionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3247A2288ECA75002EC954 /* SessionList.swift */; };
+		6B3247A6288ECA75002EC954 /* SessionListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3247A3288ECA75002EC954 /* SessionListData.swift */; };
 		6B3E471628896C8300AD5528 /* GroupChatHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3E471528896C8300AD5528 /* GroupChatHeaderView.xib */; };
 		6B3E4718288971C200AD5528 /* GroupChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E4717288971C200AD5528 /* GroupChatHeaderView.swift */; };
+		6B77AABD288A89BC004758D7 /* GroupDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B77AABC288A89BC004758D7 /* GroupDetailsViewModel.swift */; };
 		762BA5D6DDFA56EDE04ACFAD /* Pods_Stealth777_Stealth777UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF060544A2F70F3A15070558 /* Pods_Stealth777_Stealth777UITests.framework */; };
 		9A5EFDBA281D5FD400AB84A6 /* GroupSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5EFDB9281D5FD400AB84A6 /* GroupSettingsViewModel.swift */; };
 		9A5EFDBC281D5FEA00AB84A6 /* AllGroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5EFDBB281D5FEA00AB84A6 /* AllGroupsViewModel.swift */; };
@@ -433,8 +440,6 @@
 		20F2843F27E8622100043F8C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		20F2844027E8622100043F8C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		20F99D18283E66CA0088A487 /* ContactsAPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsAPIServices.swift; sourceTree = "<group>"; };
-		20F99D1A283F73A30088A487 /* SessionListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListModel.swift; sourceTree = "<group>"; };
-		20F99D1C283F73C80088A487 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageModel.swift; path = Stealth777/Model/Chats/MessageModel.swift; sourceTree = SOURCE_ROOT; };
 		20F99D20283FAE4C0088A487 /* GroupsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsModel.swift; sourceTree = "<group>"; };
 		20F9AE78283B89850057C881 /* BigIntConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigIntConverter.swift; sourceTree = "<group>"; };
 		20F9AE7D283BC1620057C881 /* ImportedTokenList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedTokenList.swift; sourceTree = "<group>"; };
@@ -464,8 +469,17 @@
 		20FBC6FA27C7C240004E0697 /* UILabelFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelFontSize.swift; sourceTree = "<group>"; };
 		4808A64A0C031DAF1D9A99BA /* Pods-Stealth777Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stealth777Tests.debug.xcconfig"; path = "Target Support Files/Pods-Stealth777Tests/Pods-Stealth777Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		627E5B42235A6DDD3E330867 /* Pods_Stealth777Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stealth777Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B32478F288E6F41002EC954 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		6B324799288EC8AF002EC954 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		6B32479A288EC8B0002EC954 /* MessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
+		6B32479B288EC8B0002EC954 /* MessageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageContent.swift; sourceTree = "<group>"; };
+		6B32479C288EC8B0002EC954 /* QuoteMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteMessage.swift; sourceTree = "<group>"; };
+		6B3247A1288ECA75002EC954 /* Msg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Msg.swift; sourceTree = "<group>"; };
+		6B3247A2288ECA75002EC954 /* SessionList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionList.swift; sourceTree = "<group>"; };
+		6B3247A3288ECA75002EC954 /* SessionListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListData.swift; sourceTree = "<group>"; };
 		6B3E471528896C8300AD5528 /* GroupChatHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupChatHeaderView.xib; sourceTree = "<group>"; };
 		6B3E4717288971C200AD5528 /* GroupChatHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatHeaderView.swift; sourceTree = "<group>"; };
+		6B77AABC288A89BC004758D7 /* GroupDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewModel.swift; sourceTree = "<group>"; };
 		79DB081BD4246E2A7604F798 /* Pods_Stealth777.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stealth777.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F25442004A06EA1861712C1 /* Pods-Stealth777.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stealth777.release.xcconfig"; path = "Target Support Files/Pods-Stealth777/Pods-Stealth777.release.xcconfig"; sourceTree = "<group>"; };
 		9A5EFDB9281D5FD400AB84A6 /* GroupSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -875,7 +889,10 @@
 		209EE820284F33380074C354 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
-				20F99D1C283F73C80088A487 /* MessageModel.swift */,
+				6B32479A288EC8B0002EC954 /* MessageData.swift */,
+				6B324799288EC8AF002EC954 /* MessageModel.swift */,
+				6B32479B288EC8B0002EC954 /* MessageContent.swift */,
+				6B32479C288EC8B0002EC954 /* QuoteMessage.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -1157,6 +1174,7 @@
 			isa = PBXGroup;
 			children = (
 				209C3C3B27F2FC65002C554D /* APIService.swift */,
+				6B32478F288E6F41002EC954 /* WebService.swift */,
 				209C3C3D27F2FCAE002C554D /* APIService+Login.swift */,
 				208BE8A327F720DA00112DA3 /* SignUpAPIService.swift */,
 				20EC25A52811466F005EA2B8 /* UserAPIServices.swift */,
@@ -1473,7 +1491,9 @@
 		9A5EFDB5281D5EE600AB84A6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				20F99D1A283F73A30088A487 /* SessionListModel.swift */,
+				6B3247A1288ECA75002EC954 /* Msg.swift */,
+				6B3247A2288ECA75002EC954 /* SessionList.swift */,
+				6B3247A3288ECA75002EC954 /* SessionListData.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1497,6 +1517,7 @@
 			children = (
 				9A5EFDB9281D5FD400AB84A6 /* GroupSettingsViewModel.swift */,
 				9A5EFDBB281D5FEA00AB84A6 /* AllGroupsViewModel.swift */,
+				6B77AABC288A89BC004758D7 /* GroupDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1829,6 +1850,7 @@
 				207D61A82849E00E00EDF8F0 /* GroupsAPIServices.swift in Sources */,
 				20F9AE7E283BC1620057C881 /* ImportedTokenList.swift in Sources */,
 				6B3E4718288971C200AD5528 /* GroupChatHeaderView.swift in Sources */,
+				6B77AABD288A89BC004758D7 /* GroupDetailsViewModel.swift in Sources */,
 				20B83C7527DA01F9003CA9D2 /* ContactsListTableViewCell.swift in Sources */,
 				20C9F6F227DB1B9400A4F3D4 /* EncryptionAlertTableViewCell.swift in Sources */,
 				209F9A5627E0A455008CFA80 /* TokenListTableViewCell.swift in Sources */,
@@ -1836,7 +1858,7 @@
 				20EFFB5227F43E1B009BD3B9 /* MarketPlaceViewController.swift in Sources */,
 				20B83C9627DA175F003CA9D2 /* GroupDetailsViewController.swift in Sources */,
 				200D993327D201F50088B2E5 /* PrivateChatSenderTableViewCell.swift in Sources */,
-				20F99D1D283F73C80088A487 /* MessageModel.swift in Sources */,
+				6B3247A4288ECA75002EC954 /* Msg.swift in Sources */,
 				2092FFC828059A3200A88616 /* EnterPasswordViewModel.swift in Sources */,
 				20E01CBD27DF49C2003DB80F /* ContactsViewModel.swift in Sources */,
 				20F9AE79283B89850057C881 /* BigIntConverter.swift in Sources */,
@@ -1853,12 +1875,14 @@
 				20EFFB5427F43E26009BD3B9 /* MyLifeViewController.swift in Sources */,
 				20249BBB28804C8800A4AEC3 /* ChatAPIServices.swift in Sources */,
 				20FBC6F027C7C223004E0697 /* UIButtonCustomClass.swift in Sources */,
+				6B3247A6288ECA75002EC954 /* SessionListData.swift in Sources */,
 				209F9A5927E0A9B2008CFA80 /* SendFundsViewController.swift in Sources */,
 				20FBC6FC27C7C240004E0697 /* UITextViewFontSize.swift in Sources */,
 				200D994427D2029D0088B2E5 /* HomeScreenListTableViewCell.swift in Sources */,
 				20E01CC327DF7FF1003DB80F /* UserInfoViewController.swift in Sources */,
 				200D991B27D1F8A00088B2E5 /* RecoverPasswordViewController.swift in Sources */,
 				2087DB0527E88E4B00D9F7C0 /* AppWireframe+PrivateChat.swift in Sources */,
+				6B324790288E6F41002EC954 /* WebService.swift in Sources */,
 				209C3C4E27F317E6002C554D /* ResultModel.swift in Sources */,
 				209F9A3A27E079A0008CFA80 /* SettingsViewController.swift in Sources */,
 				2043BA7727FADF1200D00041 /* SignUpRequest.swift in Sources */,
@@ -1904,6 +1928,8 @@
 				205AAB2527F1C7A7002FE32E /* SignUpResponse.swift in Sources */,
 				209EE822284F337B0074C354 /* GroupInvitaionsListModel.swift in Sources */,
 				9A5EFDBA281D5FD400AB84A6 /* GroupSettingsViewModel.swift in Sources */,
+				6B3247A0288EC8B0002EC954 /* QuoteMessage.swift in Sources */,
+				6B3247A5288ECA75002EC954 /* SessionList.swift in Sources */,
 				20AE96C827E46DFA00FB1EB6 /* AllContactsListViewController.swift in Sources */,
 				20B83C9427DA174D003CA9D2 /* GroupChatViewController.swift in Sources */,
 				20F2843427E851B600043F8C /* CreateGroupViewController.swift in Sources */,
@@ -1927,7 +1953,7 @@
 				2076BB0B283777730008C39C /* ReceiveAmountViewModel.swift in Sources */,
 				20857A8A28589DD20097A105 /* GroupParticipantsUserModel.swift in Sources */,
 				209F9A4227E07A02008CFA80 /* SecuritySettingsViewController.swift in Sources */,
-				20F99D1B283F73A30088A487 /* SessionListModel.swift in Sources */,
+				6B32479D288EC8B0002EC954 /* MessageModel.swift in Sources */,
 				204122D927EC7EEC00443D2D /* WalletPhraseCollectionViewCell.swift in Sources */,
 				2076BB09283774A10008C39C /* WalletDetailsViewModel.swift in Sources */,
 				201AEA2427EDF49500BA2CE0 /* SubscribeNowViewController.swift in Sources */,
@@ -1947,6 +1973,7 @@
 				20B83C9A27DA357B003CA9D2 /* AllGroupsViewController.swift in Sources */,
 				2018C80A27D732690011B238 /* EnterPasswordViewController.swift in Sources */,
 				209C5B002848AE270008F660 /* ContactsDatabaseQueries.swift in Sources */,
+				6B32479F288EC8B0002EC954 /* MessageContent.swift in Sources */,
 				200D990927D1F7720088B2E5 /* EnterUsernameViewModel.swift in Sources */,
 				20ECAFA627E0AD5E0018C877 /* ImportNewWalletViewController.swift in Sources */,
 				20B486F127CCC73B00E12376 /* CommonFxns.swift in Sources */,
@@ -1959,6 +1986,7 @@
 				200D98ED27D1F1250088B2E5 /* LoginViewModel.swift in Sources */,
 				209F9A3127E072A1008CFA80 /* SettingsTableViewCell.swift in Sources */,
 				200D991527D1F8210088B2E5 /* ImportWalletViewController.swift in Sources */,
+				6B32479E288EC8B0002EC954 /* MessageData.swift in Sources */,
 				200D993727D2021D0088B2E5 /* PrivateChatReceiverTableViewCell.swift in Sources */,
 				20857A8C2858C2B60097A105 /* CreateGroupViewModel.swift in Sources */,
 				200D98F827D1F58B0088B2E5 /* InitialViewModel.swift in Sources */,

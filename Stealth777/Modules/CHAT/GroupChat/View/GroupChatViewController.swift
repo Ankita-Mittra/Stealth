@@ -57,7 +57,7 @@ class GroupChatViewController: BaseViewController {
         headerView = GroupChatHeaderView(frame: CGRect(x: 0, y: 0, width: 150, height: 35))
         headerView?.lblGroupName.text = groupInfo.name
         headerView?.lblDescription.text = groupInfo.description
-        CommonFxns.setImage(imageView: headerView!.imgPhoto, urlString: groupInfo.imageUrl)
+        CommonFxns.setImage(imageView: headerView!.imgPhoto, urlString: groupInfo.imageUrl,placeHolder: UIImage(named: "privateAvatar"))
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(toDetails))
         headerView?.addGestureRecognizer(tap)
@@ -82,6 +82,7 @@ class GroupChatViewController: BaseViewController {
     }
     
     @objc func actionVideoCall(){
+        CommonFxns.showAlert(self, message: "Chats".localized, title: "testing chat".localized)
     }
     
     @objc func actionAudioCall(){

@@ -248,6 +248,14 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
                 let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.allGroups.rawValue) as? AllGroupsViewController
                 self.navigationController?.pushViewController(otherController!, animated: true)
             }
+           
+        } // section 1
+        else{
+            let storyBoard = UIStoryboard.init(name: enumStoryBoard.profile.rawValue, bundle: nil)
+            let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.otherUserProfile.rawValue) as? OtherUserProfileViewController
+            otherController?.user = contactsList[indexPath.row]
+            otherController?.isFromContacts = true
+            self.navigationController?.pushViewController(otherController!, animated: true)
         }
     }
 }

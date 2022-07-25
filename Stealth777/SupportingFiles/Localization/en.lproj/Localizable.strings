@@ -112,7 +112,8 @@
 // Wallet Module
 
 "send" = "Send";
-
+"Chats" = "Chats";
+"testing chat" = "testing chat";
 
 // MarketPlace
 

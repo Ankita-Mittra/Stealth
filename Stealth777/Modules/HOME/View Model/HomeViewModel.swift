@@ -14,7 +14,14 @@ class HomeViewModel{
             self.didFinishFetch?()
         }
     }
+    
+    var sessionData:SessionListData?{
+        didSet{
+          didFinishSessionFeth?()
+        }
+    }
     private var apiService = ContactsAPIServices()
+    private var chatAPIService = ChatAPIServices()
     var isLoading: Bool = true {
         didSet { self.updateLoadingStatus?() }
     }
@@ -24,6 +31,9 @@ class HomeViewModel{
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
 
+    //MARK: - Closures for sessionList API
+    var showSessionListError: ((String) -> ())?
+    var didFinishSessionFeth: (() -> ())?
     
     
     // MARK: - Network call
@@ -63,6 +73,21 @@ class HomeViewModel{
             }
             
         })
+    }
+    
+    
+    func fetchSessionList(){
+        self.updateLoadingStatus?()
+        self.chatAPIService.getSessionList { data, succeeded, error in
+            self.isLoading = false
+            if succeeded{
+                self.sessionData = data
+            }
+            else{
+                self.showSessionListError?(error)
+            }
+        }
+        
     }
     
 }
