@@ -7,80 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "17527509-F884-40B8-90A8-FF68D1BC0D05"
+            uuid = "75FE3D75-4B1E-4205-BAE9-0F05E1A3069F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/HOME/View Model/HomeViewModel.swift"
+            filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "fetchSessionList()"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "getMessages(userID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4EA338B9-CC8A-4292-BFFB-ACE985582528"
+            uuid = "4B7D252D-27EE-4427-9485-ADAC774E4D92"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/HOME/View Model/HomeViewModel.swift"
+            filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "fetchSessionList()"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "getMessages(userID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "29D4FFC3-C81E-4BE5-8E73-76A68F4D9FDF"
+            uuid = "41A9F722-1E2B-4A51-9093-DBBA879BE94D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/HOME/View/HomeViewController.swift"
+            filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
-            landmarkName = "fetchSession()"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "getMessages(userID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C7E169D9-E926-4025-941F-90F8C7D971D9"
+            uuid = "D842AA59-580D-4C2E-B066-848310401338"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Networking/APIService/ChatAPIServices.swift"
+            filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "getSessionList(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EF62AB43-8E4E-4084-8636-C4AF420AC5F1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Stealth777/Networking/APIService/ChatAPIServices.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "getSessionList(completion:)"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "getMessages(userID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

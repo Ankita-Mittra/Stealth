@@ -42,5 +42,24 @@ struct MessageModel {
 		readTime = json["readTime"].stringValue
 		sendTime = json["sendTime"].stringValue
 	}
+    
+    init(message:Messages){
+        msgId = message.msgId
+        groupId = message.groupId
+        senderName = message.groupId
+        msg = MessageContent("")//MessageContent(message.msg)
+        quoteMsgId = message.quoteMsgId
+        quoteMsg = QuoteMessage() //need config
+        enKey = message.enKey
+        senderPbKey = message.senderPbKey
+        state = Int(message.state)
+        senderId = message.senderId
+        receiverId = message.receiverId
+        imgUrl = message.senderImgUrl
+        msgType = Int(message.msgType)
+        readTime = CommonFxns.stringFromDate(date: message.readTime ?? Date())
+        sendTime =  CommonFxns.stringFromDate(date: message.sendTime ?? Date())
+        
+    }
 
 }

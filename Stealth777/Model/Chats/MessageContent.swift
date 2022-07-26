@@ -14,5 +14,9 @@ struct MessageContent {
 	init(_ json: JSON) {
 		text = json["text"].stringValue
 	}
+    
+    init(text:String?){
+        self.text = text
+    }
 
 }

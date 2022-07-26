@@ -11,4 +11,8 @@ struct QuoteMessage {
 
     init(_ json: JSON) {
     }
+    
+    init(){
+        
+    }
 }

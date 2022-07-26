@@ -11,7 +11,7 @@ import SystemConfiguration
 import SDWebImage
 
 class CommonFxns: NSObject {
-
+    
     // Method to change language to Selcted language at Home screen
     class func switchLanguageAtHomeScreen(selectedLanguageCode: String){
         
@@ -23,7 +23,7 @@ class CommonFxns: NSObject {
             UIView.appearance().semanticContentAttribute = .forceRightToLeft
             UITableView.appearance().semanticContentAttribute = .forceRightToLeft
             UISwitch.appearance().semanticContentAttribute = .forceRightToLeft
-//            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
+            //            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
             
             let navController:UINavigationController = appDelegate.window!.rootViewController as! UINavigationController
             navController.view.semanticContentAttribute = .forceRightToLeft
@@ -34,11 +34,11 @@ class CommonFxns: NSObject {
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
             UITableView.appearance().semanticContentAttribute = .forceLeftToRight
             UISwitch.appearance().semanticContentAttribute = .forceLeftToRight
-//            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
+            //            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
             
             let navController:UINavigationController = appDelegate.window!.rootViewController as! UINavigationController
             navController.view.semanticContentAttribute = .forceLeftToRight
-
+            
             navController.navigationBar.semanticContentAttribute = .forceLeftToRight
             
         case enumLanguageCodes.dutch.rawValue:
@@ -46,11 +46,11 @@ class CommonFxns: NSObject {
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
             UITableView.appearance().semanticContentAttribute = .forceLeftToRight
             UISwitch.appearance().semanticContentAttribute = .forceLeftToRight
-//            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
+            //            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
             
             let navController:UINavigationController = appDelegate.window!.rootViewController as! UINavigationController
             navController.view.semanticContentAttribute = .forceLeftToRight
-
+            
             navController.navigationBar.semanticContentAttribute = .forceLeftToRight
             
         case enumLanguageCodes.simplifiedChinese.rawValue:
@@ -58,51 +58,51 @@ class CommonFxns: NSObject {
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
             UITableView.appearance().semanticContentAttribute = .forceLeftToRight
             UISwitch.appearance().semanticContentAttribute = .forceLeftToRight
-//            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
+            //            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
             
             let navController:UINavigationController = appDelegate.window!.rootViewController as! UINavigationController
             navController.view.semanticContentAttribute = .forceLeftToRight
-
+            
             navController.navigationBar.semanticContentAttribute = .forceLeftToRight
             
         default:
-
+            
             LocalizationSystem.sharedInstance.setLanguage(languageCode: enumLanguageCodes.englishLanguage.rawValue)
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
             UITableView.appearance().semanticContentAttribute = .forceLeftToRight
             UISwitch.appearance().semanticContentAttribute = .forceLeftToRight
-//            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
+            //            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
             
             let navController:UINavigationController = appDelegate.window!.rootViewController as! UINavigationController
             navController.view.semanticContentAttribute = .forceLeftToRight
-
+            
             navController.navigationBar.semanticContentAttribute = .forceLeftToRight
             
         }
         
-//        if LocalizationSystem.sharedInstance.getLanguage() == enumLanguageCodes.arabicLanguage.rawValue {
-//            LocalizationSystem.sharedInstance.setLanguage(languageCode: enumLanguageCodes.englishLanguage.rawValue)
-//            UIView.appearance().semanticContentAttribute = .forceLeftToRight
-//            UITableView.appearance().semanticContentAttribute = .forceLeftToRight
-//            UISwitch.appearance().semanticContentAttribute = .forceLeftToRight
-////            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
-//
-//            let navController:UINavigationController = appDelegate.window!.rootViewController as! UINavigationController
-//            navController.view.semanticContentAttribute = .forceLeftToRight
-//
-//            navController.navigationBar.semanticContentAttribute = .forceLeftToRight
-//        } else {
-//            LocalizationSystem.sharedInstance.setLanguage(languageCode: enumLanguageCodes.arabicLanguage.rawValue)
-//            UIView.appearance().semanticContentAttribute = .forceRightToLeft
-//            UITableView.appearance().semanticContentAttribute = .forceRightToLeft
-//            UISwitch.appearance().semanticContentAttribute = .forceRightToLeft
-////            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
-//
-//            let navController:UINavigationController = appDelegate.window!.rootViewController as! UINavigationController
-//            navController.view.semanticContentAttribute = .forceRightToLeft
-//            navController.navigationBar.semanticContentAttribute = .forceRightToLeft
-//       }
-
+        //        if LocalizationSystem.sharedInstance.getLanguage() == enumLanguageCodes.arabicLanguage.rawValue {
+        //            LocalizationSystem.sharedInstance.setLanguage(languageCode: enumLanguageCodes.englishLanguage.rawValue)
+        //            UIView.appearance().semanticContentAttribute = .forceLeftToRight
+        //            UITableView.appearance().semanticContentAttribute = .forceLeftToRight
+        //            UISwitch.appearance().semanticContentAttribute = .forceLeftToRight
+        ////            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
+        //
+        //            let navController:UINavigationController = appDelegate.window!.rootViewController as! UINavigationController
+        //            navController.view.semanticContentAttribute = .forceLeftToRight
+        //
+        //            navController.navigationBar.semanticContentAttribute = .forceLeftToRight
+        //        } else {
+        //            LocalizationSystem.sharedInstance.setLanguage(languageCode: enumLanguageCodes.arabicLanguage.rawValue)
+        //            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        //            UITableView.appearance().semanticContentAttribute = .forceRightToLeft
+        //            UISwitch.appearance().semanticContentAttribute = .forceRightToLeft
+        ////            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
+        //
+        //            let navController:UINavigationController = appDelegate.window!.rootViewController as! UINavigationController
+        //            navController.view.semanticContentAttribute = .forceRightToLeft
+        //            navController.navigationBar.semanticContentAttribute = .forceRightToLeft
+        //       }
+        
         
         let storyboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
         let tabBarControllerObj = storyboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar .rawValue) as! PublicModeTabBarViewController
@@ -114,12 +114,12 @@ class CommonFxns: NSObject {
     
     // Method to LogOut from App and clear all the saved data
     class func directLogOut(){
-
+        
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
         print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
-
+        
         CommonFxns.popToInitialVC()
     }
     
@@ -155,14 +155,13 @@ class CommonFxns: NSObject {
     
     // Public method to fetch token from user defaults
     class func getAuthenticationToken() -> [String: String]{
-    
+        
         let token  = userDefault.value(forKey: USER_DEFAULT_token_Key) as? String ?? emptyStr
         let headers = [
-           "Authorization" : String(format: "Bearer \(token)")
+            "Authorization" : String(format: "Bearer \(token)")
         ]
-        
-        
         return headers
+        
     }
     
     // Public method to fetch userId from user defaults
@@ -171,7 +170,7 @@ class CommonFxns: NSObject {
         guard  let userInfoDict = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String: Any] else {
             return emptyStr
         }
-
+        
         let userId = userInfoDict[USER_DEFAULT_walletAddress_Key] as? String ?? emptyStr
         return userId
     }
@@ -221,7 +220,7 @@ class CommonFxns: NSObject {
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         reference.present(alert, animated: true, completion: nil)
     }
-
+    
     // Method to trim Strings
     class func trimString(string:String) -> String{
         return string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -240,7 +239,7 @@ class CommonFxns: NSObject {
         var valid = true
         let whitespace = NSCharacterSet.whitespaces
         let range = str.rangeOfCharacter(from: whitespace)
-
+        
         // range will be nil if no whitespace is found
         if range != nil {
             valid = false
@@ -255,9 +254,9 @@ class CommonFxns: NSObject {
         let emailRegEx = "^[0-9a-zA-Z]{4,25}$" // "^[0-9a-zA-Z\\_]{4,15}$"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-//        if !emailTest.evaluate(with: username){
-//            self.showAlert((appDelegate.window?.rootViewController)!, message: "Please enter valid username", title: "Alert")
-//        }
+        //        if !emailTest.evaluate(with: username){
+        //            self.showAlert((appDelegate.window?.rootViewController)!, message: "Please enter valid username", title: "Alert")
+        //        }
         return emailTest.evaluate(with: username)
     }
     
@@ -291,12 +290,12 @@ class CommonFxns: NSObject {
         guard let cfDict = CFNetworkCopySystemProxySettings() else { return false }
         let nsDict = cfDict.takeRetainedValue() as NSDictionary
         guard let keys = nsDict["__SCOPED__"] as? NSDictionary,
-            let allKeys = keys.allKeys as? [String] else { return false }
-
+              let allKeys = keys.allKeys as? [String] else { return false }
+        
         // Checking for tunneling protocols in the keys
         for key in allKeys {
             for protocolId in vpnProtocolsKeysIdentifiers
-                where key.starts(with: protocolId) {
+            where key.starts(with: protocolId) {
                 return true
             }
         }
@@ -305,23 +304,23 @@ class CommonFxns: NSObject {
     
     class func generateQRCode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)
-
+        
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(data, forKey: "inputMessage")
             let transform = CGAffineTransform(scaleX: 3, y: 3)
-
+            
             if let output = filter.outputImage?.transformed(by: transform) {
                 return UIImage(ciImage: output)
             }
         }
         return nil
     }
-
+    
     
     
     class func validateLength(text : String, size : (min : Int, max : Int)) -> Bool{
-            return (size.min...size.max).contains(text.count)
-        }
+        return (size.min...size.max).contains(text.count)
+    }
     
     class func setImage(imageView:UIImageView,urlString:String?,placeHolder:UIImage?){
         imageView.sd_setImage(with: URL(string: urlString ?? ""), placeholderImage:placeHolder, options: .allowInvalidSSLCertificates, completed: nil)
@@ -329,11 +328,11 @@ class CommonFxns: NSObject {
     
     class func showConfirmationAlert(title:String,message:String,okTitle:String = AlertMessages.ALERT_OK,cancelTitle:String = AlertMessages.ALERT_CANCEL,vc:UIViewController,success:@escaping(()->Void)){
         let refreshAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-
+        
         refreshAlert.addAction(UIAlertAction(title: okTitle, style: .default, handler: { (action: UIAlertAction!) in
             success()
         }))
-
+        
         refreshAlert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: { (action: UIAlertAction!) in
             vc.dismiss(animated: true)
         }))
@@ -342,12 +341,23 @@ class CommonFxns: NSObject {
     
     class func showAlertWithCompletion(title:String,message:String,vc:UIViewController,success:@escaping(()->Void)){
         let refreshAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-
+        
         refreshAlert.addAction(UIAlertAction(title: AlertMessages.ALERT_OK, style: .default, handler: { (action: UIAlertAction!) in
             success()
         }))
-
+        
         vc.present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    class func getDateFromMilliSeconds(mSeconds:Double) -> Date{
+        return Date(timeIntervalSince1970: (mSeconds / 1000))
+        
+    }
+    
+    class func stringFromDate(date:Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy hh:mm"
+        return dateFormatter.string(from: date)
     }
     
 }

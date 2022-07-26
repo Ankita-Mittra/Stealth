@@ -107,5 +107,13 @@ struct GroupParticipantsUserModel: Codable {
             "isSelected" : isSelected
         ]
     }
+    
+    func getChatUserDict() -> [String:String]{
+        var dict = [String:String]()
+        dict["id"] = userId ?? ""
+        dict["name"] = username ?? ""
+        dict["image"] = imageUrl ?? ""
+        return dict
+    }
 
 }

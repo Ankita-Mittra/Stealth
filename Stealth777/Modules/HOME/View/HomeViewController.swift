@@ -319,18 +319,19 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 0{
-            self.goToSelectedPrivateChatScreen()
+        if viewModel.sessionData?.sessionList?[indexPath.row].groupId?.isEmpty ?? false{
+            self.goToSelectedPrivateChatScreen(index:indexPath.row)
         }else{
             self.goToSelectedGroupChatScreen()
         }
     }
     
-    func goToSelectedPrivateChatScreen(){
+    func goToSelectedPrivateChatScreen(index:Int){
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.privateChat.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateChat.rawValue) as? PrivateChatViewController
-        
-//        self.navigationController?.navigationBar.addSubview(setTitle(title: "testing", subtitle: "test"))
+        guard let dict = viewModel.sessionData?.sessionList?[index].getChatUserDict() else {return}
+        let user = ChatUser(dict: dict)
+        otherController?.chatUser = user
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
     

@@ -33,7 +33,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="274" height="50"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nBy-Dm-5qF" customClass="UIImageViewCustomClass" customModule="Stealth777" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="0.0" y="5" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="nk3-mR-heI"/>
                                 <constraint firstAttribute="height" constant="30" id="ohq-Hm-YJN"/>
@@ -51,7 +51,7 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="oWS-tW-7r3">
-                            <rect key="frame" x="37" y="0.0" width="143" height="36.5"/>
+                            <rect key="frame" x="37" y="2" width="143" height="36.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozy-96-vPw">
                                     <rect key="frame" x="0.0" y="0.0" width="143" height="17"/>
@@ -94,10 +94,10 @@
                     <constraints>
                         <constraint firstItem="oWS-tW-7r3" firstAttribute="leading" secondItem="nBy-Dm-5qF" secondAttribute="trailing" constant="7" id="0e8-k4-eVm"/>
                         <constraint firstItem="nBy-Dm-5qF" firstAttribute="leading" secondItem="oPK-mY-fsz" secondAttribute="leading" id="6gg-Uv-m6V"/>
-                        <constraint firstItem="oWS-tW-7r3" firstAttribute="top" secondItem="nBy-Dm-5qF" secondAttribute="top" id="9Gf-jU-4xw"/>
-                        <constraint firstItem="nBy-Dm-5qF" firstAttribute="top" secondItem="oPK-mY-fsz" secondAttribute="top" id="eaz-ul-Ay8"/>
+                        <constraint firstItem="nBy-Dm-5qF" firstAttribute="top" secondItem="oPK-mY-fsz" secondAttribute="top" constant="5" id="eaz-ul-Ay8"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oWS-tW-7r3" secondAttribute="trailing" id="gOR-qG-7oR"/>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nBy-Dm-5qF" secondAttribute="bottom" constant="10" id="le2-Gy-2AD"/>
+                        <constraint firstItem="oWS-tW-7r3" firstAttribute="centerY" secondItem="nBy-Dm-5qF" secondAttribute="centerY" id="jHU-fO-dBv"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nBy-Dm-5qF" secondAttribute="bottom" constant="5" id="le2-Gy-2AD"/>
                     </constraints>
                 </view>
             </subviews>

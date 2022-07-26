@@ -21,46 +21,21 @@ import Foundation
 class PrivateChatViewModel {
     
     // MARK: - Properties
-
-    private var sendMessageSuccess : Bool? {
-
-        didSet {
-            guard let s = sendMessageSuccess else {return}
-            self.sendMessageResult = s
-            self.didFinishFetch?()
-        }
-    }
-    
-    private var messages : [UserModel]? {
-        
-        didSet {
-            guard let m = messages else {return}
-            self.bindDataToUI(with: m)
-            self.didFinishFetch?()
-        }
-    }
-    
-    var messageData:MessageData?{
+    var messageList:[MessageModel]?{
         didSet{
             self.didFinishFetch?()
         }
-    }
-    
-    var error: Error? {
-        didSet { self.showAlertClosure?() }
     }
     
     var isLoading: Bool = true {
         didSet { self.updateLoadingStatus?() }
     }
     
-    var messagesList: [UserModel]?
-    var sendMessageResult : Bool?
     private var apiService: ChatAPIServices?
 
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
 
-    var showAlertClosure: (() -> ())?
+    var showAlertClosure: ((String) -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
     
@@ -79,7 +54,10 @@ class PrivateChatViewModel {
             print("getMessages   /.....")
             self.isLoading = false
             if succeeded{
-                
+                self.messageList = data?.messages
+            }
+            else{
+                self.showAlertClosure?(error)
             }
             
         })
@@ -87,23 +65,16 @@ class PrivateChatViewModel {
     
     // Server call to send message
     func sendMessage(dict: [String: Any]) {
+       // self.isLoading = true
         self.updateLoadingStatus?()
         self.apiService?.sendMessage(parameters: dict, completion: { data, succeeded, error in
             print("sendMessage   /.....")
-            if succeeded {
-                print("succeeded....", succeeded)
-                guard let tempData = data else{
-                    self.error = error as? Error
-                    self.isLoading = false
-                    return
-                }
-                print("tempData....", tempData)
-
-                self.sendMessageSuccess = succeeded
-            } else {
-                self.error = error as? Error
-                self.isLoading = false
-                print("error....", error)
+            self.isLoading = false
+            if succeeded{
+                
+            }
+            else{
+                self.showAlertClosure?(error)
             }
         })
     }
@@ -111,9 +82,9 @@ class PrivateChatViewModel {
     // MARK: - UI Logic
     private func bindDataToUI(with messages: [UserModel]) {
         
-        self.messagesList = messages
         
-        print("bindDataToUI....", self.messages)
+        
+       // print("bindDataToUI....", self.messages)
     }
     
     
