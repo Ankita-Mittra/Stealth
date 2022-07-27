@@ -21,40 +21,21 @@ import Foundation
 class PrivateChatViewModel {
     
     // MARK: - Properties
-
-    private var sendMessageSuccess : Bool? {
-
-        didSet {
-            guard let s = sendMessageSuccess else {return}
-            self.sendMessageResult = s
+    var messageList:[MessageModel]?{
+        didSet{
             self.didFinishFetch?()
         }
-    }
-    
-    private var messages : [UserModel]? {
-        
-        didSet {
-            guard let m = messages else {return}
-            self.bindDataToUI(with: m)
-            self.didFinishFetch?()
-        }
-    }
-    
-    var error: Error? {
-        didSet { self.showAlertClosure?() }
     }
     
     var isLoading: Bool = true {
         didSet { self.updateLoadingStatus?() }
     }
     
-    var messagesList: [UserModel]?
-    var sendMessageResult : Bool?
     private var apiService: ChatAPIServices?
 
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
 
-    var showAlertClosure: (() -> ())?
+    var showAlertClosure: ((String) -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
     
@@ -68,59 +49,32 @@ class PrivateChatViewModel {
     
     func getMessages(userID: String) {
         self.updateLoadingStatus?()
-        self.apiService?.getMessageByUserID(receiverID: userID, completion: { data, succeeded, error in
+        let param = ["receiverId":userID]
+        self.apiService?.getMessageByUserID(param: param, completion: { data, succeeded, error in
             print("getMessages   /.....")
-            if succeeded {
-                print("succeeded....", succeeded)
-                guard let tempData = data else{
-                    self.error = error as? Error
-                    self.isLoading = false
-                    return
-                }
-                print("tempData....", tempData)
-               
-                var messages = [UserModel]()
-                if let data =  tempData["data"] as? [String : AnyObject]{
-
-                    if let allMessages = data["message"] as?  [[String: Any]]{
-                        print("messages...", messages)
-                        for user in allMessages{
-                            let dict = UserModel(with: user)
-                            
-                            messages.append(dict)
-                            
-                            print("dict...", dict)
-                        }
-                        self.messagesList = messages
-                    }
-                }
-            } else {
-                self.error = error as? Error
-                self.isLoading = false
-                print("error....", error)
+            self.isLoading = false
+            if succeeded{
+                self.messageList = data?.messages
             }
+            else{
+                self.showAlertClosure?(error)
+            }
+            
         })
     }
     
     // Server call to send message
     func sendMessage(dict: [String: Any]) {
+       // self.isLoading = true
         self.updateLoadingStatus?()
         self.apiService?.sendMessage(parameters: dict, completion: { data, succeeded, error in
             print("sendMessage   /.....")
-            if succeeded {
-                print("succeeded....", succeeded)
-                guard let tempData = data else{
-                    self.error = error as? Error
-                    self.isLoading = false
-                    return
-                }
-                print("tempData....", tempData)
-
-                self.sendMessageSuccess = succeeded
-            } else {
-                self.error = error as? Error
-                self.isLoading = false
-                print("error....", error)
+            self.isLoading = false
+            if succeeded{
+                
+            }
+            else{
+                self.showAlertClosure?(error)
             }
         })
     }
@@ -128,9 +82,9 @@ class PrivateChatViewModel {
     // MARK: - UI Logic
     private func bindDataToUI(with messages: [UserModel]) {
         
-        self.messagesList = messages
         
-        print("bindDataToUI....", self.messages)
+        
+       // print("bindDataToUI....", self.messages)
     }
     
     

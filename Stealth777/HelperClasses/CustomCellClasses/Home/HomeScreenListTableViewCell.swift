@@ -45,4 +45,19 @@ class HomeScreenListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configureCell(obj:SessionList?){
+        chatUsernameLbl.text = obj?.username
+        userMessageLbl.text = obj?.msg?.text
+        messageTimeLbl.text = obj?.sendTime
+        if obj?.unreadCount ?? 0 > 0{
+            unreadMessageCountLbl.text = "\(obj?.unreadCount ?? 0)"
+            unreadMessageCountLbl.isHidden = false
+        }
+        else{
+            unreadMessageCountLbl.isHidden = true
+        }
+        CommonFxns.setImage(imageView: chatUserImgView, urlString: obj?.imgUrl, placeHolder:  UIImage(named: "privateAvatar"))
+        
+    }
+    
 }

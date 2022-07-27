@@ -24,6 +24,15 @@ class UserDefaultsToStoreUserInfo: NSObject {
         userDefault.set(token, forKey: USER_DEFAULT_token_Key)
     }
     
+    class func getuserID()->String{
+        if let userInfo = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String:Any]{
+            if let id = userInfo[USER_DEFAULT_userID_Key] as? String{
+                return id
+            }
+        }
+        return ""
+    }
+    
 //    class func saveImportedTokenForLoggedInUser1(tokenContractAddress: String, userId: String, tokenName: String, tokenSymbol: String, tokenBalance: String, tokenPrecision: String){
 //
 //        var emptySet = Set<T>()

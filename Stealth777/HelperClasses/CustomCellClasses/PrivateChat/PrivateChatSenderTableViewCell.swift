@@ -38,4 +38,9 @@ class PrivateChatSenderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configureCell(obj:MessageModel?){
+        msgBodyLbl.text = obj?.msg?.text
+        msgTimelbl.text = obj?.sendTime
+    }
+    
 }

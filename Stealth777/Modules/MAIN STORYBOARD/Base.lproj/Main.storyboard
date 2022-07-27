@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4as-Nf-7um">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4as-Nf-7um">
     <device id="retina6_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -89,7 +89,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQJ-zj-BaR" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                        <rect key="frame" x="134" y="811.66666666666663" width="160" height="30.333333333333371"/>
+                                        <rect key="frame" x="134" y="811" width="160" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="vx0-eD-0eb"/>
                                         </constraints>
@@ -98,7 +98,7 @@
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Terms &amp; Conditions">
                                                     <attributes>
-                                                        <font key="NSFont" size="14" name="Roboto-Regular"/>
+                                                        <font key="NSFont" metaFont="system" size="14"/>
                                                         <integer key="NSUnderline" value="1"/>
                                                     </attributes>
                                                 </fragment>
@@ -184,7 +184,7 @@
             <size key="intrinsicContentSize" width="134.66666666666666" height="20"/>
         </designable>
         <designable name="xQJ-zj-BaR">
-            <size key="intrinsicContentSize" width="146" height="30.666666666666668"/>
+            <size key="intrinsicContentSize" width="150.66666666666666" height="31"/>
         </designable>
     </designables>
     <resources>

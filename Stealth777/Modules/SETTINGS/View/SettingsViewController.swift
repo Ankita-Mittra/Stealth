@@ -72,18 +72,10 @@ class SettingsViewController: BaseViewController {
     }
     
     func showLogoutAlert(){
-        let refreshAlert = UIAlertController(title: "Logout", message: "Are you sure you want to logout from App?", preferredStyle: UIAlertController.Style.alert)
-
-        refreshAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action: UIAlertAction!) in
-            
-            // Logout from the app and go to Inital screen
+        CommonFxns.showConfirmationAlert(title: AlertMessages.LOGOUT_TITLE, message: AlertMessages.LOGOUT_MESSAGE,vc: self) {
             CommonFxns.directLogOut()
-        }))
-
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-              print("Handle Cancel Logic here")
-        }))
-        present(refreshAlert, animated: true, completion: nil)
+        }
+       
     }
 
 }

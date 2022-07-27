@@ -43,4 +43,9 @@ class PrivateChatReceiverTableViewCell: UITableViewCell {
         }
     }
     
+    func configureCell(obj:MessageModel?){
+        msgBodyLbl.text = obj?.msg?.text
+        msgTimelbl.text = obj?.sendTime
+    }
+    
 }

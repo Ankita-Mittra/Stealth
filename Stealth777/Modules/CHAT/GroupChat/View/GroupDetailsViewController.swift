@@ -19,6 +19,7 @@ class GroupDetailsViewController: UIViewController, AddParticipantsTableViewCell
     var ownerAndAdminArr = [String]()
     var settingsArr = [String]()
     var controlsArr = [String]()
+    let viewModel = GroupDetailsViewModel()
 
     // MARK: - View life cycle
 
@@ -72,7 +73,75 @@ class GroupDetailsViewController: UIViewController, AddParticipantsTableViewCell
         otherController?.comingFor  = comingFor
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
+    
+    func callGroupDeletion(){
+        
+        viewModel.updateLoadingStatus = {
+            print("updateLoadingStatus")
 
+            self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
+        }
+        
+        viewModel.showAlertClosure = {
+            error in
+            CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
+        }
+        viewModel.didFinishAction = {
+            msg in
+            CommonFxns.showAlertWithCompletion(title: AlertMessages.SUCCESS_TITLE, message: msg, vc: self) {
+                guard let vc = self.navigationController?.viewControllers.filter({$0 is AllGroupsViewController}).first else{return}
+                self.dismiss(animated: false) {
+                    self.navigationController?.popToViewController(vc, animated: true)
+                }
+            }
+        }
+        viewModel.callDeleteGroup(id: self.groupInfo.id ?? "")
+    }
+    
+    func callExitGroup(){
+        
+        viewModel.updateLoadingStatus = {
+            print("updateLoadingStatus")
+
+            self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
+        }
+        
+        viewModel.showAlertClosure = {
+            error in
+            CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
+        }
+        viewModel.didFinishAction = {
+            msg in
+            CommonFxns.showAlertWithCompletion(title: AlertMessages.SUCCESS_TITLE, message: msg, vc: self) {
+                guard let vc = self.navigationController?.viewControllers.filter({$0 is AllGroupsViewController}).first else{return}
+                self.dismiss(animated: false) {
+                    self.navigationController?.popToViewController(vc, animated: true)
+                }
+            }
+        }
+        viewModel.callExitGroup(id: self.groupInfo.id ?? "")
+    }
+
+
+}
+
+// MARK: - UI Setup
+extension GroupDetailsViewController{
+
+private func activityIndicatorStart() {
+    // Code for show activity indicator view
+    // ...
+    print("start")
+    
+    appDelegate.showProgressHUD(view: self.view)
+}
+
+private func activityIndicatorStop() {
+    // Code for stop activity indicator view
+    // ...
+    appDelegate.hideProgressHUD(view: self.view)
+    print("stop")
+}
 }
 
 
@@ -215,7 +284,18 @@ extension GroupDetailsViewController: UITableViewDelegate, UITableViewDataSource
         case 3:
         
             if indexPath.row == 2{
+                if groupInfo.groupRole == 3{
                 print("delete....")
+                CommonFxns.showConfirmationAlert(title: AlertMessages.ALERT_TITLE, message: AlertMessages.DELETE_GROUP_MESSAGE, okTitle: AlertMessages.ALERT_YES, cancelTitle: AlertMessages.ALERT_NO, vc: self) {
+                    self.callGroupDeletion()
+                }
+                }
+                else{
+                    print("Exit")
+                    CommonFxns.showConfirmationAlert(title: AlertMessages.ALERT_TITLE, message: AlertMessages.EXIT_GROUP_MESSAGE, okTitle: AlertMessages.ALERT_YES, cancelTitle: AlertMessages.ALERT_NO, vc: self) {
+                        self.callExitGroup()
+                    }
+                }
             }
         case 2:
 

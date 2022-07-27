@@ -15,7 +15,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var topMenuView: UIView!
     @IBOutlet weak var noChatsLbl: UILabel!
     
-    var contactsList = [GroupParticipantsUserModel]()
+   // var contactsList = [GroupParticipantsUserModel]()
     var viewModel = HomeViewModel()
 //    var sessionsList = [String: Any]()
     
@@ -250,12 +250,13 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     // Method for initial Setups
     func initialSetup(){
         fetchContactsList()
+        fetchSession()
         //self.fetchContactsFromLocalDB()
     }
     
     func fetchContactsFromLocalDB(){
-        self.contactsList = ContactsDatabaseQueries.fetchAllContactsFromLocalDB()
-        self.allChatsTableview.reloadData()
+       // self.contactsList = ContactsDatabaseQueries.fetchAllContactsFromLocalDB()
+        //self.allChatsTableview.reloadData()
     }
 
     
@@ -293,25 +294,23 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let cell = UITableViewCell()
         
         guard  let chatCell = self.allChatsTableview.dequeueReusableCell(withIdentifier: HomeScreenListTableViewCell.identifier , for: indexPath) as? HomeScreenListTableViewCell else {
+            
             return cell
         }
-        
-        let dict = self.contactsList[indexPath.row]
-        chatCell.chatUsernameLbl.text = dict.username
-        chatCell.unreadMessageCountLbl.isHidden = false
+        chatCell.configureCell(obj: viewModel.sessionData?.sessionList?[indexPath.row])
         
         return chatCell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if contactsList.count == 0{
+        if viewModel.sessionData?.sessionList?.count == 0{
             self.noChatsLbl.isHidden = false
             self.noChatsLbl.text = "Make new friends to start a chat."
         }else{
             self.noChatsLbl.isHidden = true
         }
-        return contactsList.count
+        return viewModel.sessionData?.sessionList?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -320,18 +319,19 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 0{
-            self.goToSelectedPrivateChatScreen()
+        if viewModel.sessionData?.sessionList?[indexPath.row].groupId?.isEmpty ?? false{
+            self.goToSelectedPrivateChatScreen(index:indexPath.row)
         }else{
             self.goToSelectedGroupChatScreen()
         }
     }
     
-    func goToSelectedPrivateChatScreen(){
+    func goToSelectedPrivateChatScreen(index:Int){
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.privateChat.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateChat.rawValue) as? PrivateChatViewController
-        
-//        self.navigationController?.navigationBar.addSubview(setTitle(title: "testing", subtitle: "test"))
+        guard let dict = viewModel.sessionData?.sessionList?[index].getChatUserDict() else {return}
+        let user = ChatUser(dict: dict)
+        otherController?.chatUser = user
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
     
@@ -442,6 +442,21 @@ extension HomeViewController{
         }
         
         viewModel.fetchContacts()
+        
+        
+    }
+    
+    private func fetchSession(){
+        //MARK: - Handling session list
+        viewModel.showSessionListError = {
+            error in
+            CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
+        }
+        
+        viewModel.didFinishSessionFeth = {
+            self.allChatsTableview.reloadData()
+        }
+        viewModel.fetchSessionList()
     }
     
     
