@@ -16,9 +16,16 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var allChatsTableview: UITableView!
     @IBOutlet weak var topMenuView: UIView!
     @IBOutlet weak var noChatsLbl: UILabel!
+<<<<<<< HEAD
 
     // MARK: - Injection
     let viewModel = HomeViewModel()
+=======
+    
+   // var contactsList = [GroupParticipantsUserModel]()
+    var viewModel = HomeViewModel()
+//    var sessionsList = [String: Any]()
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
     
     // MARK: - View life cycle
 
@@ -249,6 +256,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     // Method for initial Setups
     func initialSetup(){
+<<<<<<< HEAD
         
         
         /*  Fetch ContactList, fetch GroupList, fetch sessionList
@@ -261,6 +269,10 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.fetchContactsList()
         self.fetchSession()
         self.fetchGroups()
+=======
+        fetchContactsList()
+        fetchSession()
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
         //self.fetchContactsFromLocalDB()
     }
     
@@ -452,8 +464,27 @@ extension HomeViewController{
             ContactsDatabaseQueries.addAndUpdateContactsInLocalDB(contacts : self.viewModel.contactsList ?? [])
         }
         
+<<<<<<< HEAD
         
         
+=======
+        viewModel.fetchContacts()
+        
+        
+    }
+    
+    private func fetchSession(){
+        //MARK: - Handling session list
+        viewModel.showSessionListError = {
+            error in
+            CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
+        }
+        
+        viewModel.didFinishSessionFeth = {
+            self.allChatsTableview.reloadData()
+        }
+        viewModel.fetchSessionList()
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
     }
     // MARK: - Handling session list
 

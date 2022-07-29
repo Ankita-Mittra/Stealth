@@ -64,9 +64,12 @@ class OtherUserProfileViewController: BaseViewController {
     @IBAction func actionChat(_ sender: Any) {
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.privateChat.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateChat.rawValue) as? PrivateChatViewController
+<<<<<<< HEAD
         guard let dict = user?.getChatUserDict() else {return}
         let user = ChatUser(dict: dict)
         otherController?.chatUser = user
+=======
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
         self.navigationController?.pushViewController(otherController!, animated: true)
         
     }

@@ -42,6 +42,7 @@ struct SessionList {
 		state = json["state"].intValue
 		unreadCount = json["unreadCount"].intValue
 	}
+<<<<<<< HEAD
     
     func getChatUserDict() -> [String:String]{
         var dict = [String:String]()
@@ -58,5 +59,7 @@ struct SessionList {
         dict["image"] = imgUrl
         return dict
     }
+=======
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
 
 }

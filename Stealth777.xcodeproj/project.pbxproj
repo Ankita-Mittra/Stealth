@@ -214,8 +214,11 @@
 		20FBC6FD27C7C240004E0697 /* UIButtonFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6F927C7C240004E0697 /* UIButtonFontSize.swift */; };
 		20FBC6FE27C7C240004E0697 /* UILabelFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6FA27C7C240004E0697 /* UILabelFontSize.swift */; };
 		5D26F1044F2A963EFCBFEF4F /* Pods_Stealth777.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79DB081BD4246E2A7604F798 /* Pods_Stealth777.framework */; };
+<<<<<<< HEAD
 		6B25EC18288FC8120014B87A /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EC17288FC8120014B87A /* ChatUser.swift */; };
 		6B25EC1A289003420014B87A /* ChatsDatabaseQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EC19289003420014B87A /* ChatsDatabaseQueries.swift */; };
+=======
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
 		6B324790288E6F41002EC954 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B32478F288E6F41002EC954 /* WebService.swift */; };
 		6B32479D288EC8B0002EC954 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B324799288EC8AF002EC954 /* MessageModel.swift */; };
 		6B32479E288EC8B0002EC954 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B32479A288EC8B0002EC954 /* MessageData.swift */; };
@@ -473,8 +476,11 @@
 		20FBC6FA27C7C240004E0697 /* UILabelFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelFontSize.swift; sourceTree = "<group>"; };
 		4808A64A0C031DAF1D9A99BA /* Pods-Stealth777Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stealth777Tests.debug.xcconfig"; path = "Target Support Files/Pods-Stealth777Tests/Pods-Stealth777Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		627E5B42235A6DDD3E330867 /* Pods_Stealth777Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stealth777Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+<<<<<<< HEAD
 		6B25EC17288FC8120014B87A /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		6B25EC19289003420014B87A /* ChatsDatabaseQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsDatabaseQueries.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
 		6B32478F288E6F41002EC954 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		6B324799288EC8AF002EC954 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		6B32479A288EC8B0002EC954 /* MessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
@@ -898,7 +904,10 @@
 			isa = PBXGroup;
 			children = (
 				6B32479A288EC8B0002EC954 /* MessageData.swift */,
+<<<<<<< HEAD
 				6B25EC17288FC8120014B87A /* ChatUser.swift */,
+=======
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
 				6B324799288EC8AF002EC954 /* MessageModel.swift */,
 				6B32479B288EC8B0002EC954 /* MessageContent.swift */,
 				6B32479C288EC8B0002EC954 /* QuoteMessage.swift */,

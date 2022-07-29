@@ -18,6 +18,7 @@ class HomeViewModel{
     
     var sessionData:SessionListData?{
         didSet{
+<<<<<<< HEAD
           didFinishSessionFetch?()
         }
     }
@@ -26,6 +27,13 @@ class HomeViewModel{
     private var chatAPIService = ChatAPIServices()
     private var groupAPIService = GroupsAPIServices()
     
+=======
+          didFinishSessionFeth?()
+        }
+    }
+    private var apiService = ContactsAPIServices()
+    private var chatAPIService = ChatAPIServices()
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
     var isLoading: Bool = true {
         didSet { self.updateLoadingStatus?() }
     }
@@ -37,7 +45,11 @@ class HomeViewModel{
 
     //MARK: - Closures for sessionList API
     var showSessionListError: ((String) -> ())?
+<<<<<<< HEAD
     var didFinishSessionFetch: (() -> ())?
+=======
+    var didFinishSessionFeth: (() -> ())?
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
     
     //MARK: - Closures for GroupList API
     var showGroupListError: ((String) -> ())?
@@ -102,6 +114,7 @@ class HomeViewModel{
         
     }
     
+<<<<<<< HEAD
     
     func fetchAllGroups() {
         
@@ -120,4 +133,6 @@ class HomeViewModel{
     
     
     
+=======
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
 }

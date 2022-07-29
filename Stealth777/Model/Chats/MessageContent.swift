@@ -14,9 +14,12 @@ struct MessageContent {
 	init(_ json: JSON) {
 		text = json["text"].stringValue
 	}
+<<<<<<< HEAD
     
     init(text:String?){
         self.text = text
     }
+=======
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
 
 }
