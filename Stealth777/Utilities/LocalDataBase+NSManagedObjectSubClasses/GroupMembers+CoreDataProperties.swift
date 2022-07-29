@@ -16,9 +16,14 @@ extension GroupMembers {
         return NSFetchRequest<GroupMembers>(entityName: "GroupMembers")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var status: Int16
+    @NSManaged public var bio: String?
+    @NSManaged public var username: String
     @NSManaged public var userId: String?
+    @NSManaged public var imgUrl: String?
+    @NSManaged public var thumbUrl: String?
+    @NSManaged public var groupRole: Int16
+
+
     @NSManaged public var group: Groups?
 
 }

@@ -45,7 +45,7 @@ class PrivateChatReceiverTableViewCell: UITableViewCell {
     
     func configureCell(obj:MessageModel?){
         msgBodyLbl.text = obj?.msg?.text
-        msgTimelbl.text = obj?.sendTime
+        msgTimelbl.text = CommonFxns.getDateFromMilliSeconds(mSeconds: obj?.sendTime ?? 0)
     }
     
 }

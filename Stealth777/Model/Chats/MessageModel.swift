@@ -22,8 +22,8 @@ struct MessageModel {
 	let receiverId: String?
 	let imgUrl: String?
 	let msgType: Int?
-	let readTime: String?
-	let sendTime: String?
+	let readTime: Int64?
+	let sendTime: Int64?
 
 	init(_ json: JSON) {
 		msgId = json["msgId"].stringValue
@@ -39,17 +39,17 @@ struct MessageModel {
 		receiverId = json["receiverId"].stringValue
 		imgUrl = json["imgUrl"].stringValue
 		msgType = json["msgType"].intValue
-		readTime = json["readTime"].stringValue
-		sendTime = json["sendTime"].stringValue
+		readTime = json["readTime"].int64Value
+		sendTime = json["sendTime"].int64Value
 	}
     
     init(message:Messages){
         msgId = message.msgId
         groupId = message.groupId
         senderName = message.groupId
-        msg = MessageContent("")//MessageContent(message.msg)
+        msg = MessageContent(CommonFxns.getJsonObject(strJson: message.msg ?? ""))
         quoteMsgId = message.quoteMsgId
-        quoteMsg = QuoteMessage() //need config
+        quoteMsg = QuoteMessage(CommonFxns.getJsonObject(strJson: message.quoteMsg ?? ""))
         enKey = message.enKey
         senderPbKey = message.senderPbKey
         state = Int(message.state)
@@ -57,9 +57,8 @@ struct MessageModel {
         receiverId = message.receiverId
         imgUrl = message.senderImgUrl
         msgType = Int(message.msgType)
-        readTime = CommonFxns.stringFromDate(date: message.readTime ?? Date())
-        sendTime =  CommonFxns.stringFromDate(date: message.sendTime ?? Date())
-        
+        readTime = message.readTime
+        sendTime =  message.sendTime
     }
 
 }

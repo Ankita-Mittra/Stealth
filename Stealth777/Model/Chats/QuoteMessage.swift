@@ -8,8 +8,10 @@ import Foundation
 import SwiftyJSON
 
 struct QuoteMessage {
+    var json = JSON()
 
     init(_ json: JSON) {
+        self.json = json
     }
     
     init(){
