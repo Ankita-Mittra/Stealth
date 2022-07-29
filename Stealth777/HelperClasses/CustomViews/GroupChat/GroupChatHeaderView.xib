@@ -51,11 +51,7 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="oWS-tW-7r3">
-<<<<<<< HEAD
                             <rect key="frame" x="37" y="2" width="143" height="36.5"/>
-=======
-                            <rect key="frame" x="37" y="0.0" width="143" height="36.5"/>
->>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozy-96-vPw">
                                     <rect key="frame" x="0.0" y="0.0" width="143" height="17"/>
@@ -98,17 +94,10 @@
                     <constraints>
                         <constraint firstItem="oWS-tW-7r3" firstAttribute="leading" secondItem="nBy-Dm-5qF" secondAttribute="trailing" constant="7" id="0e8-k4-eVm"/>
                         <constraint firstItem="nBy-Dm-5qF" firstAttribute="leading" secondItem="oPK-mY-fsz" secondAttribute="leading" id="6gg-Uv-m6V"/>
-<<<<<<< HEAD
                         <constraint firstItem="nBy-Dm-5qF" firstAttribute="top" secondItem="oPK-mY-fsz" secondAttribute="top" constant="5" id="eaz-ul-Ay8"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oWS-tW-7r3" secondAttribute="trailing" id="gOR-qG-7oR"/>
                         <constraint firstItem="oWS-tW-7r3" firstAttribute="centerY" secondItem="nBy-Dm-5qF" secondAttribute="centerY" id="jHU-fO-dBv"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nBy-Dm-5qF" secondAttribute="bottom" constant="5" id="le2-Gy-2AD"/>
-=======
-                        <constraint firstItem="oWS-tW-7r3" firstAttribute="top" secondItem="nBy-Dm-5qF" secondAttribute="top" id="9Gf-jU-4xw"/>
-                        <constraint firstItem="nBy-Dm-5qF" firstAttribute="top" secondItem="oPK-mY-fsz" secondAttribute="top" id="eaz-ul-Ay8"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oWS-tW-7r3" secondAttribute="trailing" id="gOR-qG-7oR"/>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nBy-Dm-5qF" secondAttribute="bottom" constant="10" id="le2-Gy-2AD"/>
->>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
                     </constraints>
                 </view>
             </subviews>

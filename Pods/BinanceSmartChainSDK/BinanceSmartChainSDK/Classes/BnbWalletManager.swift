@@ -234,7 +234,7 @@ public final class BnbWalletManager {
         do {
             let ks = findKeystoreMangerByAddress(walletAddress: walletAddress)
             let jsonEncoder = JSONEncoder()
-            let keydata = try jsonEncoder.encode(ks.keystoreParams)
+            let keydata = try jsonEncoder.encode(ks?.keystoreParams)
             let keystore = String(data: keydata, encoding: String.Encoding.utf8)
             return keystore!
         } catch {
@@ -250,7 +250,7 @@ public final class BnbWalletManager {
         do {
             let ks = findKeystoreMangerByAddress(walletAddress: walletAddress)
             let jsonEncoder = JSONEncoder()
-            let keydata = try jsonEncoder.encode(ks.keystoreParams)
+            let keydata = try jsonEncoder.encode(ks?.keystoreParams)
             let keystore = String(data: keydata, encoding: String.Encoding.utf8)
             mapToUpload["wallet_address"] = walletAddress
             mapToUpload["status"] = "SUCCESS"
@@ -525,45 +525,21 @@ public final class BnbWalletManager {
         print("writeToFile...")
         
     }
-//
-//    func findKeystoreMangerByAddress(walletAddress : String) -> EthereumKeystoreV3? {
-//        let ethWalletAddress = EthereumAddress(walletAddress)
-//        let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-//        let keystoreManager = KeystoreManager.managerForPath(userDir + "/keystore")
-//        for i in keystoreManager?.keystores ?? [] {
-//
-//            print("keystore iii...", i.getAddress()?.address.lowercased())
-//            print("keystore eth...", ethWalletAddress?.address.lowercased())
-//
-//            if (i.getAddress()?.address.lowercased() == ethWalletAddress?.address.lowercased()){
-//                return i
-//            }
-//        }
-//        return nil
-//    }
     
-    func findKeystoreMangerByAddress(walletAddress : String) -> BIP32Keystore{//EthereumKeystoreV3? {
+    func findKeystoreMangerByAddress(walletAddress : String) -> EthereumKeystoreV3? {
         let ethWalletAddress = EthereumAddress(walletAddress)
         let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let keystoreManager = KeystoreManager.managerForPath(userDir + "/keystore")
-        
-        let bipKeystore = keystoreManager?.bip32keystores
-        
-        print(bipKeystore)
-        print(bipKeystore?.count)
-        let bip = BIP32Keystore(walletAddress)
-        for i in keystoreManager?.bip32keystores ?? [] {
+        for i in keystoreManager?.keystores ?? [] {
             
-           
-            print("keystore iii...",  i.addresses?.first?.address.lowercased())// i.getAddress()?.address.lowercased())
+            print("keystore iii...", i.getAddress()?.address.lowercased())
             print("keystore eth...", ethWalletAddress?.address.lowercased())
 
-            if (i.addresses?.debugDescription == walletAddress ){//ethWalletAddress?.address.lowercased()){
+            if (i.getAddress()?.address.lowercased() == ethWalletAddress?.address.lowercased()){
                 return i
             }
         }
-        return bip!
+        return nil
     }
-    
     
 }

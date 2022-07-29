@@ -27,19 +27,6 @@ class PrivateChatViewModel {
         }
     }
     
-<<<<<<< HEAD
-=======
-    var messageData:MessageData?{
-        didSet{
-            self.didFinishFetch?()
-        }
-    }
-    
-    var error: Error? {
-        didSet { self.showAlertClosure?() }
-    }
-    
->>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
     var isLoading: Bool = true {
         didSet { self.updateLoadingStatus?() }
     }
@@ -67,16 +54,11 @@ class PrivateChatViewModel {
             print("getMessages   /.....")
             self.isLoading = false
             if succeeded{
-<<<<<<< HEAD
                 self.messageList = data?.messages
             }
             else{
                 self.showAlertClosure?(error)
             }
-=======
-                
-            }
->>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
             
         })
     }

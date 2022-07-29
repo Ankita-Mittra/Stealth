@@ -21,7 +21,6 @@ extension User {
     @NSManaged public var bio: String?
     @NSManaged public var id: String
     @NSManaged public var imgUrl: String?
-    @NSManaged public var thumbUrl: String?
     @NSManaged public var isBlock: Int16
     @NSManaged public var isMute: Int16
     @NSManaged public var isPin: Int16

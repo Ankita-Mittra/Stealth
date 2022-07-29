@@ -65,7 +65,6 @@
 		20249BBB28804C8800A4AEC3 /* ChatAPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20249BBA28804C8800A4AEC3 /* ChatAPIServices.swift */; };
 		2030F57227F5D2CC001D5F61 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2030F57127F5D2CC001D5F61 /* Strings.swift */; };
 		2030F57427F5EA84001D5F61 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2030F57327F5EA84001D5F61 /* SettingsViewModel.swift */; };
-		20333092289274FF00462670 /* GroupsDatabaseQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20333091289274FF00462670 /* GroupsDatabaseQueries.swift */; };
 		2037E76027D6106900674559 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037E75F27D6106900674559 /* ContactsViewController.swift */; };
 		2037E76427D6114D00674559 /* WalletDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037E76327D6114D00674559 /* WalletDetailsViewController.swift */; };
 		2037E76C27D6387200674559 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037E76B27D6387200674559 /* ResetPasswordViewController.swift */; };
@@ -214,11 +213,8 @@
 		20FBC6FD27C7C240004E0697 /* UIButtonFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6F927C7C240004E0697 /* UIButtonFontSize.swift */; };
 		20FBC6FE27C7C240004E0697 /* UILabelFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6FA27C7C240004E0697 /* UILabelFontSize.swift */; };
 		5D26F1044F2A963EFCBFEF4F /* Pods_Stealth777.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79DB081BD4246E2A7604F798 /* Pods_Stealth777.framework */; };
-<<<<<<< HEAD
 		6B25EC18288FC8120014B87A /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EC17288FC8120014B87A /* ChatUser.swift */; };
 		6B25EC1A289003420014B87A /* ChatsDatabaseQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EC19289003420014B87A /* ChatsDatabaseQueries.swift */; };
-=======
->>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
 		6B324790288E6F41002EC954 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B32478F288E6F41002EC954 /* WebService.swift */; };
 		6B32479D288EC8B0002EC954 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B324799288EC8AF002EC954 /* MessageModel.swift */; };
 		6B32479E288EC8B0002EC954 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B32479A288EC8B0002EC954 /* MessageData.swift */; };
@@ -312,7 +308,6 @@
 		20249BBA28804C8800A4AEC3 /* ChatAPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPIServices.swift; sourceTree = "<group>"; };
 		2030F57127F5D2CC001D5F61 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		2030F57327F5EA84001D5F61 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		20333091289274FF00462670 /* GroupsDatabaseQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsDatabaseQueries.swift; sourceTree = "<group>"; };
 		2037E75F27D6106900674559 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		2037E76327D6114D00674559 /* WalletDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailsViewController.swift; sourceTree = "<group>"; };
 		2037E76B27D6387200674559 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -476,11 +471,8 @@
 		20FBC6FA27C7C240004E0697 /* UILabelFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelFontSize.swift; sourceTree = "<group>"; };
 		4808A64A0C031DAF1D9A99BA /* Pods-Stealth777Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stealth777Tests.debug.xcconfig"; path = "Target Support Files/Pods-Stealth777Tests/Pods-Stealth777Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		627E5B42235A6DDD3E330867 /* Pods_Stealth777Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stealth777Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-<<<<<<< HEAD
 		6B25EC17288FC8120014B87A /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		6B25EC19289003420014B87A /* ChatsDatabaseQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsDatabaseQueries.swift; sourceTree = "<group>"; };
-=======
->>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
 		6B32478F288E6F41002EC954 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		6B324799288EC8AF002EC954 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		6B32479A288EC8B0002EC954 /* MessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
@@ -895,7 +887,6 @@
 			children = (
 				209C5AFF2848AE270008F660 /* ContactsDatabaseQueries.swift */,
 				6B25EC19289003420014B87A /* ChatsDatabaseQueries.swift */,
-				20333091289274FF00462670 /* GroupsDatabaseQueries.swift */,
 			);
 			path = LocalDatabaseHandlingClasses;
 			sourceTree = "<group>";
@@ -904,10 +895,7 @@
 			isa = PBXGroup;
 			children = (
 				6B32479A288EC8B0002EC954 /* MessageData.swift */,
-<<<<<<< HEAD
 				6B25EC17288FC8120014B87A /* ChatUser.swift */,
-=======
->>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
 				6B324799288EC8AF002EC954 /* MessageModel.swift */,
 				6B32479B288EC8B0002EC954 /* MessageContent.swift */,
 				6B32479C288EC8B0002EC954 /* QuoteMessage.swift */,
@@ -1854,7 +1842,6 @@
 				2087DB0827E88F3700D9F7C0 /* AppWireframe.swift in Sources */,
 				2004858B285CA89A007BF87E /* AllContactsViewModel.swift in Sources */,
 				200D994727D203A40088B2E5 /* PrivateChatViewModel.swift in Sources */,
-				20333092289274FF00462670 /* GroupsDatabaseQueries.swift in Sources */,
 				207D61AA2849E20A00EDF8F0 /* RequestsViewModel.swift in Sources */,
 				204122DD27EC98D800443D2D /* GroupMembersListCollectionViewCell.swift in Sources */,
 				20952F9D2837913300C77152 /* WalletFxns.swift in Sources */,
