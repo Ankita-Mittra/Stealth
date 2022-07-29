@@ -94,7 +94,9 @@ class CreateGroupViewController: BaseViewController {
             
             let anonymous = self.anonymousSwitch.isOn ? 1 : 0
 
-            let disperseDate = self.disperseManually ? "" : "date"
+            let disperseDate = self.disperseManually ? 0 : 0
+            
+            
             let disperse = self.disperseManually ? 1 : 0
             
             var groupMembers = [GroupMembersModel]()
@@ -104,7 +106,7 @@ class CreateGroupViewController: BaseViewController {
                 groupMembers.append(member)
             }
             
-            let groupInfo = GroupsModel(id: groupId, name: groupName, description: groupDescription, imageUrl: groupImgUrl, anonymous: anonymous, disperse: disperse, disperseDate: disperseDate, canSendMsg: 1, showQr: 1, isPin: 0, isMute: 0, groupRole: 3, members: groupMembers)
+            let groupInfo = GroupsModel(id: groupId, name: groupName, description: groupDescription, imageUrl: groupImgUrl, anonymous: anonymous, disperse: disperse, disperseDate: Int64(disperseDate), canSendMsg: 1, showQr: 1, isPin: 0, isMute: 0, groupRole: 3, members: groupMembers)
             
             self.showCustomtAlert(groupInfo: groupInfo)
         }

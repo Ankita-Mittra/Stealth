@@ -42,6 +42,7 @@ struct MessageModel {
 		readTime = json["readTime"].stringValue
 		sendTime = json["sendTime"].stringValue
 	}
+<<<<<<< HEAD
     
     init(message:Messages){
         msgId = message.msgId
@@ -61,5 +62,7 @@ struct MessageModel {
         sendTime =  CommonFxns.stringFromDate(date: message.sendTime ?? Date())
         
     }
+=======
+>>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
 
 }
