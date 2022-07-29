@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 import SystemConfiguration
 import SDWebImage
+import SwiftyJSON
 
 class CommonFxns: NSObject {
     
@@ -349,8 +350,11 @@ class CommonFxns: NSObject {
         vc.present(refreshAlert, animated: true, completion: nil)
     }
     
-    class func getDateFromMilliSeconds(mSeconds:Double) -> Date{
-        return Date(timeIntervalSince1970: (mSeconds / 1000))
+    class func getDateFromMilliSeconds(mSeconds:Int64) -> String{
+        let date = Date(timeIntervalSince1970: (Double(mSeconds) / 1000))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy hh:mm"
+        return dateFormatter.string(from: date)
         
     }
     
@@ -358,6 +362,15 @@ class CommonFxns: NSObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy hh:mm"
         return dateFormatter.string(from: date)
+    }
+    
+    class func getJsonObject(strJson:String) -> JSON{
+        if let data = strJson.data(using: .utf8) {
+            if let jsonObject = try? JSON(data: data) {
+               return jsonObject
+            }
+        }
+        return JSON()
     }
     
 }

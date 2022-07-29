@@ -20,7 +20,8 @@ extension Groups {
     @NSManaged public var desc: String?
     @NSManaged public var disperse: Bool
     @NSManaged public var disperseDate: Date?
-    @NSManaged public var groupImgUrl: String?
+    @NSManaged public var imgUrl: String?
+    @NSManaged public var thumbUrl: String?
     @NSManaged public var id: String?
     @NSManaged public var isMute: Bool
     @NSManaged public var isPin: Bool

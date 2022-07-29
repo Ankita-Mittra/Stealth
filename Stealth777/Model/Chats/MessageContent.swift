@@ -10,13 +10,13 @@ import SwiftyJSON
 struct MessageContent {
 
 	let text: String?
+    var json = JSON()
 
 	init(_ json: JSON) {
 		text = json["text"].stringValue
+        self.json = json
 	}
     
-    init(text:String?){
-        self.text = text
-    }
+   
 
 }
