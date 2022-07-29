@@ -9,6 +9,7 @@ import Foundation
 class HomeViewModel{
     
     //MARK: - Properties
+    
     var contactsList: [UserModel]?{
         didSet{
             self.didFinishFetch?()
@@ -17,11 +18,14 @@ class HomeViewModel{
     
     var sessionData:SessionListData?{
         didSet{
-          didFinishSessionFeth?()
+          didFinishSessionFetch?()
         }
     }
+    
     private var apiService = ContactsAPIServices()
     private var chatAPIService = ChatAPIServices()
+    private var groupAPIService = GroupsAPIServices()
+    
     var isLoading: Bool = true {
         didSet { self.updateLoadingStatus?() }
     }
@@ -33,9 +37,17 @@ class HomeViewModel{
 
     //MARK: - Closures for sessionList API
     var showSessionListError: ((String) -> ())?
-    var didFinishSessionFeth: (() -> ())?
+    var didFinishSessionFetch: (() -> ())?
     
-    
+    //MARK: - Closures for GroupList API
+    var showGroupListError: ((String) -> ())?
+    var didFinishGroupFetch: (() -> ())?
+//    // MARK: - Constructor
+//    
+//    init(apiService: ContactsAPIServices) {
+//        self.apiService = apiService
+//    }
+//    
     // MARK: - Network call
     
     
@@ -89,5 +101,23 @@ class HomeViewModel{
         }
         
     }
+    
+    
+    func fetchAllGroups() {
+        
+        self.updateLoadingStatus?()
+        self.groupAPIService.getAllGroups(completion: { data, succeeded, error in
+            print("getAllGroups /.....")
+            if succeeded{
+//                self.sessionData = data
+            }
+            else{
+//                self.showSessionListError?(error)
+            }
+        })
+    }
+       
+    
+    
     
 }

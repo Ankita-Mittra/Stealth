@@ -86,12 +86,9 @@ class ContactsDatabaseQueries: NSObject {
     class func addAndUpdateContactsInLocalDB(contacts: [UserModel]){
         let context = appDelegate.persistentContainer.viewContext
 
-        
-        
         /////////////////////////////
         
         contacts.forEach({ contact in
-
             do {
                 let request: NSFetchRequest<User> = User.fetchRequest()
                 request.predicate = NSPredicate(format: "id == %@", contact.userId!) // Find Contact

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import CoreMedia
+import Network
 
 class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -14,10 +16,9 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var allChatsTableview: UITableView!
     @IBOutlet weak var topMenuView: UIView!
     @IBOutlet weak var noChatsLbl: UILabel!
-    
-   // var contactsList = [GroupParticipantsUserModel]()
-    var viewModel = HomeViewModel()
-//    var sessionsList = [String: Any]()
+
+    // MARK: - Injection
+    let viewModel = HomeViewModel()
     
     // MARK: - View life cycle
 
@@ -74,7 +75,6 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         } else {
             // Fallback on earlier versions
         }
-
         if #available(iOS 14.0, *) {
             self.navigationItem.rightBarButtonItem?.menu = barButtonMenu
         } else {
@@ -249,8 +249,18 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     // Method for initial Setups
     func initialSetup(){
-        fetchContactsList()
-        fetchSession()
+        
+        
+        /*  Fetch ContactList, fetch GroupList, fetch sessionList
+         --Update contactList locally and Update groupList Locally and keep sessions list in arrays only.
+         --on selection of group head, fetch groupId from array and go to next screen(Group chat screen)
+         --fetch groupinfo from local and display on screen and display all the messages coming from api response.
+         --on selection of chat head, fetch otherUserId from array and go to next screen(private chat screen)
+         --fetch otherUserInfo from local and display on screen and display all the messages coming from api response and
+         --fetch own key pair to ecrypt and decrypt message  */
+        self.fetchContactsList()
+        self.fetchSession()
+        self.fetchGroups()
         //self.fetchContactsFromLocalDB()
     }
     
@@ -319,10 +329,10 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if viewModel.sessionData?.sessionList?[indexPath.row].groupId?.isEmpty ?? false{
-            self.goToSelectedPrivateChatScreen(index:indexPath.row)
-        }else{
+        if viewModel.sessionData?.sessionList?[indexPath.row].groupId != emptyStr{
             self.goToSelectedGroupChatScreen()
+        }else{
+            self.goToSelectedPrivateChatScreen(index:indexPath.row)
         }
     }
     
@@ -417,10 +427,11 @@ private func activityIndicatorStop() {
 }
 
 
-//MARK: - API Calls
+// MARK: - API Calls
 extension HomeViewController{
     private func fetchContactsList() {
-       
+        viewModel.fetchContacts()
+
         viewModel.updateLoadingStatus = {
             print("updateLoadingStatus")
 
@@ -441,23 +452,38 @@ extension HomeViewController{
             ContactsDatabaseQueries.addAndUpdateContactsInLocalDB(contacts : self.viewModel.contactsList ?? [])
         }
         
-        viewModel.fetchContacts()
         
         
     }
-    
+    // MARK: - Handling session list
+
     private func fetchSession(){
-        //MARK: - Handling session list
+        viewModel.fetchSessionList()
+
         viewModel.showSessionListError = {
             error in
             CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
         }
         
-        viewModel.didFinishSessionFeth = {
+        viewModel.didFinishSessionFetch = {
             self.allChatsTableview.reloadData()
         }
-        viewModel.fetchSessionList()
     }
+    
+    private func fetchGroups(){
+        viewModel.fetchAllGroups()
+
+        viewModel.showGroupListError = {
+            error in
+            CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
+        }
+        
+        viewModel.didFinishGroupFetch = {
+            
+            // save group locally
+        }
+    }
+    
     
     
 }

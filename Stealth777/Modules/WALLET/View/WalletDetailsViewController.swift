@@ -14,6 +14,7 @@ class WalletDetailsViewController: BaseViewController {
     @IBOutlet weak var tokensListTableView: UITableView!
     @IBOutlet weak var walletAddressLbl: UILabel!
     
+    @IBOutlet weak var selectedNetworkLbl: UILabelCustomClass!
     var tokenListArr = [ImportedTokenList]()
         
     lazy var refreshControl: UIRefreshControl = {
@@ -25,7 +26,7 @@ class WalletDetailsViewController: BaseViewController {
             
             return refreshControl
         }()
-    
+
     // MARK: - View life cycle
 
     override func viewDidLoad() {
@@ -146,6 +147,22 @@ class WalletDetailsViewController: BaseViewController {
     @IBAction func QRScanBtnAction(_ sender: Any) {
         
     }
+    
+    var currentSelectedNetwork = "Binance"
+    // Binance//Ethereum
+    
+    // save in local
+    @IBAction func switchBlockchainNetworkBtnAction(_ sender: Any) {
+        if currentSelectedNetwork == "Binance"{
+
+            print("")
+        }else{
+        
+            
+        }
+        
+    }
+    
 }
 
 //    override func viewWillAppear(_ animated: Bool) {

@@ -65,6 +65,7 @@
 		20249BBB28804C8800A4AEC3 /* ChatAPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20249BBA28804C8800A4AEC3 /* ChatAPIServices.swift */; };
 		2030F57227F5D2CC001D5F61 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2030F57127F5D2CC001D5F61 /* Strings.swift */; };
 		2030F57427F5EA84001D5F61 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2030F57327F5EA84001D5F61 /* SettingsViewModel.swift */; };
+		20333092289274FF00462670 /* GroupsDatabaseQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20333091289274FF00462670 /* GroupsDatabaseQueries.swift */; };
 		2037E76027D6106900674559 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037E75F27D6106900674559 /* ContactsViewController.swift */; };
 		2037E76427D6114D00674559 /* WalletDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037E76327D6114D00674559 /* WalletDetailsViewController.swift */; };
 		2037E76C27D6387200674559 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037E76B27D6387200674559 /* ResetPasswordViewController.swift */; };
@@ -308,6 +309,7 @@
 		20249BBA28804C8800A4AEC3 /* ChatAPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPIServices.swift; sourceTree = "<group>"; };
 		2030F57127F5D2CC001D5F61 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		2030F57327F5EA84001D5F61 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		20333091289274FF00462670 /* GroupsDatabaseQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsDatabaseQueries.swift; sourceTree = "<group>"; };
 		2037E75F27D6106900674559 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		2037E76327D6114D00674559 /* WalletDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailsViewController.swift; sourceTree = "<group>"; };
 		2037E76B27D6387200674559 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -887,6 +889,7 @@
 			children = (
 				209C5AFF2848AE270008F660 /* ContactsDatabaseQueries.swift */,
 				6B25EC19289003420014B87A /* ChatsDatabaseQueries.swift */,
+				20333091289274FF00462670 /* GroupsDatabaseQueries.swift */,
 			);
 			path = LocalDatabaseHandlingClasses;
 			sourceTree = "<group>";
@@ -1842,6 +1845,7 @@
 				2087DB0827E88F3700D9F7C0 /* AppWireframe.swift in Sources */,
 				2004858B285CA89A007BF87E /* AllContactsViewModel.swift in Sources */,
 				200D994727D203A40088B2E5 /* PrivateChatViewModel.swift in Sources */,
+				20333092289274FF00462670 /* GroupsDatabaseQueries.swift in Sources */,
 				207D61AA2849E20A00EDF8F0 /* RequestsViewModel.swift in Sources */,
 				204122DD27EC98D800443D2D /* GroupMembersListCollectionViewCell.swift in Sources */,
 				20952F9D2837913300C77152 /* WalletFxns.swift in Sources */,

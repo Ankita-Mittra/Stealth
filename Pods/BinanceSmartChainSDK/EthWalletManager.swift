@@ -506,20 +506,45 @@ public final class EthWalletManager {
         FileManager.default.createFile(atPath: userDir + "/keystore/" + fileName.lowercased() +  ".json", contents: keystore, attributes: nil)
     }
     
-    func findKeystoreMangerByAddressEth(walletAddress : String) -> EthereumKeystoreV3? {
+    
+    func findKeystoreMangerByAddressEth(walletAddress : String) -> BIP32Keystore?{//EthereumKeystoreV3? {
         let ethWalletAddress = EthereumAddress(walletAddress)
         let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let keystoreManager = KeystoreManager.managerForPath(userDir + "/keystore")
-        for i in keystoreManager?.keystores ?? [] {
+        
+        let bipKeystore = keystoreManager?.bip32keystores
+        
+        print(bipKeystore)
+        print(bipKeystore?.count)
+        let bip = BIP32Keystore(walletAddress)
+        for i in keystoreManager?.bip32keystores ?? [] {
             
-            print("keystore iii...", i.getAddress()?.address.lowercased())
+           
+            print("keystore iii...",  i.addresses?.first?.address.lowercased())// i.getAddress()?.address.lowercased())
             print("keystore eth...", ethWalletAddress?.address.lowercased())
 
-            if (i.getAddress()?.address.lowercased() == ethWalletAddress?.address.lowercased()){
+            if (i.addresses?.debugDescription == walletAddress ){//ethWalletAddress?.address.lowercased()){
                 return i
             }
         }
         return nil
     }
     
+    
+//    func findKeystoreMangerByAddressEth(walletAddress : String) -> EthereumKeystoreV3? {
+//        let ethWalletAddress = EthereumAddress(walletAddress)
+//        let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+//        let keystoreManager = KeystoreManager.managerForPath(userDir + "/keystore")
+//        for i in keystoreManager?.keystores ?? [] {
+//
+//            print("keystore iii...", i.getAddress()?.address.lowercased())
+//            print("keystore eth...", ethWalletAddress?.address.lowercased())
+//
+//            if (i.getAddress()?.address.lowercased() == ethWalletAddress?.address.lowercased()){
+//                return i
+//            }
+//        }
+//        return nil
+//    }
+//
 }

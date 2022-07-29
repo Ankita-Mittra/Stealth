@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftECC
 
 struct GroupsModel: Codable {
     
@@ -16,7 +17,7 @@ struct GroupsModel: Codable {
     let imageUrl: String? // 4
     let disperse: Int? // 5
     let anonymous: Int? // 6
-    let disperseDate: String? // 7
+    let disperseDate: Int64?// 7
     let canSendMsg: Int? // 8
     let showQr: Int? // 19
     let isPin: Int? // 10
@@ -24,7 +25,7 @@ struct GroupsModel: Codable {
     let groupRole: Int? // 12
     var members: [GroupMembersModel]? // 13
 
-    init(id: String, name: String, description: String, imageUrl: String, anonymous: Int, disperse: Int, disperseDate: String, canSendMsg: Int, showQr: Int, isPin: Int, isMute: Int, groupRole: Int, members: [GroupMembersModel]){
+    init(id: String, name: String, description: String, imageUrl: String, anonymous: Int, disperse: Int, disperseDate: Int64, canSendMsg: Int, showQr: Int, isPin: Int, isMute: Int, groupRole: Int, members: [GroupMembersModel]){
         self.id = id
         self.name = name
         self.description = description
@@ -48,7 +49,7 @@ struct GroupsModel: Codable {
         self.description = data?["desc"] as? String ?? emptyStr
         self.disperse = data?["disperse"] as? Int ?? zero
         self.anonymous = data?["anonymous"] as? Int ?? zero
-        self.disperseDate = data?["disperseDate"] as? String ?? emptyStr
+        self.disperseDate = data?["disperseDate"] as? Int64 ?? 0
         self.canSendMsg = data?["canSendMsg"] as? Int ?? zero
         self.showQr = data?["showQr"] as? Int ?? zero
         self.isPin = data?["isPin"] as? Int ?? zero
