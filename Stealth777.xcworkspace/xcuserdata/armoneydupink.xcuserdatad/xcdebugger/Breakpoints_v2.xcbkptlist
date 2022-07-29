@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "267"
             endingLineNumber = "267"
-            landmarkName = "tableView(_:heightForRowAt:)"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -82,70 +82,38 @@
             endingLineNumber = "416"
             landmarkName = "sendBnb(walletAddress:password:receiverAddress:etherAmount:gasPrice:gasLimit:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E06FCCDE-469F-4A62-AA76-1353991C4F7D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/CHAT/GroupChat/ViewModel/AllGroupsViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "fetchAllGroups()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "208B8168-4624-467D-81E9-5BEDC46205BA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/CHAT/GroupChat/ViewModel/AllGroupsViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "fetchAllGroups()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4A1E35CC-9B82-4E7A-B6AE-58B662F2C460"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/CHAT/GroupChat/ViewModel/AllGroupsViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "fetchAllGroups()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DD288B2B-7CE4-40B4-BC82-EEED4E778BDF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/CHAT/GroupChat/ViewModel/AllGroupsViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "fetchAllGroups()"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "857ED7A8-DD85-4E78-9656-C7AA346EE34C - 940b0235433368bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BinanceSmartChainSDK.BnbWalletManager.sendBnb(walletAddress: Swift.String, password: Swift.String, receiverAddress: Swift.String, etherAmount: Swift.String, gasPrice: BigInt.BigUInt, gasLimit: BigInt.BigUInt) throws -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "BinanceSmartChainSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/Stealth777/Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "416"
+                  endingLineNumber = "416"
+                  offsetFromSymbolStart = "548">
+               </Location>
+               <Location
+                  uuid = "857ED7A8-DD85-4E78-9656-C7AA346EE34C - 940b0235433368bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BinanceSmartChainSDK.BnbWalletManager.sendBnb(walletAddress: Swift.String, password: Swift.String, receiverAddress: Swift.String, etherAmount: Swift.String, gasPrice: BigInt.BigUInt, gasLimit: BigInt.BigUInt) throws -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "BinanceSmartChainSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/Stealth777/Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "416"
+                  endingLineNumber = "416"
+                  offsetFromSymbolStart = "704">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

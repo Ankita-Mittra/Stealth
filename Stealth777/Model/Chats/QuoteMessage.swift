@@ -11,11 +11,8 @@ struct QuoteMessage {
 
     init(_ json: JSON) {
     }
-<<<<<<< HEAD
     
     init(){
         
     }
-=======
->>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
 }

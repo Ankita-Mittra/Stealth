@@ -73,11 +73,7 @@ struct ChatAPIServices {
        print("url....", url)
        let headers = CommonFxns.getAuthenticationToken()
 
-<<<<<<< HEAD
        Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default, headers: headers).responseJSON {response in
-=======
-       Alamofire.request(url, method: .get, parameters: param, encoding: JSONEncoding.default, headers: headers).responseJSON {response in
->>>>>>> 67f5118 (Added make admin,session list and private chat listing apis)
            guard response.result.error == nil else {
                
                DispatchQueue.main.async(execute: {
