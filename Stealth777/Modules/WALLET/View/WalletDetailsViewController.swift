@@ -7,13 +7,17 @@
 
 import UIKit
 
+import UIKit
+
 class WalletDetailsViewController: BaseViewController {
 
     // MARK: - Properties & Delegates
 
     @IBOutlet weak var tokensListTableView: UITableView!
     @IBOutlet weak var walletAddressLbl: UILabel!
-    
+    @IBOutlet weak var selectedBlockchainNetworkLbl: UILabel!
+
+    var selectedBlockchainNetwork = "Binance"
     var tokenListArr = [ImportedTokenList]()
         
     lazy var refreshControl: UIRefreshControl = {
@@ -145,6 +149,16 @@ class WalletDetailsViewController: BaseViewController {
     
     @IBAction func QRScanBtnAction(_ sender: Any) {
         
+    }
+        
+    @IBAction func changeBlockchainNetworkBtnAction(_ sender: Any) {
+
+        if selectedBlockchainNetwork == "Binance"{
+            selectedBlockchainNetwork = "Ethereum"
+        }else{
+            selectedBlockchainNetwork = "Binance"
+        }
+        self.selectedBlockchainNetworkLbl.text = selectedBlockchainNetwork
     }
 }
 
