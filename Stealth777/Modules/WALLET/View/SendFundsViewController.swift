@@ -28,8 +28,9 @@ class SendFundsViewController: BaseViewController {
         // Initial Setup
         self.initialSetup()
         
-        self.importBinanceWallet2()
-//        self.importBinanceWallet()
+        self.ethWalletTransactions()
+            
+        self.binanceWalletTransactions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,7 +115,26 @@ class SendFundsViewController: BaseViewController {
         }
     }
     
-    func importBinanceWallet2(){
+    func ethWalletTransactions(){
+        do {
+
+            let eth = EthWalletManager.init(infuraUrl: "https://mainnet.infura.io/v3/a396c3461ac048a59f389c7778f06689")
+            
+            if let walletPhrase = try BIP39.generateMnemonics(bitsOfEntropy: 128, language: .english){
+                
+                let wallet = try eth.createEthWallet(walletPhrase: "gentle essence eye scene hurt manage dinner net foam spirit cube circle")
+                let walletAddress = wallet?.walletAddress ?? ""
+                print("wallet....seed",wallet?.walletAddress)
+                let balance = try eth.getEthBalance(walletAddress: walletAddress)
+//                eth.sendEthTesting(walletAddress: walletAddress)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    func binanceWalletTransactions(){
         do {
             
             // 0x9873dFC5442F589d01cFe19aF035D96C898eBa0b
@@ -125,15 +145,21 @@ class SendFundsViewController: BaseViewController {
             
             if let walletPhrase = try BIP39.generateMnemonics(bitsOfEntropy: 128, language: .english){
                 
-                let wallet = try binance.createWallet(walletPhrase: walletPhrase)
+                
+                let wallet = try binance.createWallet(walletPhrase: "gentle essence eye scene hurt manage dinner net foam spirit cube circle")// 0x9431Ad4a2306291dE17467d4b908fFE216b5514f
+                let walletAddress = wallet?.walletAddress ?? ""
+                print("wallet....seed",wallet?.walletAddress)
+                let balance = try binance.getBnbBalance(walletAddress: walletAddress)
+//                binance.sendBNBTesting(walletAddress: walletAddress) //(wallet?.walletAddress)!)
+                
 
-                print("wallet....seed....",wallet?.walletAddress)
-                binance.sendBNBTesting(walletAddress: wallet?.walletAddress ?? "") //(wallet?.walletAddress)!)
             }
             
-            let wallet = try binance.createWallet(walletPassword: "")
-            print("wallet....",wallet?.walletAddress)
-            binance.sendBNBTesting(walletAddress: wallet?.walletAddress ?? "") //(wallet?.walletAddress)!)
+            
+            
+//            let wallet = try binance.createWallet(walletPassword: "")
+//            print("wallet....password..",wallet?.walletAddress)
+//            binance.sendBNBTesting(walletAddress: wallet?.walletAddress ?? "") //(wallet?.walletAddress)!)
 //            binance.sendBNBTesting(walletAddress: "0xa3e26d47ca97a475a879bfd99c8fef4bf1ca74bc")//(wallet?.walletAddress)!)
 //
 //            self.checkWalletBalance(walletAddress: "0xa3e26d47ca97a475a879bfd99c8fef4bf1ca74bc")
