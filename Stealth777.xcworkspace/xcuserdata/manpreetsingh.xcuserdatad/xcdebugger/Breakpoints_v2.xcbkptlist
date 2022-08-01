@@ -14,9 +14,9 @@
             filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "getMessages(userID:)"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "getMessages(recieverID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -30,9 +30,9 @@
             filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "getMessages(userID:)"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "getMessages(recieverID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,9 +46,9 @@
             filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "getMessages(userID:)"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "getMessages(recieverID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -62,9 +62,9 @@
             filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "getMessages(userID:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "getMessages(recieverID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

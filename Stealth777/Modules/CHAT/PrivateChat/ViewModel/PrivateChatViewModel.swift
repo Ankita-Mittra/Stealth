@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 //
 //            {
 //                "msg": "hi user7777",
@@ -47,14 +48,14 @@ class PrivateChatViewModel {
     
     // MARK: - Network call
     
-    func getMessages(userID: String) {
+    func getMessages(recieverID: String) {
         self.updateLoadingStatus?()
-        let param = ["receiverId":userID]
+        let param = ["receiverId":recieverID]
         self.apiService?.getMessageByUserID(param: param, completion: { data, succeeded, error in
             print("getMessages   /.....")
             self.isLoading = false
             if succeeded{
-                self.messageList = data?.messages
+                self.saveMessagesLocally(messages: data?.messages ?? [], recieverID: recieverID)
             }
             else{
                 self.showAlertClosure?(error)
@@ -71,12 +72,44 @@ class PrivateChatViewModel {
             print("sendMessage   /.....")
             self.isLoading = false
             if succeeded{
-                
+                if let messageID = data?["msgId"] as? String{
+                    guard let user = UserDefaultsToStoreUserInfo.getUser() else{return}
+                    let msgDict = ["text":dict["msg"] as! String]
+                    let dict:[String:Any] = ["msgId":messageID,
+                                             "groupId":"",
+                                             "senderName":user.username ?? "",
+                                             "msg":msgDict,
+                                             "quoteMsgId":"",
+                                             "quoteMsg":"",
+                                             "enKey":"",
+                                             "senderPbKey":"",
+                                             "state":"0",
+                                             "senderId":user.userId ?? "",
+                                             "receiverId":dict["receiverId"] as! String,
+                                             "imgUrl":"",
+                                             "msgType":1,
+                                             "readTime":"",
+                                             "sendTime":CommonFxns.getMilliseconds(date: Date())]
+                   let msgObject  = MessageModel(JSON(dict))
+                    self.saveMessagesLocally(messages: [msgObject], recieverID: dict["receiverId"] as! String)
+                    
+                }
             }
             else{
                 self.showAlertClosure?(error)
             }
         })
+    }
+    
+    //Fetch messages from local DB
+    
+    func getLocalMessages(id:String){
+        messageList =  ChatsDatabaseQueries.fetchMessages(userID:id )
+    }
+    
+    func saveMessagesLocally(messages:[MessageModel],recieverID:String){
+        ChatsDatabaseQueries.saveMessages(messageList: messages)
+        getLocalMessages(id: recieverID)
     }
         
     // MARK: - UI Logic

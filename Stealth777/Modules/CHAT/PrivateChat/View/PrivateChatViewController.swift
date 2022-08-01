@@ -63,6 +63,7 @@ class PrivateChatViewController: BaseViewController {
         
         self.chatTableView.rowHeight = UITableView.automaticDimension
         self.chatTableView.estimatedRowHeight = 100
+        viewModel.getLocalMessages(id: chatUser!.id!)
         fetchChats()
     }
     
@@ -132,7 +133,7 @@ class PrivateChatViewController: BaseViewController {
             self.chatTableView.reloadData()
         }
         
-        viewModel.getMessages(userID: chatUser!.id!)
+        viewModel.getMessages(recieverID: chatUser!.id!)
     }
     
     
