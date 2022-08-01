@@ -40,7 +40,7 @@ class ChatsDatabaseQueries{
     
     
     
-    func isMessageExist(id: String) -> Bool {
+    class func isMessageExist(id: String) -> Bool {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Messages")
         fetchRequest.predicate = NSPredicate(format: "msgId == %@", id)
@@ -48,7 +48,7 @@ class ChatsDatabaseQueries{
         return res.count > 0 ? true : false
     }
     
-    func saveMessages(messageList:[MessageModel]){
+   class func saveMessages(messageList:[MessageModel]){
         let context = appDelegate.persistentContainer.viewContext
 
         
