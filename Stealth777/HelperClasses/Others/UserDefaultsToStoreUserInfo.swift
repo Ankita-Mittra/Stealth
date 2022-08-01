@@ -33,6 +33,16 @@ class UserDefaultsToStoreUserInfo: NSObject {
         return ""
     }
     
+    class func getUser()->UserModel?{
+         if let userInfo = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String:Any]{
+            if let dict = userInfo[USER_DEFAULT_userDetails_Key] as? [String:Any]{
+                return UserModel(with: dict)
+            }
+        }
+        return nil
+    }
+    
+    
 //    class func saveImportedTokenForLoggedInUser1(tokenContractAddress: String, userId: String, tokenName: String, tokenSymbol: String, tokenBalance: String, tokenPrecision: String){
 //
 //        var emptySet = Set<T>()

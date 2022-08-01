@@ -358,6 +358,10 @@ class CommonFxns: NSObject {
         
     }
     
+    class func getMilliseconds(date:Date)->Int64{
+        return Int64((date.timeIntervalSince1970 * 1000.0).rounded())
+    }
+    
     class func stringFromDate(date:Date) -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy hh:mm"

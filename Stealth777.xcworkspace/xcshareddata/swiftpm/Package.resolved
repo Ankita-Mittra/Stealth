@@ -1,43 +1,41 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "ASN1",
-        "repositoryURL": "https://github.com/leif-ibsen/ASN1",
-        "state": {
-          "branch": null,
-          "revision": "21499128ce5f58a73f0ff83c9a1174578cde4723",
-          "version": "2.0.1"
-        }
-      },
-      {
-        "package": "BigInt",
-        "repositoryURL": "https://github.com/leif-ibsen/BigInt",
-        "state": {
-          "branch": null,
-          "revision": "3ff261ecd694009513cd0a260fc03723cc61d32e",
-          "version": "1.2.12"
-        }
-      },
-      {
-        "package": "BigNumber",
-        "repositoryURL": "https://github.com/mkrd/Swift-BigInt.git",
-        "state": {
-          "branch": "master",
-          "revision": "b33378d3f2d8ce518d8f6bc09bb0bd29cfb6664e",
-          "version": null
-        }
-      },
-      {
-        "package": "SwiftECC",
-        "repositoryURL": "https://github.com/leif-ibsen/SwiftECC",
-        "state": {
-          "branch": "master",
-          "revision": "cbfab551ac3e47da99dcfb21663fba461debbda9",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "asn1",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leif-ibsen/ASN1",
+      "state" : {
+        "revision" : "21499128ce5f58a73f0ff83c9a1174578cde4723",
+        "version" : "2.0.1"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "bigint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leif-ibsen/BigInt",
+      "state" : {
+        "revision" : "3ff261ecd694009513cd0a260fc03723cc61d32e",
+        "version" : "1.2.12"
+      }
+    },
+    {
+      "identity" : "swift-bigint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mkrd/Swift-BigInt.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "b33378d3f2d8ce518d8f6bc09bb0bd29cfb6664e"
+      }
+    },
+    {
+      "identity" : "swiftecc",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leif-ibsen/SwiftECC",
+      "state" : {
+        "branch" : "master",
+        "revision" : "cbfab551ac3e47da99dcfb21663fba461debbda9"
+      }
+    }
+  ],
+  "version" : 2
 }

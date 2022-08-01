@@ -34,8 +34,8 @@ struct ChatAPIServices {
 
             
             if let value: AnyObject = response.result.value as AnyObject? {
-                let json = JSON(value)
-                
+                let data = value["data"] as AnyObject
+                let json = JSON(data)
                 print("value result....", value)
 
                 var message = ""; var code = 0;
