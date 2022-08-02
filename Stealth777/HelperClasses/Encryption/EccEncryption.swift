@@ -25,9 +25,79 @@ class EccEncryption{
     }
     
     // Method to save ECC private and public key locally
-    func saveKeysLocally(privateKey: String, publicKey: String){
 
-    }
+//    func abc(){
+//
+//        let newOtherUserPublicKey = "-----BEGIN PUBLIC KEY-----\n" + publickey + "\n-----END PUBLIC KEY-----"
+//        var encryptedText =  String()
+//
+//        do {
+//            let importOtherUserPublicKey = try self.importPublicKey(newOtherUserPublicKey)
+//            let importLoggedInUserPrivateKey = try self.importPrivateKey(privateKey)
+//
+//            let deriveKey = try self.deriveSymmetricKey(privateKey: importLoggedInUserPrivateKey, publicKey: importOtherUserPublicKey)
+//            print("deriveKey...", deriveKey)
+//            let sensitiveMessage = msg.data(using: .utf8)!
+//
+//            let iv = CryptoKit.AES.GCM.Nonce()
+//
+//            let sealedBox = try! CryptoKit.AES.GCM.seal(sensitiveMessage,
+//                                              using: deriveKey,
+//                                              nonce: iv)
+//            let cipher = sealedBox.ciphertext + sealedBox.tag
+//            encryptedText = cipher.base64EncodedString()
+//            print("encryptedText.....", encryptedText )
+//
+//        }
+//
+//
+//        catch let error{
+//            print("error...", error.localizedDescription)
+//        }
+//        // generate shared key
+//
+//    }
+//     func exportPublicKeyInValidFormat(msg: String, publickey: String, privateKey: String)-> String{
+//     
+//        let newOtherUserPublicKey = "-----BEGIN PUBLIC KEY-----\n" + publickey + "\n-----END PUBLIC KEY-----"
+//        var encryptedText =  String()
+//        
+//        do {
+//            let otherUserPbkey = try ECPublicKey(pem: newOtherUserPublicKey)
+//
+//            let loggedInUserPrKey = try ECPrivateKey(pem: privateKey)
+//                        
+//            print("otherUserPbkey..", otherUserPbkey)
+//            print("loggedInUserPrKey..", loggedInUserPrKey)
+//
+//            let importOtherUserPublicKey = try self.importPublicKey(otherUserPbkey.pem)
+//            let importLoggedInUserPrivateKey = try self.importPrivateKey(loggedInUserPrKey.pem)
+//
+//            let deriveKey = try self.deriveSymmetricKey(privateKey: importLoggedInUserPrivateKey, publicKey: importOtherUserPublicKey)
+//            print("deriveKey...", deriveKey)
+//            let sensitiveMessage = msg.data(using: .utf8)!
+//
+//            let iv = CryptoKit.AES.GCM.Nonce()
+//
+//            let sealedBox = try! CryptoKit.AES.GCM.seal(sensitiveMessage,
+//                                              using: deriveKey,
+//                                              nonce: iv)
+//            let cipher = sealedBox.ciphertext + sealedBox.tag
+//            encryptedText = cipher.base64EncodedString()
+//            print("encryptedText.....", encryptedText )
+//            
+//        }
+//         catch{
+//         }
+//         return encryptedText
+//     }
+//    
+//    func encryptTextMsg(msg:String){
+//        
+//        
+// 
+//    }
+//    
 
     func swiftyECC() {
         do {

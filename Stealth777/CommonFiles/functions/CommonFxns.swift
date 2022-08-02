@@ -10,6 +10,8 @@ import Foundation
 import SystemConfiguration
 import SDWebImage
 import SwiftyJSON
+import SwiftECC
+import CryptoKit
 
 class CommonFxns: NSObject {
     
@@ -196,6 +198,7 @@ class CommonFxns: NSObject {
         let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
         return (isReachable && !needsConnection)
     }
+    
     class func overrideApplicationThemeStyle() {
         let enabledMode = userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) as? String
         
@@ -317,7 +320,99 @@ class CommonFxns: NSObject {
         return nil
     }
     
+    class func encryptMsg(msg: String, publickey: String, privateKey: String)-> String{
+        
+        
+           let newOtherUserPublicKey = "-----BEGIN PUBLIC KEY-----\n" + publickey + "\n-----END PUBLIC KEY-----"
+           var encryptedText =  String()
+           
+           do {
+               let otherUserPbkey = try ECPublicKey(pem: newOtherUserPublicKey)
+
+               let loggedInUserPrKey = try ECPrivateKey(pem: privateKey)
+                           
+               print("otherUserPbkey..", otherUserPbkey)
+               print("loggedInUserPrKey..", loggedInUserPrKey)
+               
+               let eccEncObj = EccEncryption()
+       
+               let importOtherUserPublicKey = try eccEncObj.importPublicKey(otherUserPbkey.pem)
+               let importLoggedInUserPrivateKey = try eccEncObj.importPrivateKey(loggedInUserPrKey.pem)
+
+               let deriveKey = try eccEncObj.deriveSymmetricKey(privateKey: importLoggedInUserPrivateKey, publicKey: importOtherUserPublicKey)
+               print("deriveKey...", deriveKey)
+               let sensitiveMessage = msg.data(using: .utf8)!
+
+               let iv = CryptoKit.AES.GCM.Nonce()
+
+               let sealedBox = try! CryptoKit.AES.GCM.seal(sensitiveMessage,
+                                                 using: deriveKey,
+                                                 nonce: iv)
+               let cipher = sealedBox.ciphertext + sealedBox.tag
+               encryptedText = cipher.base64EncodedString()
+               print("encryptedText.....", encryptedText )
+               
+           }
+            catch let error{
+                print("error...", error.localizedDescription)
+            }
+            return encryptedText
+        }
+
     
+    class func decryptMsg(cipherText: String, publickey: String, privateKey: String)-> String{
+        
+        
+           let newOtherUserPublicKey = "-----BEGIN PUBLIC KEY-----\n" + publickey + "\n-----END PUBLIC KEY-----"
+           var decryptedText =  String()
+           
+           do {
+               let otherUserPbkey = try ECPublicKey(pem: newOtherUserPublicKey)
+
+               let loggedInUserPrKey = try ECPrivateKey(pem: privateKey)
+                           
+               print("otherUserPbkey..", otherUserPbkey)
+               print("loggedInUserPrKey..", loggedInUserPrKey)
+               
+               let eccEncObj = EccEncryption()
+       
+               let importOtherUserPublicKey = try eccEncObj.importPublicKey(otherUserPbkey.pem)
+               let importLoggedInUserPrivateKey = try eccEncObj.importPrivateKey(loggedInUserPrKey.pem)
+
+//               let deriveKey = try eccEncObj.deriveSymmetricKey(privateKey: importLoggedInUserPrivateKey, publicKey: importOtherUserPublicKey)
+//               print("deriveKey...", deriveKey)
+//               let sensitiveMessage = msg.data(using: .utf8)!
+//
+//               let iv = CryptoKit.AES.GCM.Nonce()
+//
+//               let sealedBox = try! CryptoKit.AES.GCM.seal(sensitiveMessage,
+//                                                 using: deriveKey,
+//                                                 nonce: iv)
+//               let cipher = sealedBox.ciphertext + sealedBox.tag
+//               encryptedText = cipher.base64EncodedString()
+//               print("encryptedText.....", encryptedText )
+               
+               
+               let deriveKey = try eccEncObj.deriveSymmetricKey(privateKey: importLoggedInUserPrivateKey, publicKey: importOtherUserPublicKey)
+               print("deriveKey...", deriveKey)
+
+               let sensitiveMessageAndroid = cipherText.data(using: .utf8)!
+               let nonce = "O5ZPMUTqHOEXepSZ".data(using: .utf8)
+               // need to prefix data with nonce, because data from kotlin/java contains the cipher text plus the tag at the end.
+               // we want nonce || ciphertext || tag for CryptoKit to be happy
+               let combine = nonce! + sensitiveMessageAndroid
+               let myNewSealedBox = try CryptoKit.AES.GCM.SealedBox(combined: combine)
+               
+               let res = try CryptoKit.AES.GCM.open(myNewSealedBox, using: deriveKey)
+               decryptedText = try String(decoding: res, as: UTF8.self)
+               print("decryptedText...", decryptedText)
+               
+           }
+            catch let error{
+                print("error...", error.localizedDescription)
+            }
+            return decryptedText
+        }
     
     class func validateLength(text : String, size : (min : Int, max : Int)) -> Bool{
         return (size.min...size.max).contains(text.count)

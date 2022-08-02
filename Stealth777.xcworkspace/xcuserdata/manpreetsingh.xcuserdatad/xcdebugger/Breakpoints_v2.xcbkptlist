@@ -7,64 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "75FE3D75-4B1E-4205-BAE9-0F05E1A3069F"
+            uuid = "0E91171F-5043-4133-8D67-CE3F65D66841"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
+            filePath = "Stealth777/Modules/SIGN UP/ViewModel/CreateWalletViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "getMessages(recieverID:)"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "registerUser(dict:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4B7D252D-27EE-4427-9485-ADAC774E4D92"
+            uuid = "B9B1101B-45AB-4158-9B06-6ACD6D1B78DE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
+            filePath = "Stealth777/CommonFiles/functions/CommonFxns.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "getMessages(recieverID:)"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
+            landmarkName = "decryptMsg(cipherText:publickey:privateKey:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "41A9F722-1E2B-4A51-9093-DBBA879BE94D"
+            uuid = "7C232F7D-F1E8-42C0-9ADF-EC15CED04C78"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
+            filePath = "Stealth777/CommonFiles/functions/CommonFxns.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "getMessages(recieverID:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D842AA59-580D-4C2E-B066-848310401338"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/CHAT/PrivateChat/ViewModel/PrivateChatViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "getMessages(recieverID:)"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
+            landmarkName = "decryptMsg(cipherText:publickey:privateKey:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
