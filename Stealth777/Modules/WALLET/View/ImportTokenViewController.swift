@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 import BigInt
-import BigNumber
+//import BigNumber
 import web3swift
 
 import Foundation
@@ -122,7 +122,7 @@ class ImportTokenViewController: BaseViewController {
                             
                             if let decimals = tokenDecimalDict["0"] as? AnyObject{
                                                                 
-                                print("decimals....", decimals, decimals as? BigNumber.BInt )
+                               // print("decimals....", decimals, decimals as? BigNumber.BInt )
                                 self.tokenPrecisionTxtField.text = decimals as? String
                                 let value = decimals as? Double
 //                                if let value2:String = decimals{
