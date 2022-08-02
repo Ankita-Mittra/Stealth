@@ -73,7 +73,6 @@
 		204122DD27EC98D800443D2D /* GroupMembersListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204122DC27EC98D800443D2D /* GroupMembersListCollectionViewCell.swift */; };
 		204122E027ECA9CC00443D2D /* AddParticipantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204122DE27ECA9CC00443D2D /* AddParticipantsTableViewCell.swift */; };
 		204122E127ECA9CC00443D2D /* AddParticipantsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 204122DF27ECA9CC00443D2D /* AddParticipantsTableViewCell.xib */; };
-		204354882833879400418910 /* SwiftECC in Frameworks */ = {isa = PBXBuildFile; productRef = 204354872833879400418910 /* SwiftECC */; };
 		2043BA6C27FAD32900D00041 /* GroupMembers+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2043BA6227FAD32900D00041 /* GroupMembers+CoreDataClass.swift */; };
 		2043BA6D27FAD32900D00041 /* GroupMembers+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2043BA6327FAD32900D00041 /* GroupMembers+CoreDataProperties.swift */; };
 		2043BA6E27FAD32900D00041 /* Groups+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2043BA6427FAD32900D00041 /* Groups+CoreDataClass.swift */; };
@@ -163,6 +162,7 @@
 		20B83C9A27DA357B003CA9D2 /* AllGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B83C9927DA357B003CA9D2 /* AllGroupsViewController.swift */; };
 		20B83C9D27DA367F003CA9D2 /* GroupRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B83C9B27DA367F003CA9D2 /* GroupRequestsTableViewCell.swift */; };
 		20B83C9E27DA367F003CA9D2 /* GroupRequestsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20B83C9C27DA367F003CA9D2 /* GroupRequestsTableViewCell.xib */; };
+		20C8362B2898F35E00CEF1CA /* SwiftECC in Frameworks */ = {isa = PBXBuildFile; productRef = 20C8362A2898F35E00CEF1CA /* SwiftECC */; };
 		20C9F6F227DB1B9400A4F3D4 /* EncryptionAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9F6F027DB1B9400A4F3D4 /* EncryptionAlertTableViewCell.swift */; };
 		20C9F6F327DB1B9400A4F3D4 /* EncryptionAlertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20C9F6F127DB1B9400A4F3D4 /* EncryptionAlertTableViewCell.xib */; };
 		20C9F6FA27DB5EF600A4F3D4 /* RecoveryPhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9F6F927DB5EF600A4F3D4 /* RecoveryPhraseTableViewCell.swift */; };
@@ -190,7 +190,6 @@
 		20F99D19283E66CA0088A487 /* ContactsAPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F99D18283E66CA0088A487 /* ContactsAPIServices.swift */; };
 		20F99D21283FAE4C0088A487 /* GroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F99D20283FAE4C0088A487 /* GroupsModel.swift */; };
 		20F9AE79283B89850057C881 /* BigIntConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F9AE78283B89850057C881 /* BigIntConverter.swift */; };
-		20F9AE7C283B8A0F0057C881 /* BigNumber in Frameworks */ = {isa = PBXBuildFile; productRef = 20F9AE7B283B8A0F0057C881 /* BigNumber */; };
 		20F9AE7E283BC1620057C881 /* ImportedTokenList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F9AE7D283BC1620057C881 /* ImportedTokenList.swift */; };
 		20FBC6A127C7ABCE004E0697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6A027C7ABCE004E0697 /* AppDelegate.swift */; };
 		20FBC6A327C7ABCE004E0697 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6A227C7ABCE004E0697 /* SceneDelegate.swift */; };
@@ -500,8 +499,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				204354882833879400418910 /* SwiftECC in Frameworks */,
-				20F9AE7C283B8A0F0057C881 /* BigNumber in Frameworks */,
+				20C8362B2898F35E00CEF1CA /* SwiftECC in Frameworks */,
 				5D26F1044F2A963EFCBFEF4F /* Pods_Stealth777.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1557,8 +1555,7 @@
 			);
 			name = Stealth777;
 			packageProductDependencies = (
-				204354872833879400418910 /* SwiftECC */,
-				20F9AE7B283B8A0F0057C881 /* BigNumber */,
+				20C8362A2898F35E00CEF1CA /* SwiftECC */,
 			);
 			productName = Stealth777;
 			productReference = 20FBC69D27C7ABCE004E0697 /* Stealth777.app */;
@@ -1640,8 +1637,7 @@
 			);
 			mainGroup = 20FBC69427C7ABCE004E0697;
 			packageReferences = (
-				204354862833879400418910 /* XCRemoteSwiftPackageReference "SwiftECC" */,
-				20F9AE7A283B8A0E0057C881 /* XCRemoteSwiftPackageReference "Swift-BigInt" */,
+				20C836292898F26C00CEF1CA /* XCRemoteSwiftPackageReference "SwiftECC" */,
 			);
 			productRefGroup = 20FBC69E27C7ABCE004E0697 /* Products */;
 			projectDirPath = "";
@@ -2378,17 +2374,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		204354862833879400418910 /* XCRemoteSwiftPackageReference "SwiftECC" */ = {
+		20C836292898F26C00CEF1CA /* XCRemoteSwiftPackageReference "SwiftECC" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/leif-ibsen/SwiftECC";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		20F9AE7A283B8A0E0057C881 /* XCRemoteSwiftPackageReference "Swift-BigInt" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mkrd/Swift-BigInt.git";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -2397,15 +2385,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		204354872833879400418910 /* SwiftECC */ = {
+		20C8362A2898F35E00CEF1CA /* SwiftECC */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 204354862833879400418910 /* XCRemoteSwiftPackageReference "SwiftECC" */;
+			package = 20C836292898F26C00CEF1CA /* XCRemoteSwiftPackageReference "SwiftECC" */;
 			productName = SwiftECC;
-		};
-		20F9AE7B283B8A0F0057C881 /* BigNumber */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 20F9AE7A283B8A0E0057C881 /* XCRemoteSwiftPackageReference "Swift-BigInt" */;
-			productName = BigNumber;
 		};
 /* End XCSwiftPackageProductDependency section */
 
