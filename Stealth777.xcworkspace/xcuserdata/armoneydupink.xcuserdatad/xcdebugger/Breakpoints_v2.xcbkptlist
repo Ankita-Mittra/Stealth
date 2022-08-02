@@ -128,6 +128,21 @@
                   endingLineNumber = "416"
                   offsetFromSymbolStart = "720">
                </Location>
+               <Location
+                  uuid = "857ED7A8-DD85-4E78-9656-C7AA346EE34C - ecb7e9392262a8c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BinanceSmartChainSDK.BnbWalletManager.sendBnb(walletAddress: Swift.String, password: Swift.String, receiverAddress: Swift.String, etherAmount: Swift.String, gasPrice: BigInt.BigUInt, gasLimit: BigInt.BigUInt) throws -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "BinanceSmartChainSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/ios/Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "416"
+                  endingLineNumber = "416"
+                  offsetFromSymbolStart = "744">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
