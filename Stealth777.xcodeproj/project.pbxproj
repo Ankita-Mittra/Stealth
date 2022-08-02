@@ -224,6 +224,8 @@
 		6B3247A6288ECA75002EC954 /* SessionListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3247A3288ECA75002EC954 /* SessionListData.swift */; };
 		6B3E471628896C8300AD5528 /* GroupChatHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3E471528896C8300AD5528 /* GroupChatHeaderView.xib */; };
 		6B3E4718288971C200AD5528 /* GroupChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E4717288971C200AD5528 /* GroupChatHeaderView.swift */; };
+		6B4EC5D12898FD8100F6A3FC /* SendMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5D02898FD8100F6A3FC /* SendMessageRequest.swift */; };
+		6B4EC5D3289905F900F6A3FC /* GroupDatabaseQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5D2289905F900F6A3FC /* GroupDatabaseQueries.swift */; };
 		6B77AABD288A89BC004758D7 /* GroupDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B77AABC288A89BC004758D7 /* GroupDetailsViewModel.swift */; };
 		762BA5D6DDFA56EDE04ACFAD /* Pods_Stealth777_Stealth777UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF060544A2F70F3A15070558 /* Pods_Stealth777_Stealth777UITests.framework */; };
 		9A5EFDBA281D5FD400AB84A6 /* GroupSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5EFDB9281D5FD400AB84A6 /* GroupSettingsViewModel.swift */; };
@@ -482,6 +484,8 @@
 		6B3247A3288ECA75002EC954 /* SessionListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListData.swift; sourceTree = "<group>"; };
 		6B3E471528896C8300AD5528 /* GroupChatHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupChatHeaderView.xib; sourceTree = "<group>"; };
 		6B3E4717288971C200AD5528 /* GroupChatHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatHeaderView.swift; sourceTree = "<group>"; };
+		6B4EC5D02898FD8100F6A3FC /* SendMessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageRequest.swift; sourceTree = "<group>"; };
+		6B4EC5D2289905F900F6A3FC /* GroupDatabaseQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDatabaseQueries.swift; sourceTree = "<group>"; };
 		6B77AABC288A89BC004758D7 /* GroupDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewModel.swift; sourceTree = "<group>"; };
 		79DB081BD4246E2A7604F798 /* Pods_Stealth777.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stealth777.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F25442004A06EA1861712C1 /* Pods-Stealth777.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stealth777.release.xcconfig"; path = "Target Support Files/Pods-Stealth777/Pods-Stealth777.release.xcconfig"; sourceTree = "<group>"; };
@@ -499,6 +503,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				20C8362B2898F35E00CEF1CA /* SwiftECC in Frameworks */,
 				5D26F1044F2A963EFCBFEF4F /* Pods_Stealth777.framework in Frameworks */,
 			);
@@ -884,6 +889,7 @@
 			isa = PBXGroup;
 			children = (
 				209C5AFF2848AE270008F660 /* ContactsDatabaseQueries.swift */,
+				6B4EC5D2289905F900F6A3FC /* GroupDatabaseQueries.swift */,
 				6B25EC19289003420014B87A /* ChatsDatabaseQueries.swift */,
 			);
 			path = LocalDatabaseHandlingClasses;
@@ -1320,6 +1326,7 @@
 		20FBC6E527C7C140004E0697 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6B4EC5CE2898FD4100F6A3FC /* RequestModels */,
 				209EE820284F33380074C354 /* Chats */,
 				20F99D1F283FAE3C0088A487 /* Groups */,
 				20F99D1E283F73CE0088A487 /* Contacts&Groups */,
@@ -1471,6 +1478,22 @@
 			path = GroupChat;
 			sourceTree = "<group>";
 		};
+		6B4EC5CE2898FD4100F6A3FC /* RequestModels */ = {
+			isa = PBXGroup;
+			children = (
+				6B4EC5CF2898FD5500F6A3FC /* Chat */,
+			);
+			path = RequestModels;
+			sourceTree = "<group>";
+		};
+		6B4EC5CF2898FD5500F6A3FC /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				6B4EC5D02898FD8100F6A3FC /* SendMessageRequest.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		6BE378EBB192249CBDA154BD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1555,6 +1578,7 @@
 			);
 			name = Stealth777;
 			packageProductDependencies = (
+
 				20C8362A2898F35E00CEF1CA /* SwiftECC */,
 			);
 			productName = Stealth777;
@@ -1637,6 +1661,7 @@
 			);
 			mainGroup = 20FBC69427C7ABCE004E0697;
 			packageReferences = (
+
 				20C836292898F26C00CEF1CA /* XCRemoteSwiftPackageReference "SwiftECC" */,
 			);
 			productRefGroup = 20FBC69E27C7ABCE004E0697 /* Products */;
@@ -1892,6 +1917,7 @@
 				205AAB1827F19C4D002FE32E /* CommonExtensions.swift in Sources */,
 				2037E76027D6106900674559 /* ContactsViewController.swift in Sources */,
 				200D98EF27D1F4D40088B2E5 /* LoginViewController.swift in Sources */,
+				6B4EC5D12898FD8100F6A3FC /* SendMessageRequest.swift in Sources */,
 				6B25EC18288FC8120014B87A /* ChatUser.swift in Sources */,
 				20C9F6FA27DB5EF600A4F3D4 /* RecoveryPhraseTableViewCell.swift in Sources */,
 				2037E76C27D6387200674559 /* ResetPasswordViewController.swift in Sources */,
@@ -1991,6 +2017,7 @@
 				209F9A3127E072A1008CFA80 /* SettingsTableViewCell.swift in Sources */,
 				200D991527D1F8210088B2E5 /* ImportWalletViewController.swift in Sources */,
 				6B32479E288EC8B0002EC954 /* MessageData.swift in Sources */,
+				6B4EC5D3289905F900F6A3FC /* GroupDatabaseQueries.swift in Sources */,
 				200D993727D2021D0088B2E5 /* PrivateChatReceiverTableViewCell.swift in Sources */,
 				20857A8C2858C2B60097A105 /* CreateGroupViewModel.swift in Sources */,
 				200D98F827D1F58B0088B2E5 /* InitialViewModel.swift in Sources */,

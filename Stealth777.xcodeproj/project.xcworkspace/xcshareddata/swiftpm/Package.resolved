@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "asn1",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leif-ibsen/ASN1",
+      "state" : {
+        "revision" : "e7d46dcd18ce08900655b3fe69bdbffe9abcd7e7",
+        "version" : "2.0.2"
+      }
+    },
+    {
+      "identity" : "bigint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leif-ibsen/BigInt",
+      "state" : {
+        "revision" : "1536608120443f4143777db41a565637c8f2b951",
+        "version" : "1.4.3"
+      }
+    },
+    {
+      "identity" : "swiftecc",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leif-ibsen/SwiftECC",
+      "state" : {
+        "branch" : "master",
+        "revision" : "d9555d57b0b08899e59748dcd05e796874a440ba"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -16,20 +16,21 @@ extension Groups {
         return NSFetchRequest<Groups>(entityName: "Groups")
     }
 
-    @NSManaged public var anonymous: Bool
+    @NSManaged public var anonymous: Int16
     @NSManaged public var desc: String?
-    @NSManaged public var disperse: Bool
-    @NSManaged public var disperseDate: Date?
+    @NSManaged public var disperse: Int16
+    @NSManaged public var disperseDate: String?
     @NSManaged public var imgUrl: String?
     @NSManaged public var thumbUrl: String?
     @NSManaged public var id: String?
-    @NSManaged public var isMute: Bool
-    @NSManaged public var isPin: Bool
+    @NSManaged public var isMute: Int16
+    @NSManaged public var isPin: Int16
     @NSManaged public var name: String?
-    @NSManaged public var sendMessage: Bool
-    @NSManaged public var showQR: Bool
+    @NSManaged public var sendMessage: Int16
+    @NSManaged public var showQR: Int16
     @NSManaged public var status: Int16
-    @NSManaged public var groupMembers: GroupMembers?
+    @NSManaged public var groupMembers: NSSet?
+    @NSManaged public var groupRole:Int16
 
 }
 

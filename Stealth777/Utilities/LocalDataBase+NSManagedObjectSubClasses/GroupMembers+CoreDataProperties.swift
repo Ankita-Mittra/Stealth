@@ -22,8 +22,7 @@ extension GroupMembers {
     @NSManaged public var imgUrl: String?
     @NSManaged public var thumbUrl: String?
     @NSManaged public var groupRole: Int16
-
-
+    @NSManaged public var userType: Int16
     @NSManaged public var group: Groups?
 
 }

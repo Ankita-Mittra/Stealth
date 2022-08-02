@@ -72,6 +72,14 @@ let one = 1
 let two = 2
 let five = 5
 
+//Group States
+enum enumGroupState:Int{
+    case active = 1
+    case exit = 2
+    case delete = 3
+    
+}
+
 // Fonts increment/decrement
 
 //let fontSizeForLargeDevices:CGFloat = 2

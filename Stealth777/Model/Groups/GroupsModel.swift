@@ -23,8 +23,10 @@ struct GroupsModel: Codable {
     let isMute: Int? // 11
     let groupRole: Int? // 12
     var members: [GroupMembersModel]? // 13
+    let thumbUrl:String?
+    
 
-    init(id: String, name: String, description: String, imageUrl: String, anonymous: Int, disperse: Int, disperseDate: String, canSendMsg: Int, showQr: Int, isPin: Int, isMute: Int, groupRole: Int, members: [GroupMembersModel]){
+    init(id: String, name: String, description: String, imageUrl: String, anonymous: Int, disperse: Int, disperseDate: String, canSendMsg: Int, showQr: Int, isPin: Int, isMute: Int, groupRole: Int, members: [GroupMembersModel],thumbUrl:String){
         self.id = id
         self.name = name
         self.description = description
@@ -38,6 +40,7 @@ struct GroupsModel: Codable {
         self.isMute = isMute
         self.groupRole = groupRole
         self.members = members
+        self.thumbUrl = thumbUrl
     }
     
     init(with data: [String: Any]?) {
@@ -54,6 +57,7 @@ struct GroupsModel: Codable {
         self.isPin = data?["isPin"] as? Int ?? zero
         self.isMute = data?["isMute"] as? Int ?? zero
         self.groupRole = data?["groupRole"] as? Int ?? zero
+        self.thumbUrl = data?["thumbUrl"] as? String
         self.members = []
 //        self.members = data?["members"] as? [GroupMembersModel] ?? []
         if let users = data?["members"] as? [[String: Any]]{
@@ -63,4 +67,30 @@ struct GroupsModel: Codable {
             }
         }
     }
+    
+    //intialising with local DB object
+    init(group:Groups?){
+        self.id = group?.id
+        self.name = group?.name
+        self.description = group?.desc
+        self.imageUrl = group?.imgUrl
+        self.thumbUrl = group?.thumbUrl
+        self.disperse = Int(group?.disperse ?? 0)
+        self.anonymous = Int(group?.anonymous ?? 0)
+        self.disperseDate = group?.disperseDate
+        self.canSendMsg = Int( group?.sendMessage ?? 0)
+        self.showQr = Int(group?.showQR ?? 0)
+        self.isPin = Int(group?.isPin ?? 0)
+        self.isMute = Int(group?.isMute ?? 0)
+        self.groupRole = Int(group?.groupRole ?? 0)
+        var membersArray = [GroupMembersModel]()
+        for case let m as GroupMembers in group?.groupMembers ?? []  {
+            let  obj = GroupMembersModel(with: m)
+            membersArray.append(obj)
+        }
+        self.members = membersArray
+        
+    }
+    
+    
 }
