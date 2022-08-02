@@ -32,7 +32,6 @@ extension User {
     @NSManaged public var userType: Int16
     @NSManaged public var userRelation: UserRelation?
     @NSManaged public var wKey: String?
-
 }
 
 extension User : Identifiable {

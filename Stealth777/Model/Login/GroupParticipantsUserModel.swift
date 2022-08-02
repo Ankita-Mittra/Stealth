@@ -26,8 +26,9 @@ struct GroupParticipantsUserModel: Codable {
     let publicKey: String? // 14
     let accountStatus: Int? // 15
     let isSelected: Int?
+    let thumbUrl:String?
     
-    init(userId: String, username: String, userType: Int, bio: String, imageUrl: String, isMute: Int, isBlock: Int, isPin: Int, allowWipeout: Int, onlineStatus: Int, lastOnlineTime: String, wKey: String, relation: Int, publicKey: String, accountStatus: Int, isSelected: Int){
+    init(userId: String, username: String, userType: Int, bio: String, imageUrl: String, isMute: Int, isBlock: Int, isPin: Int, allowWipeout: Int, onlineStatus: Int, lastOnlineTime: String, wKey: String, relation: Int, publicKey: String, accountStatus: Int, isSelected: Int,thumbUrl:String){
         self.userId = userId
         self.username = username
         self.userType = userType
@@ -44,6 +45,7 @@ struct GroupParticipantsUserModel: Codable {
         self.publicKey = publicKey
         self.accountStatus = accountStatus
         self.isSelected = isSelected
+        self.thumbUrl = thumbUrl
     }
 
     init(with data: [String: Any]?) {
@@ -65,6 +67,7 @@ struct GroupParticipantsUserModel: Codable {
         self.relation = data?["relation"] as? Int ?? zero
         self.accountStatus = data?["accountState"] as? Int ?? zero
         self.isSelected = data?["isSelected"] as? Int ?? zero
+        self.thumbUrl = data?["thumbUrl"] as? String
     }
     
     init(with data:User?) {
@@ -85,6 +88,7 @@ struct GroupParticipantsUserModel: Codable {
         self.relation = 0
         self.accountStatus = Int(data?.accStatus ?? 0)
         self.isSelected = 0
+        self.thumbUrl = data?.thumbUrl
     }
     
     func toAnyObject() -> Any {
@@ -104,16 +108,11 @@ struct GroupParticipantsUserModel: Codable {
             "wKey": wKey,
             "relation": relation,
             "accountState": accountStatus,
-            "isSelected" : isSelected
+            "isSelected" : isSelected,
+            "thumbUrl":thumbUrl ?? ""
         ]
     }
     
-    func getChatUserDict() -> [String:String]{
-        var dict = [String:String]()
-        dict["id"] = userId ?? ""
-        dict["name"] = username ?? ""
-        dict["image"] = imageUrl ?? ""
-        return dict
-    }
+    
 
 }

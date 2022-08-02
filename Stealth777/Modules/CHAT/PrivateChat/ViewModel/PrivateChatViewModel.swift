@@ -7,17 +7,7 @@
 
 import Foundation
 import SwiftyJSON
-//
-//            {
-//                "msg": "hi user7777",
-//                "groupId": "",
-//                "receiverId": "108ab439-395b-4429-9079-0b8b227480d0",
-//                "senderPbKey" : "",
-//                "mediaId" : "",
-//                "enKey": "" ,
-//                "quoteMsgId": "",
-//                "msgType" : 1
-//            }
+
             
 class PrivateChatViewModel {
     

@@ -104,7 +104,7 @@ class CreateGroupViewController: BaseViewController {
                 groupMembers.append(member)
             }
             
-            let groupInfo = GroupsModel(id: groupId, name: groupName, description: groupDescription, imageUrl: groupImgUrl, anonymous: anonymous, disperse: disperse, disperseDate: disperseDate, canSendMsg: 1, showQr: 1, isPin: 0, isMute: 0, groupRole: 3, members: groupMembers)
+            let groupInfo = GroupsModel(id: groupId, name: groupName, description: groupDescription, imageUrl: groupImgUrl, anonymous: anonymous, disperse: disperse, disperseDate: disperseDate, canSendMsg: 1, showQr: 1, isPin: 0, isMute: 0, groupRole: 3, members: groupMembers, thumbUrl: "")
             
             self.showCustomtAlert(groupInfo: groupInfo)
         }

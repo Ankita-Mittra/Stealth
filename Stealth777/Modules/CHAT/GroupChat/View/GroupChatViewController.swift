@@ -16,6 +16,7 @@ class GroupChatViewController: BaseViewController {
 //    var groupId = String()
     var groupInfo : GroupsModel!
     var headerView : GroupChatHeaderView?
+    var groupID:String?
     
     // MARK: - View life cycle
     
