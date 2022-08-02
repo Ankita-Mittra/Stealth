@@ -30,7 +30,7 @@ class UserDefaultsToStoreUserInfo: NSObject {
                 return id
             }
         }
-        return ""
+        return emptyStr
     }
     
     class func getUser()->UserModel?{
@@ -40,6 +40,15 @@ class UserDefaultsToStoreUserInfo: NSObject {
             }
         }
         return nil
+    }
+    
+    class func getPrivateKeyPair()->(String, String){
+         if let userInfo = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String:Any]{
+            if let privateKey = userInfo[USER_DEFAULT_privateKey_Key] as? String, let publicKey = userInfo[USER_DEFAULT_publicKey_Key] as? String {
+                return (privateKey, publicKey)
+            }
+        }
+        return (emptyStr, emptyStr)
     }
     
     

@@ -166,7 +166,7 @@
     </scenes>
     <designables>
         <designable name="iia-dQ-x4p">
-            <size key="intrinsicContentSize" width="113.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="113" height="20.5"/>
         </designable>
     </designables>
     <resources>

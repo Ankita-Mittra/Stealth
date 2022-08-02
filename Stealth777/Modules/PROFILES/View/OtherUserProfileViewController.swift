@@ -64,9 +64,7 @@ class OtherUserProfileViewController: BaseViewController {
     @IBAction func actionChat(_ sender: Any) {
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.privateChat.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateChat.rawValue) as? PrivateChatViewController
-        guard let dict = user?.getChatUserDict() else {return}
-        let user = ChatUser(dict: dict)
-        otherController?.chatUser = user
+        otherController?.otherChatUserId = user?.userId ?? ""
         self.navigationController?.pushViewController(otherController!, animated: true)
         
     }

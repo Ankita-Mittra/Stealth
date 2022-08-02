@@ -13,12 +13,16 @@ class PrivateChatViewController: BaseViewController {
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var txtMessage: UITextFieldCustomClass!
     
+    // sendMessageTxtfield // Lbl// btn// view
     // MARK: - Properties
     var headerView : GroupChatHeaderView?
     let viewModel = PrivateChatViewModel(apiService: ChatAPIServices())
-    var chatUser:ChatUser?
-    var myID = UserDefaultsToStoreUserInfo.getuserID()
+    //var chatUser:ChatUser?
     
+    var otherChatUser: UserModel?
+    let loggedInUserId = UserDefaultsToStoreUserInfo.getuserID()
+    var otherChatUserId = String()
+
     
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -41,13 +45,22 @@ class PrivateChatViewController: BaseViewController {
     }
     
     //MARK: - IBActions
+    
+    
+// sendBtnAction
+    
+    
     @IBAction func actionSend(){
-        if txtMessage.text?.isEmpty ?? false{
+        
+        let msgToSend = CommonFxns.trimString(string: txtMessage.text ?? "")
+        if msgToSend.isEmpty{
             return
         }
         
-        let dict:[String:Any] = ["msg":txtMessage.text!,
-                                 "receiverId":chatUser!.id!,
+        
+        
+        let dict:[String:Any] = ["msg":msgToSend,
+                                 "receiverId":otherChatUserId,
                                  "msgType":1]
         viewModel.sendMessage(dict: dict)
         
@@ -57,14 +70,27 @@ class PrivateChatViewController: BaseViewController {
     // MARK: - Methods
     
     func initialUISetup(){
+        // fetch other chat user info from locally
+        self.otherChatUser = ContactsDatabaseQueries.getUserByID(userId: self.otherChatUserId)
         setupNavigationBar()
         self.chatTableView.register(PrivateChatSenderTableViewCell.nib(), forCellReuseIdentifier: PrivateChatSenderTableViewCell.identifier)
         self.chatTableView.register(PrivateChatReceiverTableViewCell.nib(), forCellReuseIdentifier: PrivateChatReceiverTableViewCell.identifier)
         
         self.chatTableView.rowHeight = UITableView.automaticDimension
         self.chatTableView.estimatedRowHeight = 100
-        viewModel.getLocalMessages(id: chatUser!.id!)
-        fetchChats()
+        viewModel.getLocalMessages(id: otherChatUserId)
+        getMessagesFromServer()
+        
+        // Method to fetch Private keypair from user defaults
+        let (privateKey, publicKey) = UserDefaultsToStoreUserInfo.getPrivateKeyPair()
+        print("Key pair....", privateKey, publicKey)
+        
+        
+        let encryptedMsg = CommonFxns.encryptMsg(msg: "hi", publickey: (otherChatUser?.publicKey)!, privateKey: privateKey)
+        print("encryptedMsg///...", encryptedMsg)
+        
+        let decryptedMsg = CommonFxns.decryptMsg(cipherText: encryptedMsg, publickey: (otherChatUser?.publicKey)!, privateKey: privateKey)
+        print("decryptedMsg///...", decryptedMsg)
     }
     
     func setupNavigationBar(){
@@ -74,9 +100,9 @@ class PrivateChatViewController: BaseViewController {
         backbtn.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
         
         headerView = GroupChatHeaderView(frame: CGRect(x: 0, y: 0, width: 150, height: 35))
-        headerView?.lblGroupName.text = chatUser?.name?.capitalized
+        headerView?.lblGroupName.text = otherChatUser?.username?.capitalized
         headerView?.lblDescription.isHidden = true
-        CommonFxns.setImage(imageView: headerView!.imgPhoto, urlString: chatUser?.image,placeHolder: UIImage(named: "privateAvatar"))
+        CommonFxns.setImage(imageView: headerView!.imgPhoto, urlString: otherChatUser?.imageUrl,placeHolder: UIImage(named: "privateAvatar"))
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(toDetails))
         headerView?.addGestureRecognizer(tap)
@@ -96,6 +122,8 @@ class PrivateChatViewController: BaseViewController {
 
     }
     
+    
+    
     @objc func actionBack(){
         self.navigationController?.popViewController(animated: true)
     }
@@ -111,9 +139,20 @@ class PrivateChatViewController: BaseViewController {
     
     }
     
+    func fetchOtherUserPublicKey(){
+        //
+    }
+    
     // MARK: - Networking
     
-    private func fetchChats() {
+    
+    func sendMessageAPICall(){
+        self.txtMessage.text = emptyStr
+    }
+    
+    
+    
+    private func getMessagesFromServer() {
         
         viewModel.updateLoadingStatus = {
             print("updateLoadingStatus")
@@ -133,7 +172,7 @@ class PrivateChatViewController: BaseViewController {
             self.chatTableView.reloadData()
         }
         
-        viewModel.getMessages(recieverID: chatUser!.id!)
+        viewModel.getMessages(recieverID: otherChatUserId)
     }
     
     
@@ -168,7 +207,7 @@ extension PrivateChatViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let obj = viewModel.messageList?[indexPath.row]
-        if obj?.senderId == self.myID{
+        if obj?.senderId == self.loggedInUserId{
             let chatCell = self.chatTableView.dequeueReusableCell(withIdentifier: PrivateChatSenderTableViewCell.identifier , for: indexPath) as! PrivateChatSenderTableViewCell
             chatCell.configureCell(obj: obj)
             return chatCell
