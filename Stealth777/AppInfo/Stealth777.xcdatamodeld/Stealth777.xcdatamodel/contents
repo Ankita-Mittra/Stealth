@@ -7,20 +7,22 @@
         <attribute name="thumbUrl" optional="YES" attributeType="String"/>
         <attribute name="userId" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
+        <attribute name="userType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Groups" inverseName="groupMembers" inverseEntity="Groups"/>
     </entity>
     <entity name="Groups" representedClassName=".Groups" syncable="YES">
-        <attribute name="anonymous" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="anonymous" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
-        <attribute name="disperse" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="disperseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="disperse" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="disperseDate" optional="YES" attributeType="String"/>
+        <attribute name="groupRole" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="imgUrl" optional="YES" attributeType="String"/>
-        <attribute name="isMute" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isPin" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isMute" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="isPin" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="sendMessage" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="showQR" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sendMessage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="showQR" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="thumbUrl" optional="YES" attributeType="String"/>
         <relationship name="groupMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupMembers" inverseName="group" inverseEntity="GroupMembers"/>
@@ -70,8 +72,8 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userRelation" inverseEntity="User"/>
     </entity>
     <elements>
-        <element name="GroupMembers" positionX="271.94140625" positionY="-103.47265625" width="128" height="134"/>
-        <element name="Groups" positionX="74.5546875" positionY="-215.58984375" width="128" height="239"/>
+        <element name="GroupMembers" positionX="271.94140625" positionY="-103.47265625" width="128" height="149"/>
+        <element name="Groups" positionX="74.5546875" positionY="-215.58984375" width="128" height="14"/>
         <element name="Messages" positionX="-253.4921875" positionY="-338.36328125" width="128" height="284"/>
         <element name="User" positionX="-697.5078125" positionY="-277.40234375" width="128" height="269"/>
         <element name="UserRelation" positionX="-490.28125" positionY="-190.671875" width="128" height="104"/>

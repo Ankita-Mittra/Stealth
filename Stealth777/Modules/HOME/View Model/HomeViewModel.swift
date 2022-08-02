@@ -22,6 +22,7 @@ class HomeViewModel{
     }
     private var apiService = ContactsAPIServices()
     private var chatAPIService = ChatAPIServices()
+    private var groupAPIService = GroupsAPIServices()
     var isLoading: Bool = true {
         didSet { self.updateLoadingStatus?() }
     }
@@ -35,6 +36,9 @@ class HomeViewModel{
     var showSessionListError: ((String) -> ())?
     var didFinishSessionFeth: (() -> ())?
     
+    //MARK: - Closures for groups API
+    var showGroupsListError: ((String) -> ())?
+    var didFinishGroupsFetch: (() -> ())?
     
     // MARK: - Network call
     

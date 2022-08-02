@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+
 struct GroupMembersModel: Codable {
     
     let id: String? // 1
@@ -16,6 +17,7 @@ struct GroupMembersModel: Codable {
     let bio: String? // 4
     let groupRole: Int? // 5
     let userType: Int? // 6
+    let thumbUrl:String?
 
     init(with data: [String: Any]?) {
 
@@ -25,6 +27,7 @@ struct GroupMembersModel: Codable {
         self.bio = data?["bio"] as? String ?? emptyStr
         self.userType = data?["userType"] as? Int ?? zero
         self.groupRole = data?["groupRole"] as? Int ?? zero
+        self.thumbUrl = data?["thumbUrl"] as? String ?? ""
     }
     
 //    
@@ -48,6 +51,7 @@ struct GroupMembersModel: Codable {
         self.bio = dataMappingFromGroupParticipants?.bio
         self.userType = dataMappingFromGroupParticipants?.userType
         self.groupRole = 1
+        self.thumbUrl = dataMappingFromGroupParticipants?.thumbUrl
 //        self.id = dataMapping?["id"] as? String ?? emptyStr
 //        self.username = dataMapping?["username"] as? String ?? emptyStr
 //        self.imageUrl = dataMapping?["imageUrl"] as? String ?? emptyStr
@@ -55,6 +59,18 @@ struct GroupMembersModel: Codable {
 //        self.userType = dataMapping?["userType"] as? Int ?? zero
 //        self.groupRole = dataMapping?["groupRole"] as? Int ?? zero
     }
-
+    
+    //intialise using local db object for group member
+     init(with obj:GroupMembers){
+         self.id = obj.userId
+         self.username = obj.username
+         self.imageUrl = obj.imgUrl
+         self.bio = obj.bio
+         self.userType = Int(obj.userType)
+         self.groupRole = Int(obj.groupRole)
+         self.thumbUrl = obj.thumbUrl
+        
+    }
+   
 
 }
