@@ -56,19 +56,24 @@ class PrivateChatViewController: BaseViewController {
         if msgToSend.isEmpty{
             return
         }
-        
-        
-        
+//
+//
+//
+//        let encryptedMsg = CommonFxns.encryptMsg(msg: msgToSend, publickey: (otherChatUser?.publicKey)!, privateKey: privateKey)
+//        print("encryptedMsg///...", encryptedMsg)
+//
+
         let dict:[String:Any] = ["msg":msgToSend,
                                  "receiverId":otherChatUserId,
-                                 "msgType":1]
+                                 "msgType":1,
+                                 "senderPbKey": publicKey]
         viewModel.sendMessage(dict: dict)
         
     }
     
     
     // MARK: - Methods
-    
+    var (privateKey, publicKey) = (String(), String())
     func initialUISetup(){
         // fetch other chat user info from locally
         self.otherChatUser = ContactsDatabaseQueries.getUserByID(userId: self.otherChatUserId)
@@ -82,15 +87,8 @@ class PrivateChatViewController: BaseViewController {
         getMessagesFromServer()
         
         // Method to fetch Private keypair from user defaults
-        let (privateKey, publicKey) = UserDefaultsToStoreUserInfo.getPrivateKeyPair()
+        (privateKey, publicKey) = UserDefaultsToStoreUserInfo.getPrivateKeyPair()
         print("Key pair....", privateKey, publicKey)
-        
-        
-        let encryptedMsg = CommonFxns.encryptMsg(msg: "hi", publickey: (otherChatUser?.publicKey)!, privateKey: privateKey)
-        print("encryptedMsg///...", encryptedMsg)
-        
-        let decryptedMsg = CommonFxns.decryptMsg(cipherText: encryptedMsg, publickey: (otherChatUser?.publicKey)!, privateKey: privateKey)
-        print("decryptedMsg///...", decryptedMsg)
     }
     
     func setupNavigationBar(){
@@ -209,12 +207,12 @@ extension PrivateChatViewController: UITableViewDelegate, UITableViewDataSource 
         let obj = viewModel.messageList?[indexPath.row]
         if obj?.senderId == self.loggedInUserId{
             let chatCell = self.chatTableView.dequeueReusableCell(withIdentifier: PrivateChatSenderTableViewCell.identifier , for: indexPath) as! PrivateChatSenderTableViewCell
-            chatCell.configureCell(obj: obj)
+            chatCell.configureCell(obj: obj, privateKey: privateKey)
             return chatCell
         }
         else{
             let chatCell = self.chatTableView.dequeueReusableCell(withIdentifier: PrivateChatReceiverTableViewCell.identifier , for: indexPath) as! PrivateChatReceiverTableViewCell
-            chatCell.configureCell(obj: obj)
+            chatCell.configureCell(obj: obj, privateKey: privateKey)
             return chatCell
         }
     }

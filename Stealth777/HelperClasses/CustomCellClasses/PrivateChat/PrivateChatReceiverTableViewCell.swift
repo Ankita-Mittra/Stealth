@@ -20,7 +20,7 @@ class PrivateChatReceiverTableViewCell: UITableViewCell {
     static func nib() -> UINib{
         return UINib(nibName: "PrivateChatReceiverTableViewCell", bundle: nil)
     }
-    
+
     // MARK: - Methods
 
     override func awakeFromNib() {
@@ -43,7 +43,10 @@ class PrivateChatReceiverTableViewCell: UITableViewCell {
         }
     }
     
-    func configureCell(obj:MessageModel?){
+    func configureCell(obj:MessageModel?, privateKey: String){
+        
+//        let decryptedMsg = CommonFxns.decryptMsg(cipherText: obj?.msg?.text ?? emptyStr, publickey: obj?.senderPbKey ?? emptyStr, privateKey: privateKey)
+//        print("decryptedMsg///...", decryptedMsg)
         msgBodyLbl.text = obj?.msg?.text
         msgTimelbl.text = CommonFxns.getDateFromMilliSeconds(mSeconds: obj?.sendTime ?? 0)
     }
