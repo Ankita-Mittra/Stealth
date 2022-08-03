@@ -13,7 +13,7 @@ struct SessionList {
 	let groupId: String?
 	let senderId: String?
 	let receiverId: String?
-	let sendTime: String?
+	let sendTime: Double?
 	let msgType: Int?
 	let msg: Msg?
 	let username: String?
@@ -30,7 +30,7 @@ struct SessionList {
 		groupId = json["groupId"].stringValue
 		senderId = json["senderId"].stringValue
 		receiverId = json["receiverId"].stringValue
-		sendTime = json["sendTime"].stringValue
+		sendTime = json["sendTime"].doubleValue
 		msgType = json["msgType"].intValue
 		msg = Msg(json["msg"])
 		username = json["username"].stringValue

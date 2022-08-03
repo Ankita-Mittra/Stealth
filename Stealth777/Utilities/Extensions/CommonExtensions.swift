@@ -123,3 +123,9 @@ extension Data {
         }
     }
 }
+
+extension Date {
+    func days(sinceDate: Date) -> Int? {
+        return Calendar.current.dateComponents([.day], from: sinceDate, to: self).day
+    }
+}

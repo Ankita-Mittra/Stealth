@@ -48,12 +48,12 @@ class PrivateChatReceiverTableViewCell: UITableViewCell {
 //        let decryptedMsg = CommonFxns.decryptMsg(cipherText: obj?.msg?.text ?? emptyStr, publickey: obj?.senderPbKey ?? emptyStr, privateKey: privateKey)
 //        print("decryptedMsg///...", decryptedMsg)
         msgBodyLbl.text = obj?.msg?.text
-        msgTimelbl.text = CommonFxns.getDateFromMilliSeconds(mSeconds: obj?.sendTime ?? 0)
+        msgTimelbl.text = CommonFxns.getReadableDateFromTimeStamp(timeStamp: Double(obj?.sendTime ?? 0))
     }
     
     func configureCell(obj:MessageModel?){
         msgBodyLbl.text = obj?.msg?.text
-        msgTimelbl.text = CommonFxns.getDateFromMilliSeconds(mSeconds: obj?.sendTime ?? 0)
+        msgTimelbl.text = CommonFxns.getReadableDateFromTimeStamp(timeStamp: Double(obj?.sendTime ?? 0))
         
     }
     

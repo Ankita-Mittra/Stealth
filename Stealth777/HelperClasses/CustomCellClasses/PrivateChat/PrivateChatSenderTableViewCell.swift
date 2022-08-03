@@ -43,7 +43,7 @@ class PrivateChatSenderTableViewCell: UITableViewCell {
 //        print("decryptedMsg///...", decryptedMsg)
         
         msgBodyLbl.text = obj?.msg?.text
-        msgTimelbl.text = CommonFxns.getDateFromMilliSeconds(mSeconds: obj?.sendTime ?? 0)
+        msgTimelbl.text = CommonFxns.getReadableDateFromTimeStamp(timeStamp: Double(obj?.sendTime ?? 0))
         if obj?.state == 2{
             seenMsgImgView.image = UIImage(named: "blueDoubleTick")
         }
@@ -54,7 +54,7 @@ class PrivateChatSenderTableViewCell: UITableViewCell {
     
     func configureCell(obj:MessageModel?){
         msgBodyLbl.text = obj?.msg?.text
-        msgTimelbl.text = CommonFxns.getDateFromMilliSeconds(mSeconds: obj?.sendTime ?? 0)
+        msgTimelbl.text = CommonFxns.getReadableDateFromTimeStamp(timeStamp: Double(obj?.sendTime ?? 0))
         if obj?.state == 2{
             seenMsgImgView.image = UIImage(named: "blueDoubleTick")
         }
