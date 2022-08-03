@@ -359,13 +359,84 @@ class CommonFxns: NSObject {
             return encryptedText
         }
 
+    class func swiftyECC() {
+        do {
+            let domain = Domain.instance(curve: .EC256r1)
+            let eccEncObj = EccEncryption()
+
+    //             // Party A's keys
+            let (public_ios, private_ios) = domain.makeKeyPair()
+
+            let priv_ios_str = "-----BEGIN EC PRIVATE KEY-----\nMHcCAQEEIOfZ40GOHGmWawm4Oc3eHY5k3qRrkeMfrQHQ97BiNl8CoAoGCCqGSM49\nAwEHoUQDQgAEfMH8q+EeTaadxJze+VoN8ik1b/eAAlykEVbFykPrY1x+/G0Vr6/I\nYhQbK74RpG6x9gnJKBUG4+/fJRBANNjDcQ==\n-----END EC PRIVATE KEY-----"
+            let priv_iOS = try ECPrivateKey(pem: priv_ios_str)
+            print("exported priv_ios...", priv_iOS.pem)
+            
+            let pub_iOS_str = "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEfMH8q+EeTaadxJze+VoN8ik1b/eA\nAlykEVbFykPrY1x+/G0Vr6/IYhQbK74RpG6x9gnJKBUG4+/fJRBANNjDcQ==\n-----END PUBLIC KEY-----"
+            let pub_iOS = try ECPublicKey(pem: pub_iOS_str)
+            print("exported pub_iOS...", pub_iOS.pem)
+
+            // Party B's keys
+
+            let private_android  = "-----BEGIN EC PRIVATE KEY-----\nMHcCAQEEIP3IeHUUAZFynG7qoZFiqX6OP/r7myLUhrE6GCc1aZEaoAoGCCqGSM49\nAwEHoUQDQgAEgTRYk9G849srpu1HE7SnM9MbP/YCkzizbp4GJmyNEV56q5uRaJMN\nTuKAVxFhCYW0ZWMt5Ju0D1svy7u7cMAUrA==\n-----END EC PRIVATE KEY-----"
+    //            let pub_Android = "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgTRYk9G849srpu1HE7SnM9MbP/YC\nkzizbp4GJmyNEV56q5uRaJMNTuKAVxFhCYW0ZWMt5Ju0D1svy7u7cMAUrA==\n-----END PUBLIC KEY-----"
+            let pub_Android = "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEtmO1qMu2hdpYz2b9u5TUrDa+UEoEGtk9/sth+P4L\nVnQ2221D8jrHK2wNbTcvYGnZo6KhiEIPhFNGDsABkl8IGQ==\n-----END PUBLIC KEY-----"
+
+            let pubKeyAndroid = try ECPublicKey(pem: pub_Android)
+
+            let priKeyAndroid = try ECPrivateKey(pem: private_android)
+            
+            print("exported Pem...", pubKeyAndroid.pem)
+            print("exported Pem...", priKeyAndroid.pem)
+
+
+            let importPrivateKey_android = try eccEncObj.importPrivateKey(priKeyAndroid.pem)
+            let importPublickey_android = try eccEncObj.importPublicKey(pubKeyAndroid.pem)
+            let importPrivateKey_ios = try eccEncObj.importPrivateKey(priv_iOS.pem)
+            let importPublickey_ios = try eccEncObj.importPublicKey(pub_iOS.pem)
+
+            print("importPublickey : ", importPublickey_android.pemRepresentation)
+            print("importPublickey ios : ", importPublickey_android.pemRepresentation)
+
+            let info: Bytes = [1,2,3]
+            let secretA = try private_ios.keyAgreement(pubKey: pubKeyAndroid, length: 8, md: .SHA2_256, sharedInfo: info)
+            print("secret A....", secretA.description.toBase64())
+            
+            let deriveKey = try eccEncObj.deriveSymmetricKey(privateKey: importPrivateKey_ios, publicKey: importPublickey_android)
+            print("deriveKey...", deriveKey)
+            let sensitiveMessage = "HI,Shafat".data(using: .utf8)!
+
+            let iv = CryptoKit.AES.GCM.Nonce()
+            
+            let sealedBox = try! CryptoKit.AES.GCM.seal(sensitiveMessage,
+                                              using: deriveKey,
+                                              nonce: iv)
+            let cipher = sealedBox.ciphertext + sealedBox.tag
+            print("cipher.....", cipher.base64EncodedString() )
+
+            let symmetricKey = try eccEncObj.deriveSymmetricKey(privateKey: importPrivateKey_ios, publicKey: importPublickey_android)
+
+            let sensitiveMessageAndroid = "HLlYDHImPGQi6sle96F2VOjuMgjmVLgXLrnieXo87XA=".data(using: .utf8)!
+            let nonce = "O5ZPMUTqHOEXepSZ".data(using: .utf8)
+            // need to prefix data with nonce, because data from kotlin/java contains the cipher text plus the tag at the end.
+            // we want nonce || ciphertext || tag for CryptoKit to be happy
+            let combine = nonce! + sensitiveMessageAndroid
+            let myNewSealedBox = try CryptoKit.AES.GCM.SealedBox(combined: combine)
+            
+            let res = try CryptoKit.AES.GCM.open(myNewSealedBox, using: symmetricKey)
+            let myText = try String(decoding: res, as: UTF8.self)
+            print("myText...", myText)
+        } catch {
+            print("Exception: \(error)")
+        }
+    }
+    
     
     class func decryptMsg(cipherText: String, publickey: String, privateKey: String)-> String{
         
         
            let newOtherUserPublicKey = "-----BEGIN PUBLIC KEY-----\n" + publickey + "\n-----END PUBLIC KEY-----"
            var decryptedText =  String()
-           
+//        self.swiftyECC()
            do {
                let otherUserPbkey = try ECPublicKey(pem: newOtherUserPublicKey)
 
@@ -394,17 +465,19 @@ class CommonFxns: NSObject {
                
                
                let deriveKey = try eccEncObj.deriveSymmetricKey(privateKey: importLoggedInUserPrivateKey, publicKey: importOtherUserPublicKey)
-               print("deriveKey...", deriveKey)
+               print("deriveKey..22222.", deriveKey)
 
                let sensitiveMessageAndroid = cipherText.data(using: .utf8)!
-               let nonce = "O5ZPMUTqHOEXepSZ".data(using: .utf8)
+               let nonce = CryptoKit.AES.GCM.Nonce()
+               
+               
                // need to prefix data with nonce, because data from kotlin/java contains the cipher text plus the tag at the end.
                // we want nonce || ciphertext || tag for CryptoKit to be happy
-               let combine = nonce! + sensitiveMessageAndroid
+               let combine = nonce + sensitiveMessageAndroid
                let myNewSealedBox = try CryptoKit.AES.GCM.SealedBox(combined: combine)
                
                let res = try CryptoKit.AES.GCM.open(myNewSealedBox, using: deriveKey)
-               decryptedText = try String(decoding: res, as: UTF8.self)
+               decryptedText = String(decoding: res, as: UTF8.self)
                print("decryptedText...", decryptedText)
                
            }
