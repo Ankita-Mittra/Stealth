@@ -107,8 +107,6 @@
 		208BE8A427F720DA00112DA3 /* SignUpAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BE8A327F720DA00112DA3 /* SignUpAPIService.swift */; };
 		2092FFC828059A3200A88616 /* EnterPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092FFC728059A3200A88616 /* EnterPasswordViewModel.swift */; };
 		20952F9D2837913300C77152 /* WalletFxns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20952F9C2837913300C77152 /* WalletFxns.swift */; };
-		209C3C3C27F2FC65002C554D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3C3B27F2FC65002C554D /* APIService.swift */; };
-		209C3C3E27F2FCAE002C554D /* APIService+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3C3D27F2FCAE002C554D /* APIService+Login.swift */; };
 		209C3C4E27F317E6002C554D /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3C4D27F317E6002C554D /* ResultModel.swift */; };
 		209C5B002848AE270008F660 /* ContactsDatabaseQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C5AFF2848AE270008F660 /* ContactsDatabaseQueries.swift */; };
 		209EE81D284E320F0074C354 /* OtherUserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EE81C284E320F0074C354 /* OtherUserProfileViewModel.swift */; };
@@ -214,7 +212,6 @@
 		5D26F1044F2A963EFCBFEF4F /* Pods_Stealth777.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79DB081BD4246E2A7604F798 /* Pods_Stealth777.framework */; };
 		6B25EC18288FC8120014B87A /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EC17288FC8120014B87A /* ChatUser.swift */; };
 		6B25EC1A289003420014B87A /* ChatsDatabaseQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EC19289003420014B87A /* ChatsDatabaseQueries.swift */; };
-		6B324790288E6F41002EC954 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B32478F288E6F41002EC954 /* WebService.swift */; };
 		6B32479D288EC8B0002EC954 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B324799288EC8AF002EC954 /* MessageModel.swift */; };
 		6B32479E288EC8B0002EC954 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B32479A288EC8B0002EC954 /* MessageData.swift */; };
 		6B32479F288EC8B0002EC954 /* MessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B32479B288EC8B0002EC954 /* MessageContent.swift */; };
@@ -226,6 +223,11 @@
 		6B3E4718288971C200AD5528 /* GroupChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E4717288971C200AD5528 /* GroupChatHeaderView.swift */; };
 		6B4EC5D12898FD8100F6A3FC /* SendMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5D02898FD8100F6A3FC /* SendMessageRequest.swift */; };
 		6B4EC5D3289905F900F6A3FC /* GroupDatabaseQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5D2289905F900F6A3FC /* GroupDatabaseQueries.swift */; };
+		6B4EC5D8289A43F200F6A3FC /* UploadFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5D6289A43F200F6A3FC /* UploadFile.swift */; };
+		6B4EC5D9289A43F200F6A3FC /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5D7289A43F200F6A3FC /* WebService.swift */; };
+		6B4EC5DF289A583A00F6A3FC /* SendMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5DE289A583A00F6A3FC /* SendMessageModel.swift */; };
+		6B4EC5E1289A91B300F6A3FC /* GroupChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5E0289A91B300F6A3FC /* GroupChatViewModel.swift */; };
+		6B4EC5E3289A924200F6A3FC /* ListMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5E2289A924200F6A3FC /* ListMessageRequest.swift */; };
 		6B77AABD288A89BC004758D7 /* GroupDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B77AABC288A89BC004758D7 /* GroupDetailsViewModel.swift */; };
 		762BA5D6DDFA56EDE04ACFAD /* Pods_Stealth777_Stealth777UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF060544A2F70F3A15070558 /* Pods_Stealth777_Stealth777UITests.framework */; };
 		9A5EFDBA281D5FD400AB84A6 /* GroupSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5EFDB9281D5FD400AB84A6 /* GroupSettingsViewModel.swift */; };
@@ -355,8 +357,6 @@
 		208BE8A327F720DA00112DA3 /* SignUpAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAPIService.swift; sourceTree = "<group>"; };
 		2092FFC728059A3200A88616 /* EnterPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewModel.swift; sourceTree = "<group>"; };
 		20952F9C2837913300C77152 /* WalletFxns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletFxns.swift; sourceTree = "<group>"; };
-		209C3C3B27F2FC65002C554D /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		209C3C3D27F2FCAE002C554D /* APIService+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIService+Login.swift"; sourceTree = "<group>"; };
 		209C3C4D27F317E6002C554D /* ResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
 		209C5AFF2848AE270008F660 /* ContactsDatabaseQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDatabaseQueries.swift; sourceTree = "<group>"; };
 		209EE81C284E320F0074C354 /* OtherUserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileViewModel.swift; sourceTree = "<group>"; };
@@ -474,7 +474,6 @@
 		627E5B42235A6DDD3E330867 /* Pods_Stealth777Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stealth777Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B25EC17288FC8120014B87A /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		6B25EC19289003420014B87A /* ChatsDatabaseQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsDatabaseQueries.swift; sourceTree = "<group>"; };
-		6B32478F288E6F41002EC954 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		6B324799288EC8AF002EC954 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		6B32479A288EC8B0002EC954 /* MessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
 		6B32479B288EC8B0002EC954 /* MessageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageContent.swift; sourceTree = "<group>"; };
@@ -486,6 +485,11 @@
 		6B3E4717288971C200AD5528 /* GroupChatHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatHeaderView.swift; sourceTree = "<group>"; };
 		6B4EC5D02898FD8100F6A3FC /* SendMessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageRequest.swift; sourceTree = "<group>"; };
 		6B4EC5D2289905F900F6A3FC /* GroupDatabaseQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDatabaseQueries.swift; sourceTree = "<group>"; };
+		6B4EC5D6289A43F200F6A3FC /* UploadFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadFile.swift; sourceTree = "<group>"; };
+		6B4EC5D7289A43F200F6A3FC /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		6B4EC5DE289A583A00F6A3FC /* SendMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMessageModel.swift; sourceTree = "<group>"; };
+		6B4EC5E0289A91B300F6A3FC /* GroupChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewModel.swift; sourceTree = "<group>"; };
+		6B4EC5E2289A924200F6A3FC /* ListMessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMessageRequest.swift; sourceTree = "<group>"; };
 		6B77AABC288A89BC004758D7 /* GroupDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewModel.swift; sourceTree = "<group>"; };
 		79DB081BD4246E2A7604F798 /* Pods_Stealth777.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stealth777.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F25442004A06EA1861712C1 /* Pods-Stealth777.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stealth777.release.xcconfig"; path = "Target Support Files/Pods-Stealth777/Pods-Stealth777.release.xcconfig"; sourceTree = "<group>"; };
@@ -503,7 +507,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				20C8362B2898F35E00CEF1CA /* SwiftECC in Frameworks */,
 				5D26F1044F2A963EFCBFEF4F /* Pods_Stealth777.framework in Frameworks */,
 			);
@@ -895,7 +898,7 @@
 			path = LocalDatabaseHandlingClasses;
 			sourceTree = "<group>";
 		};
-		209EE820284F33380074C354 /* Chats */ = {
+		209EE820284F33380074C354 /* PrivateChatListing */ = {
 			isa = PBXGroup;
 			children = (
 				6B32479A288EC8B0002EC954 /* MessageData.swift */,
@@ -904,7 +907,7 @@
 				6B32479B288EC8B0002EC954 /* MessageContent.swift */,
 				6B32479C288EC8B0002EC954 /* QuoteMessage.swift */,
 			);
-			path = Chats;
+			path = PrivateChatListing;
 			sourceTree = "<group>";
 		};
 		209F9A2E27E06E40008CFA80 /* View */ = {
@@ -1183,9 +1186,8 @@
 		20FBC6D627C7BE24004E0697 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
-				209C3C3B27F2FC65002C554D /* APIService.swift */,
-				6B32478F288E6F41002EC954 /* WebService.swift */,
-				209C3C3D27F2FCAE002C554D /* APIService+Login.swift */,
+				6B4EC5D6289A43F200F6A3FC /* UploadFile.swift */,
+				6B4EC5D7289A43F200F6A3FC /* WebService.swift */,
 				208BE8A327F720DA00112DA3 /* SignUpAPIService.swift */,
 				20EC25A52811466F005EA2B8 /* UserAPIServices.swift */,
 				20F99D18283E66CA0088A487 /* ContactsAPIServices.swift */,
@@ -1327,12 +1329,7 @@
 			isa = PBXGroup;
 			children = (
 				6B4EC5CE2898FD4100F6A3FC /* RequestModels */,
-				209EE820284F33380074C354 /* Chats */,
-				20F99D1F283FAE3C0088A487 /* Groups */,
-				20F99D1E283F73CE0088A487 /* Contacts&Groups */,
-				9A5EFDB5281D5EE600AB84A6 /* Home */,
-				9A5EFDB4281D5EC000AB84A6 /* Wallet */,
-				205AAB1B27F1C688002FE32E /* Login */,
+				6B4EC5DB289A576500F6A3FC /* ResponseModels  */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1490,8 +1487,39 @@
 			isa = PBXGroup;
 			children = (
 				6B4EC5D02898FD8100F6A3FC /* SendMessageRequest.swift */,
+				6B4EC5E2289A924200F6A3FC /* ListMessageRequest.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		6B4EC5DB289A576500F6A3FC /* ResponseModels  */ = {
+			isa = PBXGroup;
+			children = (
+				6B4EC5DC289A580D00F6A3FC /* Chats */,
+				20F99D1F283FAE3C0088A487 /* Groups */,
+				20F99D1E283F73CE0088A487 /* Contacts&Groups */,
+				9A5EFDB5281D5EE600AB84A6 /* Home */,
+				9A5EFDB4281D5EC000AB84A6 /* Wallet */,
+				205AAB1B27F1C688002FE32E /* Login */,
+			);
+			path = "ResponseModels ";
+			sourceTree = "<group>";
+		};
+		6B4EC5DC289A580D00F6A3FC /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				6B4EC5DD289A581F00F6A3FC /* SendMessage */,
+				209EE820284F33380074C354 /* PrivateChatListing */,
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+		6B4EC5DD289A581F00F6A3FC /* SendMessage */ = {
+			isa = PBXGroup;
+			children = (
+				6B4EC5DE289A583A00F6A3FC /* SendMessageModel.swift */,
+			);
+			path = SendMessage;
 			sourceTree = "<group>";
 		};
 		6BE378EBB192249CBDA154BD /* Pods */ = {
@@ -1545,6 +1573,7 @@
 				9A5EFDB9281D5FD400AB84A6 /* GroupSettingsViewModel.swift */,
 				9A5EFDBB281D5FEA00AB84A6 /* AllGroupsViewModel.swift */,
 				6B77AABC288A89BC004758D7 /* GroupDetailsViewModel.swift */,
+				6B4EC5E0289A91B300F6A3FC /* GroupChatViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1578,7 +1607,6 @@
 			);
 			name = Stealth777;
 			packageProductDependencies = (
-
 				20C8362A2898F35E00CEF1CA /* SwiftECC */,
 			);
 			productName = Stealth777;
@@ -1661,7 +1689,6 @@
 			);
 			mainGroup = 20FBC69427C7ABCE004E0697;
 			packageReferences = (
-
 				20C836292898F26C00CEF1CA /* XCRemoteSwiftPackageReference "SwiftECC" */,
 			);
 			productRefGroup = 20FBC69E27C7ABCE004E0697 /* Products */;
@@ -1884,6 +1911,7 @@
 				209F9A5627E0A455008CFA80 /* TokenListTableViewCell.swift in Sources */,
 				20FBC6FB27C7C240004E0697 /* UITextFieldFontSize.swift in Sources */,
 				20EFFB5227F43E1B009BD3B9 /* MarketPlaceViewController.swift in Sources */,
+				6B4EC5D8289A43F200F6A3FC /* UploadFile.swift in Sources */,
 				20B83C9627DA175F003CA9D2 /* GroupDetailsViewController.swift in Sources */,
 				200D993327D201F50088B2E5 /* PrivateChatSenderTableViewCell.swift in Sources */,
 				6B3247A4288ECA75002EC954 /* Msg.swift in Sources */,
@@ -1892,6 +1920,7 @@
 				20F9AE79283B89850057C881 /* BigIntConverter.swift in Sources */,
 				20FBC6F327C7C223004E0697 /* UILabelCustomClass.swift in Sources */,
 				201AEA1E27EDEB9200BA2CE0 /* SubscriptionDetailsViewController.swift in Sources */,
+				6B4EC5D9289A43F200F6A3FC /* WebService.swift in Sources */,
 				209F9A4E27E07EA0008CFA80 /* CallLogsViewController.swift in Sources */,
 				20FBC6F127C7C223004E0697 /* UITextFieldCustomClass.swift in Sources */,
 				2018C80E27D74FCF0011B238 /* TermsAndConditionsViewController.swift in Sources */,
@@ -1910,7 +1939,6 @@
 				20E01CC327DF7FF1003DB80F /* UserInfoViewController.swift in Sources */,
 				200D991B27D1F8A00088B2E5 /* RecoverPasswordViewController.swift in Sources */,
 				2087DB0527E88E4B00D9F7C0 /* AppWireframe+PrivateChat.swift in Sources */,
-				6B324790288E6F41002EC954 /* WebService.swift in Sources */,
 				209C3C4E27F317E6002C554D /* ResultModel.swift in Sources */,
 				209F9A3A27E079A0008CFA80 /* SettingsViewController.swift in Sources */,
 				2043BA7727FADF1200D00041 /* SignUpRequest.swift in Sources */,
@@ -1932,12 +1960,12 @@
 				2018C81027D780650011B238 /* BaseViewController.swift in Sources */,
 				20B83C8627DA14A4003CA9D2 /* NotificationsTableViewCell.swift in Sources */,
 				20EC25A62811466F005EA2B8 /* UserAPIServices.swift in Sources */,
+				6B4EC5E1289A91B300F6A3FC /* GroupChatViewModel.swift in Sources */,
+				6B4EC5DF289A583A00F6A3FC /* SendMessageModel.swift in Sources */,
 				2043BA6F27FAD32900D00041 /* Groups+CoreDataProperties.swift in Sources */,
 				20FBC6AB27C7ABCE004E0697 /* Stealth777.xcdatamodeld in Sources */,
-				209C3C3E27F2FCAE002C554D /* APIService+Login.swift in Sources */,
 				9A5EFDBC281D5FEA00AB84A6 /* AllGroupsViewModel.swift in Sources */,
 				2043BA7327FAD32900D00041 /* UserRelation+CoreDataProperties.swift in Sources */,
-				209C3C3C27F2FC65002C554D /* APIService.swift in Sources */,
 				20B486F527CCD23A00E12376 /* StringsForCode.swift in Sources */,
 				20ECAFA227E0AD110018C877 /* ReceiveAmountViewController.swift in Sources */,
 				2043BA7227FAD32900D00041 /* UserRelation+CoreDataClass.swift in Sources */,
@@ -1968,6 +1996,7 @@
 				209F9A3527E076CC008CFA80 /* SettingsOptionsTableViewCell.swift in Sources */,
 				200D991327D1F7E00088B2E5 /* CreateWalletViewController.swift in Sources */,
 				205AAB1327F196A3002FE32E /* EccEncryption.swift in Sources */,
+				6B4EC5E3289A924200F6A3FC /* ListMessageRequest.swift in Sources */,
 				2043BA7427FAD32900D00041 /* Messages+CoreDataClass.swift in Sources */,
 				2043BA7127FAD32900D00041 /* User+CoreDataProperties.swift in Sources */,
 				2030F57227F5D2CC001D5F61 /* Strings.swift in Sources */,

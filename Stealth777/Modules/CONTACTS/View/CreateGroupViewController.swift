@@ -144,7 +144,7 @@ class CreateGroupViewController: BaseViewController {
 
         refreshAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action: UIAlertAction!) in
             
-            self.goToGroupChatSsreen(groupInfo: groupInfo)
+            self.goToGroupChatSsreen(groupID: groupInfo.id)
         }))
         present(refreshAlert, animated: true, completion: nil)
     }
@@ -217,10 +217,10 @@ class CreateGroupViewController: BaseViewController {
         
     }
     
-    func goToGroupChatSsreen(groupInfo: GroupsModel){
+    func goToGroupChatSsreen(groupID: String?){
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
         let otherVC = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupChat .rawValue) as? GroupChatViewController
-        otherVC?.groupInfo = groupInfo
+        otherVC?.groupID = groupID
         self.navigationController?.pushViewController(otherVC!, animated: true)
     }
 

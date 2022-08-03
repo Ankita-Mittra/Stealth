@@ -12,11 +12,14 @@ class GroupChatViewController: BaseViewController {
     // MARK: - Properties & Delegates
 
     @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var txtMessage: UITextFieldCustomClass!
 
 //    var groupId = String()
     var groupInfo : GroupsModel!
     var headerView : GroupChatHeaderView?
     var groupID:String?
+    let viewModel = GroupChatViewModel()
+    let loggedInUserId = UserDefaultsToStoreUserInfo.getuserID()
     
     // MARK: - View life cycle
     
@@ -38,15 +41,31 @@ class GroupChatViewController: BaseViewController {
         
     }
     
+    //MARK: - IBActions
+    
+    @IBAction func actionSend(){
+        
+        let msgToSend = CommonFxns.trimString(string: txtMessage.text ?? "")
+        if msgToSend.isEmpty{
+            return
+        }
+        let request = SendMessageRequest(msg: msgToSend, groupId: groupID!, receiverId: "", senderPbKey: "", mediaId: nil, enKey: "", quoteMsgId: nil, msgType: 1)
+        viewModel.sendMessage(dict: request.toDictionary())
+        
+    }
+    
+    
     // MARK: - Methods
 
     func initialUISetup(){
+        groupInfo = GroupDatabaseQueries.getGroupByID(groupId: groupID!)
         self.chatTableView.register(PrivateChatSenderTableViewCell.nib(), forCellReuseIdentifier: PrivateChatSenderTableViewCell.identifier)
         self.chatTableView.register(PrivateChatReceiverTableViewCell.nib(), forCellReuseIdentifier: PrivateChatReceiverTableViewCell.identifier)
-
         self.chatTableView.rowHeight = UITableView.automaticDimension
         self.chatTableView.estimatedRowHeight = 100
         setupNavigationBar()
+        viewModel.getLocalGroupMessages(id: groupID!)
+        getMessagesFromServer()
     }
     
     func setupNavigationBar(){
@@ -96,30 +115,52 @@ class GroupChatViewController: BaseViewController {
         self.navigationController?.pushViewController(otherController!, animated: true)
         
     }
-
+    
+    // MARK: - Networking
+    
+    
+    private func getMessagesFromServer() {
+      
+        viewModel.showAlertClosure = {
+            error in
+            CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
+            
+        }
+        
+        viewModel.didFinishFetch = {
+            
+            self.chatTableView.reloadData()
+        }
+        
+        viewModel.getMessages(groupID: groupID!)
+        
+        viewModel.didFinishSendMessage = {
+            self.txtMessage.text = emptyStr
+            
+        }
+    }
     
 }
 
 extension GroupChatViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        viewModel.messageList?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        
-        if indexPath.row == 1{
-            guard  let chatCell = self.chatTableView.dequeueReusableCell(withIdentifier: PrivateChatSenderTableViewCell.identifier , for: indexPath) as? PrivateChatSenderTableViewCell else {
-                return cell
-            }
-            return chatCell
-        }else{
-            guard  let chatCell = self.chatTableView.dequeueReusableCell(withIdentifier: PrivateChatReceiverTableViewCell.identifier , for: indexPath) as? PrivateChatReceiverTableViewCell else {
-                return cell
-            }
+        let obj = viewModel.messageList?[indexPath.row]
+        if obj?.senderId == self.loggedInUserId{
+            let chatCell = self.chatTableView.dequeueReusableCell(withIdentifier: PrivateChatSenderTableViewCell.identifier , for: indexPath) as! PrivateChatSenderTableViewCell
+            chatCell.configureCell(obj: obj)
             return chatCell
         }
+        else{
+            let chatCell = self.chatTableView.dequeueReusableCell(withIdentifier: PrivateChatReceiverTableViewCell.identifier , for: indexPath) as! PrivateChatReceiverTableViewCell
+            chatCell.configureCell(obj: obj)
+            return chatCell
+        }
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

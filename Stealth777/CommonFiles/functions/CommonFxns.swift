@@ -12,8 +12,10 @@ import SDWebImage
 import SwiftyJSON
 import SwiftECC
 import CryptoKit
+import MBProgressHUD
 
 class CommonFxns: NSObject {
+    static var globalHud:MBProgressHUD?
     
     // Method to change language to Selcted language at Home screen
     class func switchLanguageAtHomeScreen(selectedLanguageCode: String){
@@ -543,6 +545,20 @@ class CommonFxns: NSObject {
             }
         }
         return JSON()
+    }
+    
+    // Show activity Indicator
+    class func showProgress()->Void{
+        let window:UIWindow = UIApplication.shared.windows.last!
+        globalHud = MBProgressHUD.showAdded(to: window, animated: true)
+        globalHud?.bezelView.color = UIColor.clear // Your backgroundcolor
+        globalHud?.bezelView.style = .solidColor
+        
+    }
+    
+    // Hide activity Indicator
+   class func dismissProgress()->Void{
+       globalHud?.hide(animated: true)
     }
     
 }

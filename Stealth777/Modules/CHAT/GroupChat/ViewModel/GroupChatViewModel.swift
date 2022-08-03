@@ -1,15 +1,13 @@
 //
-//  PrivateChatViewModel.swift
+//  GroupChatViewModel.swift
 //  Stealth777
 //
-//  Created by Fareed Alzoorani on 04/03/2022.
+//  Created by Manpreet Singh on 03/08/2022.
 //
 
 import Foundation
-import SwiftyJSON
 
-            
-class PrivateChatViewModel {
+class GroupChatViewModel {
     
     // MARK: - Properties
     var messageList:[MessageModel]?{
@@ -29,18 +27,18 @@ class PrivateChatViewModel {
     // MARK: - Constructor
     
     init() {
-       
+        
     }
     
     // MARK: - Network call
     
-    func getMessages(recieverID: String) {
+    func getMessages(groupID: String) {
         
         CommonFxns.showProgress()
-        let requestObj = ListMessageRequest(groupId: nil, receiverId: recieverID)
+        let requestObj = ListMessageRequest(groupId: groupID, receiverId: nil)
         let param = requestObj.toDictionary()
         self.apiService.getMessagesByUserID(param: param, completion: { response in
-            self.saveMessagesLocally(messages: response.messages ?? [], recieverID: recieverID)
+            self.saveMessagesLocally(messages: response.messages ?? [], groupID: groupID)
         }, failed: { errorMessage in
             self.showAlertClosure?(errorMessage)
         })
@@ -55,8 +53,8 @@ class PrivateChatViewModel {
             guard let messageID = response.msgId else{return}
             guard let user = UserDefaultsToStoreUserInfo.getUser() else{return}
             let msgDict = ["text":dict["msg"] as! String]
-            let messageObject = MessageModel(msgId: messageID, groupId: "", senderName: user.username ?? "", msgDict: msgDict, quoteMsgId: "", quoteMsgDict: [:], enKey: dict["enKey"] as! String, senderPbKey: dict["senderPbKey"] as! String, state: 0, senderId: user.userId ?? "", receiverId: dict["receiverId"] as! String, imgUrl: "", msgType: 1, readTime: 0, sendTime: CommonFxns.getMilliseconds(date: Date()))
-            self.saveMessagesLocally(messages: [messageObject], recieverID: dict["receiverId"] as! String)
+            let messageObject = MessageModel(msgId: messageID, groupId: dict["groupId"] as! String, senderName: user.username ?? "", msgDict: msgDict, quoteMsgId: "", quoteMsgDict: [:], enKey: dict["enKey"] as! String, senderPbKey: dict["senderPbKey"] as! String, state: 0, senderId: user.userId ?? "", receiverId: "", imgUrl: "", msgType: 1, readTime: 0, sendTime: CommonFxns.getMilliseconds(date: Date()))
+            self.saveMessagesLocally(messages: [messageObject], groupID: dict["groupId"] as! String)
             self.didFinishSendMessage?()
             
         }, failed: { errorMessage in
@@ -68,14 +66,15 @@ class PrivateChatViewModel {
     
     //Fetch messages from local DB
     
-    func getLocalMessages(id:String){
-        messageList =  ChatsDatabaseQueries.fetchMessages(userID:id )
+    func getLocalGroupMessages(id:String){
+        messageList =  ChatsDatabaseQueries.fetchGroupMessages(groupID: id)
     }
     
-    func saveMessagesLocally(messages:[MessageModel],recieverID:String){
+    func saveMessagesLocally(messages:[MessageModel],groupID:String){
         ChatsDatabaseQueries.saveMessages(messageList: messages)
-        getLocalMessages(id: recieverID)
+        getLocalGroupMessages(id: groupID)
     }
-   
+        
+    
     
 }

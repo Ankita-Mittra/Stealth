@@ -322,7 +322,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         if viewModel.sessionData?.sessionList?[indexPath.row].groupId?.isEmpty ?? false{
             self.goToSelectedPrivateChatScreen(index:indexPath.row)
         }else{
-            self.goToSelectedGroupChatScreen()
+            self.goToSelectedGroupChatScreen(groupID: viewModel.sessionData?.sessionList?[indexPath.row].groupId)
         }
     }
     
@@ -371,11 +371,12 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             return titleView
     }
     
-    func goToSelectedGroupChatScreen(){
+    func goToSelectedGroupChatScreen(groupID:String?){
         print("Group Chat........")
 
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupChat.rawValue) as? GroupChatViewController
+        otherController?.groupID = groupID
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
     
