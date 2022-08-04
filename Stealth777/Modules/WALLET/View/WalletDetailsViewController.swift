@@ -281,8 +281,3 @@ class WalletDetailsViewController: BaseViewController {
 ////        navigationItem.rightBarButtonItems = [more, startChat]
 //
 //    }
-extension Date {
-    func days(sinceDate: Date) -> Int? {
-        return Calendar.current.dateComponents([.day], from: sinceDate, to: self).day
-    }
-}
