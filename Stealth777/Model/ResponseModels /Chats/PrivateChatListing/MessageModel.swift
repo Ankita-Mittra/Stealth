@@ -43,6 +43,26 @@ struct MessageModel {
 		sendTime = json["sendTime"].int64Value
 	}
     
+    init(msgId:String,groupId:String,senderName:String,msgDict:[String:Any],quoteMsgId:String,quoteMsgDict:[String:Any],enKey:String,senderPbKey:String,state:Int,senderId:String,receiverId:String,imgUrl:String,msgType:Int,readTime:Int64,sendTime:Int64){
+        
+        self.msgId = msgId
+        self.groupId = groupId
+        self.senderName = senderName
+        self.msg = MessageContent(JSON(msgDict))
+        self.quoteMsgId = quoteMsgId
+        self.quoteMsg = QuoteMessage(JSON(quoteMsgDict))
+        self.enKey = enKey
+        self.senderPbKey = senderPbKey
+        self.state = state
+        self.senderId = senderId
+        self.receiverId = receiverId
+        self.imgUrl = imgUrl
+        self.msgType = msgType
+        self.readTime = readTime
+        self.sendTime = sendTime
+        
+    }
+    
     init(message:Messages){
         msgId = message.msgId
         groupId = message.groupId

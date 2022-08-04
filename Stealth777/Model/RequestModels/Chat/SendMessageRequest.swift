@@ -16,8 +16,29 @@ struct SendMessageRequest{
     var quoteMsgId:String?
     var msgType:Int?
     
-    init(){
-        
+    
+    
+    
+    init(dict:[String:Any]){
+        msg = dict["msg"] as? String
+        groupId = dict["groupId"] as? String
+        receiverId = dict["receiverId"] as? String
+        senderPbKey = dict["senderPbKey"] as? String
+        mediaId = dict["mediaId"] as? String
+        enKey = dict["enKey"] as? String
+        quoteMsgId = dict["quoteMsgId"] as? String
+        msgType = dict["msgType"] as? Int
+    }
+    
+    init(msg:String,groupId:String?,receiverId:String?,senderPbKey:String?,mediaId:String?,enKey:String?,quoteMsgId:String?,msgType:Int?){
+        self.msg = msg
+        self.groupId = groupId
+        self.receiverId = receiverId
+        self.senderPbKey = senderPbKey
+        self.mediaId = mediaId
+        self.enKey = enKey
+        self.quoteMsgId = quoteMsgId
+        self.msgType = msgType
     }
     
     func toDictionary() -> [String:Any]{

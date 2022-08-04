@@ -16,7 +16,7 @@ class PrivateChatViewController: BaseViewController {
     // sendMessageTxtfield // Lbl// btn// view
     // MARK: - Properties
     var headerView : GroupChatHeaderView?
-    let viewModel = PrivateChatViewModel(apiService: ChatAPIServices())
+    let viewModel = PrivateChatViewModel()
     //var chatUser:ChatUser?
     
     var otherChatUser: UserModel?
@@ -63,11 +63,8 @@ class PrivateChatViewController: BaseViewController {
 //        print("encryptedMsg///...", encryptedMsg)
 //
 
-        let dict:[String:Any] = ["msg":msgToSend,
-                                 "receiverId":otherChatUserId,
-                                 "msgType":1,
-                                 "senderPbKey": publicKey]
-        viewModel.sendMessage(dict: dict)
+        let request = SendMessageRequest(msg: msgToSend, groupId: nil, receiverId: otherChatUserId, senderPbKey: publicKey, mediaId: nil, enKey: "1234", quoteMsgId: nil, msgType: 1)
+        viewModel.sendMessage(dict: request.toDictionary())
         
     }
     
@@ -144,21 +141,8 @@ class PrivateChatViewController: BaseViewController {
     // MARK: - Networking
     
     
-    func sendMessageAPICall(){
-        self.txtMessage.text = emptyStr
-    }
-    
-    
-    
     private func getMessagesFromServer() {
-        
-        viewModel.updateLoadingStatus = {
-            print("updateLoadingStatus")
-            
-            self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
-        }
-        
-        
+      
         viewModel.showAlertClosure = {
             error in
             CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
@@ -171,28 +155,15 @@ class PrivateChatViewController: BaseViewController {
         }
         
         viewModel.getMessages(recieverID: otherChatUserId)
-    }
-    
-    
-    
-    // MARK: - UI Setup
-    
-    private func activityIndicatorStart() {
-        // Code for show activity indicator view
-        // ...
-        print("start")
         
-        appDelegate.showProgressHUD(view: self.view)
+        
+        viewModel.didFinishSendMessage = {
+            self.txtMessage.text = emptyStr
+            
+        }
     }
     
-    private func activityIndicatorStop() {
-        // Code for stop activity indicator view
-        // ...
-        appDelegate.hideProgressHUD(view: self.view)
-        print("stop")
-    }
-    
-    
+   
 }
 
 

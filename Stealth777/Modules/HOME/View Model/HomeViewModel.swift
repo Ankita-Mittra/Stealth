@@ -81,16 +81,13 @@ class HomeViewModel{
     
     
     func fetchSessionList(){
-        self.updateLoadingStatus?()
-        self.chatAPIService.getSessionList { data, succeeded, error in
-            self.isLoading = false
-            if succeeded{
-                self.sessionData = data
-            }
-            else{
-                self.showSessionListError?(error)
-            }
+        CommonFxns.showProgress()
+        self.chatAPIService.getsessionLists { response in
+            self.sessionData = response
+        } failed: { error in
+            self.showSessionListError?(error)
         }
+
         
     }
     

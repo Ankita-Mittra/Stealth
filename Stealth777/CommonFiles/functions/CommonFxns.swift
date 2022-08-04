@@ -12,8 +12,10 @@ import SDWebImage
 import SwiftyJSON
 import SwiftECC
 import CryptoKit
+import MBProgressHUD
 
 class CommonFxns: NSObject {
+    static var globalHud:MBProgressHUD?
     
     // Method to change language to Selcted language at Home screen
     class func switchLanguageAtHomeScreen(selectedLanguageCode: String){
@@ -544,6 +546,78 @@ class CommonFxns: NSObject {
         }
         return JSON()
     }
+    
+    // Show activity Indicator
+    class func showProgress()->Void{
+        let window:UIWindow = UIApplication.shared.windows.last!
+        globalHud = MBProgressHUD.showAdded(to: window, animated: true)
+        globalHud?.bezelView.color = UIColor.clear // Your backgroundcolor
+        globalHud?.bezelView.style = .solidColor
+        
+    }
+    
+    // Hide activity Indicator
+   class func dismissProgress()->Void{
+       globalHud?.hide(animated: true)
+    }
+    
+    class func getReadableDateFromTimeStamp(timeStamp: TimeInterval) -> String? {
+            
+            let date = Date(timeIntervalSince1970: timeStamp/1000)
+        
+            let dateFormatter = DateFormatter()
+            
+    //        if LocalizationSystem.sharedInstance.getLanguage() == arabicLanguage {
+    //            let loc = Locale(identifier: arabicLanguage)
+    //            dateFormatter.locale = loc
+    //        }else{
+    //            let loc = Locale(identifier: englishLanguage)
+    //            dateFormatter.locale = loc
+    //        }
+            if Calendar.current.isDateInToday(date) {
+                
+                print("today")
+                dateFormatter.dateFormat = "h:mm a"
+
+                return dateFormatter.string(from: date) //LocalizationSystem.sharedInstance.localizedStringForKey(key:"tomorrow", comment: emptyStr)
+            } else if Calendar.current.isDateInYesterday(date) {
+    //            dateFormatter.dateFormat = "h:mm a"
+                print("yesterday")
+
+                return "\(LocalizationSystem.sharedInstance.localizedStringForKey(key:"yesterday", comment: emptyStr))" //  \(dateFormatter.string(from: date))
+            } else if dateFallsInCurrentWeek(date: date) {
+                
+                print("dateFallsInCurrentWeek")
+
+                if Calendar.current.isDateInToday(date) {
+                    
+                    
+                    dateFormatter.dateFormat = "h:mm a"
+                    return dateFormatter.string(from: date)
+                } else {
+                    dateFormatter.dateFormat = "EEEE" //(Thursday)
+                    return dateFormatter.string(from: date)
+                }
+            } else {
+                
+                print("else")
+
+                dateFormatter.dateFormat = "dd/MM/YYYY"//"dd/MM/YYYY, h:mm a"//"MMM d, h:mm a" (nov,12 12:00 AM)
+                return dateFormatter.string(from: date)
+            }
+        }
+        
+        
+        // Method to show days
+       class func dateFallsInCurrentWeek(date: Date) -> Bool {
+    //        let currentWeek = Calendar.current.component(Calendar.Component.day, from: Date())
+    //        let datesWeek = Calendar.current.component(Calendar.Component.day, from: date)
+    //        print(datesWeek)
+    //
+            let days = Date().days(sinceDate: date ) ?? 0
+           
+            return days < 7 && days > 1
+        }
     
 }
 
