@@ -37,7 +37,7 @@ class PrivateChatViewModel {
     func getMessages(recieverID: String) {
         
         CommonFxns.showProgress()
-        let requestObj = ListMessageRequest(groupId: nil, receiverId: recieverID)
+        let requestObj = ListMessageRequest(groupId: nil, receiverId: recieverID, limit: 50)
         let param = requestObj.toDictionary()
         self.apiService.getMessagesByUserID(param: param, completion: { response in
             self.saveMessagesLocally(messages: response.messages ?? [], recieverID: recieverID)

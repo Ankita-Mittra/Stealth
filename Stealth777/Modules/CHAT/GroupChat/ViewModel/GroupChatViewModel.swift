@@ -35,7 +35,7 @@ class GroupChatViewModel {
     func getMessages(groupID: String) {
         
         CommonFxns.showProgress()
-        let requestObj = ListMessageRequest(groupId: groupID, receiverId: nil)
+        let requestObj = ListMessageRequest(groupId: groupID, receiverId: nil, limit: 50)
         let param = requestObj.toDictionary()
         self.apiService.getMessagesByUserID(param: param, completion: { response in
             self.saveMessagesLocally(messages: response.messages ?? [], groupID: groupID)

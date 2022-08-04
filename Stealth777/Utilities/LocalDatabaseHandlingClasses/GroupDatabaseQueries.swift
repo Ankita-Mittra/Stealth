@@ -59,7 +59,7 @@ class GroupDatabaseQueries{
                 groupObj.name = obj.name
                 groupObj.sendMessage = Int16(obj.canSendMsg ?? 0)
                 groupObj.showQR = Int16(obj.showQr ?? 0)
-                //groupObj.status = Int16(obj.sta ?? 0)
+                groupObj.status = 0 //need to be configured
                 groupObj.groupRole = Int16(obj.groupRole ?? 0)
                 var groupMembers = [GroupMembers]()
                 for m in obj.members ?? []{
@@ -90,7 +90,7 @@ class GroupDatabaseQueries{
                     groupObj.name = obj.name
                     groupObj.sendMessage = Int16(obj.canSendMsg ?? 0)
                     groupObj.showQR = Int16(obj.showQr ?? 0)
-                    //groupObj.status = Int16(obj.sta ?? 0)
+                    groupObj.status = 0 // configure stautus
                     groupObj.groupRole = Int16(obj.groupRole ?? 0)
                     var groupMembers = [GroupMembers]()
                     for m in obj.members ?? []{
@@ -103,6 +103,7 @@ class GroupDatabaseQueries{
                         member.groupRole = Int16(m.groupRole ?? 0)
                         groupMembers.append(member)
                     }
+                
                     groupObj.groupMembers = NSSet.init(array: groupMembers)
             }
                     try context.save()

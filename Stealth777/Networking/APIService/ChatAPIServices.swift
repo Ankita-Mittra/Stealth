@@ -17,6 +17,10 @@ class ChatAPIServices:WebService {
         let url = baseUrl + "\(enumAPIEndPoints.sendMessage.rawValue)"
         print("url....", url)
         post(url: url, params: parameters, completion: { json in
+            if json == nil{
+                failed(AlertMessages.CAST_ERROR)
+                return
+            }
             let response = SendMessageModel(json!)
             completion(response)
             
@@ -28,6 +32,10 @@ class ChatAPIServices:WebService {
         let url = baseUrl + "\(enumAPIEndPoints.getMessageByUserID.rawValue)"
         print("url....", url)
         get(url: url, params: param, completion: { json in
+            if json == nil{
+                failed(AlertMessages.CAST_ERROR)
+                return
+            }
             let response = MessageData(json!)
             completion(response)
         }, failed: failed)
@@ -38,6 +46,10 @@ class ChatAPIServices:WebService {
         let url = baseUrl + "\(enumAPIEndPoints.listSession.rawValue)"
         print("url....", url)
         get(url: url, params: [:], completion: { json in
+            if json == nil{
+                failed(AlertMessages.CAST_ERROR)
+                return
+            }
             let response = SessionListData(json!)
             completion(response)
         }, failed: failed)

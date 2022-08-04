@@ -12,7 +12,7 @@ import CoreVideo
 
 // MARK: - Services
 
-struct GroupsAPIServices {
+class GroupsAPIServices:WebService {
 
     func getGroupInvitations(completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
    
@@ -62,6 +62,22 @@ struct GroupsAPIServices {
        }
    }
     
+    
+    func getAllGroupsList(completion:@escaping ([GroupsModel]) -> Void, failed: @escaping (String) -> Void){
+        let url = baseUrl + "\(enumAPIEndPoints.getAllGroups.rawValue)"
+        print("url....", url)
+        get(url: url, params: [:], completion: { json in
+            guard let groupJson = json?["groups"]
+            else{
+                failed(AlertMessages.CAST_ERROR)
+                return
+            }
+            let groupArray = groupJson.arrayValue.map{GroupsModel($0)}
+            print("groupArray:\(groupArray.count)")
+            completion(groupArray)
+        }, failed: failed)
+        
+    }
     
     func getAllGroups(completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
    

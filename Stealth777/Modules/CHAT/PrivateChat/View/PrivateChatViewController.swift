@@ -80,8 +80,11 @@ class PrivateChatViewController: BaseViewController {
         
         self.chatTableView.rowHeight = UITableView.automaticDimension
         self.chatTableView.estimatedRowHeight = 100
+        setupViewModelClosures()
         viewModel.getLocalMessages(id: otherChatUserId)
-        getMessagesFromServer()
+        
+        //API call for get messages from server
+        viewModel.getMessages(recieverID: otherChatUserId)
         
         // Method to fetch Private keypair from user defaults
         (privateKey, publicKey) = UserDefaultsToStoreUserInfo.getPrivateKeyPair()
@@ -131,6 +134,11 @@ class PrivateChatViewController: BaseViewController {
     }
     
     @objc func toDetails(){
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.profile.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.otherUserProfile.rawValue) as? OtherUserProfileViewController
+        let userObj = GroupParticipantsUserModel(with: otherChatUser?.toAnyObject() as? [String:Any])
+        otherController?.user = userObj
+        self.navigationController?.pushViewController(otherController!, animated: true)
     
     }
     
@@ -141,7 +149,7 @@ class PrivateChatViewController: BaseViewController {
     // MARK: - Networking
     
     
-    private func getMessagesFromServer() {
+    private func setupViewModelClosures() {
       
         viewModel.showAlertClosure = {
             error in
@@ -153,10 +161,7 @@ class PrivateChatViewController: BaseViewController {
             
             self.chatTableView.reloadData()
         }
-        
-        viewModel.getMessages(recieverID: otherChatUserId)
-        
-        
+       
         viewModel.didFinishSendMessage = {
             self.txtMessage.text = emptyStr
             
@@ -190,9 +195,9 @@ extension PrivateChatViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let storyBoard = UIStoryboard.init(name: enumStoryBoard.profile.rawValue, bundle: nil)
-        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.otherUserProfile.rawValue) as? OtherUserProfileViewController
-        self.navigationController?.pushViewController(otherController!, animated: true)
+//        let storyBoard = UIStoryboard.init(name: enumStoryBoard.profile.rawValue, bundle: nil)
+//        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.otherUserProfile.rawValue) as? OtherUserProfileViewController
+//        self.navigationController?.pushViewController(otherController!, animated: true)
     }
     
 }
