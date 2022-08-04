@@ -108,6 +108,8 @@ enum enumViewControllerIdentifier: String {
     case transactionsHistory = "TransactionsHistoryViewController"
     case importToken = "ImportTokenViewController"
     case walletDetails = "WalletDetailsViewController"
+    case scanner = "ScannerViewController"
+
     case allContactsList = "AllContactsListViewController"
     case searchUsers = "SearchUsersViewController"
     case privateChatUserProfile = "PrivateChatUserProfileViewController"

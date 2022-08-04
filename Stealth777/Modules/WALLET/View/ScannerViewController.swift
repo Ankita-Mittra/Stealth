@@ -84,14 +84,24 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            found(code: stringValue)
+            found(walletAddress: stringValue)
         }
 
         dismiss(animated: true)
     }
 
-    func found(code: String) {
-        print(code)
+    func found(walletAddress: String) {
+        
+        
+    
+        print("walletAddress....", walletAddress)
+        
+        if walletAddress.contains(word: "0x") && walletAddress.count == 42{
+            self.navigationController?.popViewController(animated: true)
+            
+        }else{
+            CommonFxns.showAlert(self, message: "Not valid wallet address", title: "Alert")
+        }
     }
 
     override var prefersStatusBarHidden: Bool {

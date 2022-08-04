@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -114,6 +114,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="QRIcon"/>
+                                        <connections>
+                                            <action selector="scanQRBtnAction:" destination="pJ5-x3-euZ" eventType="touchUpInside" id="2wY-CO-dwL"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1240,6 +1243,41 @@
             </objects>
             <point key="canvasLocation" x="2535" y="1341"/>
         </scene>
+        <!--Scanner View Controller-->
+        <scene sceneID="yVh-9j-Snj">
+            <objects>
+                <viewController storyboardIdentifier="ScannerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NIU-Lu-5t3" customClass="ScannerViewController" customModule="Stealth777" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eUb-wh-NDh" customClass="UIViewCustomGradientClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stealth 777  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JsF-h3-qUc" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="169.66666666666666" y="44" width="88.666666666666657" height="19"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <color key="textColor" name="textFieldColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pwe-xX-HPI"/>
+                        <color key="backgroundColor" name="ViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JsF-h3-qUc" firstAttribute="top" secondItem="pwe-xX-HPI" secondAttribute="top" id="60i-dL-Euq"/>
+                            <constraint firstItem="JsF-h3-qUc" firstAttribute="centerX" secondItem="eUb-wh-NDh" secondAttribute="centerX" id="paF-wW-ypa"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="viewBgGradientColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="ViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0dH-kN-oek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="979" y="687"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="1dX-LR-vhe">
@@ -1273,6 +1311,9 @@
             <size key="intrinsicContentSize" width="28" height="30"/>
         </designable>
         <designable name="Grf-p1-IjN">
+            <size key="intrinsicContentSize" width="88.666666666666671" height="19"/>
+        </designable>
+        <designable name="JsF-h3-qUc">
             <size key="intrinsicContentSize" width="88.666666666666671" height="19"/>
         </designable>
         <designable name="KhC-SY-XgV">

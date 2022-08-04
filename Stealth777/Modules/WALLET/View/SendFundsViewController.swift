@@ -28,9 +28,9 @@ class SendFundsViewController: BaseViewController {
         // Initial Setup
         self.initialSetup()
         
-        self.ethWalletTransactions()
-            
-        self.binanceWalletTransactions()
+//        self.ethWalletTransactions()
+//            
+//        self.binanceWalletTransactions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -258,6 +258,12 @@ class SendFundsViewController: BaseViewController {
         self.checkWalletBalance(walletAddress: self.walletAddress)
     }
     
+    @IBAction func scanQRBtnAction(_ sender: Any) {
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.scanner.rawValue) as? ScannerViewController
+        self.navigationController?.pushViewController(otherController!, animated: true)
+        
+    }
     
 
 }
