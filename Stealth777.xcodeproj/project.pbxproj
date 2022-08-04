@@ -803,6 +803,7 @@
 			isa = PBXGroup;
 			children = (
 				20B83C6E27D9D606003CA9D2 /* WalletStoryboard.storyboard */,
+				2076BB0C28377C760008C39C /* ScannerViewController.swift */,
 				2037E76327D6114D00674559 /* WalletDetailsViewController.swift */,
 				209F9A5827E0A9B2008CFA80 /* SendFundsViewController.swift */,
 				20ECAF9B27E0ACCD0018C877 /* TransferAmountViewController.swift */,
@@ -854,7 +855,6 @@
 				2087DB0227E86EC700D9F7C0 /* ToolbarPickerView.swift */,
 				2072761A27FF06EC00985D46 /* ImagePicker.swift */,
 				20EC25A728116464005EA2B8 /* UserDefaultsToStoreUserInfo.swift */,
-				2076BB0C28377C760008C39C /* ScannerViewController.swift */,
 				20F9AE78283B89850057C881 /* BigIntConverter.swift */,
 			);
 			path = Others;
@@ -2257,6 +2257,7 @@
 				DEVELOPMENT_TEAM = W4KJ83Y5LG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Stealth777/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Stealth777 using camera";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -2288,6 +2289,7 @@
 				DEVELOPMENT_TEAM = W4KJ83Y5LG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Stealth777/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Stealth777 using camera";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
