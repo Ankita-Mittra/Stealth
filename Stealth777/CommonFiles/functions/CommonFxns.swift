@@ -227,6 +227,8 @@ class CommonFxns: NSObject {
         reference.present(alert, animated: true, completion: nil)
     }
     
+   
+    
     // Method to trim Strings
     class func trimString(string:String) -> String{
         return string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -549,16 +551,20 @@ class CommonFxns: NSObject {
     
     // Show activity Indicator
     class func showProgress()->Void{
+        globalHud?.removeFromSuperViewOnHide = true
+        globalHud?.hide(animated: false)
         let window:UIWindow = UIApplication.shared.windows.last!
         globalHud = MBProgressHUD.showAdded(to: window, animated: true)
         globalHud?.bezelView.color = UIColor.clear // Your backgroundcolor
         globalHud?.bezelView.style = .solidColor
+
         
     }
     
     // Hide activity Indicator
    class func dismissProgress()->Void{
        globalHud?.hide(animated: true)
+       
     }
     
     class func getReadableDateFromTimeStamp(timeStamp: TimeInterval) -> String? {

@@ -10,58 +10,61 @@ import Foundation
 
 class OtherUserProfileViewModel{
     
-    private var respondRequestSuccess : Bool? {
         
-        didSet {
-            guard let r = respondRequestSuccess else {return}
-            self.respondRequestResult = r
-            self.didFinishFetch?()
-        }
-    }
-    
-    var error: Error? {
-        didSet { self.showAlertClosure?() }
-    }
-    
-    var isLoading: Bool = true {
-        didSet { self.updateLoadingStatus?() }
-    }
-    
-    var respondRequestResult: Bool?
-        
-    private var contactsApiService: ContactsAPIServices?
+     var contactsApiService = ContactsAPIServices()
+    var chatApiService = ChatAPIServices()
     
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
 
-    var showAlertClosure: (() -> ())?
-    var updateLoadingStatus: (() -> ())?
-    var didFinishFetch: (() -> ())?
+    var showAlertClosure: ((String) -> ())?
+    var didFinishUnfriend: ((String) -> ())?
+    var didFinishBlock: ((String) -> ())?
+    var didFinishPin: ((String) -> ())?
+    var didFinishMute: ((String) -> ())?
     
-        
-    init(contactApiService: ContactsAPIServices) {
-        self.contactsApiService = contactApiService
-    }
     
     // MARK: - Network call
 
-    func unfriendUser(selectedUser: String) {
-
-        self.contactsApiService?.unfriendUser(userId: selectedUser, status: zero, completion: { data, succeeded, error in
-            print("unfriendUser.....")
-                if succeeded {
-                    print("succeeded....", succeeded)
-                    
-                    self.respondRequestSuccess = succeeded
-                    guard let tempData = data else{
-                        self.error = error as? Error
-                        return
-                    }
-                    print("tempData....", tempData)
-                } else {
-                self.error = error as? Error
-                print("error....", error)
-            }
-        })
+    func unfriendUser(userID: String) {
+        CommonFxns.showProgress()
+        self.contactsApiService.unfriendUser(userId: userID, status: one) { response in
+            self.didFinishUnfriend?(response.message ?? "")
+        } failed: { errorMessage in
+            self.showAlertClosure?(errorMessage)
+        }
     }
+    
+    func blockUser(userID:String){
+        CommonFxns.showProgress()
+        chatApiService.blockUser(userID: userID) { response in
+            self.didFinishBlock?(response.message ?? "")
+        } failed: { errorMessage in
+            self.showAlertClosure?(errorMessage)
+        }
+
+        
+    }
+
+    func pinUser(param:[String:Any]){
+        CommonFxns.showProgress()
+        chatApiService.pinChat(parameters: param) { response in
+            self.didFinishPin?(response.message ?? "")
+        } failed: { errorMessage in
+            self.showAlertClosure?(errorMessage)
+        }
+
+    }
+
+    func muteUser(param:[String:Any]){
+        CommonFxns.showProgress()
+        chatApiService.muteChat(parameters: param) { response in
+            self.didFinishMute?(response.message ?? "")
+        } failed: { errorMessage in
+            self.showAlertClosure?(errorMessage)
+        }
+
+    }
+
+        
 
 }

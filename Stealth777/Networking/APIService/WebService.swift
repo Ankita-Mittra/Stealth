@@ -31,15 +31,11 @@ class WebService {
         webService(url: url, method: .delete, params: params, completion: completion, failed: failed)
     }
     
-    func uploadPost(url: String, params: Dictionary<String, Any>?, images: [UIImage], imageKey: String, completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
-    {
-        upload(url: url, method: .post, params: params, images: images, imageKey: imageKey, completion: completion, failed: failed)
-    }
     
-        func uploadFilePost(url: String, params: Dictionary<String, Any>?, files: [UploadFile], completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
-        {
-            upload(url: url, method: .post, params: params, files: files, completion: completion, failed: failed)
-        }
+    func uploadFilePost(url: String, params: Dictionary<String, Any>?, files: [UploadFile], completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
+    {
+        upload(url: url, method: .post, params: params, files: files, completion: completion, failed: failed)
+    }
     
     private func webService(url: String, method: Alamofire.HTTPMethod, params: Dictionary<String, Any>?, completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
     {
@@ -62,21 +58,21 @@ class WebService {
             Alamofire.request(url, method: method, parameters: params, encoding: encoding!, headers: header)
                 .validate(statusCode: 200...299)
                 .responseJSON {response in
-                guard response.result.error == nil else {
-                    
-                    DispatchQueue.main.async(execute: {
+                    guard response.result.error == nil else {
                         
-                        CommonFxns.dismissProgress()
-                        failed(response.result.error.debugDescription)
+                        DispatchQueue.main.async(execute: {
+                            
+                            CommonFxns.dismissProgress()
+                            failed(response.result.error.debugDescription)
+                            
+                        })
                         
-                    })
+                        return
+                    }
                     
-                    return
+                    self.handleResponse(response: response, completion: completion, failed: failed)
+                    
                 }
-                
-                self.handleResponse(response: response, completion: completion, failed: failed)
-                
-            }
         }
         else{
             failed("No Network")
@@ -87,65 +83,7 @@ class WebService {
     
     
     
-    private func upload(url: String, method: Alamofire.HTTPMethod, params: Dictionary<String, Any>?, images: [UIImage], imageKey: String, completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
-    {
-        if !(CommonFxns.isInternetAvailable()){
-            failed("No Network")
-            return
-        }
-        
-        print(url)
-        if(params != nil)
-        {
-            print(params!)
-        }
-        Alamofire.upload(multipartFormData: { formData in
-            if let parameters = params {
-                for (key, value) in parameters
-                {
-                    if let temp = value as? String {
-                        formData.append(temp.data(using: .utf8)!, withName: key)
-                    }
-                    if let temp = value as? Int {
-                        formData.append("\(temp)".data(using: .utf8)!, withName: key)
-                    }
-                }
-            }
-            for image in images
-            {
-                formData.append(image.jpegData(compressionQuality: 0.5)!, withName: imageKey , fileName: "image.jpeg", mimeType: "image/jpeg")
-            }
-            
-        }, usingThreshold:UInt64.init(),
-                         to: url,
-                         method: method,
-                         headers: CommonFxns.getAuthenticationToken(),
-                         encodingCompletion: { (result) in
-            
-            switch result {
-            case .success(let upload, _, _):
-                print("the status code is :")
-                
-                upload.uploadProgress(closure: { (progress) in
-                    print("something")
-                    
-                })
-                
-                upload.responseJSON { result in
-                    print("the resopnse code is : \(result.response?.statusCode)")
-                    print("the response is : \(result)")
-                    self.handleResponse(response: result, completion: completion, failed: failed)
-                }
-                break
-            case .failure(let error):
-                
-                failed(error.localizedDescription)
-                
-                return
-                
-            }
-        })
-    }
+    
     
     private func upload(url: String, method: Alamofire.HTTPMethod, params: Dictionary<String, Any>?, files: [UploadFile], completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
     {
@@ -221,7 +159,12 @@ class WebService {
         case .success:
             if let value = response.value as? [String: AnyObject] {
                 let data = value["data"] as AnyObject
-                completion(JSON(data))
+                if !JSON(data).isEmpty{
+                    completion(JSON(data))
+                }
+                else{
+                    completion(JSON(value))
+                }
             }
             else if let array = response.value as? Array<Any>
             {
