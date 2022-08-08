@@ -23,6 +23,8 @@ class HomeViewModel{
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
     var showAlertClosure: ((String) -> ())?
     var didFinishSessionFeth: (() -> ())?
+    var didFinishPin: ((String) -> ())?
+    var didFinishMute: ((String) -> ())?
     
     
     
@@ -30,39 +32,15 @@ class HomeViewModel{
     
     
     func fetchContacts() {
-        
-        self.apiService.getContacts(completion: { data, succeeded, error in
-            print("getContacts   /.....")
+        CommonFxns.showProgress()
+        apiService.getAllContacts { contacts in
+            print("API Working::\(contacts.count)")
+            self.saveContactsLocally(contactsArray: contacts)
             
-            if succeeded {
-                print("succeeded....", succeeded)
-                guard let tempData = data else{
-                    self.showAlertClosure?(AlertMessages.CAST_ERROR)
-                    return
-                }
-                print("tempData....", tempData)
-               
-                var contacts = [UserModel]()
-                if let data =  tempData["data"] as? [String : AnyObject]{
+        } failed: { error in
+            self.showAlertClosure?(error)
+        }
 
-                    if let users = data["user"] as?  [[String: Any]]{
-                        print("users...", users)
-                        for user in users{
-                            let dict = UserModel(with: user)
-                            
-                            contacts.append(dict)
-                            print("dict...", dict)
-                        }
-                        self.saveContactsLocally(contactsArray: contacts)
-                        
-                    }
-                }
-            } else {
-                self.showAlertClosure?(error)
-                print("error....", error)
-            }
-            
-        })
     }
     
     
@@ -80,7 +58,6 @@ class HomeViewModel{
     
     
     func fetchAllGroups() {
-       
         self.groupAPIService.getAllGroupsList(completion: { modelArray in
             if modelArray.count > 0{
                 print("Model Count:\(modelArray.count)")
@@ -90,6 +67,26 @@ class HomeViewModel{
             self.showAlertClosure?(error)
             
         })
+
+    }
+    
+    func pinUser(param:[String:Any]){
+        CommonFxns.showProgress()
+        chatAPIService.pinChat(parameters: param) { response in
+            self.didFinishPin?(response.message ?? "")
+        } failed: { errorMessage in
+            self.showAlertClosure?(errorMessage)
+        }
+
+    }
+
+    func muteUser(param:[String:Any]){
+        CommonFxns.showProgress()
+        chatAPIService.muteChat(parameters: param) { response in
+            self.didFinishMute?(response.message ?? "")
+        } failed: { errorMessage in
+            self.showAlertClosure?(errorMessage)
+        }
 
     }
     

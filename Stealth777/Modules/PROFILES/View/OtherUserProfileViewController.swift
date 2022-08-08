@@ -19,7 +19,6 @@ class OtherUserProfileViewController: BaseViewController {
     @IBOutlet weak var pinSwitch:UISwitch!
     
     var selectedUserID = String()
-    var selectedChatID = String()
     var isFromContacts = false
     var selectedUser:UserModel?
     let viewModel = OtherUserProfileViewModel()
@@ -66,13 +65,13 @@ class OtherUserProfileViewController: BaseViewController {
     
     @IBAction func actionPin(){
         let pinValue = (selectedUser?.isPin == 0) ? 1 : 0
-        let requestObj = PinUserRequest(pin: pinValue, chatId: selectedChatID, receiverType: 0)
+        let requestObj = PinUserRequest(pin: pinValue, userId: selectedUserID, groupId: "", receiverType: 0)
         viewModel.pinUser(param: requestObj.toDictionary())
     }
     
     @IBAction func actionMute(){
         let muteValue = (selectedUser?.isMute == 0) ? 1 : 0
-        let requestObj = MuteUserRequest(mute: muteValue, chatId: selectedChatID, receiverType: 0)
+        let requestObj = MuteUserRequest(mute: muteValue, userId: selectedUserID,groupId: "", receiverType: 0)
         viewModel.muteUser(param: requestObj.toDictionary())
     }
     

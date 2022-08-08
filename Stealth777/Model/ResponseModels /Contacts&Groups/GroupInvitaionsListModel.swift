@@ -7,7 +7,7 @@
 
 
 import Foundation
-//import Alamofire
+import SwiftyJSON
 
 struct GroupInvitaionsListModel: Codable {
     
@@ -21,5 +21,12 @@ struct GroupInvitaionsListModel: Codable {
         self.name = data?["name"] as? String ?? emptyStr
         self.photo = data?["photo"] as? String ?? emptyStr
     }
+    
+    init(json:JSON){
+        self.id = json["id"].stringValue
+        self.name = json["name"].stringValue
+        self.photo = json["photo"].stringValue
+    }
+    
 
 }

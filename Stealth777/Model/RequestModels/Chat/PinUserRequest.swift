@@ -9,18 +9,21 @@ import Foundation
 
 struct PinUserRequest{
     var pin:Int?
-    var chatId:String?
+    var userId:String?
+    var groupId:String?
     var receiverType:Int?
     
-    init(pin:Int,chatId:String,receiverType:Int){
+    init(pin:Int,userId:String?,groupId:String?,receiverType:Int){
         self.pin = pin
-        self.chatId = chatId
+        self.userId = userId
+        self.groupId = groupId
         self.receiverType = receiverType
     }
     
     func toDictionary()->[String:Any]{
         let dict:[String:Any] = ["pin":pin ?? 0,
-                    "chatId":chatId ?? "",
+                    "userId":userId ?? "",
+                    "groupId":groupId ?? "",
                     "receiverType":receiverType ?? 0]
         return dict
     }

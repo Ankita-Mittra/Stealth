@@ -145,7 +145,6 @@ class PrivateChatViewController: BaseViewController {
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.profile.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.otherUserProfile.rawValue) as? OtherUserProfileViewController
         otherController?.selectedUserID = otherChatUserId
-        otherController?.selectedChatID = viewModel.chatID!
         self.navigationController?.pushViewController(otherController!, animated: true)
     
     }
