@@ -198,6 +198,9 @@
                                                             </button>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7XS-9E-nKv">
                                                                 <rect key="frame" x="308" y="69.666666666666686" width="51" height="31"/>
+                                                                <connections>
+                                                                    <action selector="actionPin" destination="aNR-tI-GWj" eventType="valueChanged" id="JR0-oE-lDe"/>
+                                                                </connections>
                                                             </switch>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eei-bY-dfD" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="120" width="368" height="50"/>
@@ -218,6 +221,9 @@
                                                             </button>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmv-An-Bsd">
                                                                 <rect key="frame" x="308" y="9.6666666666666856" width="51" height="31"/>
+                                                                <connections>
+                                                                    <action selector="actionMute" destination="aNR-tI-GWj" eventType="valueChanged" id="MRv-sH-V9p"/>
+                                                                </connections>
                                                             </switch>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dJU-Ab-aFj">
                                                                 <rect key="frame" x="308" y="129.66666666666669" width="51" height="31"/>
@@ -306,6 +312,9 @@
                                                                                 <real key="value" value="5"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="actionUnfriendUser" destination="aNR-tI-GWj" eventType="touchUpInside" id="nAU-im-FhD"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peF-7X-tBd" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="49" width="368" height="45"/>
@@ -323,6 +332,9 @@
                                                                                 <real key="value" value="5"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="actionBlockUser" destination="aNR-tI-GWj" eventType="touchUpInside" id="WUi-oz-Ia3"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z69-sB-woG" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="94" width="368" height="45"/>
@@ -427,10 +439,13 @@
                     <tabBarItem key="tabBarItem" title="Wallet" image="tab-walletIcon" id="jGA-34-Dit"/>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="xEv-Xg-rjI"/>
                     <connections>
+                        <outlet property="btnBlock" destination="peF-7X-tBd" id="cdH-oL-G2u"/>
                         <outlet property="chatSettingsView" destination="2zD-q3-tcZ" id="1ZQ-CY-7GF"/>
                         <outlet property="imgUser" destination="brS-lZ-PAw" id="THt-OV-rLX"/>
                         <outlet property="lblDescription" destination="TfV-E8-nls" id="zbb-ML-U7j"/>
                         <outlet property="lblUserName" destination="Kr8-wb-T6w" id="PaL-KE-Sv1"/>
+                        <outlet property="muteSwitch" destination="qmv-An-Bsd" id="mTk-Bs-Y6p"/>
+                        <outlet property="pinSwitch" destination="7XS-9E-nKv" id="HAb-rN-pLg"/>
                         <outlet property="toChatView" destination="U8W-bN-uDv" id="fhV-rE-QIk"/>
                     </connections>
                 </viewController>

@@ -18,6 +18,8 @@ class PrivateChatViewModel {
         }
     }
     
+    var chatID:String?
+    
     private var apiService = ChatAPIServices()
 
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
@@ -25,6 +27,7 @@ class PrivateChatViewModel {
     var showAlertClosure: ((String) -> ())?
     var didFinishFetch: (() -> ())?
     var didFinishSendMessage: (() -> ())?
+    var didFinishUploadFile:((String)->())?
     
     // MARK: - Constructor
     
@@ -34,12 +37,13 @@ class PrivateChatViewModel {
     
     // MARK: - Network call
     
+    //server call to send messages
     func getMessages(recieverID: String) {
-        
         CommonFxns.showProgress()
-        let requestObj = ListMessageRequest(groupId: nil, receiverId: recieverID)
+        let requestObj = ListMessageRequest(groupId: nil, receiverId: recieverID, limit: 50)
         let param = requestObj.toDictionary()
         self.apiService.getMessagesByUserID(param: param, completion: { response in
+            self.chatID = response.chatId
             self.saveMessagesLocally(messages: response.messages ?? [], recieverID: recieverID)
         }, failed: { errorMessage in
             self.showAlertClosure?(errorMessage)
@@ -63,10 +67,23 @@ class PrivateChatViewModel {
             self.showAlertClosure?(errorMessage)
         })
     }
+    
+    //server call to upload file
+    func uploadFile(file:UploadFile){
+        CommonFxns.showProgress()
+        self.apiService.sendMediaFile(file: file) { response in
+            if let mediaID = response.id{
+            self.didFinishUploadFile?(mediaID)
+            }
+        } failed: { msg in
+            self.showAlertClosure?(msg)
+        }
+
+    }
         
         
     
-    //Fetch messages from local DB
+    //MARK: - Local DB Operations
     
     func getLocalMessages(id:String){
         messageList =  ChatsDatabaseQueries.fetchMessages(userID:id )

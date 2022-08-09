@@ -56,3 +56,15 @@ struct SendMessageRequest{
     
    
 }
+
+
+enum MessageType:Int{
+    case Text = 1
+    case Picture = 2
+    case Video = 3
+    case Voice = 4
+    case Reward = 5
+    case QuotedMessage = 6
+    case Notification = 7
+    case File = 8
+}

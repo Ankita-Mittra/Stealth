@@ -64,8 +64,10 @@ class GroupChatViewController: BaseViewController {
         self.chatTableView.rowHeight = UITableView.automaticDimension
         self.chatTableView.estimatedRowHeight = 100
         setupNavigationBar()
+        setupViewModelClosures()
         viewModel.getLocalGroupMessages(id: groupID!)
-        getMessagesFromServer()
+        //api call for ge messages from server
+        viewModel.getMessages(groupID: groupID!)
     }
     
     func setupNavigationBar(){
@@ -119,7 +121,7 @@ class GroupChatViewController: BaseViewController {
     // MARK: - Networking
     
     
-    private func getMessagesFromServer() {
+    private func setupViewModelClosures() {
       
         viewModel.showAlertClosure = {
             error in
@@ -131,8 +133,6 @@ class GroupChatViewController: BaseViewController {
             
             self.chatTableView.reloadData()
         }
-        
-        viewModel.getMessages(groupID: groupID!)
         
         viewModel.didFinishSendMessage = {
             self.txtMessage.text = emptyStr
@@ -165,11 +165,11 @@ extension GroupChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("didSelectRowAt...", self.groupInfo)
-        let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
-        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupDetails.rawValue) as? GroupDetailsViewController
-        otherController?.groupInfo = self.groupInfo
-        self.navigationController?.pushViewController(otherController!, animated: true)
+//        print("didSelectRowAt...", self.groupInfo)
+//        let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
+//        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupDetails.rawValue) as? GroupDetailsViewController
+//        otherController?.groupInfo = self.groupInfo
+//        self.navigationController?.pushViewController(otherController!, animated: true)
     }
 
 

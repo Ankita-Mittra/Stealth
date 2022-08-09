@@ -11,28 +11,17 @@ class AllGroupsViewModel {
     
     // MARK: - Properties
 
-    private var groups : [GroupsModel]? {
-        
+     var groups : [GroupsModel]? {
         didSet {
-            guard let g = groups else {return}
-            self.bindDataToUI(with: g)
             self.didFinishFetch?()
         }
     }
-    var error: Error? {
-        didSet { self.showAlertClosure?() }
-    }
     
-    var isLoading: Bool = true {
-        didSet { self.updateLoadingStatus?() }
-    }
-    
-    var groupList: [GroupsModel]?
     private var apiService: GroupsAPIServices?
 
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
 
-    var showAlertClosure: (() -> ())?
+    var showAlertClosure: ((String) -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
     
@@ -45,47 +34,30 @@ class AllGroupsViewModel {
     // MARK: - Network call
     
     func fetchAllGroups() {
-        
-        self.updateLoadingStatus?()
-        self.apiService?.getAllGroups(completion: { data, succeeded, error in
-            print("getAllGroups /.....")
-            if succeeded {
-                print("succeeded....", succeeded)
-                guard let tempData = data else{
-                    self.error = error as? Error
-                    self.isLoading = false
-                    return
-                }
-                print("tempData....", tempData)
-               
-                var groupList = [GroupsModel]()
-                if let data =  tempData["data"] as? [String : AnyObject]{
-
-                    if let groups = data["groups"] as?  [[String: Any]]{
-                        print("groups...", groups)
-                        for group in groups{
-                            let dict = GroupsModel(with: group)
-                            
-                            groupList.append(dict)
-                            print("dict...", dict)
-                        }
-                        self.groups = groupList
-                    }
-                }
-            } else {
-                self.error = error as? Error
-                self.isLoading = false
-                print("error....", error)
+        CommonFxns.showProgress()
+        self.apiService?.getAllGroupsList(completion: { modelArray in
+            if modelArray.count > 0{
+                self.saveGroupsLocally(groupArray: modelArray)
             }
+        }, failed: { error in
+            self.showAlertClosure?(error)
+            
         })
+
     }
         
-    // MARK: - UI Logic
-    private func bindDataToUI(with groups: [GroupsModel]) {
+    //MARK: - Local DB Operations
+    
+    // feching groups from local db
+    func getLocalGroups(){
+        self.groups?.removeAll()
+        self.groups = GroupDatabaseQueries.fetchGroups()
         
-        self.groupList = groups
-        
-        print("bindDataToUI..groupList..", self.groupList)
+    }
+    // save groups to local db
+    func saveGroupsLocally(groupArray:[GroupsModel]){
+        GroupDatabaseQueries.addAndUpdateGroupsToLocalDB(groups: groupArray)
+        getLocalGroups()
     }
     
     

@@ -7,9 +7,10 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 
-struct GroupMembersModel: Codable {
+struct GroupMembersModel {
     
     let id: String? // 1
     let username: String? // 2
@@ -28,6 +29,17 @@ struct GroupMembersModel: Codable {
         self.userType = data?["userType"] as? Int ?? zero
         self.groupRole = data?["groupRole"] as? Int ?? zero
         self.thumbUrl = data?["thumbUrl"] as? String ?? ""
+    }
+    
+    init(_ json: JSON) {
+        self.id = json["id"].stringValue
+        self.username = json["username"].stringValue
+        self.imageUrl = json["imageUrl"].stringValue
+        self.bio = json["bio"].stringValue
+        self.userType = json["userType"].intValue
+        self.groupRole = json["groupRole"].intValue
+        self.thumbUrl = json["thumbUrl"].stringValue
+        
     }
     
 //    

@@ -166,7 +166,7 @@ class SearchUsersViewController: BaseViewController, UISearchBarDelegate, GroupR
 
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.profile.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.otherUserProfile.rawValue) as? OtherUserProfileViewController
-        otherController?.selectedUserId = dict.userId ?? emptyStr
+        otherController?.selectedUserID = dict.userId ?? emptyStr
         self.navigationController?.pushViewController(otherController!, animated: true)
         print("sendMessageBtnSelected...", dict)
     }

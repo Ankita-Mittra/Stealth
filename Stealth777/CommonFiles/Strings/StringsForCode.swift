@@ -187,13 +187,16 @@ enum enumAPIEndPoints: String {
     case exitGroup = "groups/leaveGroup"
     case setAdmin = "groups/setAdmin"
     
-    case uploadFile = "media/upload"
+    case uploadFile = "mediaFile/upload"
     
     // Chats
     case sendMessage = "groups/sendMsg"
     case getMessageByUserID = "chat/getMsgByUserId"
     case listSession = "chat/listSession"
-    
+    case pinChat = "chat/pinChat"
+    case muteUser = "chat/mute"
+    case blockUser = "users/blockUser"
+    case deleteChats = "chat/deleteMessages"
     
 }
 

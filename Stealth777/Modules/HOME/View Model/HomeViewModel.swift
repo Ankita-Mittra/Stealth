@@ -9,12 +9,7 @@ import Foundation
 class HomeViewModel{
     
     //MARK: - Properties
-    var contactsList: [UserModel]?{
-        didSet{
-            self.didFinishFetch?()
-        }
-    }
-    
+   
     var sessionData:SessionListData?{
         didSet{
           didFinishSessionFeth?()
@@ -23,60 +18,29 @@ class HomeViewModel{
     private var apiService = ContactsAPIServices()
     private var chatAPIService = ChatAPIServices()
     private var groupAPIService = GroupsAPIServices()
-    var isLoading: Bool = true {
-        didSet { self.updateLoadingStatus?() }
-    }
+    
     
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
     var showAlertClosure: ((String) -> ())?
-    var updateLoadingStatus: (() -> ())?
-    var didFinishFetch: (() -> ())?
-
-    //MARK: - Closures for sessionList API
-    var showSessionListError: ((String) -> ())?
     var didFinishSessionFeth: (() -> ())?
+    var didFinishPin: ((String) -> ())?
+    var didFinishMute: ((String) -> ())?
     
-    //MARK: - Closures for groups API
-    var showGroupsListError: ((String) -> ())?
-    var didFinishGroupsFetch: (() -> ())?
+    
     
     // MARK: - Network call
     
     
     func fetchContacts() {
-        self.updateLoadingStatus?()
-        self.apiService.getContacts(completion: { data, succeeded, error in
-            print("getContacts   /.....")
-            self.isLoading = false
-            if succeeded {
-                print("succeeded....", succeeded)
-                guard let tempData = data else{
-                    self.showAlertClosure?(AlertMessages.CAST_ERROR)
-                    return
-                }
-                print("tempData....", tempData)
-               
-                var contacts = [UserModel]()
-                if let data =  tempData["data"] as? [String : AnyObject]{
-
-                    if let users = data["user"] as?  [[String: Any]]{
-                        print("users...", users)
-                        for user in users{
-                            let dict = UserModel(with: user)
-                            
-                            contacts.append(dict)
-                            print("dict...", dict)
-                        }
-                        self.contactsList = contacts
-                        
-                    }
-                }
-            } else {
-                self.showAlertClosure?(error)
-                print("error....", error)
-            }
+        CommonFxns.showProgress()
+        apiService.getAllContacts { contacts in
+            print("API Working::\(contacts.count)")
+            self.saveContactsLocally(contactsArray: contacts)
             
-        })
+        } failed: { error in
+            self.showAlertClosure?(error)
+        }
+
     }
     
     
@@ -84,11 +48,60 @@ class HomeViewModel{
         CommonFxns.showProgress()
         self.chatAPIService.getsessionLists { response in
             self.sessionData = response
+            CommonFxns.dismissProgress()
         } failed: { error in
-            self.showSessionListError?(error)
+            self.showAlertClosure?(error)
         }
 
         
+    }
+    
+    
+    func fetchAllGroups() {
+        self.groupAPIService.getAllGroupsList(completion: { modelArray in
+            if modelArray.count > 0{
+                print("Model Count:\(modelArray.count)")
+                self.saveGroupsLocally(groupArray: modelArray)
+            }
+        }, failed: { error in
+            self.showAlertClosure?(error)
+            
+        })
+
+    }
+    
+    func pinUser(param:[String:Any]){
+        CommonFxns.showProgress()
+        chatAPIService.pinChat(parameters: param) { response in
+            self.didFinishPin?(response.message ?? "")
+        } failed: { errorMessage in
+            self.showAlertClosure?(errorMessage)
+        }
+
+    }
+
+    func muteUser(param:[String:Any]){
+        CommonFxns.showProgress()
+        chatAPIService.muteChat(parameters: param) { response in
+            self.didFinishMute?(response.message ?? "")
+        } failed: { errorMessage in
+            self.showAlertClosure?(errorMessage)
+        }
+
+    }
+    
+    //MARK: - Local DB Operations
+    
+    
+    // save groups to local db
+    func saveGroupsLocally(groupArray:[GroupsModel]){
+        GroupDatabaseQueries.addAndUpdateGroupsToLocalDB(groups: groupArray)
+
+    }
+    
+    //Save contacts locally
+    func saveContactsLocally(contactsArray:[UserModel]){
+        ContactsDatabaseQueries.addAndUpdateContactsInLocalDB(contacts : contactsArray)
     }
     
 }

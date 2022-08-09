@@ -55,112 +55,61 @@ class RequestsViewController: BaseViewController, GroupRequestsTableViewCellProt
         segmentedBar.setTitle("Group Requests", forSegmentAt: one)
         
         // API's calls
+        setupClosures()
+        viewModel.getContactRequests()
         
-        self.fetchContactRequests()
     }
     
     // MARK: - Networking
     
-    private func fetchContactRequests() {
-
-        self.activityIndicatorStart()
-        viewModel.getContactRequests()
-
+    func setupClosures(){
         viewModel.showAlertClosure = {
-            self.activityIndicatorStop()
-
-            print("showAlertClosure")
-            if let error = self.viewModel.error {
-                print( "error...", error.localizedDescription)
-            }
+            error in
+            CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
         }
         
-        viewModel.didFinishFetch = {
-            print("didFinishFetch   fetchContactRequests.....")
-            
-            // stop indicator loader
-            self.activityIndicatorStop()
-            // reload table
-            self.friendRequestsList = self.viewModel.friendRequestsList ?? []
+        viewModel.didFinishFetchContactRequests = {
+            self.friendRequestsList = self.viewModel.friendRequests ?? []
             self.requests = self.friendRequestsList
             self.requestsListTableView.reloadData()
-        }
-    }
-    
-    private func fetchGroupInvitations() {
-
-        self.activityIndicatorStart()
-        viewModel.getGroupInvitaions()
-
-        viewModel.showAlertClosure = {
-            self.activityIndicatorStop()
-
-            print("showAlertClosure")
-            if let error = self.viewModel.error {
-                print( "error...", error.localizedDescription)
-            }
-        }
-        viewModel.didFinishFetch = {
             
-            print("didFinishFetch.....fetchGroupInvitations")
-            
-            // stop indicator loader
-            self.activityIndicatorStop()
+        }
+        viewModel.didFinishFetchGroupInvitaions = {
             // reload table
-            self.groupInvitaionsList = self.viewModel.groupInvitaionsList ?? []
+            self.groupInvitaionsList = self.viewModel.groupInvitaions ?? []
             self.requests = self.groupInvitaionsList
             self.requestsListTableView.reloadData()
-        }
-    }
-    
-    private func respondFriendRequest(selectedUser: String, action: Int) {
-
-        self.activityIndicatorStart()
-        viewModel.respondFriendRequest(selectedUser: selectedUser, action: action)
-
-        viewModel.showAlertClosure = {
-            self.activityIndicatorStop()
-
-            print("showAlertClosure")
-            if let error = self.viewModel.error {
-                print( "error...", error.localizedDescription)
-            }
+            
         }
         
-        viewModel.didFinishFetch = {
-            print("didFinishFetch   fetchContactRequests.....")
-            
-            // stop indicator loader
-            self.activityIndicatorStop()
-            // reload table
-            
-            action == one ? self.updateUIForAcceptRequest() : self.updateUIForRejectRequest()
+        
+        
+    }
+    
+    
+    private func respondFriendRequest(selectedUser: String, action: Int) {
+        viewModel.didFinishRespondFriendRequest = {
+            message in
+            CommonFxns.showAlertWithCompletion(title: AlertMessages.SUCCESS_TITLE, message: message, vc: self) {
+                action == one ? self.updateUIForAcceptRequest() : self.updateUIForRejectRequest()
+                
+            }
         }
+
+        viewModel.respondFriendRequest(selectedUser: selectedUser, action: action)
+
     }
     
     private func respondGroupRequest(groupId: String, status: Int) {
 
-        self.activityIndicatorStart()
-        viewModel.respondGroupRequest(groupId: groupId, status: status)
-
-        viewModel.showAlertClosure = {
-            self.activityIndicatorStop()
-
-            print("showAlertClosure")
-            if let error = self.viewModel.error {
-                print( "error...", error.localizedDescription)
+        viewModel.didFinishRespondGroupRequest = {
+            message in
+            CommonFxns.showAlertWithCompletion(title: AlertMessages.SUCCESS_TITLE, message: message, vc: self) {
             }
         }
-        
-        viewModel.didFinishFetch = {
-            print("didFinishFetch   respondGroupRequest.....")
-            
-            // stop indicator loader
-            self.activityIndicatorStop()
-            // reload table
-            
-//            status == one ? self.updateUIForAcceptRequest() : self.updateUIForRejectRequest()
-        }
+        viewModel.respondGroupRequest(groupId: groupId, status: status)
+
+       
     }
     
     
@@ -200,22 +149,7 @@ class RequestsViewController: BaseViewController, GroupRequestsTableViewCellProt
         self.requestsListTableView.reloadData()
     }
     
-    // MARK: - UI Setup
     
-    private func activityIndicatorStart() {
-        // Code for show activity indicator view
-        // ...
-        print("start")
-        
-        appDelegate.showProgressHUD(view: self.view)
-    }
-    
-    private func activityIndicatorStop() {
-        // Code for stop activity indicator view
-        // ...
-        appDelegate.hideProgressHUD(view: self.view)
-        print("stop")
-    }
 
     // MARK: - Actions
 
@@ -229,7 +163,7 @@ class RequestsViewController: BaseViewController, GroupRequestsTableViewCellProt
         default:
             
             if firstTime{
-                self.fetchGroupInvitations()
+                viewModel.getGroupInvitaions()
                 firstTime = false
             }
             self.requests = self.groupInvitaionsList

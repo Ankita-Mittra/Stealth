@@ -249,8 +249,10 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     // Method for initial Setups
     func initialSetup(){
-        fetchContactsList()
-        fetchSession()
+        setupViemodelClosures()
+        viewModel.fetchSessionList()
+        viewModel.fetchContacts()
+        viewModel.fetchAllGroups()
         //self.fetchContactsFromLocalDB()
     }
     
@@ -325,6 +327,50 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             self.goToSelectedGroupChatScreen(groupID: viewModel.sessionData?.sessionList?[indexPath.row].groupId)
         }
     }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete".localized) {  (contextualAction, view, boolValue) in
+            //Code I want to do here
+        }
+        let pin = UIContextualAction(style: .normal, title: "Pin".localized) {  (contextualAction, view, boolValue) in
+            if self.viewModel.sessionData?.sessionList?[indexPath.row].groupId?.isEmpty ?? false{
+                let otherUserID = self.viewModel.sessionData?.sessionList?[indexPath.row].getOtherUserID()
+                let pinValue = self.viewModel.sessionData?.sessionList?[indexPath.row].isPin ?? 0
+            let requestObj = PinUserRequest(pin: pinValue, userId: otherUserID, groupId: "", receiverType: 0)
+                self.viewModel.pinUser(param: requestObj.toDictionary())
+            }
+            else{
+                let groupID = self.viewModel.sessionData?.sessionList?[indexPath.row].groupId ?? ""
+                let pinValue = self.viewModel.sessionData?.sessionList?[indexPath.row].isPin ?? 0
+            let requestObj = PinUserRequest(pin: pinValue, userId: "", groupId: groupID, receiverType: 0)
+                self.viewModel.pinUser(param: requestObj.toDictionary())
+                
+            }
+        }
+        pin.backgroundColor = UIColor(named: "PrimaryThemeColor")
+        
+        let mute = UIContextualAction(style: .normal, title: "Mute".localized) { [self]  (contextualAction, view, boolValue) in
+            if self.viewModel.sessionData?.sessionList?[indexPath.row].groupId?.isEmpty ?? false{
+                let otherUserID = self.viewModel.sessionData?.sessionList?[indexPath.row].getOtherUserID()
+            let muteValue = self.viewModel.sessionData?.sessionList?[indexPath.row].isMute ?? 0
+            let requestObj = MuteUserRequest(mute: muteValue, userId: otherUserID ?? "",groupId: "", receiverType: 0)
+            viewModel.muteUser(param: requestObj.toDictionary())
+            }
+            else{
+                let groupID = self.viewModel.sessionData?.sessionList?[indexPath.row].groupId ?? ""
+                let muteValue = self.viewModel.sessionData?.sessionList?[indexPath.row].isMute ?? 0
+                let requestObj = MuteUserRequest(mute: muteValue, userId: "",groupId: groupID, receiverType: 0)
+                viewModel.muteUser(param: requestObj.toDictionary())
+            }
+            
+        }
+        mute.backgroundColor = UIColor(named: "PrimaryThemeColor")
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [delete,pin,mute])
+
+        return swipeActions
+    }
+    
+    
     
     func goToSelectedPrivateChatScreen(index:Int){
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.privateChat.rawValue, bundle: nil)
@@ -397,66 +443,41 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
 }
 
-// MARK: - UI Setup
-extension HomeViewController{
 
-private func activityIndicatorStart() {
-    // Code for show activity indicator view
-    // ...
-    print("start")
-    
-    appDelegate.showProgressHUD(view: self.view)
-}
-
-private func activityIndicatorStop() {
-    // Code for stop activity indicator view
-    // ...
-    appDelegate.hideProgressHUD(view: self.view)
-    print("stop")
-}
-}
 
 
 //MARK: - API Calls
 extension HomeViewController{
-    private func fetchContactsList() {
-       
-        viewModel.updateLoadingStatus = {
-            print("updateLoadingStatus")
-
-            self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
-        }
-
+    
+    private func setupViemodelClosures(){
+        
+        //For showing errors
         viewModel.showAlertClosure = {
             error in
-            print(error)
-            print("showAlertClosure")
             CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
   
         }
         
-        viewModel.didFinishFetch = {
-            print("Saving data to Local DB")
-          
-            ContactsDatabaseQueries.addAndUpdateContactsInLocalDB(contacts : self.viewModel.contactsList ?? [])
-        }
-        
-        viewModel.fetchContacts()
-        
-        
-    }
-    
-    private func fetchSession(){
-        //MARK: - Handling session list
-        viewModel.showSessionListError = {
-            error in
-            CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
-        }
         
         viewModel.didFinishSessionFeth = {
             self.allChatsTableview.reloadData()
         }
-        viewModel.fetchSessionList()
+        
+        viewModel.didFinishPin = {
+            msg in
+            
+            CommonFxns.showAlert(self, message: msg, title: AlertMessages.SUCCESS_TITLE)
+            self.allChatsTableview.reloadData()
+        }
+        
+        viewModel.didFinishMute = {
+            msg in
+            CommonFxns.showAlert(self, message: msg, title: AlertMessages.SUCCESS_TITLE)
+            self.allChatsTableview.reloadData()
+            
+        }
+        
+        
     }
     
     
