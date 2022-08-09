@@ -30,5 +30,21 @@ class WalletFxns: NSObject {
     }
     
     class func sendBNb(){}
+    class func sendEth(){}
+
+    class func createBnbWallet(){
+        
+    }
+    class func createEthWallet(){
+        
+    }
+    
+    class func checkBnbWalletBalance(){
+        
+    }
+    
+    class func checkEthWalletBalance(){
+        
+    }
     
 }

@@ -5,7 +5,6 @@
 //  Created by Fareed Alzoorani on 07/03/2022.
 //
 
-import UIKit
 
 import UIKit
 
@@ -39,9 +38,7 @@ class WalletDetailsViewController: BaseViewController {
         
         // Initial Setup
         self.initialUISetup()
-        
-        let abcDate = self.getReadableDateInDefaultPattern(timeStamp: 1659533870000)
-        print("abcDate...", abcDate ?? "")
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,64 +69,6 @@ class WalletDetailsViewController: BaseViewController {
     
     // MARK: - Methods
 
-    
-    func getReadableDateInDefaultPattern(timeStamp: TimeInterval) -> String? {
-        
-        let date = Date(timeIntervalSince1970: timeStamp/1000)
-        let dateFormatter = DateFormatter()
-        
-//        if LocalizationSystem.sharedInstance.getLanguage() == arabicLanguage {
-//            let loc = Locale(identifier: arabicLanguage)
-//            dateFormatter.locale = loc
-//        }else{
-//            let loc = Locale(identifier: englishLanguage)
-//            dateFormatter.locale = loc
-//        }
-        if Calendar.current.isDateInToday(date) {
-            
-            print("today")
-            dateFormatter.dateFormat = "h:mm a"
-
-            return dateFormatter.string(from: date) //LocalizationSystem.sharedInstance.localizedStringForKey(key:"tomorrow", comment: emptyStr)
-        } else if Calendar.current.isDateInYesterday(date) {
-//            dateFormatter.dateFormat = "h:mm a"
-            print("yesterday")
-
-            return "\(LocalizationSystem.sharedInstance.localizedStringForKey(key:"yesterday", comment: emptyStr))" //  \(dateFormatter.string(from: date))
-        } else if dateFallsInCurrentWeek(date: date) {
-            
-            print("dateFallsInCurrentWeek")
-
-            if Calendar.current.isDateInToday(date) {
-                
-                
-                dateFormatter.dateFormat = "h:mm a"
-                return dateFormatter.string(from: date)
-            } else {
-                dateFormatter.dateFormat = "EEEE" //(Thursday)
-                return dateFormatter.string(from: date)
-            }
-        } else {
-            
-            print("else")
-
-            dateFormatter.dateFormat = "dd/MM/YYYY"//"dd/MM/YYYY, h:mm a"//"MMM d, h:mm a" (nov,12 12:00 AM)
-            return dateFormatter.string(from: date)
-        }
-    }
-    
-    
-    // Method to show days
-    func dateFallsInCurrentWeek(date: Date) -> Bool {
-//        let currentWeek = Calendar.current.component(Calendar.Component.day, from: Date())
-//        let datesWeek = Calendar.current.component(Calendar.Component.day, from: date)
-//        print(datesWeek)
-//
-        let days = Date().days(sinceDate: date ) ?? 0
-       
-        return days < 7 && days > 1
-    }
-    
     func setNavigationBar(){
 
         self.title = "Wallet"
@@ -169,9 +108,9 @@ class WalletDetailsViewController: BaseViewController {
         self.tokensListTableView.reloadData()
         refreshControl.endRefreshing()
     }
+
     
     // MARK: - Button Actions
-    
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
            
