@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 struct UserModel: Codable {
 
@@ -118,6 +119,26 @@ struct UserModel: Codable {
         self.relation = data?["relation"] as? Int ?? zero
         self.accountStatus = data?["accountState"] as? Int ?? zero
 
+    }
+    
+    init(json:JSON){
+        self.userId = json["id"].stringValue
+        self.username = json["username"].stringValue
+        self.imageUrl = json["imageUrl"].stringValue
+        self.bio = json["bio"].stringValue
+        self.userType = json["userType"].intValue
+        self.isMute = json["isMute"].intValue
+        self.isPin = json["isPin"].intValue
+        self.isBlock = json["isBlock"].intValue
+        self.allowWipeout = json["allowWipeOut"].intValue
+        self.onlineStatus = json["onlineStatus"].intValue
+
+        self.lastOnlineTime = json["lastOnlineTime"].stringValue
+        self.publicKey = json["pbKey"].stringValue
+        self.walletKey = json["wKey"].stringValue
+        self.relation = json["relation"].intValue
+        self.accountStatus = json["accountState"].intValue
+        
     }
     
     init(with data:User?) {

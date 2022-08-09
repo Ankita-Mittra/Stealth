@@ -17,11 +17,11 @@ class PrivateChatViewController: BaseViewController {
     // MARK: - Properties
     var headerView : GroupChatHeaderView?
     let viewModel = PrivateChatViewModel()
-    //var chatUser:ChatUser?
-    
     var otherChatUser: UserModel?
     let loggedInUserId = UserDefaultsToStoreUserInfo.getuserID()
     var otherChatUserId = String()
+    var imagePicker: ImagePicker!
+    var messageType = MessageType.Text
 
     
     // MARK: - View life cycle
@@ -46,10 +46,14 @@ class PrivateChatViewController: BaseViewController {
     
     //MARK: - IBActions
     
+   
+    @IBAction func actionChooseFile(sender:UIButton){
+        // Show Image picker
+        self.imagePicker.present(from: sender)
+        
+    }
     
 // sendBtnAction
-    
-    
     @IBAction func actionSend(){
         
         let msgToSend = CommonFxns.trimString(string: txtMessage.text ?? "")
@@ -62,8 +66,8 @@ class PrivateChatViewController: BaseViewController {
 //        let encryptedMsg = CommonFxns.encryptMsg(msg: msgToSend, publickey: (otherChatUser?.publicKey)!, privateKey: privateKey)
 //        print("encryptedMsg///...", encryptedMsg)
 //
-
-        let request = SendMessageRequest(msg: msgToSend, groupId: nil, receiverId: otherChatUserId, senderPbKey: publicKey, mediaId: nil, enKey: "1234", quoteMsgId: nil, msgType: 1)
+        messageType = .Text
+        let request = SendMessageRequest(msg: msgToSend, groupId: nil, receiverId: otherChatUserId, senderPbKey: publicKey, mediaId: nil, enKey: "1234", quoteMsgId: nil, msgType: messageType.rawValue)
         viewModel.sendMessage(dict: request.toDictionary())
         
     }
@@ -80,8 +84,12 @@ class PrivateChatViewController: BaseViewController {
         
         self.chatTableView.rowHeight = UITableView.automaticDimension
         self.chatTableView.estimatedRowHeight = 100
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self) // Set up Image picker to choose files to upload.
+        
+        setupViewModelClosures()
         viewModel.getLocalMessages(id: otherChatUserId)
-        getMessagesFromServer()
+        //API call for get messages from server
+        viewModel.getMessages(recieverID: otherChatUserId)
         
         // Method to fetch Private keypair from user defaults
         (privateKey, publicKey) = UserDefaultsToStoreUserInfo.getPrivateKeyPair()
@@ -131,6 +139,13 @@ class PrivateChatViewController: BaseViewController {
     }
     
     @objc func toDetails(){
+        if viewModel.chatID == nil{
+            return
+        }
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.profile.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.otherUserProfile.rawValue) as? OtherUserProfileViewController
+        otherController?.selectedUserID = otherChatUserId
+        self.navigationController?.pushViewController(otherController!, animated: true)
     
     }
     
@@ -141,7 +156,7 @@ class PrivateChatViewController: BaseViewController {
     // MARK: - Networking
     
     
-    private func getMessagesFromServer() {
+    private func setupViewModelClosures() {
       
         viewModel.showAlertClosure = {
             error in
@@ -153,12 +168,16 @@ class PrivateChatViewController: BaseViewController {
             
             self.chatTableView.reloadData()
         }
-        
-        viewModel.getMessages(recieverID: otherChatUserId)
-        
-        
+       
         viewModel.didFinishSendMessage = {
             self.txtMessage.text = emptyStr
+            
+        }
+        
+        viewModel.didFinishUploadFile = {
+            mediaID in
+            let request = SendMessageRequest(msg: "", groupId: nil, receiverId: self.otherChatUserId, senderPbKey: self.publicKey, mediaId: mediaID, enKey: "1234", quoteMsgId: nil, msgType: self.messageType.rawValue)
+            self.viewModel.sendMessage(dict: request.toDictionary())
             
         }
     }
@@ -167,7 +186,7 @@ class PrivateChatViewController: BaseViewController {
 }
 
 
-
+//MARK: - TableView Delegates
 extension PrivateChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -190,10 +209,24 @@ extension PrivateChatViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let storyBoard = UIStoryboard.init(name: enumStoryBoard.profile.rawValue, bundle: nil)
-        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.otherUserProfile.rawValue) as? OtherUserProfileViewController
-        self.navigationController?.pushViewController(otherController!, animated: true)
+//        let storyBoard = UIStoryboard.init(name: enumStoryBoard.profile.rawValue, bundle: nil)
+//        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.otherUserProfile.rawValue) as? OtherUserProfileViewController
+//        self.navigationController?.pushViewController(otherController!, animated: true)
     }
     
+}
+
+
+//MARK: - ImagePickerDelegate
+extension PrivateChatViewController: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) {
+        if image != nil{
+            messageType = .Picture
+        
+            let file = UploadFile(data: image!.jpegData(compressionQuality: 0.5)!, imageKey: "file", mimeType: "image/jpeg", fileName: "image/jpeg")
+            viewModel.uploadFile(file: file)
+        }
+    }
 }
 

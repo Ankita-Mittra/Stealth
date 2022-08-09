@@ -55,20 +55,6 @@ struct SessionList {
         return userID
     }
     
-    func getChatUserDict() -> [String:String]{
-        var dict = [String:String]()
-        let myID = UserDefaultsToStoreUserInfo.getuserID()
-        var userID = ""
-        if senderId == myID{
-            userID = receiverId ?? ""
-        }
-        else{
-            userID = senderId ?? ""
-        }
-        dict["id"] = userID
-        dict["name"] = username
-        dict["image"] = imgUrl
-        return dict
-    }
+   
 
 }

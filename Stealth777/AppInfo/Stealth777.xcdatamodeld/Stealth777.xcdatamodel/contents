@@ -25,7 +25,7 @@
         <attribute name="showQR" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="thumbUrl" optional="YES" attributeType="String"/>
-        <relationship name="groupMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupMembers" inverseName="group" inverseEntity="GroupMembers"/>
+        <relationship name="groupMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupMembers" inverseName="group" inverseEntity="GroupMembers"/>
     </entity>
     <entity name="Messages" representedClassName=".Messages" syncable="YES">
         <attribute name="enKey" optional="YES" attributeType="String"/>
@@ -73,7 +73,7 @@
     </entity>
     <elements>
         <element name="GroupMembers" positionX="271.94140625" positionY="-103.47265625" width="128" height="149"/>
-        <element name="Groups" positionX="74.5546875" positionY="-215.58984375" width="128" height="14"/>
+        <element name="Groups" positionX="74.5546875" positionY="-215.58984375" width="128" height="254"/>
         <element name="Messages" positionX="-253.4921875" positionY="-338.36328125" width="128" height="284"/>
         <element name="User" positionX="-697.5078125" positionY="-277.40234375" width="128" height="269"/>
         <element name="UserRelation" positionX="-490.28125" positionY="-190.671875" width="128" height="104"/>

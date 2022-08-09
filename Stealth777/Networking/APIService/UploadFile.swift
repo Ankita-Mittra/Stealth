@@ -16,4 +16,11 @@ class UploadFile: NSObject {
     override init() {
         super.init()
     }
+    
+    init(data:Data?,imageKey:String,mimeType:String,fileName:String){
+        self.data = data
+        self.imageKey = imageKey
+        self.mimeType = mimeType
+        self.fileName = fileName
+    }
 }

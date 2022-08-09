@@ -7,8 +7,9 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
-struct GroupsModel: Codable {
+struct GroupsModel {
     
     let id: String? // 1
     let name: String? // 2
@@ -41,6 +42,23 @@ struct GroupsModel: Codable {
         self.groupRole = groupRole
         self.members = members
         self.thumbUrl = thumbUrl
+    }
+    init(_ json: JSON) {
+        self.id = json["id"].stringValue
+        self.name = json["name"].stringValue
+        self.imageUrl = json["imageUrl"].stringValue
+        self.description = json["desc"].stringValue
+        self.disperse = json["disperse"].intValue
+        self.anonymous = json["anonymous"].intValue
+        self.disperseDate = json["disperseDate"].stringValue
+        self.canSendMsg = json["canSendMsg"].intValue
+        self.showQr = json["showQr"].intValue
+        self.isPin = json["isPin"].intValue
+        self.isMute = json["isMute"].intValue
+        self.groupRole = json["groupRole"].intValue
+        self.thumbUrl = json["thumbUrl"].stringValue
+        self.members = json["members"].arrayValue.map{GroupMembersModel($0)}
+        
     }
     
     init(with data: [String: Any]?) {

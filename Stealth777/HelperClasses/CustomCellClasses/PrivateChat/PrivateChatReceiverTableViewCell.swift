@@ -54,6 +54,7 @@ class PrivateChatReceiverTableViewCell: UITableViewCell {
     func configureCell(obj:MessageModel?){
         msgBodyLbl.text = obj?.msg?.text
         msgTimelbl.text = CommonFxns.getReadableDateFromTimeStamp(timeStamp: Double(obj?.sendTime ?? 0))
+    
         
     }
     

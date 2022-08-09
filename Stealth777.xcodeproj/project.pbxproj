@@ -221,6 +221,11 @@
 		6B3247A6288ECA75002EC954 /* SessionListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3247A3288ECA75002EC954 /* SessionListData.swift */; };
 		6B3E471628896C8300AD5528 /* GroupChatHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3E471528896C8300AD5528 /* GroupChatHeaderView.xib */; };
 		6B3E4718288971C200AD5528 /* GroupChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E4717288971C200AD5528 /* GroupChatHeaderView.swift */; };
+		6B470E13289CE4A000CB251D /* UploadFileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B470E12289CE4A000CB251D /* UploadFileResponseModel.swift */; };
+		6B470E15289CFFD200CB251D /* PinUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B470E14289CFFD200CB251D /* PinUserRequest.swift */; };
+		6B470E17289D014A00CB251D /* MuteUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B470E16289D014A00CB251D /* MuteUserRequest.swift */; };
+		6B470E19289D04EE00CB251D /* DeleteMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B470E18289D04EE00CB251D /* DeleteMessageRequest.swift */; };
+		6B470E1C289D0A7500CB251D /* GeneralResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B470E1B289D0A7500CB251D /* GeneralResponseModel.swift */; };
 		6B4EC5D12898FD8100F6A3FC /* SendMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5D02898FD8100F6A3FC /* SendMessageRequest.swift */; };
 		6B4EC5D3289905F900F6A3FC /* GroupDatabaseQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5D2289905F900F6A3FC /* GroupDatabaseQueries.swift */; };
 		6B4EC5D8289A43F200F6A3FC /* UploadFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC5D6289A43F200F6A3FC /* UploadFile.swift */; };
@@ -483,6 +488,11 @@
 		6B3247A3288ECA75002EC954 /* SessionListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListData.swift; sourceTree = "<group>"; };
 		6B3E471528896C8300AD5528 /* GroupChatHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupChatHeaderView.xib; sourceTree = "<group>"; };
 		6B3E4717288971C200AD5528 /* GroupChatHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatHeaderView.swift; sourceTree = "<group>"; };
+		6B470E12289CE4A000CB251D /* UploadFileResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadFileResponseModel.swift; sourceTree = "<group>"; };
+		6B470E14289CFFD200CB251D /* PinUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinUserRequest.swift; sourceTree = "<group>"; };
+		6B470E16289D014A00CB251D /* MuteUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuteUserRequest.swift; sourceTree = "<group>"; };
+		6B470E18289D04EE00CB251D /* DeleteMessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMessageRequest.swift; sourceTree = "<group>"; };
+		6B470E1B289D0A7500CB251D /* GeneralResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralResponseModel.swift; sourceTree = "<group>"; };
 		6B4EC5D02898FD8100F6A3FC /* SendMessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageRequest.swift; sourceTree = "<group>"; };
 		6B4EC5D2289905F900F6A3FC /* GroupDatabaseQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDatabaseQueries.swift; sourceTree = "<group>"; };
 		6B4EC5D6289A43F200F6A3FC /* UploadFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadFile.swift; sourceTree = "<group>"; };
@@ -1475,6 +1485,14 @@
 			path = GroupChat;
 			sourceTree = "<group>";
 		};
+		6B470E1A289D0A5E00CB251D /* General Response */ = {
+			isa = PBXGroup;
+			children = (
+				6B470E1B289D0A7500CB251D /* GeneralResponseModel.swift */,
+			);
+			path = "General Response";
+			sourceTree = "<group>";
+		};
 		6B4EC5CE2898FD4100F6A3FC /* RequestModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -1488,6 +1506,9 @@
 			children = (
 				6B4EC5D02898FD8100F6A3FC /* SendMessageRequest.swift */,
 				6B4EC5E2289A924200F6A3FC /* ListMessageRequest.swift */,
+				6B470E14289CFFD200CB251D /* PinUserRequest.swift */,
+				6B470E16289D014A00CB251D /* MuteUserRequest.swift */,
+				6B470E18289D04EE00CB251D /* DeleteMessageRequest.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1495,6 +1516,7 @@
 		6B4EC5DB289A576500F6A3FC /* ResponseModels  */ = {
 			isa = PBXGroup;
 			children = (
+				6B470E1A289D0A5E00CB251D /* General Response */,
 				6B4EC5DC289A580D00F6A3FC /* Chats */,
 				20F99D1F283FAE3C0088A487 /* Groups */,
 				20F99D1E283F73CE0088A487 /* Contacts&Groups */,
@@ -1517,6 +1539,7 @@
 		6B4EC5DD289A581F00F6A3FC /* SendMessage */ = {
 			isa = PBXGroup;
 			children = (
+				6B470E12289CE4A000CB251D /* UploadFileResponseModel.swift */,
 				6B4EC5DE289A583A00F6A3FC /* SendMessageModel.swift */,
 			);
 			path = SendMessage;
@@ -1890,6 +1913,7 @@
 				2087DB0827E88F3700D9F7C0 /* AppWireframe.swift in Sources */,
 				2004858B285CA89A007BF87E /* AllContactsViewModel.swift in Sources */,
 				200D994727D203A40088B2E5 /* PrivateChatViewModel.swift in Sources */,
+				6B470E17289D014A00CB251D /* MuteUserRequest.swift in Sources */,
 				207D61AA2849E20A00EDF8F0 /* RequestsViewModel.swift in Sources */,
 				204122DD27EC98D800443D2D /* GroupMembersListCollectionViewCell.swift in Sources */,
 				20952F9D2837913300C77152 /* WalletFxns.swift in Sources */,
@@ -1902,6 +1926,7 @@
 				20B83C8127DA124D003CA9D2 /* GroupSettingsTableViewCell.swift in Sources */,
 				20FBC6A527C7ABCE004E0697 /* ViewController.swift in Sources */,
 				2043BA7527FAD32900D00041 /* Messages+CoreDataProperties.swift in Sources */,
+				6B470E13289CE4A000CB251D /* UploadFileResponseModel.swift in Sources */,
 				207D61A82849E00E00EDF8F0 /* GroupsAPIServices.swift in Sources */,
 				20F9AE7E283BC1620057C881 /* ImportedTokenList.swift in Sources */,
 				6B3E4718288971C200AD5528 /* GroupChatHeaderView.swift in Sources */,
@@ -1919,6 +1944,7 @@
 				20E01CBD27DF49C2003DB80F /* ContactsViewModel.swift in Sources */,
 				20F9AE79283B89850057C881 /* BigIntConverter.swift in Sources */,
 				20FBC6F327C7C223004E0697 /* UILabelCustomClass.swift in Sources */,
+				6B470E19289D04EE00CB251D /* DeleteMessageRequest.swift in Sources */,
 				201AEA1E27EDEB9200BA2CE0 /* SubscriptionDetailsViewController.swift in Sources */,
 				6B4EC5D9289A43F200F6A3FC /* WebService.swift in Sources */,
 				209F9A4E27E07EA0008CFA80 /* CallLogsViewController.swift in Sources */,
@@ -2005,6 +2031,7 @@
 				200D993027D200E70088B2E5 /* HomeViewModel.swift in Sources */,
 				20ECAFA827E0AD760018C877 /* TransactionsHistoryViewController.swift in Sources */,
 				2087DB0327E86EC700D9F7C0 /* ToolbarPickerView.swift in Sources */,
+				6B470E1C289D0A7500CB251D /* GeneralResponseModel.swift in Sources */,
 				204122E027ECA9CC00443D2D /* AddParticipantsTableViewCell.swift in Sources */,
 				20FBC6A127C7ABCE004E0697 /* AppDelegate.swift in Sources */,
 				200D990B27D1F7960088B2E5 /* CreateWalletViewModel.swift in Sources */,
@@ -2052,6 +2079,7 @@
 				200D98F827D1F58B0088B2E5 /* InitialViewModel.swift in Sources */,
 				20F99D21283FAE4C0088A487 /* GroupsModel.swift in Sources */,
 				20B83C9D27DA367F003CA9D2 /* GroupRequestsTableViewCell.swift in Sources */,
+				6B470E15289CFFD200CB251D /* PinUserRequest.swift in Sources */,
 				200D990D27D1F7B00088B2E5 /* EnterUsernameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

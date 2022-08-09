@@ -12,56 +12,41 @@ import CoreVideo
 
 // MARK: - Services
 
-struct GroupsAPIServices {
-
-    func getGroupInvitations(completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
-   
+class GroupsAPIServices:WebService {
+    
+    func getAllGroupInvitations(completion:@escaping ([GroupInvitaionsListModel]) -> Void, failed: @escaping (String) -> Void){
         let url = baseUrl + "\(enumAPIEndPoints.getGroupInvitations.rawValue)"
         print("url....", url)
+        get(url: url, params: [:], completion: { json in
+            guard let groupJson = json?["groupsInvitations"]
+            else{
+                failed(AlertMessages.CAST_ERROR)
+                return
+            }
+            let invitationsArray = groupJson.arrayValue.map{GroupInvitaionsListModel(json: $0)}
+            print("groupArray:\(invitationsArray.count)")
+            completion(invitationsArray)
+        }, failed: failed)
+        
+    }
 
-        let headers = CommonFxns.getAuthenticationToken()
-
-         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON {response in
-           guard response.result.error == nil else {
-               DispatchQueue.main.async(execute: {
-                   completion(nil, false, response.result.error.debugDescription)
-               })
-               return
-           }
-           print(response.result.description)
-           
-           if let value: AnyObject = response.result.value as AnyObject? {
-               let json = JSON(value)
-               
-               print("value result....", value)
-               var message = ""; var code = 0;
-               if (value["message"] as AnyObject) as? String != nil {
-                   message = ((value["message"]! as AnyObject) as? String)!
-                   print("message...", message)
-               }
-               
-               if (value["code"] as AnyObject) as? Int != nil {
-                   code = ((value["code"]! as AnyObject) as? Int)!
-                   print("code...", code)
-                   
-                   if code == 200{
-                       DispatchQueue.main.async(execute: {
-                           
-                           completion(json.dictionaryObject as [String: AnyObject]?, true, message)
-                       })
-                   }else{
-                       completion(json.dictionaryObject as [String: AnyObject]?, false, message)
-                   }
-               }else{
-                   completion(nil, false, response.result.error.debugDescription)
-               }
-
-           } else {
-               completion(nil, false, response.result.error.debugDescription)
-           }
-       }
-   }
+  
     
+    func getAllGroupsList(completion:@escaping ([GroupsModel]) -> Void, failed: @escaping (String) -> Void){
+        let url = baseUrl + "\(enumAPIEndPoints.getAllGroups.rawValue)"
+        print("url....", url)
+        get(url: url, params: [:], completion: { json in
+            guard let groupJson = json?["groups"]
+            else{
+                failed(AlertMessages.CAST_ERROR)
+                return
+            }
+            let groupArray = groupJson.arrayValue.map{GroupsModel($0)}
+            print("groupArray:\(groupArray.count)")
+            completion(groupArray)
+        }, failed: failed)
+        
+    }
     
     func getAllGroups(completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
    
@@ -110,59 +95,76 @@ struct GroupsAPIServices {
            }
        }
    }
-
     
-    func respondGroupRequest(groupId: String, status: Int,completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
-   
+    func respondGroupRequest(groupId: String, status: Int,completion:@escaping (GeneralResponseModel) -> Void, failed: @escaping (String) -> Void){
         let url = baseUrl + "\(enumAPIEndPoints.responseInvitaions.rawValue)"
         print("url....", url)
-        print("userId..action..", groupId, status)
+        let parameters = [groupId_API_key : groupId, status_API_key : status] as [String : Any]
+        post(url: url, params: parameters, completion: { json in
+            if json == nil{
+                failed(AlertMessages.CAST_ERROR)
+                return
+            }
+            let response = GeneralResponseModel(json!)
+            completion(response)
+            
+        }, failed: failed)
+        
+    }
 
-        let headers = CommonFxns.getAuthenticationToken()
-        let parmeters = [groupId_API_key : groupId, status_API_key : status] as [String : Any]
 
-         Alamofire.request(url, method: .post, parameters: parmeters, encoding: JSONEncoding.default, headers: headers).responseJSON {response in
-           guard response.result.error == nil else {
-               
-               DispatchQueue.main.async(execute: {
-                   
-                   completion(nil, false, response.result.error.debugDescription)
-               })
-               return
-           }
-           print(response.result.description)
-           
-           if let value: AnyObject = response.result.value as AnyObject? {
-               let json = JSON(value)
-               
-               print("value result....", value)
-
-               var message = ""; var code = 0;
-               if (value["message"] as AnyObject) as? String != nil {
-                   message = ((value["message"]! as AnyObject) as? String)!
-                   print("message...", message)
-               }
-               
-               if (value["code"] as AnyObject) as? Int != nil {
-                   code = ((value["code"]! as AnyObject) as? Int)!
-                   print("code...", code)
-                   
-                   if code == 200{
-                       DispatchQueue.main.async(execute: {
-                           completion(json.dictionaryObject as [String: AnyObject]?, true, message)
-                       })
-                   }else{
-                       completion(json.dictionaryObject as [String: AnyObject]?, false, message)
-                   }
-               }else{
-                   completion(nil, false, response.result.error.debugDescription)
-               }
-
-           } else {
-               completion(nil, false, response.result.error.debugDescription)
-           }
-       }
-   }
+    
+//    func respondGroupRequest(groupId: String, status: Int,completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
+//   
+//        let url = baseUrl + "\(enumAPIEndPoints.responseInvitaions.rawValue)"
+//        print("url....", url)
+//        print("userId..action..", groupId, status)
+//
+//        let headers = CommonFxns.getAuthenticationToken()
+//        let parmeters = [groupId_API_key : groupId, status_API_key : status] as [String : Any]
+//
+//         Alamofire.request(url, method: .post, parameters: parmeters, encoding: JSONEncoding.default, headers: headers).responseJSON {response in
+//           guard response.result.error == nil else {
+//               
+//               DispatchQueue.main.async(execute: {
+//                   
+//                   completion(nil, false, response.result.error.debugDescription)
+//               })
+//               return
+//           }
+//           print(response.result.description)
+//           
+//           if let value: AnyObject = response.result.value as AnyObject? {
+//               let json = JSON(value)
+//               
+//               print("value result....", value)
+//
+//               var message = ""; var code = 0;
+//               if (value["message"] as AnyObject) as? String != nil {
+//                   message = ((value["message"]! as AnyObject) as? String)!
+//                   print("message...", message)
+//               }
+//               
+//               if (value["code"] as AnyObject) as? Int != nil {
+//                   code = ((value["code"]! as AnyObject) as? Int)!
+//                   print("code...", code)
+//                   
+//                   if code == 200{
+//                       DispatchQueue.main.async(execute: {
+//                           completion(json.dictionaryObject as [String: AnyObject]?, true, message)
+//                       })
+//                   }else{
+//                       completion(json.dictionaryObject as [String: AnyObject]?, false, message)
+//                   }
+//               }else{
+//                   completion(nil, false, response.result.error.debugDescription)
+//               }
+//
+//           } else {
+//               completion(nil, false, response.result.error.debugDescription)
+//           }
+//       }
+//   }
     
     func uploadGroupImage(image: UIImage, imageName: String, completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
         

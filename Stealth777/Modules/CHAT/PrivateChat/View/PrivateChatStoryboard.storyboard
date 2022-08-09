@@ -83,6 +83,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="plusIcon"/>
+                                        <connections>
+                                            <action selector="actionChooseFileWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sfM-8r-Hwv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NR7-ju-Ux6">
                                         <rect key="frame" x="359" y="8" width="40" height="40"/>
@@ -166,7 +169,7 @@
     </scenes>
     <designables>
         <designable name="iia-dQ-x4p">
-            <size key="intrinsicContentSize" width="113" height="20.5"/>
+            <size key="intrinsicContentSize" width="113.5" height="20.5"/>
         </designable>
     </designables>
     <resources>
