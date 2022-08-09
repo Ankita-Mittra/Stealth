@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
             endingLineNumber = "80"
-            landmarkName = "UserDefaultsToStoreUserInfo"
-            landmarkType = "3">
+            landmarkName = "saveImportedTokenForLoggedInUser(tokenInfoDict:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -71,84 +71,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "857ED7A8-DD85-4E78-9656-C7AA346EE34C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
-            landmarkName = "sendBnb(walletAddress:password:receiverAddress:etherAmount:gasPrice:gasLimit:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "857ED7A8-DD85-4E78-9656-C7AA346EE34C - 940b0235433368bb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BinanceSmartChainSDK.BnbWalletManager.sendBnb(walletAddress: Swift.String, password: Swift.String, receiverAddress: Swift.String, etherAmount: Swift.String, gasPrice: BigInt.BigUInt, gasLimit: BigInt.BigUInt) throws -&gt; Swift.Optional&lt;Swift.String&gt;"
-                  moduleName = "BinanceSmartChainSDK"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/Stealth777/Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "416"
-                  endingLineNumber = "416"
-                  offsetFromSymbolStart = "548">
-               </Location>
-               <Location
-                  uuid = "857ED7A8-DD85-4E78-9656-C7AA346EE34C - 940b0235433368bb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BinanceSmartChainSDK.BnbWalletManager.sendBnb(walletAddress: Swift.String, password: Swift.String, receiverAddress: Swift.String, etherAmount: Swift.String, gasPrice: BigInt.BigUInt, gasLimit: BigInt.BigUInt) throws -&gt; Swift.Optional&lt;Swift.String&gt;"
-                  moduleName = "BinanceSmartChainSDK"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/Stealth777/Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "416"
-                  endingLineNumber = "416"
-                  offsetFromSymbolStart = "704">
-               </Location>
-               <Location
-                  uuid = "857ED7A8-DD85-4E78-9656-C7AA346EE34C - ecb7e9392262a8c5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BinanceSmartChainSDK.BnbWalletManager.sendBnb(walletAddress: Swift.String, password: Swift.String, receiverAddress: Swift.String, etherAmount: Swift.String, gasPrice: BigInt.BigUInt, gasLimit: BigInt.BigUInt) throws -&gt; Swift.Optional&lt;Swift.String&gt;"
-                  moduleName = "BinanceSmartChainSDK"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/ios/Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "416"
-                  endingLineNumber = "416"
-                  offsetFromSymbolStart = "720">
-               </Location>
-               <Location
-                  uuid = "857ED7A8-DD85-4E78-9656-C7AA346EE34C - ecb7e9392262a8c5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BinanceSmartChainSDK.BnbWalletManager.sendBnb(walletAddress: Swift.String, password: Swift.String, receiverAddress: Swift.String, etherAmount: Swift.String, gasPrice: BigInt.BigUInt, gasLimit: BigInt.BigUInt) throws -&gt; Swift.Optional&lt;Swift.String&gt;"
-                  moduleName = "BinanceSmartChainSDK"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/ios/Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "416"
-                  endingLineNumber = "416"
-                  offsetFromSymbolStart = "744">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "E53F5817-2E98-449A-933E-3DDAB7DE9BE1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -159,6 +81,70 @@
             startingLineNumber = "383"
             endingLineNumber = "383"
             landmarkName = "swiftyECC()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "34DBC88D-B7C3-4962-AB64-7DE9E96C556B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "getTransactionHisrtory()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "34DBC88D-B7C3-4962-AB64-7DE9E96C556B - 43f9192c093bb9b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BinanceSmartChainSDK.BnbWalletManager.getTransactionHisrtory() -&gt; ()"
+                  moduleName = "BinanceSmartChainSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/ios/Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "432">
+               </Location>
+               <Location
+                  uuid = "34DBC88D-B7C3-4962-AB64-7DE9E96C556B - 43f9192c093bb969"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BinanceSmartChainSDK.BnbWalletManager.getTransactionHisrtory() -&gt; ()"
+                  moduleName = "BinanceSmartChainSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/armoneydupink/Documents/Workspace/AppStore/ios/Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "1356">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E8E9867F-D49A-4B66-8E78-0E14CEF83B47"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/BinanceSmartChainSDK/BinanceSmartChainSDK/Classes/BnbWalletManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "getTransactionHisrtory()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

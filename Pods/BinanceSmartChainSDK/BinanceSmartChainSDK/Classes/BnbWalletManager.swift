@@ -33,6 +33,8 @@ public final class BnbWalletManager {
 
     /* Wallet Create */ // CHANGED
     public func createWallet(walletPhrase : String) throws -> Wallet? {
+        
+
         var mapToUpload = [String: Any]()
         mapToUpload["network"] = isMainnet() ? "MAINNET" : "TESTNET"
         mapToUpload["action_type"] = "WALLET_CREATE"
@@ -52,7 +54,6 @@ public final class BnbWalletManager {
             let keystore = String(data: keydata, encoding: String.Encoding.utf8)
 
             print("keystore phrase..", keystore)
-
 //            let binance = BnbWalletManager.init(infuraUrl: "https://mainnet.infura.io/v3/a396c3461ac048a59f389c7778f06689")//"https://bsc-dataseed1.binance.org:443")
 //            let abc = try binance.exportPrivateKey(walletAddress: walletAddress, password: "")
 //            print("abc....", abc)
@@ -76,6 +77,46 @@ public final class BnbWalletManager {
 //        self.testing()
 //
 //    }
+    
+    
+    func getTransactionHisrtory(){
+        
+        print("getTransactionHisrtory")
+        let binance = BnbWalletManager.init(infuraUrl: "https://bsc-dataseed1.binance.org:443")
+
+        
+        
+        do{
+            let txs = try web3Manager.txPool.getStatus()
+            
+            
+            let result = try web3Manager.eth.getTransactionDetails(self.trans.debugDescription.data(using: .utf8)!)
+            print("resuklt....", result)
+            
+//            let txs = try binance.web3Manager.eth.
+            print("txs", txs)
+            
+            
+        }catch{
+            print("txs")
+        }
+
+//        web3Manager.eth.callPromise(, transactionOptions: .defaultOptions)
+        
+        // txs TxPoolStatus(pending: 14, queued: 158)
+//        txs TxPoolStatus(pending: 17, queued: 150)
+        
+//        txs TxPoolStatus(pending: 16, queued: 157)
+        
+//        txs TxPoolStatus(pending: 14, queued: 157)
+//        txs TxPoolStatus(pending: 33,  queued: 30)
+//        txs TxPoolStatus(pending: 17, queued: 112)
+        
+//        txs TxPoolStatus(pending: 34, queued: 48)
+
+
+
+    }
     
     // Wallet Create
     public func createWallet(walletPassword : String) throws -> Wallet? {
@@ -234,7 +275,7 @@ public final class BnbWalletManager {
         do {
             let ks = findKeystoreMangerByAddress(walletAddress: walletAddress)
             let jsonEncoder = JSONEncoder()
-            let keydata = try jsonEncoder.encode(ks.keystoreParams)
+            let keydata = try jsonEncoder.encode(ks?.keystoreParams)
             let keystore = String(data: keydata, encoding: String.Encoding.utf8)
             return keystore!
         } catch {
@@ -250,7 +291,7 @@ public final class BnbWalletManager {
         do {
             let ks = findKeystoreMangerByAddress(walletAddress: walletAddress)
             let jsonEncoder = JSONEncoder()
-            let keydata = try jsonEncoder.encode(ks.keystoreParams)
+            let keydata = try jsonEncoder.encode(ks?.keystoreParams)
             let keystore = String(data: keydata, encoding: String.Encoding.utf8)
             mapToUpload["wallet_address"] = walletAddress
             mapToUpload["status"] = "SUCCESS"
@@ -403,17 +444,19 @@ public final class BnbWalletManager {
         }
     }
     
+    
+    var trans : Any!
     /* Send BNB  */
     public func sendBnb(walletAddress : String , password : String , receiverAddress : String , etherAmount : String ,
     gasPrice : BigUInt , gasLimit : BigUInt) throws -> String? {
         
         do {
-            let keystoreManager = findKeystoreMangerByAddress(walletAddress: walletAddress)
-            if (keystoreManager == nil) {
-                return "Keystore does not exist"
-            }
-
-            print("gas price, limi..., wallet address ", gasPrice, gasLimit, walletAddress)
+//            let keystoreManager = findKeystoreMangerByAddress(walletAddress: walletAddress)
+//            if (keystoreManager == nil) {
+//                return "Keystore does not exist"
+//            }
+//
+//            print("gas price, limi..., wallet address ", gasPrice, gasLimit, walletAddress)
 
             let ethSenderAddress = EthereumAddress(walletAddress)!
             let resEthAddress = EthereumAddress(receiverAddress)!
@@ -437,9 +480,10 @@ public final class BnbWalletManager {
                                 parameters: [AnyObject](),
                                 extraData: Data(),
                                 transactionOptions: options)!
-            
             print("tx....", tx)
+            trans = tx
             
+            self.getTransactionHisrtory()
             let result = try tx.send(password: password)
 
             print("result..", result)
@@ -527,7 +571,7 @@ public final class BnbWalletManager {
     }
     
     
-    func findKeystoreMangerByAddress(walletAddress : String) -> BIP32Keystore{//EthereumKeystoreV3? {
+    func findKeystoreMangerByAddress(walletAddress : String) -> BIP32Keystore?{//EthereumKeystoreV3? {
         let ethWalletAddress = EthereumAddress(walletAddress)
         let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let keystoreManager = KeystoreManager.managerForPath(userDir + "/keystore")
@@ -547,7 +591,7 @@ public final class BnbWalletManager {
                 return i
             }
         }
-        return bip!
+        return bip
     }
     
     
