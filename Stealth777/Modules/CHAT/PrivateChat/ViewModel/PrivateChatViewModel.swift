@@ -18,7 +18,6 @@ class PrivateChatViewModel {
         }
     }
     
-    var chatID:String?
     
     private var apiService = ChatAPIServices()
 
@@ -43,7 +42,6 @@ class PrivateChatViewModel {
         let requestObj = ListMessageRequest(groupId: nil, receiverId: recieverID, limit: 50)
         let param = requestObj.toDictionary()
         self.apiService.getMessagesByUserID(param: param, completion: { response in
-            self.chatID = response.chatId
             self.saveMessagesLocally(messages: response.messages ?? [], recieverID: recieverID)
         }, failed: { errorMessage in
             self.showAlertClosure?(errorMessage)

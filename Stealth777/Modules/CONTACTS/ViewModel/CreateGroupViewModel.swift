@@ -17,7 +17,6 @@ class CreateGroupViewModel {
         didSet {
             guard let c = createGroupSuccess else {return}
             self.createGroupResult = c
-            self.saveGroupInLocalDB()
             self.didFinishFetch?()
         }
     }
@@ -73,9 +72,7 @@ class CreateGroupViewModel {
                     return
                 }
                 print("tempData....", tempData)
-               
-                self.createGroupSuccess = succeeded
-                
+              
                 if let data =  tempData["data"] as? [String : AnyObject]{
 
                     if let groupId = data["id"] as?  String{
@@ -83,6 +80,8 @@ class CreateGroupViewModel {
                         self.groupId = groupId
                     }
                 }
+                
+                self.createGroupSuccess = succeeded
 //                self.contact = UserModel(from: tempData) //SignUpResponse(with: tempData["data"] as? [String : AnyObject])
             } else {
                 self.error = error as? Error
@@ -112,14 +111,6 @@ class CreateGroupViewModel {
                 print("error....", error)
             }
         })
-    }
-    
-    // MARK: - UI Logic
-    private func saveGroupInLocalDB() {
-        
-
-        // save data locally
-        print("Save group")
     }
     
     

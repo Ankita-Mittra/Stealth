@@ -82,23 +82,19 @@ class RequestsViewController: BaseViewController, GroupRequestsTableViewCellProt
             
         }
         
-        
-        
-    }
-    
-    
-    private func respondFriendRequest(selectedUser: String, action: Int) {
         viewModel.didFinishRespondFriendRequest = {
             message in
             CommonFxns.showAlertWithCompletion(title: AlertMessages.SUCCESS_TITLE, message: message, vc: self) {
-                action == one ? self.updateUIForAcceptRequest() : self.updateUIForRejectRequest()
+                self.navigationController?.popViewController(animated: true)
                 
             }
         }
-
-        viewModel.respondFriendRequest(selectedUser: selectedUser, action: action)
-
+        
+        
     }
+    
+    
+  
     
     private func respondGroupRequest(groupId: String, status: Int) {
 
@@ -112,42 +108,6 @@ class RequestsViewController: BaseViewController, GroupRequestsTableViewCellProt
        
     }
     
-    
-    func updateUIForAcceptRequest(){
-        // 1 update user relation in local DB to friends
-        let userId = String()
-
-        if let row = self.friendRequestsList.firstIndex(where: {$0.userId == userId}) {
-            
-            let foundRow = self.friendRequestsList[row]
-            
-            let newRow = UserModel(userId: foundRow.userId!, username: foundRow.username!, userType: foundRow.userType!, bio: foundRow.bio!, imageUrl: foundRow.imageUrl!, isMute: foundRow.isMute!, isBlock: foundRow.isBlock!, isPin: foundRow.isPin!, allowWipeout: foundRow.allowWipeout!, onlineStatus: foundRow.onlineStatus!, lastOnlineTime: foundRow.lastOnlineTime!, walletKey: foundRow.walletKey!, relation: friends, publicKey: foundRow.publicKey!, accountStatus: foundRow.accountStatus!)
-
-            self.friendRequestsList[row] = newRow
-        }
-        self.reloadTableview()
-    }
-    
-    func updateUIForRejectRequest(){
-        // 1 update user relation in local DB to No relation
-        let userId = String()
-
-        if let row = self.friendRequestsList.firstIndex(where: {$0.userId == userId}) {
-            
-            let foundRow = self.friendRequestsList[row]
-            
-            let newRow = UserModel(userId: foundRow.userId!, username: foundRow.username!, userType: foundRow.userType!, bio: foundRow.bio!, imageUrl: foundRow.imageUrl!, isMute: foundRow.isMute!, isBlock: foundRow.isBlock!, isPin: foundRow.isPin!, allowWipeout: foundRow.allowWipeout!, onlineStatus: foundRow.onlineStatus!, lastOnlineTime: foundRow.lastOnlineTime!, walletKey: foundRow.walletKey!, relation: noRelation, publicKey: foundRow.publicKey!, accountStatus: foundRow.accountStatus!)
-
-            self.friendRequestsList[row] = newRow
-        }
-        self.reloadTableview()
-    }
-    
-    func reloadTableview(){
-        // get list from local and update UI accordingly
-        // reload tableView
-        self.requestsListTableView.reloadData()
-    }
     
     
 
@@ -179,8 +139,8 @@ class RequestsViewController: BaseViewController, GroupRequestsTableViewCellProt
                 
                 let selectedUserId = self.friendRequestsList[row].userId ?? emptyStr
                 print("acceptRequest.....",selectedUserId )
+                viewModel.respondFriendRequest(selectedUser: selectedUserId, action: acceptFriendRequest)
                 
-                self.respondFriendRequest(selectedUser: selectedUserId, action: acceptFriendRequest)
             }
         default:
             print("group acceptRequest")
@@ -202,8 +162,7 @@ class RequestsViewController: BaseViewController, GroupRequestsTableViewCellProt
             if let row = self.requestsListTableView.indexPath(for: cell)?.row{
                 let selectedUserId = self.friendRequestsList[row].userId ?? emptyStr
                 print("rejectRequest.....",selectedUserId )
-                
-                self.respondFriendRequest(selectedUser: selectedUserId, action: rejectFriendRequest)
+                viewModel.respondFriendRequest(selectedUser: selectedUserId, action: rejectFriendRequest)
             }
         default:
             print("group rejectRequest")
