@@ -33,6 +33,9 @@ let viewMembers = 2
 let addMembers = 3
 let showContacts = 0
 
+let binanceBlockchainNetwork = "Binance"
+let ethereumBlockchainNetwork = "Ethereum"
+
 // MARK: - Api's keys
 
 let userId_API_key = "userId"
@@ -66,6 +69,26 @@ enum enumLocalDBUserKeys : String{
 
  case id = "id"
     
+}
+
+enum enumLocalDBTokenInfoKeys : String{
+    case name = "id"
+    case decimals = "decimals"
+    case contractAddress = "contractAddress"
+    case symbol = "symbol"
+    case network = "network"
+    case balance = "balance"
+}
+
+enum enumLocalDBWalletTransactionsKeys : String{
+    case amount = "amount"
+    case date = "date"
+    case from = "from"
+    case to = "to"
+    case network = "network"
+    case totalAmount = "totalAmount"
+    case gasFee = "gasFee"
+    case status = "status"
 }
 
 // MARK: - Enum_StoryBoard

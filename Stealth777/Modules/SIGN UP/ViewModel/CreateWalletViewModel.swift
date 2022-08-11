@@ -169,6 +169,9 @@ class CreateWalletViewModel {
         print("userdetails dict...", userDetails)
         
         UserDefaultsToStoreUserInfo.saveUserDataInUserDefaults(token: signUpResponse.token, userId: signUpResponse.userId, publicKey: self.publickey, privateKey: self.privateKey, walletAddress: self.walletAddress, userDetails: userDetails as! [String : Any])
+        
+        // choose binance blockchain network
+        userDefault.set(binanceBlockchainNetwork, forKey: USER_DEFAULT_selectedBlockchainNetwork_Key)
     }
 
 

@@ -1,6 +1,6 @@
 //
 //  TokenInfo+CoreDataClass.swift
-//  
+//  Stealth777
 //
 //  Created by Fareed Alzoorani on 09/08/2022.
 //

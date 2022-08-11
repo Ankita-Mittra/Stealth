@@ -25,12 +25,14 @@ class ImportTokenViewController: BaseViewController {
 
     var isGetWalletBalanceAPICalled = false
     var walletAddress = String()
+    var selectedNetwork = String()
     
     // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("selected network...", selectedNetwork)
         self.tokenContractAddressTxtField.delegate = self
     }
     
@@ -92,8 +94,10 @@ class ImportTokenViewController: BaseViewController {
                                                 let balance = importedTokenInfo["balance"] as? Double
                                                 print("balance:", balance)
                                                 
-                                                let tokenDict = ImportedTokenList(name: name, symbol: name, decimals: name, balance: String(format: "%.1f", balance ?? 0), contractAddress: tokenContractAddress)
-                                                UserDefaultsToStoreUserInfo.saveImportedTokenForLoggedInUser(tokenInfoDict: tokenDict)
+                                                let tokenDict = ImportedTokenList(name: name, symbol: name, decimals: name, balance: String(format: "%.1f", balance ?? 0), contractAddress: tokenContractAddress, network: selectedNetwork)
+                                                
+                                                WalletDatabaseQueries.addAndUpdateTokensInLocalDB(token: tokenDict)
+//                                                UserDefaultsToStoreUserInfo.saveImportedTokenForLoggedInUser(tokenInfoDict: tokenDict)
                                             }
                                         }
                                     }

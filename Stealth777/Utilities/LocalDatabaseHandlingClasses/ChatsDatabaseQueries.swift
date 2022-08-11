@@ -61,9 +61,7 @@ class ChatsDatabaseQueries{
         }
         return messageList
     }
-    
-    
-    
+
     class func isMessageExist(id: String) -> Bool {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Messages")
@@ -74,7 +72,6 @@ class ChatsDatabaseQueries{
     
     class func saveMessages(messageList:[MessageModel]){
         let context = appDelegate.persistentContainer.viewContext
-        
         
         for msg in messageList{
             do{
@@ -119,7 +116,6 @@ class ChatsDatabaseQueries{
                     message.senderPbKey = msg.senderPbKey
                     message.sendTime = msg.sendTime ?? 0
                     message.state = Int16(msg.state!)
-                    
                 }
                 try context.save()
             }

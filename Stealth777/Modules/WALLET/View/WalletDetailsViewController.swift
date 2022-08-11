@@ -18,9 +18,9 @@ class WalletDetailsViewController: BaseViewController {
 
     @IBOutlet weak var selectedBlockchainNetworkLbl: UILabel!
 
-    var selectedBlockchainNetwork = "Binance"
+    var selectedBlockchainNetwork = String()
     var tokenListArr = [ImportedTokenList]()
-        
+
     lazy var refreshControl: UIRefreshControl = {
             let refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action:
@@ -95,14 +95,16 @@ class WalletDetailsViewController: BaseViewController {
             self.walletAddressLbl.text = userWalletAddress
         }
         self.tokensListTableView.addSubview(self.refreshControl)
+        
+        self.selectedBlockchainNetwork = userDefault.value(forKey: USER_DEFAULT_selectedBlockchainNetwork_Key) as? String ?? emptyStr 
+        self.selectedBlockchainNetworkLbl.text = selectedBlockchainNetwork
     }
 
     func fetchTokensAndShowOnScreen(){
         // fetch tokens list stored locally with balance
         // Show Wallet details on screen
         
-        let list =  UserDefaultsToStoreUserInfo.fetchImportedTokenForLoggedInUser()
-        self.tokenListArr = list
+        self.tokenListArr = WalletDatabaseQueries.fetchAllImportedTokensFromLocalDB() //UserDefaultsToStoreUserInfo.fetchImportedTokenForLoggedInUser()
         
         print("tokenListArr....", tokenListArr)
         self.tokensListTableView.reloadData()
@@ -140,12 +142,13 @@ class WalletDetailsViewController: BaseViewController {
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.receiveAmount.rawValue) as? ReceiveAmountViewController
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
-    
+        
     @IBAction func importTokenBtnAction(_ sender: Any) {
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.importToken.rawValue) as? ImportTokenViewController
         
         otherController?.walletAddress = self.walletAddressLbl.text ?? emptyStr
+        otherController?.selectedNetwork = selectedBlockchainNetwork
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
     
@@ -155,10 +158,10 @@ class WalletDetailsViewController: BaseViewController {
         
     @IBAction func changeBlockchainNetworkBtnAction(_ sender: Any) {
 
-        if selectedBlockchainNetwork == "Binance"{
-            selectedBlockchainNetwork = "Ethereum"
+        if selectedBlockchainNetwork == binanceBlockchainNetwork{
+            selectedBlockchainNetwork = ethereumBlockchainNetwork
         }else{
-            selectedBlockchainNetwork = "Binance"
+            selectedBlockchainNetwork = binanceBlockchainNetwork
         }
         self.selectedBlockchainNetworkLbl.text = selectedBlockchainNetwork
     }
