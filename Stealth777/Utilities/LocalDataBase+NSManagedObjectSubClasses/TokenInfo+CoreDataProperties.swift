@@ -2,7 +2,7 @@
 //  TokenInfo+CoreDataProperties.swift
 //  Stealth777
 //
-//  Created by Fareed Alzoorani on 10/08/2022.
+//  Created by Fareed Alzoorani on 09/08/2022.
 //
 //
 
@@ -16,12 +16,12 @@ extension TokenInfo {
         return NSFetchRequest<TokenInfo>(entityName: "TokenInfo")
     }
 
-    @NSManaged public var balance: String?
-    @NSManaged public var contractAddress: String?
-    @NSManaged public var decimals: String?
     @NSManaged public var name: String?
-    @NSManaged public var network: String?
+    @NSManaged public var decimals: String?
+    @NSManaged public var contractAddress: String?
+    @NSManaged public var balance: String?
     @NSManaged public var symbol: String?
+    @NSManaged public var network: String?
 
 }
 
