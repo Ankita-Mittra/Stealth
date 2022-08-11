@@ -49,6 +49,7 @@ let status_API_key = "status"
 
 // groups
 let groupId_API_key = "groupId"
+let chatId_API_key = "chatId"
 
 enum enumLocalDBIdentifires : String{
     
@@ -219,7 +220,7 @@ enum enumAPIEndPoints: String {
     case pinChat = "chat/pinChat"
     case muteUser = "chat/mute"
     case blockUser = "users/blockUser"
-    case deleteChats = "chat/deleteMessages"
+    case deleteChats = "chat/deleteChat"
     
 }
 

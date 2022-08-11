@@ -63,6 +63,9 @@
                         <state key="normal" backgroundImage="blueTickCheckbox">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="actionSelection" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aaO-Ol-NSa"/>
+                        </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkZ-D1-d1X" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="377" y="27.5" width="38" height="15.5"/>
@@ -137,6 +140,9 @@
         </designable>
         <designable name="guq-ef-M9C">
             <size key="intrinsicContentSize" width="71.5" height="19"/>
+        </designable>
+        <designable name="pWj-gk-Pxc">
+            <size key="intrinsicContentSize" width="91" height="28.5"/>
         </designable>
         <designable name="yqT-ja-2tx">
             <size key="intrinsicContentSize" width="124" height="124"/>

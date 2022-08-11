@@ -70,6 +70,9 @@ class RequestsViewModel {
     func respondFriendRequest(selectedUser: String, action: Int) {
         CommonFxns.showProgress()
         self.contactsApiService?.respondFriendRequest(userId: selectedUser, action: action, completion: { response in
+            if action == one{
+                self.saveUserAfterAccept(userID: selectedUser)
+            }
             self.didFinishRespondFriendRequest?(response.message ?? "")
         }, failed: { error in
             self.showAlertClosure?(error)
@@ -88,6 +91,16 @@ func respondGroupRequest(groupId: String, status: Int) {
     
 
 }
+    
+    //MARK: - Local DB Operations
+    
+    func saveUserAfterAccept(userID:String){
+        if let user = friendRequests?.filter({$0.userId == userID}).first{
+            ContactsDatabaseQueries.addAndUpdateContactsInLocalDB(contacts: [user])
+        
+        }
+        
+    }
     
    
 }
