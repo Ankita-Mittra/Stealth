@@ -119,15 +119,16 @@ class ChatAPIServices:WebService {
         
     }
     
-    func deleteMessage(parameters: [String: Any],completion:@escaping (SendMessageModel) -> Void, failed: @escaping (String) -> Void){
+    func deleteChat(chatID:String,completion:@escaping (GeneralResponseModel) -> Void, failed: @escaping (String) -> Void){
         let url = baseUrl + "\(enumAPIEndPoints.deleteChats.rawValue)"
         print("url....", url)
-        delete(url: url, params: parameters, completion: { json in
+        let param = [chatId_API_key:chatID]
+        delete(url: url, params: param, completion: { json in
             if json == nil{
                 failed(AlertMessages.CAST_ERROR)
                 return
             }
-            let response = SendMessageModel(json!)
+            let response = GeneralResponseModel(json!)
             completion(response)
             
         }, failed: failed)

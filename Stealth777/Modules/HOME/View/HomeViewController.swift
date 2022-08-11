@@ -17,6 +17,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
    // var contactsList = [GroupParticipantsUserModel]()
     var viewModel = HomeViewModel()
+    var sessionList = [SessionList]() // for handling search
 //    var sessionsList = [String: Any]()
     
     // MARK: - View life cycle
@@ -40,6 +41,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.setTopBarButtonswithMenu()
         self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Chats")
         self.setSearchBarOnNavigationBar()
+        navigationItem.searchController?.searchBar.delegate = self
         self.navigationItem.largeTitleDisplayMode = .always
 //        self.title = "Chats"
 
@@ -299,20 +301,20 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             
             return cell
         }
-        chatCell.configureCell(obj: viewModel.sessionData?.sessionList?[indexPath.row])
+        chatCell.configureCell(obj: sessionList[indexPath.row])
         
         return chatCell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if viewModel.sessionData?.sessionList?.count == 0{
+        if sessionList.count == 0{
             self.noChatsLbl.isHidden = false
             self.noChatsLbl.text = "Make new friends to start a chat."
         }else{
             self.noChatsLbl.isHidden = true
         }
-        return viewModel.sessionData?.sessionList?.count ?? 0
+        return sessionList.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -321,10 +323,10 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if viewModel.sessionData?.sessionList?[indexPath.row].groupId?.isEmpty ?? false{
+        if sessionList[indexPath.row].groupId?.isEmpty ?? false{
             self.goToSelectedPrivateChatScreen(index:indexPath.row)
         }else{
-            self.goToSelectedGroupChatScreen(groupID: viewModel.sessionData?.sessionList?[indexPath.row].groupId)
+            self.goToSelectedGroupChatScreen(groupID: sessionList[indexPath.row].groupId)
         }
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -332,15 +334,15 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             //Code I want to do here
         }
         let pin = UIContextualAction(style: .normal, title: "Pin".localized) {  (contextualAction, view, boolValue) in
-            if self.viewModel.sessionData?.sessionList?[indexPath.row].groupId?.isEmpty ?? false{
-                let otherUserID = self.viewModel.sessionData?.sessionList?[indexPath.row].getOtherUserID()
-                let pinValue = self.viewModel.sessionData?.sessionList?[indexPath.row].isPin ?? 0
+            if self.sessionList[indexPath.row].groupId?.isEmpty ?? false{
+                let otherUserID = self.sessionList[indexPath.row].getOtherUserID()
+                let pinValue = self.sessionList[indexPath.row].isPin ?? 0
             let requestObj = PinUserRequest(pin: pinValue, userId: otherUserID, groupId: "", receiverType: 0)
                 self.viewModel.pinUser(param: requestObj.toDictionary())
             }
             else{
-                let groupID = self.viewModel.sessionData?.sessionList?[indexPath.row].groupId ?? ""
-                let pinValue = self.viewModel.sessionData?.sessionList?[indexPath.row].isPin ?? 0
+                let groupID = self.sessionList[indexPath.row].groupId ?? ""
+                let pinValue = self.sessionList[indexPath.row].isPin ?? 0
             let requestObj = PinUserRequest(pin: pinValue, userId: "", groupId: groupID, receiverType: 0)
                 self.viewModel.pinUser(param: requestObj.toDictionary())
                 
@@ -349,15 +351,15 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         pin.backgroundColor = UIColor(named: "PrimaryThemeColor")
         
         let mute = UIContextualAction(style: .normal, title: "Mute".localized) { [self]  (contextualAction, view, boolValue) in
-            if self.viewModel.sessionData?.sessionList?[indexPath.row].groupId?.isEmpty ?? false{
-                let otherUserID = self.viewModel.sessionData?.sessionList?[indexPath.row].getOtherUserID()
-            let muteValue = self.viewModel.sessionData?.sessionList?[indexPath.row].isMute ?? 0
-            let requestObj = MuteUserRequest(mute: muteValue, userId: otherUserID ?? "",groupId: "", receiverType: 0)
+            if self.sessionList[indexPath.row].groupId?.isEmpty ?? false{
+                let otherUserID = self.sessionList[indexPath.row].getOtherUserID()
+            let muteValue = self.sessionList[indexPath.row].isMute ?? 0
+                let requestObj = MuteUserRequest(mute: muteValue, userId: otherUserID ,groupId: "", receiverType: 0)
             viewModel.muteUser(param: requestObj.toDictionary())
             }
             else{
-                let groupID = self.viewModel.sessionData?.sessionList?[indexPath.row].groupId ?? ""
-                let muteValue = self.viewModel.sessionData?.sessionList?[indexPath.row].isMute ?? 0
+                let groupID = self.sessionList[indexPath.row].groupId ?? ""
+                let muteValue = self.sessionList[indexPath.row].isMute ?? 0
                 let requestObj = MuteUserRequest(mute: muteValue, userId: "",groupId: groupID, receiverType: 0)
                 viewModel.muteUser(param: requestObj.toDictionary())
             }
@@ -375,7 +377,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     func goToSelectedPrivateChatScreen(index:Int){
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.privateChat.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateChat.rawValue) as? PrivateChatViewController
-        guard let otherUSerID = viewModel.sessionData?.sessionList?[index].getOtherUserID() else {return}
+         let otherUSerID = self.sessionList[index].getOtherUserID()
         otherController?.otherChatUserId = otherUSerID
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
@@ -458,8 +460,8 @@ extension HomeViewController{
   
         }
         
-        
         viewModel.didFinishSessionFeth = {
+            self.sessionList = self.viewModel.sessionData?.sessionList ?? []
             self.allChatsTableview.reloadData()
         }
         
@@ -477,8 +479,34 @@ extension HomeViewController{
             
         }
         
+        viewModel.didFinishDelete = {
+            msg in
+            CommonFxns.showAlert(self, message: msg, title: AlertMessages.SUCCESS_TITLE)
+        }
+        
         
     }
     
     
 }
+
+//MARK: - Searchbar Delegates
+extension HomeViewController:UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchSessionList(text: searchText)
+        
+    }
+    
+    func searchSessionList(text:String){
+        if text == ""{
+            self.sessionList = self.viewModel.sessionData?.sessionList ?? []
+            self.allChatsTableview.reloadData()
+        }
+        else{
+            self.sessionList = self.viewModel.sessionData?.sessionList?.filter{$0.username?.lowercased().contains(text.lowercased()) ?? false} ?? []
+            self.allChatsTableview.reloadData()
+            
+        }
+    }
+}
+

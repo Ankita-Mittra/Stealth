@@ -25,6 +25,7 @@ class HomeViewModel{
     var didFinishSessionFeth: (() -> ())?
     var didFinishPin: ((String) -> ())?
     var didFinishMute: ((String) -> ())?
+    var didFinishDelete: ((String) -> ())?
     
     
     
@@ -86,6 +87,16 @@ class HomeViewModel{
             self.didFinishMute?(response.message ?? "")
         } failed: { errorMessage in
             self.showAlertClosure?(errorMessage)
+        }
+
+    }
+    
+    func deleteChat(chatID:String){
+        CommonFxns.showProgress()
+        chatAPIService.deleteChat(chatID: chatID) { response in
+            self.didFinishDelete?(response.message ?? "")
+        } failed: { error in
+            self.showAlertClosure?(error)
         }
 
     }

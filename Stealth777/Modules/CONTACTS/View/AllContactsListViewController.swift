@@ -273,6 +273,10 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     guard  let userCell = self.contactsListTableView.dequeueReusableCell(withIdentifier: ContactsListTableViewCell.identifier , for: indexPath) as? ContactsListTableViewCell else {
         return cell
     }
+    userCell.callSelection = {
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
+    }
 
     if comingFor == createGroup || comingFor == addMembers{
         

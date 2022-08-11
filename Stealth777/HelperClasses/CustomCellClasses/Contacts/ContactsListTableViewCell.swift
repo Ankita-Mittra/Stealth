@@ -24,6 +24,8 @@ class ContactsListTableViewCell: UITableViewCell {
     }
     
     var callMakeAdmin:(()->Void)?
+    var callSelection:(()->Void)?
+    
     
     // MARK: Methods
 
@@ -40,6 +42,9 @@ class ContactsListTableViewCell: UITableViewCell {
     
     @IBAction func actionMakeAdmin(){
         callMakeAdmin?()
+    }
+    @IBAction func actionSelection(){
+        callSelection?()
     }
     
 }

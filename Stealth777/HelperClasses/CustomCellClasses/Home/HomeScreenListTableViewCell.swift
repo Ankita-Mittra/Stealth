@@ -48,7 +48,10 @@ class HomeScreenListTableViewCell: UITableViewCell {
     func configureCell(obj:SessionList?){
         chatUsernameLbl.text = obj?.username
         userMessageLbl.text = obj?.msg?.text
+        messageTimeLbl.text = ""
+        if obj?.sendTime ?? 0 > 0{
         messageTimeLbl.text = CommonFxns.getReadableDateFromTimeStamp(timeStamp: obj?.sendTime ?? 0)
+        }
         if obj?.unreadCount ?? 0 > 0{
             unreadMessageCountLbl.text = "\(obj?.unreadCount ?? 0)"
             unreadMessageCountLbl.isHidden = false

@@ -38,6 +38,7 @@ class AllGroupsViewController: BaseViewController {
 
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setToolbarHidden(true, animated: true)
+        viewModel.getLocalGroups()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,7 +58,6 @@ class AllGroupsViewController: BaseViewController {
         segmentedBar.setTitle("Member", forSegmentAt: 2)
         configureRefreshControl()
         self.setupGroupListClosures()
-        viewModel.getLocalGroups()
         viewModel.fetchAllGroups()
         
     }
