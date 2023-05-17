@@ -82,33 +82,8 @@ class CommonFxns: NSObject {
             navController.view.semanticContentAttribute = .forceLeftToRight
             
             navController.navigationBar.semanticContentAttribute = .forceLeftToRight
-            
         }
-        
-        //        if LocalizationSystem.sharedInstance.getLanguage() == enumLanguageCodes.arabicLanguage.rawValue {
-        //            LocalizationSystem.sharedInstance.setLanguage(languageCode: enumLanguageCodes.englishLanguage.rawValue)
-        //            UIView.appearance().semanticContentAttribute = .forceLeftToRight
-        //            UITableView.appearance().semanticContentAttribute = .forceLeftToRight
-        //            UISwitch.appearance().semanticContentAttribute = .forceLeftToRight
-        ////            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
-        //
-        //            let navController:UINavigationController = appDelegate.window!.rootViewController as! UINavigationController
-        //            navController.view.semanticContentAttribute = .forceLeftToRight
-        //
-        //            navController.navigationBar.semanticContentAttribute = .forceLeftToRight
-        //        } else {
-        //            LocalizationSystem.sharedInstance.setLanguage(languageCode: enumLanguageCodes.arabicLanguage.rawValue)
-        //            UIView.appearance().semanticContentAttribute = .forceRightToLeft
-        //            UITableView.appearance().semanticContentAttribute = .forceRightToLeft
-        //            UISwitch.appearance().semanticContentAttribute = .forceRightToLeft
-        ////            UICollectionView.appearance().semanticContentAttribute = .forceLeftToRight
-        //
-        //            let navController:UINavigationController = appDelegate.window!.rootViewController as! UINavigationController
-        //            navController.view.semanticContentAttribute = .forceRightToLeft
-        //            navController.navigationBar.semanticContentAttribute = .forceRightToLeft
-        //       }
-        
-        
+
         let storyboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
         let tabBarControllerObj = storyboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar .rawValue) as! PublicModeTabBarViewController
         var vcArray = (appDelegate.window?.rootViewController as! UINavigationController).viewControllers

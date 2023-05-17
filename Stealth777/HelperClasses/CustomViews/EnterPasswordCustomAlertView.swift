@@ -12,6 +12,5 @@ class EnterPasswordCustomAlertView: UIView {
     // MARK: - Outlets & Properties
     
     @IBOutlet weak var titleLbl: UILabelCustomClass!
-    
 
 }

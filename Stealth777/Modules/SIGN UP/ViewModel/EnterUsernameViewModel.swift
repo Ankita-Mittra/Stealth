@@ -36,16 +36,13 @@ class EnterUsernameViewModel {
     func verifyUsername(username: String){
 
         self.apiService?.verifyUsername(username: username, completion: { data, succeeded, error in
-            print("self.apiService?.verifyUsername....", username)
             if succeeded {
-                print("succeeded....", succeeded)
                 guard let tempData = data else{
                     self.error = error as? Error
                     self.isLoading = false
                     return
                 }
                 self.didFinishFetch?()
-                print("tempData....", tempData)
             } else {
                 self.error = error as? Error
                 self.isLoading = false

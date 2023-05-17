@@ -83,6 +83,9 @@ class WalletDetailsViewController: BaseViewController {
     }
     
     func initialUISetup(){
+        
+        self.walletAddressLbl.text = userDefault.value(forKey: "currentWalletAddress") as? String
+        
         self.tokensListTableView.register(TokenListTableViewCell.nib(), forCellReuseIdentifier: TokenListTableViewCell.identifier)
         
         // Show Wallet details on screen
@@ -100,17 +103,32 @@ class WalletDetailsViewController: BaseViewController {
         self.selectedBlockchainNetworkLbl.text = selectedBlockchainNetwork
     }
 
+    // Method to fetch tokens list stored locally with balance
     func fetchTokensAndShowOnScreen(){
-        // fetch tokens list stored locally with balance
+        
         // Show Wallet details on screen
         
         self.tokenListArr = WalletDatabaseQueries.fetchAllImportedTokensFromLocalDB() //UserDefaultsToStoreUserInfo.fetchImportedTokenForLoggedInUser()
         
         print("tokenListArr....", tokenListArr)
+//        self.fetchImportedTokensBalance(tokenListArr: self.tokenListArr)
+
+    }
+
+    func fetchImportedTokensBalance(tokenListArr: [ImportedTokenList]){
+        
+        tokenListArr.forEach({ token in
+            if token.symbol == "Bnb"{
+                WalletFxns.checkBnbWalletBalance(walletAddress: self.walletAddressLbl.text ?? "")
+
+            }else{
+                WalletFxns.checkBEP20TokenBalance(walletAddress: self.walletAddressLbl.text ?? "", tokenContractAddress: token.contractAddress ?? "")
+             }
+        })
+        
         self.tokensListTableView.reloadData()
         refreshControl.endRefreshing()
     }
-
     
     // MARK: - Button Actions
     
@@ -163,9 +181,20 @@ class WalletDetailsViewController: BaseViewController {
         }else{
             selectedBlockchainNetwork = binanceBlockchainNetwork
         }
+        
+        userDefault.set(selectedBlockchainNetwork, forKey: USER_DEFAULT_selectedBlockchainNetwork_Key)
         self.selectedBlockchainNetworkLbl.text = selectedBlockchainNetwork
     }
 }
+
+
+
+
+
+
+
+
+
 
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(true)

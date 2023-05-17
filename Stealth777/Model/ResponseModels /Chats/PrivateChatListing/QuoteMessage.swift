@@ -4,6 +4,7 @@
 //  Generated using https://jsonmaster.github.io
 //  Created on July 25, 2022
 //
+
 import Foundation
 import SwiftyJSON
 

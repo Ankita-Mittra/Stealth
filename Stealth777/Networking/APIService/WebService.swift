@@ -9,36 +9,28 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-
 class WebService {
-    func get(url: String, params: Dictionary<String, Any>?, completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
-    {
+    func get(url: String, params: Dictionary<String, Any>?, completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void){
         webService(url: url, method: .get, params: params, completion: completion, failed: failed)
     }
     
-    func post(url: String, params: Dictionary<String, Any>?, completion:@escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
-    {
+    func post(url: String, params: Dictionary<String, Any>?, completion:@escaping (JSON?) -> Void, failed: @escaping (String) -> Void){
         webService(url: url, method: .post, params: params, completion: completion, failed: failed)
     }
     
-    func put(url: String, params: Dictionary<String, Any>?, completion:@escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
-    {
+    func put(url: String, params: Dictionary<String, Any>?, completion:@escaping (JSON?) -> Void, failed: @escaping (String) -> Void){
         webService(url: url, method: .put, params: params, completion: completion, failed: failed)
     }
     
-    func delete(url: String, params: Dictionary<String, Any>?, completion:@escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
-    {
+    func delete(url: String, params: Dictionary<String, Any>?, completion:@escaping (JSON?) -> Void, failed: @escaping (String) -> Void){
         webService(url: url, method: .delete, params: params, completion: completion, failed: failed)
     }
     
-    
-    func uploadFilePost(url: String, params: Dictionary<String, Any>?, files: [UploadFile], completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
-    {
+    func uploadFilePost(url: String, params: Dictionary<String, Any>?, files: [UploadFile], completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void){
         upload(url: url, method: .post, params: params, files: files, completion: completion, failed: failed)
     }
     
-    private func webService(url: String, method: Alamofire.HTTPMethod, params: Dictionary<String, Any>?, completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
-    {
+    private func webService(url: String, method: Alamofire.HTTPMethod, params: Dictionary<String, Any>?, completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void){
         print(url)
         if(params != nil)
         {
@@ -46,12 +38,10 @@ class WebService {
         }
         if(CommonFxns.isInternetAvailable()){
             var encoding: ParameterEncoding?
-            if(method == .get)
-            {
+            if(method == .get){
                 encoding = URLEncoding.default
             }
-            else
-            {
+            else{
                 encoding = JSONEncoding.default
             }
             let header = CommonFxns.getAuthenticationToken()
@@ -69,32 +59,21 @@ class WebService {
                         
                         return
                     }
-                    
                     self.handleResponse(response: response, completion: completion, failed: failed)
-                    
                 }
         }
         else{
             failed("No Network")
             return
         }
-        
     }
-    
-    
-    
-    
-    
-    private func upload(url: String, method: Alamofire.HTTPMethod, params: Dictionary<String, Any>?, files: [UploadFile], completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
-    {
+
+    private func upload(url: String, method: Alamofire.HTTPMethod, params: Dictionary<String, Any>?, files: [UploadFile], completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void){
         if !(CommonFxns.isInternetAvailable()){
             failed("No Network")
             return
         }
-        
-        print(url)
-        if(params != nil)
-        {
+        if(params != nil){
             print(params!)
         }
         Alamofire.upload(multipartFormData: { formData in
@@ -128,7 +107,6 @@ class WebService {
                     print("something")
                     
                 })
-                
                 upload.responseJSON { result in
                     print("the resopnse code is : \(result.response?.statusCode)")
                     print("the response is : \(result)")
@@ -140,19 +118,11 @@ class WebService {
                 failed(error.localizedDescription)
                 
                 return
-                
             }
-        })
-        
-        
+        })        
     }
-    
-    
-    
-    
-    
-    private func handleResponse(response: DataResponse<Any>, completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void)
-    {
+
+    private func handleResponse(response: DataResponse<Any>, completion: @escaping (JSON?) -> Void, failed: @escaping (String) -> Void){
         CommonFxns.dismissProgress()
         
         switch response.result {

@@ -1,70 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "62A5035F-0E92-484D-A3B5-6F909B29E61C"
+   uuid = "712ACF16-BA54-4AEB-9442-D3A5086BF327"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2251D203-09BC-485C-819A-2280373AC325"
+            uuid = "A717A9DE-EB1E-4492-B298-40EC33E104A8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/Modules/CONTACTS/View/AllContactsListViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "tableView(_:heightForRowAt:)"
+            filePath = "Stealth777/Modules/SIGN UP/ViewModel/EnterUsernameViewModel.swift"
+            startingColumnNumber = "26"
+            endingColumnNumber = "40"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "verifyUsername(username:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A1E1E89A-9DE5-41BB-9B76-69F929CC59A6"
+            uuid = "8C946B63-8396-4B45-A815-E7A5925E111D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/web3swift/Sources/web3swift/Promises/Promise+Web3+Eth+SendTransaction.swift"
+            filePath = "Stealth777/Modules/WALLET/View/WalletDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "sendTransactionPromise(_:transactionOptions:password:)"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "initialUISetup()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "24014A0C-8292-42EF-8B3D-91A6465EC779"
+            uuid = "EB55DCCB-14F9-4CE3-8D7C-7AE4E219F328"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/BinanceSmartChainSDK/EthWalletManager.swift"
+            filePath = "Stealth777/Modules/WALLET/View/ImportTokenViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
-            landmarkName = "sendEth(walletAddress:password:receiverAddress:etherAmount:gasPrice:gasLimit:)"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "doneBtnAction()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E53F5817-2E98-449A-933E-3DDAB7DE9BE1"
+            uuid = "CB304FB0-3E14-49B9-86B4-570D01CD2B8D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Stealth777/CommonFiles/functions/CommonFxns.swift"
+            filePath = "Stealth777/CommonFiles/functions/WalletFxns.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
-            landmarkName = "swiftyECC()"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "checkBnbWalletBalance(walletAddress:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A301AF2-6D2F-42C7-8B1B-1CF45E56FDD4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stealth777/Modules/INTIAL/View/ImportWalletViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "checkWalletBalance(walletAddress:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

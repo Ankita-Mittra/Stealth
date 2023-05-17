@@ -8,10 +8,15 @@
 import Foundation
 import UIKit
 class GroupChatHeaderView:UIView{
+    
+    // MARK: - Outlets & Properties
+    
     @IBOutlet weak var lblGroupName:UILabel!
     @IBOutlet weak var lblDescription:UILabel!
     @IBOutlet weak var imgPhoto:UIImageView!
     @IBOutlet var contentView: UIView!
+    
+    // MARK: - Methods
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,8 +28,7 @@ class GroupChatHeaderView:UIView{
         initView()
     }
     
-    private func initView()
-    {
+    private func initView(){
         self.backgroundColor = .clear
         Bundle.main.loadNibNamed("GroupChatHeaderView", owner: self, options: nil)
         contentView.frame = self.bounds

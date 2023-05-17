@@ -13,7 +13,6 @@ class GroupInfoHeaderTableViewCell: UITableViewHeaderFooterView {
     
     @IBOutlet weak var groupNameLbl: UILabel!
     @IBOutlet weak var groupDescLbl: UILabel!
-
     
     static let identifier = "GroupInfoHeaderTableViewCell"
     static func nib() -> UINib{
@@ -27,10 +26,4 @@ class GroupInfoHeaderTableViewCell: UITableViewHeaderFooterView {
         // Initialization code
     }
 
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-//    
 }

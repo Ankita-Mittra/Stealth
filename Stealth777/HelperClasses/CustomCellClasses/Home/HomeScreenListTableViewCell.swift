@@ -27,9 +27,15 @@ class HomeScreenListTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
+        // Initialization code
         self.initialSetup()
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
     func initialSetup(){
@@ -39,11 +45,7 @@ class HomeScreenListTableViewCell: UITableViewCell {
         }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
     
     func configureCell(obj:SessionList?){
         chatUsernameLbl.text = obj?.username

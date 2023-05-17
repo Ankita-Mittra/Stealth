@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gNf-mj-rSK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gNf-mj-rSK">
     <device id="retina6_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -24,7 +24,7 @@
                 <navigationController toolbarHidden="NO" id="9kM-7a-pAS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chats" image="tab-chatsIcon" id="LEC-6y-HDv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="r6q-dR-HYA">
-                        <rect key="frame" x="0.0" y="44" width="428" height="96"/>
+                        <rect key="frame" x="0.0" y="47" width="428" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="SecondaryThemeColor"/>
                     </navigationBar>
@@ -45,7 +45,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KFX-gv-3bO">
-                                <rect key="frame" x="25" y="140" width="378" height="786"/>
+                                <rect key="frame" x="25" y="143" width="378" height="783"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ipS-vk-zIT" id="YaM-P5-Pym"/>
@@ -231,7 +231,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEd-yT-CIk">
-                                <rect key="frame" x="30" y="140" width="368" height="654"/>
+                                <rect key="frame" x="30" y="143" width="368" height="651"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                                 <connections>
@@ -283,13 +283,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="777-Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIC-u4-Rcq" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="154.66666666666666" y="218" width="118.99999999999997" height="21"/>
+                                <rect key="frame" x="154.66666666666666" y="221" width="118.99999999999997" height="21"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6t-SU-xFK" customClass="UIViewCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="29.999999999999993" y="295.66666666666669" width="109.33333333333331" height="80.666666666666686"/>
+                                <rect key="frame" x="29.999999999999993" y="298.66666666666669" width="109.33333333333331" height="80.666666666666686"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sendAmountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="xES-kh-fcI">
                                         <rect key="frame" x="41.333333333333329" y="13.333333333333314" width="27" height="29"/>
@@ -338,14 +338,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04innx8394j9dj38ddm93jxjx" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ia-2d-i76" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="5" y="248.99999999999997" width="418" height="16.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wallet address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ia-2d-i76" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                                <rect key="frame" x="5" y="251.99999999999997" width="418" height="16.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" name="darkSubHeadingColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcy-dF-q1W" customClass="UIViewCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="159.33333333333334" y="295.66666666666669" width="109.33333333333334" height="80.666666666666686"/>
+                                <rect key="frame" x="159.33333333333334" y="298.66666666666669" width="109.33333333333334" height="80.666666666666686"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="receiveAmountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="WV1-6f-VzY">
                                         <rect key="frame" x="36.666666666666657" y="9.3333333333333144" width="36" height="36"/>
@@ -394,7 +394,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4XV-df-qn3" customClass="UIViewCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="288.66666666666669" y="295.66666666666669" width="109.33333333333331" height="80.666666666666686"/>
+                                <rect key="frame" x="288.66666666666669" y="298.66666666666669" width="109.33333333333331" height="80.666666666666686"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMo-vG-Dpo" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
                                         <rect key="frame" x="46.333333333333314" y="53.333333333333314" width="17" height="15.333333333333329"/>
@@ -443,14 +443,14 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="d0F-jT-doO">
-                                <rect key="frame" x="30" y="406.33333333333331" width="368" height="32"/>
+                                <rect key="frame" x="30" y="409.33333333333331" width="368" height="32"/>
                                 <segments>
                                     <segment title="Token"/>
                                     <segment title="NFTs"/>
                                 </segments>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="e6l-B3-6jh">
-                                <rect key="frame" x="30" y="457.33333333333326" width="368" height="290.66666666666674"/>
+                                <rect key="frame" x="30" y="460.33333333333326" width="368" height="287.66666666666674"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="P6i-VV-8mx" id="7o6-fc-uXz"/>
@@ -481,7 +481,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFx-k4-dPS" customClass="UIViewCustomClass" customModule="Stealth777" customModuleProvider="target">
-                                <rect key="frame" x="144" y="155" width="140" height="43"/>
+                                <rect key="frame" x="144" y="158" width="140" height="43"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Binance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34H-px-epd">
                                         <rect key="frame" x="8" y="1" width="131" height="41"/>
@@ -616,7 +616,7 @@
                 <navigationController toolbarHidden="NO" id="hEx-Ib-aPG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Contacts" image="tab-contactsIcon" badgeValue="4" id="kYe-Qb-DnM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="JhU-yU-4E8">
-                        <rect key="frame" x="0.0" y="44" width="428" height="96"/>
+                        <rect key="frame" x="0.0" y="47" width="428" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="SecondaryThemeColor"/>
                     </navigationBar>
@@ -634,7 +634,7 @@
                 <navigationController toolbarHidden="NO" id="FMZ-aA-6gN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Wallet" image="tab-walletIcon" id="K9o-OW-142"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="dbv-OD-GXs">
-                        <rect key="frame" x="0.0" y="44" width="428" height="96"/>
+                        <rect key="frame" x="0.0" y="47" width="428" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="SecondaryThemeColor"/>
                     </navigationBar>
@@ -652,7 +652,7 @@
                 <navigationController toolbarHidden="NO" id="SZp-Us-xn9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Life" image="tab-mylifeIcon" id="Ind-uG-SA1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="MJL-tN-xrA">
-                        <rect key="frame" x="0.0" y="44" width="428" height="96"/>
+                        <rect key="frame" x="0.0" y="47" width="428" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="SecondaryThemeColor"/>
                     </navigationBar>
@@ -670,7 +670,7 @@
                 <navigationController toolbarHidden="NO" id="lSC-rZ-yqz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Market Place" image="tab-marketIcon" id="7o3-kt-hdU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="EXC-YY-2gq">
-                        <rect key="frame" x="0.0" y="44" width="428" height="96"/>
+                        <rect key="frame" x="0.0" y="47" width="428" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="SecondaryThemeColor"/>
                     </navigationBar>
@@ -736,7 +736,7 @@
             <size key="intrinsicContentSize" width="180.33333333333334" height="23.666666666666668"/>
         </designable>
         <designable name="4Ia-2d-i76">
-            <size key="intrinsicContentSize" width="175.66666666666666" height="16.666666666666668"/>
+            <size key="intrinsicContentSize" width="90.333333333333329" height="16.666666666666668"/>
         </designable>
         <designable name="53Q-sr-YhZ">
             <size key="intrinsicContentSize" width="101" height="32"/>

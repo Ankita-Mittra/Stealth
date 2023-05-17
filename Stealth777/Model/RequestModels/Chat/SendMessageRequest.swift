@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct SendMessageRequest{
     var msg:String?
     var groupId:String?
@@ -15,10 +16,7 @@ struct SendMessageRequest{
     var enKey:String?
     var quoteMsgId:String?
     var msgType:Int?
-    
-    
-    
-    
+
     init(dict:[String:Any]){
         msg = dict["msg"] as? String
         groupId = dict["groupId"] as? String
@@ -51,10 +49,7 @@ struct SendMessageRequest{
                     "quoteMsgId":quoteMsgId ?? "",
                     "msgType":msgType ?? 0]
         return dict
-        
-    }
-    
-   
+    }   
 }
 
 

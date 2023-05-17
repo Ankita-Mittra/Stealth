@@ -57,7 +57,7 @@ class EnterPasswordViewController: BaseViewController {
         let password = CommonFxns.trimString(string: enterPasswordTxtField.text ?? emptyStr)
         let confirmPassword = CommonFxns.trimString(string: confirmPasswordTxtField.text ?? emptyStr)
         
-        password != emptyStr && CommonFxns.validateLength(text: password, size: (8,30)) && CommonFxns.isValidPassword(password: password) && password == confirmPassword ? goToNextScreen() : CommonFxns.showAlert(self, message: "Please Enter a valid password to continue.", title: "Alert")
+        password != emptyStr && CommonFxns.validateLength(text: password, size: (8,30)) && password == confirmPassword ? goToNextScreen() : CommonFxns.showAlert(self, message: "Please Enter a valid password to continue.", title: "Alert") //  CommonFxns.isValidPassword(password: password)
     }
     
     @IBAction func showHidePwdBtnAction(_ sender: Any) {

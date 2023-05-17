@@ -22,12 +22,6 @@ class GroupSettingsTableViewCell: UITableViewCell {
     
     // MARK: - Methods
 
-    @IBAction func onOffSwitch(_ sender: Any) {
-        
-    }
-    
-    // MARK: - Actions
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

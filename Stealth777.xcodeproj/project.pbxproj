@@ -25,7 +25,6 @@
 		200D98EF27D1F4D40088B2E5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D98EE27D1F4D40088B2E5 /* LoginViewController.swift */; };
 		200D98F127D1F4F30088B2E5 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200D98F027D1F4F30088B2E5 /* LoginStoryboard.storyboard */; };
 		200D98F627D1F5780088B2E5 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D98F527D1F5780088B2E5 /* InitialViewController.swift */; };
-		200D98F827D1F58B0088B2E5 /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D98F727D1F58B0088B2E5 /* InitialViewModel.swift */; };
 		200D98FC27D1F5B50088B2E5 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D98FB27D1F5B50088B2E5 /* SignUpViewModel.swift */; };
 		200D990427D1F7060088B2E5 /* PrivateChatStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200D990327D1F7060088B2E5 /* PrivateChatStoryboard.storyboard */; };
 		200D990627D1F7280088B2E5 /* PrivateChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D990527D1F7280088B2E5 /* PrivateChatViewController.swift */; };
@@ -37,7 +36,6 @@
 		200D991327D1F7E00088B2E5 /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D991227D1F7E00088B2E5 /* CreateWalletViewController.swift */; };
 		200D991527D1F8210088B2E5 /* ImportWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D991427D1F8210088B2E5 /* ImportWalletViewController.swift */; };
 		200D991727D1F82E0088B2E5 /* ImportWalletStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200D991627D1F82E0088B2E5 /* ImportWalletStoryboard.storyboard */; };
-		200D991927D1F8560088B2E5 /* ImportWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D991827D1F8560088B2E5 /* ImportWalletViewModel.swift */; };
 		200D991B27D1F8A00088B2E5 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D991A27D1F8A00088B2E5 /* RecoverPasswordViewController.swift */; };
 		200D991D27D1F8B00088B2E5 /* RecoverPasswordStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200D991C27D1F8B00088B2E5 /* RecoverPasswordStoryboard.storyboard */; };
 		200D991F27D1F8C60088B2E5 /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D991E27D1F8C60088B2E5 /* RecoverPasswordViewModel.swift */; };
@@ -196,7 +194,6 @@
 		20F9AE7E283BC1620057C881 /* ImportedTokenList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F9AE7D283BC1620057C881 /* ImportedTokenList.swift */; };
 		20FBC6A127C7ABCE004E0697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6A027C7ABCE004E0697 /* AppDelegate.swift */; };
 		20FBC6A327C7ABCE004E0697 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6A227C7ABCE004E0697 /* SceneDelegate.swift */; };
-		20FBC6A527C7ABCE004E0697 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6A427C7ABCE004E0697 /* ViewController.swift */; };
 		20FBC6A827C7ABCE004E0697 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FBC6A627C7ABCE004E0697 /* Main.storyboard */; };
 		20FBC6AB27C7ABCE004E0697 /* Stealth777.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC6A927C7ABCE004E0697 /* Stealth777.xcdatamodeld */; };
 		20FBC6AD27C7ABD0004E0697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20FBC6AC27C7ABD0004E0697 /* Assets.xcassets */; };
@@ -281,7 +278,6 @@
 		200D98EE27D1F4D40088B2E5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		200D98F027D1F4F30088B2E5 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		200D98F527D1F5780088B2E5 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
-		200D98F727D1F58B0088B2E5 /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
 		200D98FB27D1F5B50088B2E5 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		200D990327D1F7060088B2E5 /* PrivateChatStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrivateChatStoryboard.storyboard; sourceTree = "<group>"; };
 		200D990527D1F7280088B2E5 /* PrivateChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateChatViewController.swift; sourceTree = "<group>"; };
@@ -293,7 +289,6 @@
 		200D991227D1F7E00088B2E5 /* CreateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
 		200D991427D1F8210088B2E5 /* ImportWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletViewController.swift; sourceTree = "<group>"; };
 		200D991627D1F82E0088B2E5 /* ImportWalletStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImportWalletStoryboard.storyboard; sourceTree = "<group>"; };
-		200D991827D1F8560088B2E5 /* ImportWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletViewModel.swift; sourceTree = "<group>"; };
 		200D991A27D1F8A00088B2E5 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		200D991C27D1F8B00088B2E5 /* RecoverPasswordStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecoverPasswordStoryboard.storyboard; sourceTree = "<group>"; };
 		200D991E27D1F8C60088B2E5 /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -464,7 +459,6 @@
 		20FBC69D27C7ABCE004E0697 /* Stealth777.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stealth777.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FBC6A027C7ABCE004E0697 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20FBC6A227C7ABCE004E0697 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		20FBC6A427C7ABCE004E0697 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		20FBC6A727C7ABCE004E0697 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20FBC6AA27C7ABCE004E0697 /* Stealth777.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stealth777.xcdatamodel; sourceTree = "<group>"; };
 		20FBC6AC27C7ABD0004E0697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -604,18 +598,8 @@
 			isa = PBXGroup;
 			children = (
 				200D98F427D1F5460088B2E5 /* View */,
-				200D98F327D1F53D0088B2E5 /* ViewModel */,
 			);
 			path = INTIAL;
-			sourceTree = "<group>";
-		};
-		200D98F327D1F53D0088B2E5 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				200D98F727D1F58B0088B2E5 /* InitialViewModel.swift */,
-				200D991827D1F8560088B2E5 /* ImportWalletViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		200D98F427D1F5460088B2E5 /* View */ = {
@@ -1154,12 +1138,10 @@
 				20FBC6E727C7C1DB004E0697 /* CommonFiles */,
 				20FBC6E527C7C140004E0697 /* Model */,
 				20FBC6D927C7C0AC004E0697 /* Modules */,
-				20FBC6D727C7C081004E0697 /* SDK */,
 				20FBC6D527C7BE1A004E0697 /* Networking */,
 				20FBC6FF27C7C284004E0697 /* SupportingFiles */,
 				201BACFD27CE0545001F10FD /* Utilities */,
 				20FBC6A227C7ABCE004E0697 /* SceneDelegate.swift */,
-				20FBC6A427C7ABCE004E0697 /* ViewController.swift */,
 			);
 			path = Stealth777;
 			sourceTree = "<group>";
@@ -1220,13 +1202,6 @@
 				20249BBA28804C8800A4AEC3 /* ChatAPIServices.swift */,
 			);
 			path = APIService;
-			sourceTree = "<group>";
-		};
-		20FBC6D727C7C081004E0697 /* SDK */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SDK;
 			sourceTree = "<group>";
 		};
 		20FBC6D927C7C0AC004E0697 /* Modules */ = {
@@ -1939,7 +1914,6 @@
 				20B486F327CCD22A00E12376 /* Constants.swift in Sources */,
 				209EE826284F3FBE0074C354 /* GroupMembersModel.swift in Sources */,
 				20B83C8127DA124D003CA9D2 /* GroupSettingsTableViewCell.swift in Sources */,
-				20FBC6A527C7ABCE004E0697 /* ViewController.swift in Sources */,
 				2043BA7527FAD32900D00041 /* Messages+CoreDataProperties.swift in Sources */,
 				6B470E13289CE4A000CB251D /* UploadFileResponseModel.swift in Sources */,
 				206FAC1E28A3D34D00D14620 /* TokenInfo+CoreDataProperties.swift in Sources */,
@@ -2016,7 +1990,6 @@
 				2043BA7227FAD32900D00041 /* UserRelation+CoreDataClass.swift in Sources */,
 				2043BA6E27FAD32900D00041 /* Groups+CoreDataClass.swift in Sources */,
 				20B83C9227DA1728003CA9D2 /* GroupSettingsViewController.swift in Sources */,
-				200D991927D1F8560088B2E5 /* ImportWalletViewModel.swift in Sources */,
 				20A9CB9E2844F7870043B8F9 /* SearchUsersViewModel.swift in Sources */,
 				209EE81F284E32300074C354 /* UserProfileViewModel.swift in Sources */,
 				200D991F27D1F8C60088B2E5 /* RecoverPasswordViewModel.swift in Sources */,
@@ -2096,7 +2069,6 @@
 				6B4EC5D3289905F900F6A3FC /* GroupDatabaseQueries.swift in Sources */,
 				200D993727D2021D0088B2E5 /* PrivateChatReceiverTableViewCell.swift in Sources */,
 				20857A8C2858C2B60097A105 /* CreateGroupViewModel.swift in Sources */,
-				200D98F827D1F58B0088B2E5 /* InitialViewModel.swift in Sources */,
 				20F99D21283FAE4C0088A487 /* GroupsModel.swift in Sources */,
 				20B83C9D27DA367F003CA9D2 /* GroupRequestsTableViewCell.swift in Sources */,
 				6B470E15289CFFD200CB251D /* PinUserRequest.swift in Sources */,
@@ -2302,7 +2274,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W4KJ83Y5LG;
+				DEVELOPMENT_TEAM = F6DKBCBJL3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Stealth777/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Stealth777 using camera";
@@ -2334,7 +2306,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W4KJ83Y5LG;
+				DEVELOPMENT_TEAM = F6DKBCBJL3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Stealth777/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Stealth777 using camera";

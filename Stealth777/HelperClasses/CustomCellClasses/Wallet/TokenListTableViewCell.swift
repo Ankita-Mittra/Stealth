@@ -14,7 +14,8 @@ class TokenListTableViewCell: UITableViewCell {
     @IBOutlet weak var titleImgView: UIImageViewCustomClass!
     @IBOutlet weak var titleLbl: UILabelCustomClass!
     @IBOutlet weak var cellSelectedBtn: UIButton!
-    
+    @IBOutlet weak var balanceLbl: UILabelCustomClass!
+
     static let identifier = "TokenListTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "TokenListTableViewCell", bundle: nil)

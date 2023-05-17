@@ -8,15 +8,12 @@
 import UIKit
 
 class InitialViewController: BaseViewController {
-    
 
     // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        // Do any additional setup after loading the view.
+        // Initial Setup
         self.hideNavigationBar()
 //        self.checkVPNConnectivity()
     }
@@ -49,14 +46,7 @@ class InitialViewController: BaseViewController {
         let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.importWallet.rawValue) as! ImportWalletViewController
         self.navigationController?.pushViewController(signUpVcObj, animated: true)
     }
-    
-    //
-//    let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-//    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//    let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
-//    navController.pushViewController(signUpVcObj, animated: true)
-    //
-    
+
     @IBAction func termaAndConditionsBtnAction(_ sender: Any) {
 
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.main.rawValue, bundle: nil)

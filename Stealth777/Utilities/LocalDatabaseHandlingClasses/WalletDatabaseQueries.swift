@@ -63,7 +63,7 @@ class WalletDatabaseQueries: NSObject {
 //        })
         do {
             let request: NSFetchRequest<TokenInfo> = TokenInfo.fetchRequest()
-            request.predicate = NSPredicate(format: "contractAddress == %@", token.network!) // Find network of selected network
+            request.predicate = NSPredicate(format: "contractAddress == %@", token.contractAddress!) // Find network of selected network
 
             let importedTokens = try context.fetch(request)
             
@@ -89,4 +89,16 @@ class WalletDatabaseQueries: NSObject {
         }
     }
 
+    class func deleteTokensLocally(){
+        let context = appDelegate.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TokenInfo")
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try context.execute(batchDeleteRequest)
+        } catch {
+            print("Unable to Fetch Workouts, (\(error))")
+        }
+    }
 }

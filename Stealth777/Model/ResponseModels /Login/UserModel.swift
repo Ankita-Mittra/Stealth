@@ -27,24 +27,6 @@ struct UserModel: Codable {
     let publicKey: String? // 14
     let accountStatus: Int? // 15
 
-//    enum CodingKeys: String, CodingKey {
-//        case userId = "id"
-//        case username = "username"
-//        case userType = "userType"
-//        case imageUrl = "imageUrl"
-//        case bio = "bio"
-//        case isMute = "isMute"
-//        case isBlock = "isBlock"
-//        case isPin = "isPin"
-//        case allowWipeout = "allowWipeOut"
-//        case onlineStatus = "onlineStatus"
-//        case lastOnlineTime = "lastOnlineTime"
-//        case walletKey = "wKey"
-//        case relation = "relation"
-//        case publicKey = "pbKey"
-//        case accountStatus = "accountState"
-//    }
-//
     init(userId: String, username: String, userType: Int, bio: String, imageUrl: String, isMute: Int, isBlock: Int, isPin: Int, allowWipeout: Int, onlineStatus: Int, lastOnlineTime: String, walletKey: String, relation: Int, publicKey: String, accountStatus: Int){
         self.userId = userId
         self.username = username

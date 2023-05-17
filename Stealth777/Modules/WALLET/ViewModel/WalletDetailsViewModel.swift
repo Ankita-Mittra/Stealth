@@ -32,7 +32,7 @@ extension WalletDetailsViewController: UITableViewDelegate, UITableViewDataSourc
         
         let dict = self.tokenListArr[indexPath.row] as ImportedTokenList
         tokenCell.titleLbl.text = dict.name
-        
+        tokenCell.balanceLbl.text = dict.balance
         return tokenCell
     }
 

@@ -40,6 +40,8 @@ class ContactsListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // MARK: Button Actions
+
     @IBAction func actionMakeAdmin(){
         callMakeAdmin?()
     }

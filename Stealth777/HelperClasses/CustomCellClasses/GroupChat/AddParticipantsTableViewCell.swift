@@ -34,15 +34,15 @@ class AddParticipantsTableViewCell: UITableViewHeaderFooterView {
         addParticipantsStack.addGestureRecognizer(tap)
         // Initialization code
     }
+    
+    // MARK: - Button Actions
 
     @IBAction func viewAllMembersBtnAction(_ sender: Any) {
         self.delegate?.viewAllMembersBtnSelected(cell: self)
-        
     }
     
     @IBAction func addParticipantsBtnAction(_ sender: Any) {
         self.delegate?.addParticipantsBtnSelected(cell: self)
-
     }
     
     @objc func addMembers(){

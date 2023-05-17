@@ -8,6 +8,7 @@
 import Foundation
 
 struct DeleteMessageRequest{
+    
     var forAll:Int?
     var msgId:String?
     
@@ -15,7 +16,6 @@ struct DeleteMessageRequest{
         self.forAll = forAll
         self.msgId = msgId
     }
-    
     
     func toDictionary()->[String:Any]{
         let dict:[String:Any] = ["forAll":forAll ?? 0,

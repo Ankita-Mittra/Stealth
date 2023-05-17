@@ -56,7 +56,7 @@ class ImportWalletViewController: BaseViewController {
     
     func initialSetup(){
         
-        self.enterRecoveryPhraseTxtField.text = "gentle essence eye scene hurt manage dinner net foam spirit cube circle"//"chair obscure choose right piano dinner weather scatter pony drum wash ready"
+        self.enterRecoveryPhraseTxtField.text = "hill hockey program race rug spoon conduct auction staff quit icon strike"
     }
     
     func importWallet(walletPhrase: String){
@@ -84,6 +84,10 @@ class ImportWalletViewController: BaseViewController {
             let gasPrice = 0.0007
             let gasLimit = 0.0007
             print("gasPrice", gasPrice)
+            userDefault.setValue(self.walletAddress, forKey: "currentWalletAddress")
+            
+            self.goToHomeScreen()
+
 //            binance.sendBNBTesting()
 
 //            bnb2.sendBnb(walletAddress: "", password: "", receiverAddress: "", etherAmount: "", gasPrice: 0, gasLimit: 0)
@@ -124,6 +128,12 @@ class ImportWalletViewController: BaseViewController {
             let gasPrice = 0.0007
             let gasLimit = 0.0007
 
+            
+            let tokenDict = ImportedTokenList(name: "BNB", symbol: "BNB", decimals: "17", balance: balance ?? "", contractAddress: "", network: "BNB")
+
+            print("tokenDict...", tokenDict)
+            WalletDatabaseQueries.addAndUpdateTokensInLocalDB(token: tokenDict)
+            
 //            binance.testing()
             
 //            binance.sendBnb(walletAddress: "", password: "", receiverAddress: "", etherAmount: "", gasPrice: "", gasLimit: "")
@@ -159,7 +169,6 @@ class ImportWalletViewController: BaseViewController {
             self.importWallet(walletPhrase: recoveryPhrase)
         }
         
-//        self.goToHomeScreen()
         
         
     }
