@@ -17,7 +17,6 @@ protocol GroupRequestsTableViewCellProtocolForRequestActions{
     func rejectRequest(cell: GroupRequestsTableViewCell)
 }
 
-
 class GroupRequestsTableViewCell: UITableViewCell {
 
     // MARK: - Outlets & Properties

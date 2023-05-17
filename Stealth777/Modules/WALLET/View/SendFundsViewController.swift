@@ -27,9 +27,10 @@ class SendFundsViewController: BaseViewController {
 
         // Initial Setup
         self.initialSetup()
-        
-        self.importBinanceWallet2()
-//        self.importBinanceWallet()
+//        self.getTransactionHisrtory()
+//        self.ethWalletTransactions()
+//            
+        self.binanceWalletTransactions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +55,11 @@ class SendFundsViewController: BaseViewController {
         self.accountAddressLbl.text = self.walletAddress
     }
     
+    func checkTransactionInProcess(){
+    
+        let binance = BnbWalletManager.init(infuraUrl:  "https://bsc-dataseed1.binance.org:443")
+    }
+    
     func checkWalletBalance(walletAddress: String){
         print("check balance........", walletAddress)
 //        let walletAddress = self.walletAddress // "0x4b8dbF6Fa6777F4bdE11a3d0A652843FE82fbF32"
@@ -66,7 +72,6 @@ class SendFundsViewController: BaseViewController {
             let armoneyContractAddress = "0xe142480898845f5270ee4A47Ad8D479bd37e6A3B"
             let USDTContractAddress = "0x55d398326f99059ff775485246999027b3197955"
             let tokenBalance = try eth.getBEP20TokenBalanceEth(tokenContractAddress: armoneyContractAddress, walletAddress: walletAddress)
-            
             
             print("ETh balance...", balance)
             print("Eth tokenBalance...", tokenBalance)
@@ -114,7 +119,47 @@ class SendFundsViewController: BaseViewController {
         }
     }
     
-    func importBinanceWallet2(){
+    func ethWalletTransactions(){
+        do {
+
+            let eth = EthWalletManager.init(infuraUrl: "https://mainnet.infura.io/v3/a396c3461ac048a59f389c7778f06689")
+            
+            if let walletPhrase = try BIP39.generateMnemonics(bitsOfEntropy: 128, language: .english){
+                
+                let wallet = try eth.createEthWallet(walletPhrase: "gentle essence eye scene hurt manage dinner net foam spirit cube circle")
+                let walletAddress = wallet?.walletAddress ?? ""
+                print("wallet....seed",wallet?.walletAddress)
+                let balance = try eth.getEthBalance(walletAddress: walletAddress)
+//                eth.sendEthTesting(walletAddress: walletAddress)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+//    func getTransactionHisrtory(){
+//
+//        print("getTransactionHisrtory")
+//        let binance = BnbWalletManager.init(infuraUrl: "https://bsc-dataseed1.binance.org:443")
+//
+//
+//
+//        do{
+//            let txs = try web3Manager.txPool.getStatus()
+//
+//
+//
+////            let txs = try binance.web3Manager.eth.
+//            print("txs", txs)
+//        }catch{
+//            print("txs")
+//        }
+//
+//    }
+    
+    
+    func binanceWalletTransactions(){
         do {
             
             // 0x9873dFC5442F589d01cFe19aF035D96C898eBa0b
@@ -123,17 +168,22 @@ class SendFundsViewController: BaseViewController {
             let binance = BnbWalletManager.init(infuraUrl:  "https://bsc-dataseed1.binance.org:443")//)
             
             
+            
             if let walletPhrase = try BIP39.generateMnemonics(bitsOfEntropy: 128, language: .english){
                 
-                let wallet = try binance.createWallet(walletPhrase: walletPhrase)
+                
+                let wallet = try binance.createWallet(walletPhrase:"gentle essence eye scene hurt manage dinner net foam spirit cube circle")// )// 0x9431Ad4a2306291dE17467d4b908fFE216b5514f
+                let walletAddress = wallet?.walletAddress ?? ""
+                print("wallet....seed",wallet?.walletAddress)
+//                let balance = try binance.getBnbBalance(walletAddress: walletAddress)
+                binance.sendBNBTesting(walletAddress: walletAddress) //(wallet?.walletAddress)!)
+                
 
-                print("wallet....seed....",wallet?.walletAddress)
-                binance.sendBNBTesting(walletAddress: wallet?.walletAddress ?? "") //(wallet?.walletAddress)!)
             }
-            
-            let wallet = try binance.createWallet(walletPassword: "")
-            print("wallet....",wallet?.walletAddress)
-            binance.sendBNBTesting(walletAddress: wallet?.walletAddress ?? "") //(wallet?.walletAddress)!)
+
+//            let wallet = try binance.createWallet(walletPassword: "")
+//            print("wallet....password..",wallet?.walletAddress)
+//            binance.sendBNBTesting(walletAddress: wallet?.walletAddress ?? "") //(wallet?.walletAddress)!)
 //            binance.sendBNBTesting(walletAddress: "0xa3e26d47ca97a475a879bfd99c8fef4bf1ca74bc")//(wallet?.walletAddress)!)
 //
 //            self.checkWalletBalance(walletAddress: "0xa3e26d47ca97a475a879bfd99c8fef4bf1ca74bc")
@@ -232,6 +282,12 @@ class SendFundsViewController: BaseViewController {
         self.checkWalletBalance(walletAddress: self.walletAddress)
     }
     
+    @IBAction func scanQRBtnAction(_ sender: Any) {
+        let storyBoard = UIStoryboard.init(name: enumStoryBoard.wallet.rawValue, bundle: nil)
+        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.scanner.rawValue) as? ScannerViewController
+        self.navigationController?.pushViewController(otherController!, animated: true)
+        
+    }
     
 
 }

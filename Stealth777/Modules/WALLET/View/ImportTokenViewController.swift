@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 import BigInt
-import BigNumber
+//import BigNumber
 import web3swift
 
 import Foundation
@@ -25,12 +25,15 @@ class ImportTokenViewController: BaseViewController {
 
     var isGetWalletBalanceAPICalled = false
     var walletAddress = String()
+    var selectedNetwork = String()
     
     // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        print("selected network...", selectedNetwork)
         self.tokenContractAddressTxtField.delegate = self
     }
     
@@ -62,38 +65,52 @@ class ImportTokenViewController: BaseViewController {
             
             let tokenContractAddress = CommonFxns.trimString(string: self.tokenContractAddressTxtField.text ?? emptyStr)
             if  tokenContractAddress != emptyStr{
-                // Check token balance
-                
-                let importedTokenInfo = WalletFxns.importToken(walletAddress: self.walletAddress, contractAddress: tokenContractAddress)
-                
-                if let tokenSymbolDict = importedTokenInfo["tokenSymbol"] as? [String:Any]{
+                if walletAddress != emptyStr{
+                    // Check token balance
                     
-                    print("tokenSymbolDict...", tokenSymbolDict)
+                    let importedTokenInfo = WalletFxns.importToken(walletAddress: self.walletAddress, contractAddress: tokenContractAddress)
                     
-                    if let success = tokenSymbolDict["_success"] as? Bool{
+                    if let tokenSymbolDict = importedTokenInfo["tokenSymbol"] as? [String:Any]{
                         
-                        if success{
-                            if let symbol = tokenSymbolDict["0"] as? String{
-                                
-                                print("symbol....", symbol)
-                                self.tokenSymbolTxtField.text = symbol
-                                
-                                if let tokenNameDict = importedTokenInfo["tokenName"] as? [String:Any]{
+                        print("tokenSymbolDict...", tokenSymbolDict)
+                        
+                        if let success = tokenSymbolDict["_success"] as? Bool{
+                            
+                            if success{
+                                if let symbol = tokenSymbolDict["0"] as? String{
                                     
-                                    print("tokenNameDict...", tokenNameDict)
+                                    print("symbol....", symbol)
+                                    self.tokenSymbolTxtField.text = symbol
                                     
-                                    if let success = tokenNameDict["_success"] as? Bool{
+                                    if let tokenNameDict = importedTokenInfo["tokenName"] as? [String:Any]{
                                         
-                                        if success{
-                                            if let name = tokenNameDict["0"] as? String{
-                                                
-                                                print("name....", name)
-                                                self.tokenSymbolTxtField.text = name
-                                                let balance = importedTokenInfo["balance"] as? Double
-                                                print("balance:", balance)
-                                                
-                                                let tokenDict = ImportedTokenList(name: name, symbol: name, decimals: name, balance: String(format: "%.1f", balance ?? 0), contractAddress: tokenContractAddress)
-                                                UserDefaultsToStoreUserInfo.saveImportedTokenForLoggedInUser(tokenInfoDict: tokenDict)
+                                        print("tokenNameDict...", tokenNameDict)
+                                        
+                                        if let success = tokenNameDict["_success"] as? Bool{
+                                            
+                                            if success{
+                                                if let name = tokenNameDict["0"] as? String{
+                                                    
+                                                    print("name....", name)
+                                                    self.tokenSymbolTxtField.text = name
+                                                    let balance = importedTokenInfo["balance"] as? Double
+                                                    print("balance:", balance)
+                                                    
+
+                                                    
+                                                    if symbol == "Bnb"{
+                                                        let coin_balance = WalletFxns.checkBnbWalletBalance(walletAddress: self.walletAddress)
+                                                        let tokenDict = ImportedTokenList(name: name, symbol: name, decimals: name, balance: coin_balance, contractAddress: tokenContractAddress, network: selectedNetwork)
+
+                                                        
+//                                                        let tokenDict = ImportedTokenList(name: name, symbol: name, decimals: name, balance: String(format: "%.1f", balance ?? 0), contractAddress: tokenContractAddress, network: selectedNetwork)
+                                                        WalletDatabaseQueries.addAndUpdateTokensInLocalDB(token: tokenDict)
+
+                                                    }else{
+                                                        WalletFxns.checkBEP20TokenBalance(walletAddress: self.walletAddress, tokenContractAddress: tokenContractAddress)
+                                                     }
+                                                    
+                                                }
                                             }
                                         }
                                     }
@@ -101,65 +118,66 @@ class ImportTokenViewController: BaseViewController {
                             }
                         }
                     }
-                }
-                
-                if let tokenDecimalDict = importedTokenInfo["decimals"] as? [String:Any]{
                     
-                    print("tokenDecimalDict...", tokenDecimalDict)
-                    
-                    if let success = tokenDecimalDict["_success"] as? Bool{
+                    if let tokenDecimalDict = importedTokenInfo["decimals"] as? [String:Any]{
                         
-                        if success{
-//                            if let decimals = tokenDecimalDict["0"] as? Int{
-//                                print("decimals....", decimals)
-//
-//                                let value: String = String(format: "%.1f", decimals as! CVarArg)
-//
-////                                let value = decimals as? Double
-//                                self.tokenPrecisionTxtField.text = String(decimals)
-//
-//                            }
+                        print("tokenDecimalDict...", tokenDecimalDict)
+                        
+                        if let success = tokenDecimalDict["_success"] as? Bool{
                             
-                            if let decimals = tokenDecimalDict["0"] as? AnyObject{
-                                                                
-                                print("decimals....", decimals, decimals as? BigNumber.BInt )
-                                self.tokenPrecisionTxtField.text = decimals as? String
-                                let value = decimals as? Double
-//                                if let value2:String = decimals{
-//                                    print("value2...", value2)
-//
-//                                }
-                                let value3 = decimals as? Int
+                            if success{
+    //                            if let decimals = tokenDecimalDict["0"] as? Int{
+    //                                print("decimals....", decimals)
+    //
+    //                                let value: String = String(format: "%.1f", decimals as! CVarArg)
+    //
+    ////                                let value = decimals as? Double
+    //                                self.tokenPrecisionTxtField.text = String(decimals)
+    //
+    //                            }
                                 
-//                                let value4 = BigInt(0)//
-//                                let value5 = value4 as String
-//
-//                                print("value4...", value4)
-//                                print("value5...", value5)
+                                if let decimals = tokenDecimalDict["0"] as? AnyObject{
+
+                                   // print("decimals....", decimals, decimals as? BigNumber.BInt )
+
+                                    self.tokenPrecisionTxtField.text = decimals as? String
+                                    let value = decimals as? Double
+    //                                if let value2:String = decimals{
+    //                                    print("value2...", value2)
+    //
+    //                                }
+                                    let value3 = decimals as? Int
+                                    
+    //                                let value4 = BigInt(0)//
+    //                                let value5 = value4 as String
+    //
+    //                                print("value4...", value4)
+    //                                print("value5...", value5)
+                                    
+                                    print("value...", value, BInt.ONE)
+                                    print("value3...", value3, BInt.FOUR)
+                                }
                                 
-                                print("value...", value, BInt.ONE)
-                                print("value3...", value3, BInt.FOUR)
+                                let integer = self.walletAddress
+                                
+                                let decimals = self.walletAddress.removeLast()
+                                print("decimals...", decimals)
+                                
+    //                            if let decimals = tokenDecimalDict["0"] as [String]{
+    //                                print("decimals....", decimals)
+    //
+    ////                                let value = decimals as? Double
+    //                                self.tokenPrecisionTxtField.text =  decimals[0] as String
+    //
+    //                            }
                             }
-                            
-                            let integer = self.walletAddress
-                            
-                            let decimals = self.walletAddress.removeLast()
-                            print("decimals...", decimals)
-                            
-//                            if let decimals = tokenDecimalDict["0"] as [String]{
-//                                print("decimals....", decimals)
-//
-////                                let value = decimals as? Double
-//                                self.tokenPrecisionTxtField.text =  decimals[0] as String
-//
-//                            }
                         }
                     }
+
+                    isGetWalletBalanceAPICalled = true
+                }else{
+                    CommonFxns.showAlert(self, message: "No wallet Address ", title: "Alert")
                 }
-
-
-
-                isGetWalletBalanceAPICalled = true
             }else{
                 CommonFxns.showAlert(self, message: "Please enter valid Token contract address", title: "Alert")
             }

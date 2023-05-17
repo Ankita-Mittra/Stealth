@@ -63,13 +63,13 @@ class EnterUsernameViewController: BaseViewController {
         
         viewModel.verifyUsername(username: username)
     
-        viewModel.updateLoadingStatus = {
-            print("success....updateLoadingStatus")
-
-            CommonFxns.showAlert(self, message: "username already existed", title: "alert")
-
-//            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
-        }
+//        viewModel.updateLoadingStatus = {
+//            print("success....updateLoadingStatus")
+//
+//            CommonFxns.showAlert(self, message: "username already existed", title: "alert")
+//
+////            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
+//        }
         
         viewModel.showAlertClosure = {
             print("showAlertClosure")
@@ -93,6 +93,9 @@ class EnterUsernameViewController: BaseViewController {
         let username = CommonFxns.trimString(string: enterUsernameTxtField.text ?? emptyStr)
         
         username != emptyStr && CommonFxns.isValidUsername(username: username) ? self.verifyUsername(username: username) : CommonFxns.showAlert(self, message: "Please Enter a username to continue.", title: "Alert")
+        
+        username != emptyStr && CommonFxns.isValidUsername(username: username) ? self.goToNextScreen(username: username) : CommonFxns.showAlert(self, message: "Please Enter a username to continue.", title: "Alert")
+
     }
     
     @IBAction func chooseProfileImageBtnAction(_ sender: Any) {

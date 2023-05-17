@@ -20,7 +20,7 @@ class PrivateChatReceiverTableViewCell: UITableViewCell {
     static func nib() -> UINib{
         return UINib(nibName: "PrivateChatReceiverTableViewCell", bundle: nil)
     }
-    
+
     // MARK: - Methods
 
     override func awakeFromNib() {
@@ -41,6 +41,16 @@ class PrivateChatReceiverTableViewCell: UITableViewCell {
         if LocalizationSystem.sharedInstance.getLanguage() == enumLanguageCodes.arabicLanguage.rawValue {
             self.msgTailImgView.image = self.msgTailImgView.image?.withHorizontallyFlippedOrientation()
         }
+    }
+    
+    func configureCell(obj:MessageModel?, privateKey: String){
+        msgBodyLbl.text = obj?.msg?.text
+        msgTimelbl.text = CommonFxns.getReadableDateFromTimeStamp(timeStamp: Double(obj?.sendTime ?? 0))
+    }
+    
+    func configureCell(obj:MessageModel?){
+        msgBodyLbl.text = obj?.msg?.text
+        msgTimelbl.text = CommonFxns.getReadableDateFromTimeStamp(timeStamp: Double(obj?.sendTime ?? 0))
     }
     
 }

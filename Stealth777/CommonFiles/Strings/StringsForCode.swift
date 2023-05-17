@@ -14,7 +14,7 @@ import SwiftUI
 
 let appName = "Stealth777" // App name
 let coreDataName = "Stealth777" // Core database name
-let baseUrl = "https://www.stealth777.is/api/"   //"https://185.247.226.7./api/users/register" // Base url for API's calls
+let baseUrl = "https://www.stealth777.is/api/" // Base url for API's calls
 let binanceUrl = "https://bsc-dataseed1.binance.org:443" // URL for Binance network calls
 
 // MARK: - Common
@@ -33,6 +33,9 @@ let viewMembers = 2
 let addMembers = 3
 let showContacts = 0
 
+let binanceBlockchainNetwork = "Binance"
+let ethereumBlockchainNetwork = "Ethereum"
+
 // MARK: - Api's keys
 
 let userId_API_key = "userId"
@@ -46,6 +49,7 @@ let status_API_key = "status"
 
 // groups
 let groupId_API_key = "groupId"
+let chatId_API_key = "chatId"
 
 enum enumLocalDBIdentifires : String{
     
@@ -66,6 +70,26 @@ enum enumLocalDBUserKeys : String{
 
  case id = "id"
     
+}
+
+enum enumLocalDBTokenInfoKeys : String{
+    case name = "id"
+    case decimals = "decimals"
+    case contractAddress = "contractAddress"
+    case symbol = "symbol"
+    case network = "network"
+    case balance = "balance"
+}
+
+enum enumLocalDBWalletTransactionsKeys : String{
+    case amount = "amount"
+    case date = "date"
+    case from = "from"
+    case to = "to"
+    case network = "network"
+    case totalAmount = "totalAmount"
+    case gasFee = "gasFee"
+    case status = "status"
 }
 
 // MARK: - Enum_StoryBoard
@@ -108,6 +132,8 @@ enum enumViewControllerIdentifier: String {
     case transactionsHistory = "TransactionsHistoryViewController"
     case importToken = "ImportTokenViewController"
     case walletDetails = "WalletDetailsViewController"
+    case scanner = "ScannerViewController"
+
     case allContactsList = "AllContactsListViewController"
     case searchUsers = "SearchUsersViewController"
     case privateChatUserProfile = "PrivateChatUserProfileViewController"
@@ -174,19 +200,27 @@ enum enumAPIEndPoints: String {
     case unfriendUser = "users/unFriendUser"
     // Groups
     
-    case getGroupInvitations = "groups/inviteList" // get
+    case getGroupInvitations = "groups/groupInviteList" // get
     case responseInvitaions = "groups/responseInvite" // groupId, status
     case createGroup = "groups/createGroup" // groupName, mediaId, members, anonymous, disperse, disperseDate, description
     case addMembers = "groups/addMembers" // get
     case removeMembers = "groups/members/remove" // get
     case getAllGroupMembers = "groups/getMembers?groupId=" // get
     case getAllGroups = "groups/listGroup"
+    case deleteGroup = "groups/messages"
+    case exitGroup = "groups/leaveGroup"
+    case setAdmin = "groups/setAdmin"
     
-    case uploadFile = "media/upload"
+    case uploadFile = "mediaFile/upload"
     
     // Chats
     case sendMessage = "groups/sendMsg"
-    case getMessageByUserID = "chat?receiverId="
+    case getMessageByUserID = "chat/getMsgByUserId"
+    case listSession = "chat/listSession"
+    case pinChat = "chat/pinChat"
+    case muteUser = "chat/mute"
+    case blockUser = "users/blockUser"
+    case deleteChats = "chat/deleteChat"
     
 }
 
@@ -233,4 +267,8 @@ enum enumAPICommonKeys: String{
 
 }
 
-
+extension String{
+var localized:String{
+    return NSLocalizedString(self, comment: "")
+}
+}

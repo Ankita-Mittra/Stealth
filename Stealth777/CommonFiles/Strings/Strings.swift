@@ -30,10 +30,21 @@ struct AlertMessages {
     static let VALID_ADDRESS = "Please enter valid address"
     static let NO_DATA_FOUND = "No data found."
     static let NOT_SUFFICIENT_BALANCE = "Wallet balance insufficient."
-    static let LOGOUT = "Are you sure you want to log out?"
     static let PROFILE_EMPTY = "You must complete your profile"
     static let ERROR_TITLE = "Error"
     static let CAST_ERROR = "Please try again later"
+    static let ALERT_OK = "Okay"
+    static let ALERT_CANCEL = "Cancel"
+    static let LOGOUT_TITLE = "Logout"
+    static let LOGOUT_MESSAGE = "Are you sure you want to log out?"
+    static let ALERT_YES = "Yes"
+    static let ALERT_NO = "No"
+    static let DELETE_GROUP_MESSAGE = "Are you sure to delete this group?"
+    static let SUCCESS_TITLE = "Success"
+    static let EXIT_GROUP_MESSAGE = "Are you sure to exit this group?"
+   
+
+
     
 }
 

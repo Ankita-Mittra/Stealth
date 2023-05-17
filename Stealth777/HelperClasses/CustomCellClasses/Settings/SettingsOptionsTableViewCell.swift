@@ -23,6 +23,7 @@ class SettingsOptionsTableViewCell: UITableViewCell {
     }
     
     // MARK: - Methods
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

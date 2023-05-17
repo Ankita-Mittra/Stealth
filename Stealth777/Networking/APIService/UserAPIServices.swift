@@ -15,7 +15,7 @@ struct UserAPIServices {
 
      func verifyUsername(username: String, completion: @escaping (_ data: [String: AnyObject]?, _ succeeded: Bool, _ error: String) -> Void) {
     
-        let url = baseUrl + "\(enumAPIEndPoints.verifyUsername.rawValue)//////////\(username)"
+        let url = baseUrl + "\(enumAPIEndPoints.verifyUsername.rawValue)\(username)"
         print("url....", url)
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON {response in
             guard response.result.error == nil else {

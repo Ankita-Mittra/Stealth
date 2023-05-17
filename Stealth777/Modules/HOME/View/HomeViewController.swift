@@ -15,8 +15,9 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var topMenuView: UIView!
     @IBOutlet weak var noChatsLbl: UILabel!
     
-    var contactsList = [GroupParticipantsUserModel]()
+   // var contactsList = [GroupParticipantsUserModel]()
     var viewModel = HomeViewModel()
+    var sessionList = [SessionList]() // for handling search
 //    var sessionsList = [String: Any]()
     
     // MARK: - View life cycle
@@ -40,6 +41,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.setTopBarButtonswithMenu()
         self.setLargeHeaderOnNavigationBar(largeTitleHeader: "Chats")
         self.setSearchBarOnNavigationBar()
+        navigationItem.searchController?.searchBar.delegate = self
         self.navigationItem.largeTitleDisplayMode = .always
 //        self.title = "Chats"
 
@@ -249,13 +251,16 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     // Method for initial Setups
     func initialSetup(){
-        fetchContactsList()
+        setupViemodelClosures()
+        viewModel.fetchSessionList()
+        viewModel.fetchContacts()
+        viewModel.fetchAllGroups()
         //self.fetchContactsFromLocalDB()
     }
     
     func fetchContactsFromLocalDB(){
-        self.contactsList = ContactsDatabaseQueries.fetchAllContactsFromLocalDB()
-        self.allChatsTableview.reloadData()
+       // self.contactsList = ContactsDatabaseQueries.fetchAllContactsFromLocalDB()
+        //self.allChatsTableview.reloadData()
     }
 
     
@@ -293,25 +298,23 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let cell = UITableViewCell()
         
         guard  let chatCell = self.allChatsTableview.dequeueReusableCell(withIdentifier: HomeScreenListTableViewCell.identifier , for: indexPath) as? HomeScreenListTableViewCell else {
+            
             return cell
         }
-        
-        let dict = self.contactsList[indexPath.row]
-        chatCell.chatUsernameLbl.text = dict.username
-        chatCell.unreadMessageCountLbl.isHidden = false
+        chatCell.configureCell(obj: sessionList[indexPath.row])
         
         return chatCell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if contactsList.count == 0{
+        if sessionList.count == 0{
             self.noChatsLbl.isHidden = false
             self.noChatsLbl.text = "Make new friends to start a chat."
         }else{
             self.noChatsLbl.isHidden = true
         }
-        return contactsList.count
+        return sessionList.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -320,18 +323,62 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 0{
-            self.goToSelectedPrivateChatScreen()
+        if sessionList[indexPath.row].groupId?.isEmpty ?? false{
+            self.goToSelectedPrivateChatScreen(index:indexPath.row)
         }else{
-            self.goToSelectedGroupChatScreen()
+            self.goToSelectedGroupChatScreen(groupID: sessionList[indexPath.row].groupId)
         }
     }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete".localized) {  (contextualAction, view, boolValue) in
+            //Code I want to do here
+        }
+        let pin = UIContextualAction(style: .normal, title: "Pin".localized) {  (contextualAction, view, boolValue) in
+            if self.sessionList[indexPath.row].groupId?.isEmpty ?? false{
+                let otherUserID = self.sessionList[indexPath.row].getOtherUserID()
+                let pinValue = self.sessionList[indexPath.row].isPin ?? 0
+            let requestObj = PinUserRequest(pin: pinValue, userId: otherUserID, groupId: "", receiverType: 0)
+                self.viewModel.pinUser(param: requestObj.toDictionary())
+            }
+            else{
+                let groupID = self.sessionList[indexPath.row].groupId ?? ""
+                let pinValue = self.sessionList[indexPath.row].isPin ?? 0
+            let requestObj = PinUserRequest(pin: pinValue, userId: "", groupId: groupID, receiverType: 0)
+                self.viewModel.pinUser(param: requestObj.toDictionary())
+                
+            }
+        }
+        pin.backgroundColor = UIColor(named: "PrimaryThemeColor")
+        
+        let mute = UIContextualAction(style: .normal, title: "Mute".localized) { [self]  (contextualAction, view, boolValue) in
+            if self.sessionList[indexPath.row].groupId?.isEmpty ?? false{
+                let otherUserID = self.sessionList[indexPath.row].getOtherUserID()
+            let muteValue = self.sessionList[indexPath.row].isMute ?? 0
+                let requestObj = MuteUserRequest(mute: muteValue, userId: otherUserID ,groupId: "", receiverType: 0)
+            viewModel.muteUser(param: requestObj.toDictionary())
+            }
+            else{
+                let groupID = self.sessionList[indexPath.row].groupId ?? ""
+                let muteValue = self.sessionList[indexPath.row].isMute ?? 0
+                let requestObj = MuteUserRequest(mute: muteValue, userId: "",groupId: groupID, receiverType: 0)
+                viewModel.muteUser(param: requestObj.toDictionary())
+            }
+            
+        }
+        mute.backgroundColor = UIColor(named: "PrimaryThemeColor")
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [delete,pin,mute])
+
+        return swipeActions
+    }
     
-    func goToSelectedPrivateChatScreen(){
+    
+    
+    func goToSelectedPrivateChatScreen(index:Int){
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.privateChat.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.privateChat.rawValue) as? PrivateChatViewController
-        
-//        self.navigationController?.navigationBar.addSubview(setTitle(title: "testing", subtitle: "test"))
+         let otherUSerID = self.sessionList[index].getOtherUserID()
+        otherController?.otherChatUserId = otherUSerID
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
     
@@ -372,11 +419,12 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             return titleView
     }
     
-    func goToSelectedGroupChatScreen(){
+    func goToSelectedGroupChatScreen(groupID:String?){
         print("Group Chat........")
 
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupChat.rawValue) as? GroupChatViewController
+        otherController?.groupID = groupID
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
     
@@ -397,52 +445,68 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
 }
 
-// MARK: - UI Setup
-extension HomeViewController{
 
-private func activityIndicatorStart() {
-    // Code for show activity indicator view
-    // ...
-    print("start")
-    
-    appDelegate.showProgressHUD(view: self.view)
-}
-
-private func activityIndicatorStop() {
-    // Code for stop activity indicator view
-    // ...
-    appDelegate.hideProgressHUD(view: self.view)
-    print("stop")
-}
-}
 
 
 //MARK: - API Calls
 extension HomeViewController{
-    private func fetchContactsList() {
-       
-        viewModel.updateLoadingStatus = {
-            print("updateLoadingStatus")
-
-            self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
-        }
-
+    
+    private func setupViemodelClosures(){
+        
+        //For showing errors
         viewModel.showAlertClosure = {
             error in
-            print(error)
-            print("showAlertClosure")
             CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
   
         }
         
-        viewModel.didFinishFetch = {
-            print("Saving data to Local DB")
-          
-            ContactsDatabaseQueries.addAndUpdateContactsInLocalDB(contacts : self.viewModel.contactsList ?? [])
+        viewModel.didFinishSessionFeth = {
+            self.sessionList = self.viewModel.sessionData?.sessionList ?? []
+            self.allChatsTableview.reloadData()
         }
         
-        viewModel.fetchContacts()
+        viewModel.didFinishPin = {
+            msg in
+            
+            CommonFxns.showAlert(self, message: msg, title: AlertMessages.SUCCESS_TITLE)
+            self.allChatsTableview.reloadData()
+        }
+        
+        viewModel.didFinishMute = {
+            msg in
+            CommonFxns.showAlert(self, message: msg, title: AlertMessages.SUCCESS_TITLE)
+            self.allChatsTableview.reloadData()
+            
+        }
+        
+        viewModel.didFinishDelete = {
+            msg in
+            CommonFxns.showAlert(self, message: msg, title: AlertMessages.SUCCESS_TITLE)
+        }
+        
+        
     }
     
     
 }
+
+//MARK: - Searchbar Delegates
+extension HomeViewController:UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchSessionList(text: searchText)
+        
+    }
+    
+    func searchSessionList(text:String){
+        if text == ""{
+            self.sessionList = self.viewModel.sessionData?.sessionList ?? []
+            self.allChatsTableview.reloadData()
+        }
+        else{
+            self.sessionList = self.viewModel.sessionData?.sessionList?.filter{$0.username?.lowercased().contains(text.lowercased()) ?? false} ?? []
+            self.allChatsTableview.reloadData()
+            
+        }
+    }
+}
+

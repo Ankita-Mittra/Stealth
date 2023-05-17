@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Stealth777 camera use</string>
+	<string>Stealth777 using the camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Stealth777 using the gallery</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>&quot;Log in to your account&quot;</string>
 	<key>UIAppFonts</key>

@@ -58,7 +58,8 @@ class ContactsViewController: BaseViewController {
         self.setStrings() // Set UI Strings as per the selected language
         
          //API call to fetch contacts
-        //self.fetchContactsList()
+        //setupClosures()
+        // viewModel.fetchContacts()
 
 
     }
@@ -86,64 +87,25 @@ class ContactsViewController: BaseViewController {
     
     // MARK: - Networking
     
-    private func fetchContactsList() {
-        
-//        appDelegate.showProgressHUD(view: self.view)
-
-        self.activityIndicatorStart()
-        viewModel.fetchContacts()
-        
-//        viewModel.updateLoadingStatus = {
-//            print("updateLoadingStatus")
-//
-//            
-//            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
-//        }
-//        
+    private func setupClosures() {
+           
         viewModel.showAlertClosure = {
-            
+            error in
             print("showAlertClosure")
 
-            if let error = self.viewModel.error {
-                print( "error...", error.localizedDescription)
-            }
+            CommonFxns.showAlert(self, message: AlertMessages.ERROR_TITLE, title: error)
         }
         
         viewModel.didFinishFetch = {
-            
-            print("didFinishFetch.....")
-            
-            // stop indicator loader
-            self.activityIndicatorStop()
-            // reload table
-            
-                // save users locally
-           // self.contactsList = self.viewModel.contactsList ?? []
-            
-            
+           
             self.contactsListTableView.reloadData()
-//            ContactsDatabaseQueries.deleteUserDbData()
-            
-           // ContactsDatabaseQueries.addAndUpdateContactsInLocalDB(contacts : self.contactsList)
+
         }
-    }
-    
-    // MARK: - UI Setup
-    
-    private func activityIndicatorStart() {
-        // Code for show activity indicator view
-        // ...
-        print("start")
+       
         
-        appDelegate.showProgressHUD(view: self.view)
     }
     
-    private func activityIndicatorStop() {
-        // Code for stop activity indicator view
-        // ...
-        appDelegate.hideProgressHUD(view: self.view)
-        print("stop")
-    }
+   
 
     // MARK: - Actions
     
@@ -248,6 +210,14 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
                 let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.allGroups.rawValue) as? AllGroupsViewController
                 self.navigationController?.pushViewController(otherController!, animated: true)
             }
+           
+        } // section 1
+        else{
+            let storyBoard = UIStoryboard.init(name: enumStoryBoard.profile.rawValue, bundle: nil)
+            let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.otherUserProfile.rawValue) as? OtherUserProfileViewController
+            otherController?.selectedUserID = contactsList[indexPath.row].userId ?? ""
+            otherController?.isFromContacts = true
+            self.navigationController?.pushViewController(otherController!, animated: true)
         }
     }
 }

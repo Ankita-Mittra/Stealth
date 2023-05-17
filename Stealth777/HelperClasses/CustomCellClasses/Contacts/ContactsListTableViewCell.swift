@@ -16,11 +16,16 @@ class ContactsListTableViewCell: UITableViewCell {
     @IBOutlet weak var usernameLbl: UILabelCustomClass!
     @IBOutlet weak var selectUserBtn: UIButton!
     @IBOutlet weak var userStatusLbl: UILabel!
+    @IBOutlet weak var makeAdminBtn: UIButton!
 
     static let identifier = "ContactsListTableViewCell"
     static func nib() -> UINib{
         return UINib(nibName: "ContactsListTableViewCell", bundle: nil)
     }
+    
+    var callMakeAdmin:(()->Void)?
+    var callSelection:(()->Void)?
+    
     
     // MARK: Methods
 
@@ -33,6 +38,15 @@ class ContactsListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // MARK: Button Actions
+
+    @IBAction func actionMakeAdmin(){
+        callMakeAdmin?()
+    }
+    @IBAction func actionSelection(){
+        callSelection?()
     }
     
 }

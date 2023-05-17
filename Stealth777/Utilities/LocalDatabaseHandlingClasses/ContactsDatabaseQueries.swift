@@ -53,6 +53,24 @@ class ContactsDatabaseQueries: NSObject {
             print("Unable to Fetch Workouts, (\(error))")
         }
     }
+    
+    class func getUserByID(userId: String)-> UserModel?{
+        let context = appDelegate.persistentContainer.viewContext
+        do {
+            let request: NSFetchRequest<User> = User.fetchRequest()
+            request.predicate = NSPredicate(format: "id == %@", userId) // Find Contact
+            
+            let users = try context.fetch(request)
+            let obj = UserModel(with: users.first)
+            return obj
+        }
+        catch {
+            print("Failed to fetch video:", error)
+        }
+        
+        
+        return nil
+    }
 
 //    func abc(){
 //        guard let managedObjectContext = appDelegate.persistentContainer.viewContext else {
@@ -86,10 +104,6 @@ class ContactsDatabaseQueries: NSObject {
     class func addAndUpdateContactsInLocalDB(contacts: [UserModel]){
         let context = appDelegate.persistentContainer.viewContext
 
-        
-        
-        /////////////////////////////
-        
         contacts.forEach({ contact in
 
             do {

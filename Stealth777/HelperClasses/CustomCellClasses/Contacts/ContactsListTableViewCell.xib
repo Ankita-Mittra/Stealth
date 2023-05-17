@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -63,6 +63,9 @@
                         <state key="normal" backgroundImage="blueTickCheckbox">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="actionSelection" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aaO-Ol-NSa"/>
+                        </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkZ-D1-d1X" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
                         <rect key="frame" x="377" y="27.5" width="38" height="15.5"/>
@@ -70,9 +73,36 @@
                         <color key="textColor" name="PrimaryThemeColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWj-gk-Pxc" customClass="UIButtonCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="339" y="20" width="100" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="qsK-Ce-YSF"/>
+                            <constraint firstAttribute="width" constant="100" id="v6b-Re-03d"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Make Admin">
+                            <fontDescription key="titleFontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                            <color key="baseForegroundColor" name="SecondaryThemeColor"/>
+                        </buttonConfiguration>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="SecondaryThemeColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="actionMakeAdmin" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qmk-KF-F6P"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="DRB-jV-bmn" firstAttribute="leading" secondItem="fkZ-D1-d1X" secondAttribute="trailing" constant="15" id="0ZM-LY-DUM"/>
+                    <constraint firstAttribute="trailing" secondItem="pWj-gk-Pxc" secondAttribute="trailing" id="19V-te-UdD"/>
                     <constraint firstItem="ShL-z1-jmY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8wr-zh-riR"/>
                     <constraint firstItem="guq-ef-M9C" firstAttribute="leading" secondItem="yqT-ja-2tx" secondAttribute="trailing" constant="9" id="Aki-02-YxT"/>
                     <constraint firstAttribute="trailing" secondItem="ShL-z1-jmY" secondAttribute="trailing" constant="1" id="FIX-i7-Nvg"/>
@@ -85,12 +115,14 @@
                     <constraint firstItem="yqT-ja-2tx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="dYk-we-rUO"/>
                     <constraint firstAttribute="trailing" secondItem="DRB-jV-bmn" secondAttribute="trailing" constant="1" id="ezM-WI-Z6q"/>
                     <constraint firstItem="DRB-jV-bmn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jvc-cx-sxN"/>
+                    <constraint firstItem="pWj-gk-Pxc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="o1w-uV-noP"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="forwardIconImgView" destination="DRB-jV-bmn" id="dqS-24-WKD"/>
+                <outlet property="makeAdminBtn" destination="pWj-gk-Pxc" id="fL3-wz-oy3"/>
                 <outlet property="selectUserBtn" destination="ShL-z1-jmY" id="Ca7-wx-l9l"/>
                 <outlet property="userImgView" destination="yqT-ja-2tx" id="baV-B3-oqD"/>
                 <outlet property="userStatusLbl" destination="fkZ-D1-d1X" id="iaL-8q-wSx"/>
@@ -109,6 +141,9 @@
         <designable name="guq-ef-M9C">
             <size key="intrinsicContentSize" width="71.5" height="19"/>
         </designable>
+        <designable name="pWj-gk-Pxc">
+            <size key="intrinsicContentSize" width="91" height="28.5"/>
+        </designable>
         <designable name="yqT-ja-2tx">
             <size key="intrinsicContentSize" width="124" height="124"/>
         </designable>
@@ -119,6 +154,9 @@
         <image name="privateAvatar" width="124" height="124"/>
         <namedColor name="PrimaryThemeColor">
             <color red="0.0" green="0.3529999852180481" blue="0.62000000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryThemeColor">
+            <color red="0.0" green="0.73299998044967651" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SeperatorColor">
             <color red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

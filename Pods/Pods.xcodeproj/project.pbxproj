@@ -405,7 +405,7 @@
 		AD0CFDA140E346502935BA58225E6EF3 /* SDWebImageDownloaderRequestModifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A2B29A166D46B14FF0A431C73064D27 /* SDWebImageDownloaderRequestModifier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD877DB0EFD2104F4EA3EF98482B6605 /* PromiseKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E38FD2107F07313013398A714B77C3C /* PromiseKit-dummy.m */; };
 		AE53668600B03632E373EC4333321FCD /* PromiseKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B0358E5A9E4B7FBBADAE5763795A9987 /* PromiseKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AE5DFE7E5750D7E2150CEAAB9C709EA1 /* web3swift-Browser in Resources */ = {isa = PBXBuildFile; fileRef = 12DC6A0FDF284A2C935F5EA9F6111B0B /* web3swift-Browser */; };
+		AE5DFE7E5750D7E2150CEAAB9C709EA1 /* Browser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 12DC6A0FDF284A2C935F5EA9F6111B0B /* Browser.bundle */; };
 		AE89C60F9CD4D6E1400DD304CE2A2B9E /* UIColor+SDHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F4B6BC77B9B60FF4E7F665091179D6 /* UIColor+SDHexString.m */; };
 		AEA8A12872B64A6F2342CF7DA339986B /* NSNotificationCenter+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 8220DB955C0ED77EB9F53E296C06EEFF /* NSNotificationCenter+AnyPromise.m */; };
 		AF25DA133D02FE2BE4DCA72BB3FCB483 /* NVActivityIndicatorAnimationLineScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4370FDD1FED1C778F9EF4F1BBD7DD824 /* NVActivityIndicatorAnimationLineScale.swift */; };
@@ -893,7 +893,7 @@
 		11AF1C0C7D03CBC604AB474B07F291C6 /* MBProgressHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.debug.xcconfig; sourceTree = "<group>"; };
 		12A4B8239E0D0EAE8CA6986605D3553D /* UInt32+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt32+Extension.swift"; path = "Sources/CryptoSwift/UInt32+Extension.swift"; sourceTree = "<group>"; };
 		12ADF335029E43056491A9A87C607E21 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		12DC6A0FDF284A2C935F5EA9F6111B0B /* web3swift-Browser */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "web3swift-Browser"; path = Browser.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		12DC6A0FDF284A2C935F5EA9F6111B0B /* Browser.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Browser.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		132B73AE7FD1C91AFD268690AC680FB2 /* Promise+HttpProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Promise+HttpProvider.swift"; path = "Sources/web3swift/Promises/Promise+HttpProvider.swift"; sourceTree = "<group>"; };
 		13605C9811F1235D1F5DA15B926D5843 /* BlockDecryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockDecryptor.swift; path = Sources/CryptoSwift/BlockDecryptor.swift; sourceTree = "<group>"; };
 		13A575701228D9140BC4DB781669643A /* Promise+Web3+Eth+Call.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Promise+Web3+Eth+Call.swift"; path = "Sources/web3swift/Promises/Promise+Web3+Eth+Call.swift"; sourceTree = "<group>"; };
@@ -1933,7 +1933,7 @@
 				891B2270823847ED23F2ECFC28F935EC /* Starscream */,
 				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON */,
 				8A2449DF78D58AD33A7C7504BB3F38A0 /* web3swift */,
-				12DC6A0FDF284A2C935F5EA9F6111B0B /* web3swift-Browser */,
+				12DC6A0FDF284A2C935F5EA9F6111B0B /* Browser.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3060,7 +3060,7 @@
 			);
 			name = "web3swift-Browser";
 			productName = Browser;
-			productReference = 12DC6A0FDF284A2C935F5EA9F6111B0B /* web3swift-Browser */;
+			productReference = 12DC6A0FDF284A2C935F5EA9F6111B0B /* Browser.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		99313990C1D76A6D1D017868B6975CC8 /* CryptoSwift */ = {
@@ -3290,7 +3290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE5DFE7E5750D7E2150CEAAB9C709EA1 /* web3swift-Browser in Resources */,
+				AE5DFE7E5750D7E2150CEAAB9C709EA1 /* Browser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4936,6 +4936,7 @@
 			baseConfigurationReference = D12D011DA6AA3EE21E90691527CC434F /* web3swift.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/web3swift";
+				DEVELOPMENT_TEAM = 325T92U4G3;
 				IBSC_MODULE = web3swift;
 				INFOPLIST_FILE = "Target Support Files/web3swift/ResourceBundle-Browser-web3swift-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -5021,6 +5022,7 @@
 			baseConfigurationReference = C2C9F9B7A519B9A454AB09C853107FA9 /* web3swift.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/web3swift";
+				DEVELOPMENT_TEAM = 325T92U4G3;
 				IBSC_MODULE = web3swift;
 				INFOPLIST_FILE = "Target Support Files/web3swift/ResourceBundle-Browser-web3swift-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

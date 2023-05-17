@@ -15,14 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         // Override point for customization after application launch.
-
-        print("token ...",userDefault.value(forKey: USER_DEFAULT_token_Key) as? String ?? emptyStr)
         self.navigateToRightScreen()
-//        self.getAppStoreVersion()
 
         let enabledMode = userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) as? String
-        
+        // Set up App display Mode
         switch enabledMode {
         case lightMode:
             appDelegate.window?.overrideUserInterfaceStyle = .light
@@ -31,28 +29,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appDelegate.window?.overrideUserInterfaceStyle = .dark
             userDefault.set(darkMode , forKey: USER_DEFAULT_isDarkMode_Key)
         }
-        
-        
-//
-//        if userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key) == nil{
-//
-//        }
-//        if let isDarkModeEnabled = userDefault.value(forKey: USER_DEFAULT_isDarkMode_Key){
-//            userDefault.set(true , forKey: USER_DEFAULT_isDarkMode_Key)
-//
-//            appDelegate.window?.overrideUserInterfaceStyle = .dark
-//        }else{
-//            userDefault.set(true , forKey: USER_DEFAULT_isDarkMode_Key)
-//
-//            appDelegate.window?.overrideUserInterfaceStyle = .dark
-//        }
-//
         return true
     }
+        
+    // MARK: Methods
+
+    // Method tob navigate user on appropriate screen
+    func navigateToRightScreen(){
+        let userInfoDict = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String: Any]
+        // Check whether user is logged in or not
+        guard  let userInfoDict = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String: Any] else {
+
+        self.goToInitialScreen()
+        return
+        }
+        if (userInfoDict[USER_DEFAULT_userID_Key] != nil) {
+            let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
+            let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar.rawValue) as! PublicModeTabBarViewController
+            navController.pushViewController(loginVcObj, animated: true)
+        }else{
+            // Go to Initial screen
+            self.goToInitialScreen()
+        }
+    }
+        
+    func goToInitialScreen(){
+        let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.main.rawValue, bundle: nil)
+        let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.initial.rawValue) as! InitialViewController
+        navController.pushViewController(signUpVcObj, animated: true)
+    }
     
+    // Show activity Indicator
+    func showProgressHUD(view : UIView)->Void{
+        let hud:MBProgressHUD = MBProgressHUD.showAdded(to: view, animated: true)
+            hud.bezelView.color = UIColor.clear // Your backgroundcolor
+        hud.bezelView.style = .solidColor
+//        MBProgressHUD.showAdded(to: view, animated: true)
+    }
+
+    // Hide activity Indicator
+    func hideProgressHUD(view : UIView)->Void{
+        MBProgressHUD.hide(for: view, animated: true)
+    }
+
     func getAppStoreVersion(){
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-        print("version....", version)
         
         guard let bundleId = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String else { return }
         guard let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(bundleId)&country=br") else { return }
@@ -67,7 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let results = json["results"] as? [[String: Any]]
                     let firstResult = results?.first
                     let currentVersion = firstResult?["version"] as? String
-                    print("currentVersion: ", currentVersion)
                 } catch let serializationError {
                     print("Serialization Error: ", serializationError)
                 }
@@ -81,65 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         task.resume()
     }
-    
-    // MARK: Methods
-
-    // Method tonavigate user on appropriate screen
-    func navigateToRightScreen(){
-        
-        let userInfoDict = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String: Any]
-        print("userInfoDict....", userInfoDict)
-
-        
-    // Check whether user is logged in or not
-        guard  let userInfoDict = userDefault.value(forKey: USER_DEFAULT_userInfo_Key) as? [String: Any] else {
-  
-            self.goToInitialScreen()
-            return
-        }
-        
-            print("userInfoDict....", userInfoDict)
-            if (userInfoDict[USER_DEFAULT_userID_Key] != nil) {
-//(userDefault.value(forKey: USER_DEFAULT_userID_Key)) != nil{
-                let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.publicModeTabBarController.rawValue, bundle: nil)
-                let loginVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.publicModeTabBar.rawValue) as! PublicModeTabBarViewController
-                navController.pushViewController(loginVcObj, animated: true)
-            }else{
-                // Go to Initial screen
-
-                self.goToInitialScreen()
-
-    //                let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-    //                let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.login.rawValue, bundle: nil)
-    //                let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.login.rawValue) as! LoginViewController
-    //                navController.pushViewController(signUpVcObj, animated: true)
-            }
-        
-    }
-    
-    func goToInitialScreen(){
-        let navController:UINavigationController = (self.window?.rootViewController as? UINavigationController)!
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: enumStoryBoard.main.rawValue, bundle: nil)
-        let signUpVcObj = mainStoryboard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.initial.rawValue) as! InitialViewController
-        navController.pushViewController(signUpVcObj, animated: true)
-    }
-    
-    
-    // Show activity Indicator
-    func showProgressHUD(view : UIView)->Void{
-        let hud:MBProgressHUD = MBProgressHUD.showAdded(to: view, animated: true)
-        hud.bezelView.color = UIColor.clear // Your backgroundcolor
-        hud.bezelView.style = .solidColor
-//        MBProgressHUD.showAdded(to: view, animated: true)
-    }
-
-    // Hide activity Indicator
-    func hideProgressHUD(view : UIView)->Void{
-        MBProgressHUD.hide(for: view, animated: true)
-    }
-
-    
 
     // MARK: UISceneSession Lifecycle
 
@@ -231,4 +194,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
 

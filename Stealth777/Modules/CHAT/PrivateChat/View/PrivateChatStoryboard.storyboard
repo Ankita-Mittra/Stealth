@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -83,6 +83,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="plusIcon"/>
+                                        <connections>
+                                            <action selector="actionChooseFileWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sfM-8r-Hwv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NR7-ju-Ux6">
                                         <rect key="frame" x="359" y="8" width="40" height="40"/>
@@ -99,6 +102,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="sendTextMsgIcon"/>
+                                        <connections>
+                                            <action selector="actionSend" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4K8-ei-kEW"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="HeaderBgColor"/>
@@ -153,6 +159,7 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="bmF-0X-u0q"/>
                     <connections>
                         <outlet property="chatTableView" destination="gm7-3b-9uc" id="jg9-tH-rD9"/>
+                        <outlet property="txtMessage" destination="iia-dQ-x4p" id="nhi-2a-YNy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -162,7 +169,7 @@
     </scenes>
     <designables>
         <designable name="iia-dQ-x4p">
-            <size key="intrinsicContentSize" width="103.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="113.5" height="20.5"/>
         </designable>
     </designables>
     <resources>

@@ -6,132 +6,91 @@
 //
 
 import Foundation
-//
-//            {
-//                "msg": "hi user7777",
-//                "groupId": "",
-//                "receiverId": "108ab439-395b-4429-9079-0b8b227480d0",
-//                "senderPbKey" : "",
-//                "mediaId" : "",
-//                "enKey": "" ,
-//                "quoteMsgId": "",
-//                "msgType" : 1
-//            }
+import SwiftyJSON
+
             
 class PrivateChatViewModel {
     
     // MARK: - Properties
-
-    private var sendMessageSuccess : Bool? {
-
-        didSet {
-            guard let s = sendMessageSuccess else {return}
-            self.sendMessageResult = s
+    var messageList:[MessageModel]?{
+        didSet{
             self.didFinishFetch?()
         }
     }
     
-    private var messages : [UserModel]? {
-        
-        didSet {
-            guard let m = messages else {return}
-            self.bindDataToUI(with: m)
-            self.didFinishFetch?()
-        }
-    }
     
-    var error: Error? {
-        didSet { self.showAlertClosure?() }
-    }
-    
-    var isLoading: Bool = true {
-        didSet { self.updateLoadingStatus?() }
-    }
-    
-    var messagesList: [UserModel]?
-    var sendMessageResult : Bool?
-    private var apiService: ChatAPIServices?
+    private var apiService = ChatAPIServices()
 
     // MARK: - Closures for callback, since we are not using the ViewModel to the View.
 
-    var showAlertClosure: (() -> ())?
-    var updateLoadingStatus: (() -> ())?
+    var showAlertClosure: ((String) -> ())?
     var didFinishFetch: (() -> ())?
+    var didFinishSendMessage: (() -> ())?
+    var didFinishUploadFile:((String)->())?
     
     // MARK: - Constructor
     
-    init(apiService: ChatAPIServices) {
-        self.apiService = apiService
+    init() {
+       
     }
     
     // MARK: - Network call
     
-    func getMessages(userID: String) {
-        self.updateLoadingStatus?()
-        self.apiService?.getMessageByUserID(receiverID: userID, completion: { data, succeeded, error in
-            print("getMessages   /.....")
-            if succeeded {
-                print("succeeded....", succeeded)
-                guard let tempData = data else{
-                    self.error = error as? Error
-                    self.isLoading = false
-                    return
-                }
-                print("tempData....", tempData)
-               
-                var messages = [UserModel]()
-                if let data =  tempData["data"] as? [String : AnyObject]{
-
-                    if let allMessages = data["message"] as?  [[String: Any]]{
-                        print("messages...", messages)
-                        for user in allMessages{
-                            let dict = UserModel(with: user)
-                            
-                            messages.append(dict)
-                            
-                            print("dict...", dict)
-                        }
-                        self.messagesList = messages
-                    }
-                }
-            } else {
-                self.error = error as? Error
-                self.isLoading = false
-                print("error....", error)
-            }
+    //server call to send messages
+    func getMessages(recieverID: String) {
+        CommonFxns.showProgress()
+        let requestObj = ListMessageRequest(groupId: nil, receiverId: recieverID, limit: 50)
+        let param = requestObj.toDictionary()
+        self.apiService.getMessagesByUserID(param: param, completion: { response in
+            self.saveMessagesLocally(messages: response.messages ?? [], recieverID: recieverID)
+        }, failed: { errorMessage in
+            self.showAlertClosure?(errorMessage)
         })
     }
+        
+
     
     // Server call to send message
     func sendMessage(dict: [String: Any]) {
-        self.updateLoadingStatus?()
-        self.apiService?.sendMessage(parameters: dict, completion: { data, succeeded, error in
-            print("sendMessage   /.....")
-            if succeeded {
-                print("succeeded....", succeeded)
-                guard let tempData = data else{
-                    self.error = error as? Error
-                    self.isLoading = false
-                    return
-                }
-                print("tempData....", tempData)
-
-                self.sendMessageSuccess = succeeded
-            } else {
-                self.error = error as? Error
-                self.isLoading = false
-                print("error....", error)
-            }
+        CommonFxns.showProgress()
+        self.apiService.sendChatMessage(parameters: dict, completion: { response in
+            guard let messageID = response.msgId else{return}
+            guard let user = UserDefaultsToStoreUserInfo.getUser() else{return}
+            let msgDict = ["text":dict["msg"] as! String]
+            let messageObject = MessageModel(msgId: messageID, groupId: "", senderName: user.username ?? "", msgDict: msgDict, quoteMsgId: "", quoteMsgDict: [:], enKey: dict["enKey"] as! String, senderPbKey: dict["senderPbKey"] as! String, state: 0, senderId: user.userId ?? "", receiverId: dict["receiverId"] as! String, imgUrl: "", msgType: 1, readTime: 0, sendTime: CommonFxns.getMilliseconds(date: Date()))
+            self.saveMessagesLocally(messages: [messageObject], recieverID: dict["receiverId"] as! String)
+            self.didFinishSendMessage?()
+            
+        }, failed: { errorMessage in
+            self.showAlertClosure?(errorMessage)
         })
     }
+    
+    //server call to upload file
+    func uploadFile(file:UploadFile){
+        CommonFxns.showProgress()
+        self.apiService.sendMediaFile(file: file) { response in
+            if let mediaID = response.id{
+            self.didFinishUploadFile?(mediaID)
+            }
+        } failed: { msg in
+            self.showAlertClosure?(msg)
+        }
+
+    }
         
-    // MARK: - UI Logic
-    private func bindDataToUI(with messages: [UserModel]) {
         
-        self.messagesList = messages
-        
-        print("bindDataToUI....", self.messages)
+    
+    //MARK: - Local DB Operations
+    
+    func getLocalMessages(id:String){
+        messageList =  ChatsDatabaseQueries.fetchMessages(userID:id )
     }
     
+    func saveMessagesLocally(messages:[MessageModel],recieverID:String){
+        ChatsDatabaseQueries.saveMessages(messageList: messages)
+        getLocalMessages(id: recieverID)
+    }
+   
     
 }

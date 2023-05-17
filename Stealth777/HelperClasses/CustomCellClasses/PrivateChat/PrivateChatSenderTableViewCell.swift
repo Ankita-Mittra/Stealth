@@ -38,4 +38,27 @@ class PrivateChatSenderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configureCell(obj:MessageModel?, privateKey: String){
+        msgBodyLbl.text = obj?.msg?.text
+        msgTimelbl.text = CommonFxns.getReadableDateFromTimeStamp(timeStamp: Double(obj?.sendTime ?? 0))
+        if obj?.state == 2{
+            seenMsgImgView.image = UIImage(named: "blueDoubleTick")
+        }
+        else{
+            seenMsgImgView.image = UIImage(named: "graydoubleTick")
+        }
+    }
+    
+    func configureCell(obj:MessageModel?){
+        msgBodyLbl.text = obj?.msg?.text
+        msgTimelbl.text = CommonFxns.getReadableDateFromTimeStamp(timeStamp: Double(obj?.sendTime ?? 0))
+        if obj?.state == 2{
+            seenMsgImgView.image = UIImage(named: "blueDoubleTick")
+        }
+        else{
+            seenMsgImgView.image = UIImage(named: "graydoubleTick")
+        }
+        
+    }
+    
 }

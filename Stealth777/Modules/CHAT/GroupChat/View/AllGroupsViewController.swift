@@ -17,8 +17,8 @@ class AllGroupsViewController: BaseViewController {
     var ownerInGroupsList = [GroupsModel]()
     var adminInGroupsList = [GroupsModel]()
     var memberInGroupsList = [GroupsModel]()
-
     var groupsList = [GroupsModel]()
+    var refreshControl:UIRefreshControl?
     // MARK: - Injection
 
     let viewModel = AllGroupsViewModel(apiService: GroupsAPIServices())
@@ -38,6 +38,7 @@ class AllGroupsViewController: BaseViewController {
 
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setToolbarHidden(true, animated: true)
+        viewModel.getLocalGroups()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,12 +53,26 @@ class AllGroupsViewController: BaseViewController {
 
     func initialUISetup(){
         self.groupsListTableView.register(ContactsListTableViewCell.nib(), forCellReuseIdentifier: ContactsListTableViewCell.identifier)
-        
         segmentedBar.setTitle("Owner", forSegmentAt: 0)
         segmentedBar.setTitle("Admin", forSegmentAt: 1)
         segmentedBar.setTitle("Member", forSegmentAt: 2)
+        configureRefreshControl()
+        self.setupGroupListClosures()
+        viewModel.fetchAllGroups()
         
-        self.getAllGroups()
+    }
+    
+    func configureRefreshControl(){
+        refreshControl = UIRefreshControl()
+        refreshControl?.tintColor = .clear
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        groupsListTableView.refreshControl = refreshControl
+    }
+    
+    @objc func refresh(){
+        viewModel.fetchAllGroups()
+        refreshControl?.endRefreshing()
+        
     }
 
     @objc func addTapped(){
@@ -73,31 +88,21 @@ class AllGroupsViewController: BaseViewController {
     
     // MARK: - Networking
     
-    private func getAllGroups() {
+    private func setupGroupListClosures() {
     
-        self.activityIndicatorStart()
-        viewModel.fetchAllGroups()
-        
         viewModel.showAlertClosure = {
-            
-            print("showAlertClosure")
-
-            self.activityIndicatorStop()
-            CommonFxns.showAlert(self, message: "Error while fetching the group list from the server", title: "Alert")
-            if let error = self.viewModel.error {
-                print( "error...", error.localizedDescription)
-            }
+            msg in
+            CommonFxns.showAlert(self, message: msg, title: AlertMessages.ERROR_TITLE)
         }
         
         viewModel.didFinishFetch = {
             
-            print("didFinishFetch.....")
-            
-            // stop indicator loader
-            self.activityIndicatorStop()
             
             // reload table
-            let groups = self.viewModel.groupList ?? []
+            self.ownerInGroupsList.removeAll()
+            self.memberInGroupsList.removeAll()
+            self.adminInGroupsList.removeAll()
+            let groups = self.viewModel.groups ?? []
             for group in groups{
                 
                 switch group.groupRole {
@@ -114,21 +119,13 @@ class AllGroupsViewController: BaseViewController {
             self.groupsList = self.ownerInGroupsList
             self.groupsListTableView.reloadData()
         }
+        
+       
+        
+       
     }
     
-    // MARK: - UI Setup
-    
-    private func activityIndicatorStart() {
-        // Code for show activity indicator view
-        appDelegate.showProgressHUD(view: self.view)
-    }
-    
-    private func activityIndicatorStop() {
-        // Code for stop activity indicator view
-        // ...
-        appDelegate.hideProgressHUD(view: self.view)
-    }
-    
+  
     @IBAction func groupSegmentedBarAction(_ sender: Any) {
         
         switch self.segmentedBar.selectedSegmentIndex {
@@ -147,8 +144,8 @@ class AllGroupsViewController: BaseViewController {
         self.groupsListTableView.reloadData()
     }
     
-    
 }
+
 
 extension AllGroupsViewController: UITableViewDelegate, UITableViewDataSource {
 
@@ -185,7 +182,7 @@ extension AllGroupsViewController: UITableViewDelegate, UITableViewDataSource {
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
         
         let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupChat.rawValue) as? GroupChatViewController
-        otherController?.groupInfo = selectedGroupInfo
+        otherController?.groupID = selectedGroupInfo.id
         self.navigationController?.pushViewController(otherController!, animated: true)
     }
 

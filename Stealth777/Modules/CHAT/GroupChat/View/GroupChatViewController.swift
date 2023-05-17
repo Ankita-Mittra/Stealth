@@ -12,10 +12,14 @@ class GroupChatViewController: BaseViewController {
     // MARK: - Properties & Delegates
 
     @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var txtMessage: UITextFieldCustomClass!
 
 //    var groupId = String()
     var groupInfo : GroupsModel!
     var headerView : GroupChatHeaderView?
+    var groupID:String?
+    let viewModel = GroupChatViewModel()
+    let loggedInUserId = UserDefaultsToStoreUserInfo.getuserID()
     
     // MARK: - View life cycle
     
@@ -37,15 +41,33 @@ class GroupChatViewController: BaseViewController {
         
     }
     
+    //MARK: - IBActions
+    
+    @IBAction func actionSend(){
+        
+        let msgToSend = CommonFxns.trimString(string: txtMessage.text ?? "")
+        if msgToSend.isEmpty{
+            return
+        }
+        let request = SendMessageRequest(msg: msgToSend, groupId: groupID!, receiverId: "", senderPbKey: "", mediaId: nil, enKey: "", quoteMsgId: nil, msgType: 1)
+        viewModel.sendMessage(dict: request.toDictionary())
+        
+    }
+    
+    
     // MARK: - Methods
 
     func initialUISetup(){
+        groupInfo = GroupDatabaseQueries.getGroupByID(groupId: groupID!)
         self.chatTableView.register(PrivateChatSenderTableViewCell.nib(), forCellReuseIdentifier: PrivateChatSenderTableViewCell.identifier)
         self.chatTableView.register(PrivateChatReceiverTableViewCell.nib(), forCellReuseIdentifier: PrivateChatReceiverTableViewCell.identifier)
-
         self.chatTableView.rowHeight = UITableView.automaticDimension
         self.chatTableView.estimatedRowHeight = 100
         setupNavigationBar()
+        setupViewModelClosures()
+        viewModel.getLocalGroupMessages(id: groupID!)
+        //api call for ge messages from server
+        viewModel.getMessages(groupID: groupID!)
     }
     
     func setupNavigationBar(){
@@ -57,7 +79,7 @@ class GroupChatViewController: BaseViewController {
         headerView = GroupChatHeaderView(frame: CGRect(x: 0, y: 0, width: 150, height: 35))
         headerView?.lblGroupName.text = groupInfo.name
         headerView?.lblDescription.text = groupInfo.description
-        CommonFxns.setImage(imageView: headerView!.imgPhoto, urlString: groupInfo.imageUrl)
+        CommonFxns.setImage(imageView: headerView!.imgPhoto, urlString: groupInfo.imageUrl,placeHolder: UIImage(named: "privateAvatar"))
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(toDetails))
         headerView?.addGestureRecognizer(tap)
@@ -82,6 +104,7 @@ class GroupChatViewController: BaseViewController {
     }
     
     @objc func actionVideoCall(){
+        CommonFxns.showAlert(self, message: "Chats".localized, title: "testing chat".localized)
     }
     
     @objc func actionAudioCall(){
@@ -94,39 +117,59 @@ class GroupChatViewController: BaseViewController {
         self.navigationController?.pushViewController(otherController!, animated: true)
         
     }
-
+    
+    // MARK: - Networking
+    
+    
+    private func setupViewModelClosures() {
+      
+        viewModel.showAlertClosure = {
+            error in
+            CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
+            
+        }
+        
+        viewModel.didFinishFetch = {
+            
+            self.chatTableView.reloadData()
+        }
+        
+        viewModel.didFinishSendMessage = {
+            self.txtMessage.text = emptyStr
+            
+        }
+    }
     
 }
 
 extension GroupChatViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        viewModel.messageList?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        
-        if indexPath.row == 1{
-            guard  let chatCell = self.chatTableView.dequeueReusableCell(withIdentifier: PrivateChatSenderTableViewCell.identifier , for: indexPath) as? PrivateChatSenderTableViewCell else {
-                return cell
-            }
-            return chatCell
-        }else{
-            guard  let chatCell = self.chatTableView.dequeueReusableCell(withIdentifier: PrivateChatReceiverTableViewCell.identifier , for: indexPath) as? PrivateChatReceiverTableViewCell else {
-                return cell
-            }
+        let obj = viewModel.messageList?[indexPath.row]
+        if obj?.senderId == self.loggedInUserId{
+            let chatCell = self.chatTableView.dequeueReusableCell(withIdentifier: PrivateChatSenderTableViewCell.identifier , for: indexPath) as! PrivateChatSenderTableViewCell
+            chatCell.configureCell(obj: obj)
             return chatCell
         }
+        else{
+            let chatCell = self.chatTableView.dequeueReusableCell(withIdentifier: PrivateChatReceiverTableViewCell.identifier , for: indexPath) as! PrivateChatReceiverTableViewCell
+            chatCell.configureCell(obj: obj)
+            return chatCell
+        }
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("didSelectRowAt...", self.groupInfo)
-        let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
-        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupDetails.rawValue) as? GroupDetailsViewController
-        otherController?.groupInfo = self.groupInfo
-        self.navigationController?.pushViewController(otherController!, animated: true)
+//        print("didSelectRowAt...", self.groupInfo)
+//        let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
+//        let otherController = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupDetails.rawValue) as? GroupDetailsViewController
+//        otherController?.groupInfo = self.groupInfo
+//        self.navigationController?.pushViewController(otherController!, animated: true)
     }
 
 

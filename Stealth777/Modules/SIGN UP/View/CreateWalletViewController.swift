@@ -81,11 +81,18 @@ class CreateWalletViewController: BaseViewController {
                 self.signUpDict["walletKey"] = walletAddress
                 self.viewModel.walletAddress = walletAddress
                 print("wallet....", walletAddress)
+                userDefault.setValue(self.walletAddress, forKey: "currentWalletAddress")
+
+//                UserDefaultsToStoreUserInfo.saveUserDataInUserDefaults(token: "", userId:"", publicKey: "", privateKey: "", walletAddress: self.walletAddress, userDetails: )
+                
+                // choose binance blockchain network
+                userDefault.set(binanceBlockchainNetwork, forKey: USER_DEFAULT_selectedBlockchainNetwork_Key)
             }
         } catch {
             print(error.localizedDescription)
         }
     }
+
  
     // MARK: - Networking
     
@@ -136,7 +143,13 @@ class CreateWalletViewController: BaseViewController {
         
         signUpDict[enumAPIKeysForUser.walletId_key.rawValue] = self.walletAddress
         
-        self.registerUser()
+        // Save data Locally fro test without API fro test purpose only
+        
+
+        self.goToHomeScreen()
+
+        
+//        self.registerUser()
         
     }
     

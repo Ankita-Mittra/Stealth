@@ -211,6 +211,30 @@ class AllContactsListViewController: BaseViewController {
         }
     }
     
+    func makeGroupAdmin(userID:String){
+        
+        viewModel.successAlert = {
+            msg in
+            CommonFxns.showAlertWithCompletion(title: AlertMessages.SUCCESS_TITLE, message: msg, vc: self) {
+                self.dismiss(animated: false) {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+        
+        viewModel.errorAlert = {
+            error in
+            CommonFxns.showAlert(self, message: error, title: AlertMessages.ERROR_TITLE)
+        }
+        viewModel.updateLoadingStatus = {
+            print("updateLoadingStatus")
+
+            self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
+        }
+        viewModel.callMakeAdmin(userID: userID, groupID: groupId)
+        
+    }
+    
     
     func activityIndicatorStart() {
        appDelegate.showProgressHUD(view: self.view)
@@ -249,6 +273,10 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     guard  let userCell = self.contactsListTableView.dequeueReusableCell(withIdentifier: ContactsListTableViewCell.identifier , for: indexPath) as? ContactsListTableViewCell else {
         return cell
     }
+    userCell.callSelection = {
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
+    }
 
     if comingFor == createGroup || comingFor == addMembers{
         
@@ -269,6 +297,15 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         
         print(dict)
         userCell.usernameLbl.text = dict.username
+        if dict.groupRole == 1{
+            userCell.makeAdminBtn.isHidden = false
+        }
+        else{
+            userCell.makeAdminBtn.isHidden = true
+        }
+        userCell.callMakeAdmin = {
+            self.makeGroupAdmin(userID: dict.id ?? "")
+        }
         return userCell
     }
     
@@ -281,10 +318,10 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 
             switch selectedUser.isSelected {
             case 0:
-                let newRow = GroupParticipantsUserModel(userId: selectedUser.userId!, username: selectedUser.username!, userType: selectedUser.userType!, bio: selectedUser.bio!, imageUrl: selectedUser.imageUrl!, isMute: selectedUser.isMute!, isBlock: selectedUser.isBlock!, isPin: selectedUser.isPin!, allowWipeout: selectedUser.allowWipeout!, onlineStatus: selectedUser.onlineStatus!, lastOnlineTime: selectedUser.lastOnlineTime!, wKey: selectedUser.wKey!, relation: friends, publicKey: selectedUser.publicKey!, accountStatus: selectedUser.accountStatus!, isSelected: one)
+                let newRow = GroupParticipantsUserModel(userId: selectedUser.userId!, username: selectedUser.username!, userType: selectedUser.userType!, bio: selectedUser.bio!, imageUrl: selectedUser.imageUrl!, isMute: selectedUser.isMute!, isBlock: selectedUser.isBlock!, isPin: selectedUser.isPin!, allowWipeout: selectedUser.allowWipeout!, onlineStatus: selectedUser.onlineStatus!, lastOnlineTime: selectedUser.lastOnlineTime!, wKey: selectedUser.wKey!, relation: friends, publicKey: selectedUser.publicKey!, accountStatus: selectedUser.accountStatus!, isSelected: one,thumbUrl: selectedUser.thumbUrl ?? "")
                 self.contactsList[indexPath.row] = newRow
             default:
-                let newRow = GroupParticipantsUserModel(userId: selectedUser.userId!, username: selectedUser.username!, userType: selectedUser.userType!, bio: selectedUser.bio!, imageUrl: selectedUser.imageUrl!, isMute: selectedUser.isMute!, isBlock: selectedUser.isBlock!, isPin: selectedUser.isPin!, allowWipeout: selectedUser.allowWipeout!, onlineStatus: selectedUser.onlineStatus!, lastOnlineTime: selectedUser.lastOnlineTime!, wKey: selectedUser.wKey!, relation: friends, publicKey: selectedUser.publicKey!, accountStatus: selectedUser.accountStatus!, isSelected: zero)
+                let newRow = GroupParticipantsUserModel(userId: selectedUser.userId!, username: selectedUser.username!, userType: selectedUser.userType!, bio: selectedUser.bio!, imageUrl: selectedUser.imageUrl!, isMute: selectedUser.isMute!, isBlock: selectedUser.isBlock!, isPin: selectedUser.isPin!, allowWipeout: selectedUser.allowWipeout!, onlineStatus: selectedUser.onlineStatus!, lastOnlineTime: selectedUser.lastOnlineTime!, wKey: selectedUser.wKey!, relation: friends, publicKey: selectedUser.publicKey!, accountStatus: selectedUser.accountStatus!, isSelected: zero, thumbUrl: selectedUser.thumbUrl ?? "")
                 self.contactsList[indexPath.row] = newRow
             }
             self.contactsListTableView.reloadData()

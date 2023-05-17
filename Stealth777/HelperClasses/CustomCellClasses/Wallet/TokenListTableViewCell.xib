@@ -12,6 +12,9 @@
         <array key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
         </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -43,7 +46,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4I-X6-Ec5" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
-                        <rect key="frame" x="58" y="30.5" width="85.5" height="18"/>
+                        <rect key="frame" x="58" y="20.5" width="85.5" height="18"/>
                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -58,23 +61,32 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="round" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIg-uy-oJG" customClass="UILabelCustomClass" customModule="Stealth777" customModuleProvider="target">
+                        <rect key="frame" x="58" y="39.5" width="17" height="18"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="G4I-X6-Ec5" firstAttribute="centerY" secondItem="iPN-2O-Ayb" secondAttribute="centerY" id="F3X-S3-WOz"/>
                     <constraint firstItem="K0W-tq-Azq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ikr-sH-zUw"/>
                     <constraint firstAttribute="trailing" secondItem="xzu-GA-E72" secondAttribute="trailing" id="Q0e-Os-2eU"/>
+                    <constraint firstItem="G4I-X6-Ec5" firstAttribute="top" secondItem="iPN-2O-Ayb" secondAttribute="top" constant="5" id="QRg-gK-dil"/>
                     <constraint firstItem="G4I-X6-Ec5" firstAttribute="leading" secondItem="iPN-2O-Ayb" secondAttribute="trailing" constant="9" id="XAU-Sh-qkz"/>
                     <constraint firstAttribute="trailing" secondItem="K0W-tq-Azq" secondAttribute="trailing" id="XtO-VH-zxa"/>
+                    <constraint firstItem="CIg-uy-oJG" firstAttribute="top" secondItem="G4I-X6-Ec5" secondAttribute="bottom" constant="1" id="lII-1J-o19"/>
                     <constraint firstItem="iPN-2O-Ayb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="qYh-pb-GfR"/>
                     <constraint firstAttribute="bottom" secondItem="xzu-GA-E72" secondAttribute="bottom" id="rm5-hM-1S1"/>
                     <constraint firstItem="iPN-2O-Ayb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="u6n-VX-GfX"/>
                     <constraint firstItem="xzu-GA-E72" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zJm-ax-tpb"/>
+                    <constraint firstItem="CIg-uy-oJG" firstAttribute="leading" secondItem="G4I-X6-Ec5" secondAttribute="leading" id="zcf-Gn-BzJ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="balanceLbl" destination="CIg-uy-oJG" id="2yd-56-Ej9"/>
                 <outlet property="cellSelectedBtn" destination="K0W-tq-Azq" id="bhk-CI-CbG"/>
                 <outlet property="titleImgView" destination="iPN-2O-Ayb" id="UqD-JP-bbj"/>
                 <outlet property="titleLbl" destination="G4I-X6-Ec5" id="Ow4-nu-1OR"/>
@@ -83,8 +95,11 @@
         </tableViewCell>
     </objects>
     <designables>
+        <designable name="CIg-uy-oJG">
+            <size key="intrinsicContentSize" width="17" height="18"/>
+        </designable>
         <designable name="G4I-X6-Ec5">
-            <size key="intrinsicContentSize" width="85.5" height="17.5"/>
+            <size key="intrinsicContentSize" width="85.5" height="18"/>
         </designable>
         <designable name="iPN-2O-Ayb">
             <size key="intrinsicContentSize" width="124" height="124"/>

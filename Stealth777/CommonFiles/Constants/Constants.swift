@@ -26,6 +26,7 @@ let USER_DEFAULT_walletAddress_Key = "userDefault_walletAddress"
 let USER_DEFAULT_userID_Key = "userDefault_userID"
 let USER_DEFAULT_userDetails_Key = "userDefault_userDetails"
 let USER_DEFAULT_token_Key = "userDefault_token"
+let USER_DEFAULT_selectedBlockchainNetwork_Key = "userDefault_selectedBlockchainNetwork"
 
 let USER_DEFAULT_privateKey_Key = "userDefault_privateKey"
 let USER_DEFAULT_publicKey_Key = "userDefault_publicKey"
@@ -71,6 +72,14 @@ let zero = 0
 let one = 1
 let two = 2
 let five = 5
+
+//Group States
+enum enumGroupState:Int{
+    case active = 1
+    case exit = 2
+    case delete = 3
+    
+}
 
 // Fonts increment/decrement
 

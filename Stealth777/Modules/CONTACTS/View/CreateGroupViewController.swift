@@ -104,7 +104,9 @@ class CreateGroupViewController: BaseViewController {
                 groupMembers.append(member)
             }
             
-            let groupInfo = GroupsModel(id: groupId, name: groupName, description: groupDescription, imageUrl: groupImgUrl, anonymous: anonymous, disperse: disperse, disperseDate: disperseDate, canSendMsg: 1, showQr: 1, isPin: 0, isMute: 0, groupRole: 3, members: groupMembers)
+            let groupInfo = GroupsModel(id: groupId, name: groupName, description: groupDescription, imageUrl: groupImgUrl, anonymous: anonymous, disperse: disperse, disperseDate: disperseDate, canSendMsg: 1, showQr: 1, isPin: 0, isMute: 0, groupRole: 3, members: groupMembers, thumbUrl: "")
+            GroupDatabaseQueries.addAndUpdateGroupsToLocalDB(groups: [groupInfo])
+            
             
             self.showCustomtAlert(groupInfo: groupInfo)
         }
@@ -143,8 +145,11 @@ class CreateGroupViewController: BaseViewController {
         let refreshAlert = UIAlertController(title: "Success", message: "Group has been created successfully", preferredStyle: UIAlertController.Style.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action: UIAlertAction!) in
+            if let vc = self.navigationController?.viewControllers.filter({$0 is AllGroupsViewController}).first{
+                self.navigationController?.popToViewController(vc, animated: true)
+            }
             
-            self.goToGroupChatSsreen(groupInfo: groupInfo)
+            
         }))
         present(refreshAlert, animated: true, completion: nil)
     }
@@ -217,10 +222,10 @@ class CreateGroupViewController: BaseViewController {
         
     }
     
-    func goToGroupChatSsreen(groupInfo: GroupsModel){
+    func goToGroupChatSsreen(groupID: String?){
         let storyBoard = UIStoryboard.init(name: enumStoryBoard.groupChat.rawValue, bundle: nil)
         let otherVC = storyBoard.instantiateViewController(withIdentifier: enumViewControllerIdentifier.groupChat .rawValue) as? GroupChatViewController
-        otherVC?.groupInfo = groupInfo
+        otherVC?.groupID = groupID
         self.navigationController?.pushViewController(otherVC!, animated: true)
     }
 
